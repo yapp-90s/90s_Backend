@@ -56,9 +56,11 @@ jib {
         image = 'openjdk:15'
     }
     to {
+        image = 'radiata03/90s'
     }
     container {
         ports = ['8080']
+//        volume = ["/tmp", "/logs"]
     }
 }
 
