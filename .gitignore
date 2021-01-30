@@ -1,0 +1,55 @@
+HELP.md
+api-docs.html
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+logs/*
+*.log
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+.idea/*
+.gradle
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+
+application.yml
+*.yml
+application.properties
+*.jar
+out/
+target/
+build/
+gradle/
+
+logs/*
+*.log
+.DS_Store
+*.properties
+.mvn
+.gradle
+.settings
+logs
