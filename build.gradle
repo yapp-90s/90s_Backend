@@ -24,7 +24,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 group = 'com.yapp.ios2'
-version = '2.0.1-SNAPSHOT'
+version = '2.0.1'
 description = '90s'
 sourceCompatibility = 15
 
@@ -60,7 +60,87 @@ jib {
     }
     container {
         ports = ['8080']
-//        volume = ["/tmp", "/logs"]
+        volumes = ["/tmp", "/logs"]
+    }
+}
+
+
+task docker90sServerRun{
+    doLast{
+        ssh.run {
+            session(remotes.deploy) {
+                def command
+                def imageName = "${project.properties['imageName']}:latest"
+                def containerName = '90s_test'
+                def host = project.properties['dockerHost']
+                def buildPath = fileTree(dir: 'build').getDir()
+                def tarName = "jib-image.tar"
+                def inPort = "8080"
+                def outPort = "8080"
+                def routePort = "9999"
+                def from = "${buildPath}/${tarName}"
+                def to = project.properties["dockerDir"]
+
+
+//                command = "ls ${to}"
+//                println "\n\$ ${command}"
+//                execute(command){r->println r}
+
+                command = "rm ${to}${tarName}"
+                println "\n\$ ${command}"
+                execute(command, ignoreError:true){r->println r}
+
+                println "\n\$ put from:${from}, into: ${to}"
+                put from: from, into: to
+
+                command = 'ls'
+                println "\n\$ ${command}"
+                execute(command){r->println r}
+
+                command = "docker stop ${containerName}"
+                println "\n\$ ${command}"
+                execute(command, ignoreError:true){r->println r}
+
+                command = "docker rm ${containerName}"
+                println "\n\$ ${command}"
+                execute command, ignoreError:true
+
+//                command = "docker rmi \$(docker images | grep ${imageName})"
+//                println "\n\$ ${command}"
+//                execute command, ignoreError:true
+
+                command = "docker load --input ${to}${tarName}"
+                println "\n\$ ${command}"
+                execute command, ignoreError:true
+
+                command = "docker images"
+                println "\n\$ ${command}"
+                execute command, ignoreError:true
+
+                command = "docker run --name=${containerName} -p ${inPort}:${outPort} -v /tmp/log:/logs --link mysql-docker ${imageName}"
+//                docker run --name 90s_sub -p 8081:8080 -v /tmp/log:/logs --link mysql-docker radiata03/90s:2.0.1
+                println "\n\$ ${command}"
+                execute command, ignoreError:true
+
+                command = "docker ps"
+                println "\n\$ ${command}"
+                execute command, ignoreError:true
+
+                println('\n도커 업로드 완료')
+            }
+        }
+    }
+}
+
+
+remotes {
+    deploy {
+        role '90s server'
+        host = project.properties['dockerHost']
+        port = project.properties['dockerPort'].toInteger()
+        user = project.properties['dockerUser']
+        password = project.properties['dockerPassword']
+        knownHosts = allowAnyHosts
     }
 }
 
