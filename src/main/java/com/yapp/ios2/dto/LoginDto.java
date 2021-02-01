@@ -21,6 +21,6 @@ public class LoginDto {
     @Email
     @NotNull
     private String emailGoogle;
-
+    @NotNull
     private String phoneNum;
 }

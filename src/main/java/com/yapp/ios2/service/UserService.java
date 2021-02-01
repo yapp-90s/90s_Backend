@@ -60,11 +60,16 @@ public class UserService implements UserDetailsService {
         return newUser;
     }
 
-    public User login(String emailKakao, String emailApple, String emailGoogle) throws InvalidValueException {
-        System.out.println("called");
+    public User login(String emailKakao, String emailApple, String emailGoogle, String phoneNum) throws InvalidValueException {
         User user = new User();
 
-        if(!emailKakao.isBlank()){
+        if(!phoneNum.isBlank()){
+            user = getUserByPhone(phoneNum);
+            if(!emailApple.isBlank()) user.setEmailApple(emailApple);
+            if(!emailGoogle.isBlank()) user.setEmailGoogle(emailGoogle);
+            if(!emailKakao.isBlank()) user.setEmailKakao(emailKakao);
+            userRepository.save(user);
+        }else if(!emailKakao.isBlank()){
             user = userRepository.findUserByEmailKakao(emailKakao)
                     .orElseThrow(() -> new UserNotFoundException());
         }else if(!emailApple.isBlank()){
@@ -82,12 +87,13 @@ public class UserService implements UserDetailsService {
         userRepository.delete(user);
 
     }
-//
-//    public User getUserByPhone(String phone){
-//        return userRepository.findUserByPhone(phone)
-//                .orElseThrow(() -> new UsernameNotFoundException("가입되지 않은 E-MAIL"));
-//    }
-//
+
+    public User getUserByPhone(String phoneNum){
+        User user = userRepository.findUserByPhone(phoneNum).orElse(new User());
+        user.setPhoneNum(phoneNum);
+        return user;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String uid) throws UsernameNotFoundException {
         return userRepository.findById(Long.parseLong(uid))

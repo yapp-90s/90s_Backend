@@ -149,12 +149,13 @@ public class UserControllerTest{
     }
 
     @Test
-    public void login() throws Exception {
+    public void loginWithOnlyEmail() throws Exception {
 
         LoginDto loginDto = new LoginDto();
         loginDto.setEmailKakao("tester@90s.com");
         loginDto.setEmailApple("");
         loginDto.setEmailGoogle("");
+        loginDto.setPhoneNum("");
 
         User user = TestFunc.createTester(userRepository, passwordEncoder);
 
@@ -174,6 +175,55 @@ public class UserControllerTest{
         TestFunc.deleteTester(userService, user);
 
     }
+
+    @Test
+    public void loginWithOnlyEmailButNoEmail() throws Exception {
+
+        LoginDto loginDto = new LoginDto();
+        loginDto.setEmailKakao("noTester@90s.com");
+        loginDto.setEmailApple("");
+        loginDto.setEmailGoogle("");
+        loginDto.setPhoneNum("");
+
+        User user = TestFunc.createTester(userRepository, passwordEncoder);
+
+        ObjectMapper json = new ObjectMapper();
+        String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(loginDto);
+
+        mockMvc.perform(
+                post("/user/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonString)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andDo(document.document())
+        ;
+    }
+
+    @Test
+    public void loginWithEmailAndPhoneNum() throws Exception {
+
+        LoginDto loginDto = new LoginDto();
+        loginDto.setEmailKakao("tester0@90s.com");
+        loginDto.setEmailApple("");
+        loginDto.setEmailGoogle("");
+        loginDto.setPhoneNum("010-0000-0000");
+
+        ObjectMapper json = new ObjectMapper();
+        String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(loginDto);
+
+        mockMvc.perform(
+                post("/user/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonString)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andDo(document.document())
+        ;
+    }
+
 
 //    @Test
 //    public void delete_account() throws Exception {

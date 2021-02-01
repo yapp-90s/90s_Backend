@@ -66,7 +66,12 @@ public class UserController {
     public ResponseDto.JwtDto login(@Valid @RequestBody LoginDto loginDto){
 
 
-        User user = userService.login(loginDto.getEmailKakao(), loginDto.getEmailApple(), loginDto.getEmailGoogle());
+        User user = userService.login(
+                loginDto.getEmailKakao(),
+                loginDto.getEmailApple(),
+                loginDto.getEmailGoogle(),
+                loginDto.getPhoneNum()
+        );
 
         String jwt = jwtProvider.createToken(user.getUid().toString(), user.getRoles());
 
