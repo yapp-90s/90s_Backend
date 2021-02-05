@@ -453,17 +453,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_user">User</a>
 <ul class="sectlevel3">
 <li><a href="#_login">LOGIN</a></li>
-<li><a href="#_delete_account">DELETE_ACCOUNT</a></li>
-<li><a href="#_check_email">CHECK_EMAIL</a></li>
-<li><a href="#_check_phonenum">CHECK_PHONENUM</a></li>
-<li><a href="#_update_phone_number">UPDATE_PHONE-NUMBER</a></li>
-<li><a href="#_get_user_profile">GET_USER-PROFILE</a></li>
-</ul>
-</li>
-<li><a href="#_album">Album</a>
-<ul class="sectlevel3">
-<li><a href="#_create">CREATE</a></li>
-<li><a href="#_get_user_profile_2">GET-USER-PROFILE</a></li>
 </ul>
 </li>
 </ul>
@@ -571,6 +560,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <hr>
 <div class="sect3">
 <h4 id="_login"><a class="link" href="#_login">LOGIN</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre>emailKakao, emailGoogle, emailApple, phoneNum 을 parameter로 받습니다. 모든 request에 보내야하며 해당사항 없을 시에 공백("")으로 보내주세요.</pre>
+</div>
+</div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">user/login</dt>
@@ -599,62 +593,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Request Fields</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">필드명</th>
-<th class="tableblock halign-left valign-top">타입</th>
-<th class="tableblock halign-left valign-top">필수값</th>
-<th class="tableblock halign-left valign-top">예시</th>
-<th class="tableblock halign-left valign-top">설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>email</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="mailto:test@90s.com">test@90s.com</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">이메일</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>password</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">카카오 로그인 시에는 null로 보내지 않아도 무관합니다.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">비밀번호</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sosial</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true / false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">카카오 로그인 여부</p></td>
-</tr>
-</tbody>
-</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">user/login-with-only-email</dt>
+<dd>
+<p>이미 회원 가입이 되어있는 유저가 이메일로 로그인 했을 시</p>
+</dd>
+</dl>
+</div>
 <div class="listingblock">
 <div class="title">Request</div>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /user/login HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Content-Length: 101
+Content-Length: 99
 Host: 90s.com
 
 {
   "emailKakao" : "tester@90s.com",
   "emailApple" : "",
   "emailGoogle" : "",
-  "phoneNum" : null
+  "phoneNum" : ""
 }</code></pre>
 </div>
 </div>
@@ -673,312 +633,32 @@ X-Frame-Options: DENY
 Content-Length: 173
 
 {
-  "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZXMiOlsiUk9MRV9URVNURVIiXSwiaWF0IjoxNjExOTgwODgxLCJleHAiOjIyNDI3MDA4ODF9.BXzwVdSPtDUKzrGp4PmxrCqioQ2kAFDn2anjzEA1OB4"
+  "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1Iiwicm9sZXMiOlsiUk9MRV9URVNURVIiXSwiaWF0IjoxNjEyMTg4NTI1LCJleHAiOjIyNDI5MDg1MjV9.bn-_tMZz3TH15X4pZtOTaL4X-rq_BTWkGKPsz6eOrLk"
 }</code></pre>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_delete_account"><a class="link" href="#_delete_account">DELETE_ACCOUNT</a></h4>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">user/delete</dt>
+<dt class="hdlist1">user/login-with-email-and-phone-num</dt>
 <dd>
-<p>Get 방식. jwt 를 header에 넣어 Request하면 탈퇴됩니다.</p>
+<p>이미 회원 가입이 되어있는 유저가 다른 이메일과 동일 핸드폰번호 로그인 했을 시</p>
 </dd>
 </dl>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Desc</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">로그인</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Get</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user/delete</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<div class="title">Request</div>
-<p>Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/delete_account/http-request.adoc[]</p>
-</div>
-<div class="paragraph">
-<div class="title">Response</div>
-<p>Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/delete_account/http-response.adoc[]</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_check_email"><a class="link" href="#_check_email">CHECK_EMAIL</a></h4>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">user/checkEmail</dt>
-<dd>
-<p>이메일이 중복되었는지 확인합니다.<br>
-이메일이 중복된다면 true<br>
-중복되지 않는다면 false.</p>
-</dd>
-</dl>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">result</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">중복 O</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">중복 X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Desc</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">로그인</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Post</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user/checkEmail</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<div class="title">Request fields</div>
-<p>Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/check_email/request-fields.adoc[]
-.Request
-Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/check_email/http-request.adoc[]
-.Response
-Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/check_email/http-response.adoc[]</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_check_phonenum"><a class="link" href="#_check_phonenum">CHECK_PHONENUM</a></h4>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">user/phoneNum</dt>
-<dd>
-<p>주어진 핸드폰 번호로 임의의 6자리 난수를 발생시켜 발송하는 API입니다. 핸드폰 번호 검증을 할 때 사용합니다.</p>
-</dd>
-</dl>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Desc</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">핸드폰 번호 확인</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Post</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user/checkPhoneNum</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<div class="title">Request fields</div>
-<p>Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/check_phone-num/request-fields.adoc[]</p>
-</div>
-<div class="paragraph">
-<div class="title">Request</div>
-<p>Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/check_phone-num/http-request.adoc[]</p>
-</div>
-<div class="paragraph">
-<div class="title">Response</div>
-<p>Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/check_phone-num/http-response.adoc[]</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_update_phone_number"><a class="link" href="#_update_phone_number">UPDATE_PHONE-NUMBER</a></h4>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">user/updatePhoneNumber</dt>
-<dd>
-<p>사용자의 핸드폰 정보를 변경합니다.</p>
-</dd>
-</dl>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Desc</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">핸드폰 번호 변경</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Post</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user/updatePhoneNumber</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<div class="title">Request Header</div>
-<p>Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/update-phone-number/request-headers.adoc[]</p>
-</div>
-<div class="paragraph">
-<div class="title">Request fields</div>
-<p>Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/update-phone-number/request-fields.adoc[]</p>
-</div>
-<div class="paragraph">
-<div class="title">Request</div>
-<p>Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/update-phone-number/http-request.adoc[]</p>
-</div>
-<div class="paragraph">
-<div class="title">Response</div>
-<p>Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/update-phone-number/http-response.adoc[]</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_get_user_profile"><a class="link" href="#_get_user_profile">GET_USER-PROFILE</a></h4>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">user/getUserProfile</dt>
-<dd>
-<p>사용자의 정보를 조회합니다.</p>
-</dd>
-</dl>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Desc</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">사용자 정보 조회</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user/getUserProfile</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<div class="title">Request Header</div>
-<p>Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/get-user-proile/request-headers.adoc[]</p>
-</div>
-<div class="paragraph">
-<div class="title">Request</div>
-<p>Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/get-user-proile/http-request.adoc[]</p>
-</div>
-<div class="paragraph">
-<div class="title">Response</div>
-<p>Unresolved directive in api-docs.adoc - include::../../../build/generated-snippets/user-controller-test/get-user-proile/http-response.adoc[]</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_album"><a class="link" href="#_album">Album</a></h3>
-<div class="listingblock">
-<div class="content">
-<pre>엘범 관련한 API 입니다. 엘범 만들기, 엘범 멤버 추가, 엘범 삭제 등이 있습니다.</pre>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Controller</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">album/**</p></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<div class="sect3">
-<h4 id="_create"><a class="link" href="#_create">CREATE</a></h4>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">album/create</dt>
-<dd>
-<p>엘범을 만듭니다. JWT로 엘범 만든 사람을 구분하며, POST로 보내준 JSON 데이터로 엘범을 만듭니다.</p>
-</dd>
-</dl>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Desc</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">엘범 만들기</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Post</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">album/create</p></td>
-</tr>
-</tbody>
-</table>
 <div class="listingblock">
 <div class="title">Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /album/create HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /user/login HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MTciLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjAxMTA0Nzc3LCJleHAiOjIyMzE4MjQ3Nzd9.ejtazfKgSArQaxMlLF6NtjttEqVAVLxE6Z3PrA-jtgY
 Accept: application/json
 Content-Length: 113
 Host: 90s.com
 
 {
-  "coverUid" : 1,
-  "layoutUid" : 1,
-  "endDate" : "2020.08.01",
-  "photoLimit" : 5,
-  "name" : "NameOfAlbum"
+  "emailKakao" : "tester0@90s.com",
+  "emailApple" : "",
+  "emailGoogle" : "",
+  "phoneNum" : "010-0000-0000"
 }</code></pre>
 </div>
 </div>
@@ -994,76 +674,42 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 445
+Content-Length: 156
 
 {
-  "uid" : 518,
-  "name" : "NameOfAlbum",
-  "password" : "4bc383e6-49f1-4726-94b6-980f00e0b572",
-  "photoLimit" : 5,
-  "count" : 0,
-  "orderStatus" : {
-    "uid" : 1,
-    "status" : "pending"
-  },
-  "cover" : {
-    "uid" : 1,
-    "name" : "1990",
-    "path" : "static/1990.jpeg"
-  },
-  "layout" : 1,
-  "endDate" : "2020-08-01",
-  "created_at" : "2020-09-26T16:19:37.593753",
-  "updated_at" : "2020-09-26T16:19:37.593793",
-  "complete" : false
+  "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOltdLCJpYXQiOjE2MTIxODkwNzksImV4cCI6MjI0MjkwOTA3OX0.Vdu1gT96Yl9AKCfvLCzMIEfFrzUDRxZKdq2RBstrFPU"
 }</code></pre>
 </div>
 </div>
-<hr>
-</div>
-<div class="sect3">
-<h4 id="_get_user_profile_2"><a class="link" href="#_get_user_profile_2">GET-USER-PROFILE</a></h4>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">album/getUserProfile</dt>
+<dt class="hdlist1">user/login-with-only-email-but-no-email</dt>
 <dd>
-<p>JWT 유저 정보를 이용해 해당 유저가 만들거나 속해져 있는 엘범 정보를 가져옵니다.</p>
+<p>회원가입이 되어 있지 않은 유저의 최초 이메일로 로그인 요청 시</p>
 </dd>
 </dl>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Desc</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">엘범 정보들 가져오기</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">album/getUserProfile</p></td>
-</tr>
-</tbody>
-</table>
 <div class="listingblock">
 <div class="title">Request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/getAlbums HTTP/1.1
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MjAiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2MDExMDQ3NzgsImV4cCI6MjIzMTgyNDc3OH0.ONO4cx9OPjdqh3XLmCnbKKARk6s3rohxzlTmWJ7-lwE
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /user/login HTTP/1.1
+Content-Type: application/json
 Accept: application/json
-Host: 90s.com</code></pre>
+Content-Length: 101
+Host: 90s.com
+
+{
+  "emailKakao" : "noTester@90s.com",
+  "emailApple" : "",
+  "emailGoogle" : "",
+  "phoneNum" : ""
+}</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Response</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 500 Internal Server Error
 Content-Type: application/json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
@@ -1072,69 +718,14 @@ Pragma: no-cache
 Expires: 0
 Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 1307
+Content-Length: 93
 
-[ {
-  "uid" : 521,
-  "name" : "NameOfAlbum 3",
-  "password" : "3d9f9912-2f1b-4589-ac13-2fcc057261c9",
-  "photoLimit" : 4,
-  "count" : 0,
-  "orderStatus" : {
-    "uid" : 1,
-    "status" : "pending"
-  },
-  "cover" : {
-    "uid" : 1,
-    "name" : "1990",
-    "path" : "static/1990.jpeg"
-  },
-  "layout" : 1,
-  "endDate" : "2023-09-26",
-  "created_at" : "2020-09-26T16:19:39",
-  "updated_at" : "2020-09-26T16:19:39",
-  "complete" : false
-}, {
-  "uid" : 523,
-  "name" : "NameOfAlbum 3",
-  "password" : "beed864a-28a5-4a22-8230-4432618ae301",
-  "photoLimit" : 4,
-  "count" : 0,
-  "orderStatus" : {
-    "uid" : 1,
-    "status" : "pending"
-  },
-  "cover" : {
-    "uid" : 1,
-    "name" : "1990",
-    "path" : "static/1990.jpeg"
-  },
-  "layout" : 1,
-  "endDate" : "2023-09-26",
-  "created_at" : "2020-09-26T16:19:39",
-  "updated_at" : "2020-09-26T16:19:39",
-  "complete" : false
-}, {
-  "uid" : 525,
-  "name" : "NameOfAlbum 3",
-  "password" : "b59df5a7-e9a6-4f76-9f91-056b423c67ad",
-  "photoLimit" : 4,
-  "count" : 0,
-  "orderStatus" : {
-    "uid" : 1,
-    "status" : "pending"
-  },
-  "cover" : {
-    "uid" : 1,
-    "name" : "1990",
-    "path" : "static/1990.jpeg"
-  },
-  "layout" : 1,
-  "endDate" : "2023-09-26",
-  "created_at" : "2020-09-26T16:19:39",
-  "updated_at" : "2020-09-26T16:19:39",
-  "complete" : false
-} ]</code></pre>
+{
+  "message" : "Email is Not Exist",
+  "status" : 400,
+  "errors" : [ ],
+  "code" : "U001"
+}</code></pre>
 </div>
 </div>
 </div>
@@ -1145,7 +736,7 @@ Content-Length: 1307
 <div id="footer">
 <div id="footer-text">
 Version 2.0.1<br>
-Last updated 2021-01-30 17:23:39 +0900
+Last updated 2021-02-01 23:40:19 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">
