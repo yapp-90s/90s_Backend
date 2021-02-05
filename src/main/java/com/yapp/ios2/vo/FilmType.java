@@ -3,6 +3,7 @@ package com.yapp.ios2.vo;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -16,9 +17,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FilmType {
+
     @Id
     @GeneratedValue
     private Long uid;
+
+    @Column
+    @UniqueElements
+    private Integer code;
 
     @Column(length = 45, nullable = true)
     private String name;
