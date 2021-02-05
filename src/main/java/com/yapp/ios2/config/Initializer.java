@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Initializer  implements CommandLineRunner {
 
-//    @Autowired
-//    DefaultUserInitializer defaultUserInitializer;
+    @Autowired
+    DefaultUserInitializer defaultUserInitializer;
 
     @Autowired
     FilmTypeInitializer filmTypeInitializer;
@@ -21,7 +21,7 @@ public class Initializer  implements CommandLineRunner {
         filmTypeInitializer.run();
 
 ////        디폴트 유저 및 테스트 유저 관련 설정
-//        defaultUserInitializer.run();
+        defaultUserInitializer.run();
 
     }
 }
