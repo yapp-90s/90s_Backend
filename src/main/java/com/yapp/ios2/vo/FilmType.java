@@ -22,8 +22,7 @@ public class FilmType {
     @GeneratedValue
     private Long uid;
 
-    @Column
-    @UniqueElements
+    @Column(unique = true)
     private Integer code;
 
     @Column(length = 45, nullable = true)

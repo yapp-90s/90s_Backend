@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface FilmTypeRepository extends JpaRepository<FilmType, Long> {
-    Optional<FilmType> findByName(String Name);
+    Optional<FilmType> findFilmTypeByName(String Name);
 
-    Optional<FilmType> findByCode(Integer filmCode);
+    Optional<FilmType> findFilmTypeByCode(Integer filmCode);
 }

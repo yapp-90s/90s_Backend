@@ -41,8 +41,8 @@ public class FilmTypeInitializer {
 
 
 
-        for(int i = 0; i < 4; i = 0){
-            FilmType filmType = filmTypeRepository.findByCode(filmTypeCodeList.get(i)).orElse(
+        for(int i = 0; i < 4; i++){
+            FilmType filmType = filmTypeRepository.findFilmTypeByCode(filmTypeCodeList.get(i)).orElse(
                     FilmType.builder()
                             .name(filmTypeNameList.get(i))
                             .code(filmTypeCodeList.get(i))
