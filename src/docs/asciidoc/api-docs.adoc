@@ -131,7 +131,16 @@ include::{snippets}/user-controller-test/check_phone-num/http-response.adoc[]
 
 
 === Film
-모든 요청은 JWT를 Header에 포함해서 보내주세요.
+
+----
+필름 관련한 API 입니다. 필름 만들기, 필름에 사진 추가 등이 있습니다. 모든 요청은 JWT를 Header에 포함해서 보내주세요.
+----
+
+
+|===
+| Controller | URI
+| User | user/**
+|===
 
 
 ***
