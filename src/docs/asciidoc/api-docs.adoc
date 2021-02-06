@@ -78,9 +78,9 @@ user/login::
 | 로그인 | Post | user/login
 |===
 
+---
 
-
-user/login-with-only-email::
+===== user/login-with-only-email
 이미 회원 가입이 되어있는 유저가 이메일로 로그인 했을 시
 
 .Request
@@ -89,10 +89,11 @@ include::{snippets}/user-controller-test/login-with-only-email/http-request.adoc
 .Response
 include::{snippets}/user-controller-test/login-with-only-email/http-response.adoc[]
 
+---
 
+===== user/login-with-email-and-phone-num
+이미 회원 가입이 되어있는 유저가 이메일과 핸드폰 번호로 로그인.
 
-user/login-with-email-and-phone-num::
-이미 회원 가입이 되어있는 유저가 다른 이메일과 동일 핸드폰번호 로그인 했을 시
 
 .Request
 include::{snippets}/user-controller-test/login-with-email-and-phone-num/http-request.adoc[]
@@ -100,10 +101,10 @@ include::{snippets}/user-controller-test/login-with-email-and-phone-num/http-req
 .Response
 include::{snippets}/user-controller-test/login-with-email-and-phone-num/http-response.adoc[]
 
+---
 
-
-user/login-with-only-email-but-no-email::
-회원가입이 되어 있지 않은 유저의 최초 이메일로 로그인 요청 시
+===== user/login-with-only-email-but-no-email
+회원가입이 되어 있지 않은 유저의 최초 이메일로 로그인.
 
 .Request
 include::{snippets}/user-controller-test/login-with-only-email-but-no-email/http-request.adoc[]
@@ -120,7 +121,7 @@ include::{snippets}/user-controller-test/login-with-only-email-but-no-email/http
 ***
 ==== CREATE
 
-film/create::
+===== film/create
 필름을 만듭니다.
 
 
