@@ -29,6 +29,11 @@ public class Film {
     @JoinColumn(name ="filmType_uid")
     private FilmType filmType;
 
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name ="user_uid")
+    private User user;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 

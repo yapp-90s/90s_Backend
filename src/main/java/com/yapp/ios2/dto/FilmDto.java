@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 public class FilmDto {
 
-    private Long filmTypeUid;
+    private Integer filmCode;
 
     private String name;
 

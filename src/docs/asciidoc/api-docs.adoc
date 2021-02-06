@@ -26,25 +26,25 @@ FC JANYANG CAPTAIN;
 |===
 
 
-=== Status-Code
-|===
-| Status code | Status Name | Description
-| 200
-| OK
-| 성공!
-
-| 400
-| Bad Request
-| 무언가 잘못되었다. 하지만 서버 잘못은 아니다!
-
-| 500
-| Internal Server Error
-| 서버 에러!
-
-| 404
-| Not Found
-| 없는 주소!
-|===
+//=== Status-Code
+//|===
+//| Status code | Status Name | Description
+//| 200
+//| OK
+//| 성공!
+//
+//| 400
+//| Bad Request
+//| 무언가 잘못되었다. 하지만 서버 잘못은 아니다!
+//
+//| 500
+//| Internal Server Error
+//| 서버 에러!
+//
+//| 404
+//| Not Found
+//| 없는 주소!
+//|===
 
 == Controller
 === User
@@ -110,3 +110,28 @@ include::{snippets}/user-controller-test/login-with-only-email-but-no-email/http
 
 .Response
 include::{snippets}/user-controller-test/login-with-only-email-but-no-email/http-response.adoc[]
+
+---
+
+=== Film
+모든 요청은 JWT를 Header에 포함해서 보내주세요.
+
+
+***
+==== CREATE
+
+film/create::
+필름을 만듭니다.
+
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 로그인 | Post | film/create
+|===
+
+.Request
+include::{snippets}/film-controller-test/create_film/http-request.adoc[]
+
+.Response
+include::{snippets}/film-controller-test/create_film/http-response.adoc[]
