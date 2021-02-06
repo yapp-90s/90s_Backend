@@ -445,7 +445,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_overview">Overview</a>
 <ul class="sectlevel2">
 <li><a href="#_http_verbs">HTTP verbs</a></li>
-<li><a href="#_status_code">Status-Code</a></li>
 </ul>
 </li>
 <li><a href="#_controller">Controller</a>
@@ -453,9 +452,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_user">User</a>
 <ul class="sectlevel3">
 <li><a href="#_login">LOGIN</a></li>
+<li><a href="#_checkphonenum">CheckPhoneNum</a></li>
 </ul>
 </li>
-<li><a href="#_film">Film</a></li>
+<li><a href="#_film">Film</a>
+<ul class="sectlevel3">
+<li><a href="#_create">CREATE</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -489,43 +493,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Post로 Request를 보낼때는 보통 Json형태로 데이터를 넘겨주시면 됩니다.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_status_code"><a class="link" href="#_status_code">Status-Code</a></h3>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Status code</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Status Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">성공!</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">400</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bad Request</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">무언가 잘못되었다. 하지만 서버 잘못은 아니다!</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">500</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Internal Server Error</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">서버 에러!</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">404</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Not Found</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">없는 주소!</p></td>
 </tr>
 </tbody>
 </table>
@@ -594,13 +561,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 </tbody>
 </table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">user/login-with-only-email</dt>
-<dd>
-<p>이미 회원 가입이 되어있는 유저가 이메일로 로그인 했을 시</p>
-</dd>
-</dl>
+<div class="listingblock">
+<div class="content">
+<pre> 이미 회원 가입이 되어있는 유저가 이메일로 로그인 했을 시</pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">Request</div>
@@ -638,13 +602,11 @@ Content-Length: 173
 }</code></pre>
 </div>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">user/login-with-email-and-phone-num</dt>
-<dd>
-<p>이미 회원 가입이 되어있는 유저가 다른 이메일과 동일 핸드폰번호 로그인 했을 시</p>
-</dd>
-</dl>
+<hr>
+<div class="literalblock">
+<div class="content">
+<pre>이미 회원 가입이 되어있는 유저가 이메일과 핸드폰 번호로 로그인.</pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">Request</div>
@@ -682,13 +644,11 @@ Content-Length: 156
 }</code></pre>
 </div>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">user/login-with-only-email-but-no-email</dt>
-<dd>
-<p>회원가입이 되어 있지 않은 유저의 최초 이메일로 로그인 요청 시</p>
-</dd>
-</dl>
+<hr>
+<div class="literalblock">
+<div class="content">
+<pre>회원가입이 되어 있지 않은 유저의 최초 이메일로 로그인.</pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="title">Request</div>
@@ -731,12 +691,74 @@ Content-Length: 93
 </div>
 <hr>
 </div>
+<div class="sect3">
+<h4 id="_checkphonenum"><a class="link" href="#_checkphonenum">CheckPhoneNum</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Desc</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">고객이 받은 인증 문자 내 번호 확인</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user/checkPhoneNum</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>핸드폰 인증을 합니다. 핸드폰 번호를 보내면 고객이 받은 문자 안의 인증 번호를 Response합니다.</p>
+</div>
+<div class="listingblock">
+<div class="title">Request</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /user/checkPhoneNum HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Content-Length: 35
+Host: 90s.com
+
+{
+  "phoneNumber" : "01095233114"
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Response</div>
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 22
+
+{
+  "num" : "817641"
+}</code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_film"><a class="link" href="#_film">Film</a></h3>
 <div class="paragraph">
 <p>모든 요청은 JWT를 Header에 포함해서 보내주세요.</p>
 </div>
+<hr>
+<div class="sect3">
+<h4 id="_create"><a class="link" href="#_create">CREATE</a></h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">film/create</dt>
@@ -838,10 +860,11 @@ Content-Length: 1106
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
 Version 2.0.1<br>
-Last updated 2021-02-06 10:08:59 +0900
+Last updated 2021-02-06 12:37:32 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">
