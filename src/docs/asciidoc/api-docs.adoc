@@ -62,7 +62,7 @@ FC JANYANG CAPTAIN;
 
 
 ***
-==== LOGIN
+==== user/login
 
 ----
 emailKakao, emailGoogle, emailApple, phoneNum 을 parameter로 받습니다. 모든 request에 보내야하며 해당사항 없을 시에 공백("")으로 보내주세요.
@@ -80,46 +80,44 @@ emailKakao, emailGoogle, emailApple, phoneNum 을 parameter로 받습니다. 모
 이미 회원 가입이 되어있는 유저가 이메일로 로그인 했을 시
 ----
 
-====== Curl
+===== 1Curl
 include::{snippets}/user-controller-test/login-with-only-email/curl-request.adoc[]
 
-====== Request
+===== 1Request
 include::{snippets}/user-controller-test/login-with-only-email/http-request.adoc[]
 
-====== Response
+===== 1Response
 include::{snippets}/user-controller-test/login-with-only-email/http-response.adoc[]
 
 ***
 
 이미 회원 가입이 되어있는 유저가 이메일과 핸드폰 번호로 로그인.
 
-====== Curl
+===== 2Curl
 include::{snippets}/user-controller-test/login-with-email-and-phone-num/curl-request.adoc[]
 
-====== Request
+===== 2Request
 include::{snippets}/user-controller-test/login-with-email-and-phone-num/http-request.adoc[]
 
-====== Response
+===== 2Response
 include::{snippets}/user-controller-test/login-with-email-and-phone-num/http-response.adoc[]
 
 ***
 
 회원가입이 되어 있지 않은 유저의 최초 이메일로 로그인.
 
-====== Curl
+===== 3Curl
 include::{snippets}/user-controller-test/login-with-only-email-but-no-email/curl-request.adoc[]
 
-
-
-====== Request
+===== 3Request
 include::{snippets}/user-controller-test/login-with-only-email-but-no-email/http-request.adoc[]
 
-====== Response
+===== 3Response
 include::{snippets}/user-controller-test/login-with-only-email-but-no-email/http-response.adoc[]
 
 ***
 
-==== CheckPhoneNum
+==== user/checkPhoneNum
 
 .Desc
 |===
@@ -131,13 +129,13 @@ include::{snippets}/user-controller-test/login-with-only-email-but-no-email/http
 핸드폰 인증을 합니다. 핸드폰 번호를 보내면 고객이 받은 문자 안의 인증 번호를 Response합니다.
 ----
 
-====== Curl
+===== Curl
 include::{snippets}/user-controller-test/check_phone-num/curl-request.adoc[]
 
-====== Request
+===== Request
 include::{snippets}/user-controller-test/check_phone-num/http-request.adoc[]
 
-====== Response
+===== Response
 include::{snippets}/user-controller-test/check_phone-num/http-response.adoc[]
 
 
@@ -155,7 +153,7 @@ include::{snippets}/user-controller-test/check_phone-num/http-response.adoc[]
 
 
 ***
-==== CREATE
+==== film/create
 
 .Desc
 |===
@@ -163,18 +161,17 @@ include::{snippets}/user-controller-test/check_phone-num/http-response.adoc[]
 | 로그인 | Post | film/create
 |===
 
-====== Curl
+===== Curl
 include::{snippets}/film-controller-test/create_film/curl-request.adoc[]
 
-====== Request
+===== Request
 include::{snippets}/film-controller-test/create_film/http-request.adoc[]
 
-====== Response
+===== Response
 include::{snippets}/film-controller-test/create_film/http-response.adoc[]
 
-==== UPLOAD
+==== film/upload
 
-===== film/upload
 필름의 사진을 업로드합니다. multipart/form-data 형태로 요청을 보내주세요. 필요한 param은 2개 입니다. 폼으로 싸서 하나는 파일로 하나는 Int 형태로 보내주세요.
 
 
@@ -184,16 +181,16 @@ include::{snippets}/film-controller-test/create_film/http-response.adoc[]
 | 로그인 | Post | film/upload
 |===
 
-====== CurlRequest
+===== CurlRequest
 include::{snippets}/film-controller-test/upload_photo/curl-request.adoc[]
-====== httpRequest
+===== httpRequest
 include::{snippets}/film-controller-test/upload_photo/http-request.adoc[]
-====== RequestPart
+===== RequestPart
 include::{snippets}/film-controller-test/upload_photo/request-parts.adoc[]
-====== RequestParameter
+===== RequestParameter
 include::{snippets}/film-controller-test/upload_photo/request-parameters.adoc[]
 
 
 
-====== Response
+===== Response
 include::{snippets}/film-controller-test/upload_photo/http-response.adoc[]
