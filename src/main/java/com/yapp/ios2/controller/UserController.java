@@ -4,6 +4,7 @@ import com.yapp.ios2.dto.*;
 //import com.yapp.ios2.service.AlbumService;
 //import com.yapp.ios2.service.SnsService;
 import com.yapp.ios2.config.JwtProvider;
+import com.yapp.ios2.service.SnsService;
 import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.vo.User;
 import io.swagger.annotations.Api;
@@ -19,8 +20,8 @@ public class UserController {
 
     @Autowired
     UserService userService;
-//    @Autowired
-//    SnsService snsService;
+    @Autowired
+    SnsService snsService;
 //    @Autowired
 //    AlbumService albumService;
 
@@ -29,29 +30,6 @@ public class UserController {
     @Autowired
     JwtProvider jwtProvider;
 
-
-//    @PostMapping(value = "/join")
-//    @ResponseBody
-//    public ResponseDto.JwtDto join(@RequestBody JoinDto joinInfo) {
-//
-//        String jwt;
-//        User newUser;
-//
-//        if(!joinInfo.getEmailKakao().isBlank()){
-//            newUser = userService.join(joinInfo.getEmailKakao(), null, null, joinInfo.getName(), joinInfo.getPhone());
-//        }else if(!joinInfo.getEmailApple().isBlank()){
-//            newUser = userService.join(null, joinInfo.getEmailApple(), null, joinInfo.getName(), joinInfo.getPhone());
-//        }else{
-//            newUser = userService.join(null, null, joinInfo.getEmailGoogle(), joinInfo.getName(), joinInfo.getPhone());
-//        }
-//
-//        jwt = jwtProvider.createToken(newUser.getUid().toString(), newUser.getRoles());
-//
-//        ResponseDto.JwtDto jwtDto = new ResponseDto.JwtDto();
-//        jwtDto.setJwt(jwt);
-//
-//        return jwtDto;
-//    }
     @GetMapping(value = "/")
     @ResponseBody
     public ResponseDto.DataDto home(){
@@ -81,35 +59,17 @@ public class UserController {
         return jwtDto;
     }
 
-//    @ApiOperation(value = "이메일 체크", notes = "" +
-//            "이메일이 중복되는지 확인합니다." +
-//            "<br>이메일이 중복된다면 true 를" +
-//            "<br>이메일이 중복되지 않는다면 false를" +
-//            "<br>리턴합니다.")
-//    @PostMapping("/checkEmail")
-//    @ResponseBody
-//    public ResponseDto.BooleanDto duplicatedEmail(@RequestBody DuplicatedEmailDto duplicatedEmailDto){
-//
-//        ResponseDto.BooleanDto booleanResultDto = new ResponseDto.BooleanDto();
-//
-//        boolean duplicated = userService.checkEmail(duplicatedEmailDto.getEmail());
-//
-//        booleanResultDto.setResult(duplicated);
-//
-//        return booleanResultDto;
-//    }
+    @PostMapping("/checkPhoneNum")
+    @ResponseBody
+    public SmsDto.SmsResponseDto sendSms(@RequestBody SmsDto.SmsRequestDto smsRequestDto){
 
-//    @PostMapping("/checkPhoneNum")
-//    @ResponseBody
-//    public SmsDto.SmsResponseDto sendSms(@RequestBody SmsDto.SmsRequestDto smsRequestDto){
-//
-//        String num = snsService.send(smsRequestDto.getPhoneNumber());
-//        SmsDto.SmsResponseDto smsResponseDto = new SmsDto.SmsResponseDto();
-//        smsResponseDto.setNum(num);
-//
-//        return smsResponseDto;
-//
-//    }
+        String num = snsService.send(smsRequestDto.getPhoneNumber());
+        SmsDto.SmsResponseDto smsResponseDto = new SmsDto.SmsResponseDto();
+        smsResponseDto.setNum(num);
+
+        return smsResponseDto;
+
+    }
 
 //    @ApiOperation(value = "이메일 변경", notes = "" +
 //            "이메일을 변경합니다." +

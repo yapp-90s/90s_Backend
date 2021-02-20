@@ -68,8 +68,6 @@ FC JANYANG CAPTAIN;
 emailKakao, emailGoogle, emailApple, phoneNum 을 parameter로 받습니다. 모든 request에 보내야하며 해당사항 없을 시에 공백("")으로 보내주세요.
 ----
 
-user/login::
-카카오, 구글, 애플 이메일 중 1개를 POST 합니다.
 
 
 .Desc
@@ -78,10 +76,9 @@ user/login::
 | 로그인 | Post | user/login
 |===
 
----
-
-===== user/login-with-only-email
+----
 이미 회원 가입이 되어있는 유저가 이메일로 로그인 했을 시
+----
 
 ====== Curl
 include::{snippets}/user-controller-test/login-with-only-email/curl-request.adoc[]
@@ -92,9 +89,8 @@ include::{snippets}/user-controller-test/login-with-only-email/http-request.adoc
 ====== Response
 include::{snippets}/user-controller-test/login-with-only-email/http-response.adoc[]
 
----
+***
 
-===== user/login-with-email-and-phone-num
 이미 회원 가입이 되어있는 유저가 이메일과 핸드폰 번호로 로그인.
 
 ====== Curl
@@ -106,13 +102,13 @@ include::{snippets}/user-controller-test/login-with-email-and-phone-num/http-req
 ====== Response
 include::{snippets}/user-controller-test/login-with-email-and-phone-num/http-response.adoc[]
 
----
+***
 
-===== user/login-with-only-email-but-no-email
 회원가입이 되어 있지 않은 유저의 최초 이메일로 로그인.
 
 ====== Curl
 include::{snippets}/user-controller-test/login-with-only-email-but-no-email/curl-request.adoc[]
+
 
 
 ====== Request
@@ -121,18 +117,45 @@ include::{snippets}/user-controller-test/login-with-only-email-but-no-email/http
 ====== Response
 include::{snippets}/user-controller-test/login-with-only-email-but-no-email/http-response.adoc[]
 
----
+***
+
+==== CheckPhoneNum
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 고객이 받은 인증 문자 내 번호 확인 | Post | user/checkPhoneNum
+|===
+
+----
+핸드폰 인증을 합니다. 핸드폰 번호를 보내면 고객이 받은 문자 안의 인증 번호를 Response합니다.
+----
+
+====== Curl
+include::{snippets}/user-controller-test/check_phone-num/curl-request.adoc[]
+
+====== Request
+include::{snippets}/user-controller-test/check_phone-num/http-request.adoc[]
+
+====== Response
+include::{snippets}/user-controller-test/check_phone-num/http-response.adoc[]
+
 
 === Film
-모든 요청은 JWT를 Header에 포함해서 보내주세요.
+
+----
+필름 관련한 API 입니다. 필름 만들기, 필름에 사진 추가 등이 있습니다. 모든 요청은 JWT를 Header에 포함해서 보내주세요.
+----
+
+
+|===
+| Controller | URI
+| User | user/**
+|===
 
 
 ***
 ==== CREATE
-
-===== film/create
-필름을 만듭니다.
-
 
 .Desc
 |===

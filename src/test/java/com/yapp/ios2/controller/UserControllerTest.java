@@ -313,27 +313,24 @@ public class UserControllerTest{
 //        deleteTester(jwt, userService, userRepository, jwtProvider);
 //    }
 
-//    @Test
-//    public void check_phoneNum() throws Exception {
-//
-//        SmsDto.SmsRequestDto smsRequestDto = new SmsDto.SmsRequestDto();
-//        smsRequestDto.setPhoneNumber("01095233114");
-//
-//        ObjectMapper json = new ObjectMapper();
-//        String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(smsRequestDto);
-//
-//        mockMvc.perform(
-//                post("/user/checkPhoneNum")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(jsonString)
-//                        .accept(MediaType.APPLICATION_JSON))
-//                .andDo(print())
-//                .andExpect(status().isOk())
-//                .andDo(document.document(
-//                        requestFields(
-//                                fieldWithPath("phoneNumber").description("핸드폰번호").attributes(new Attributes.Attribute("format","01012341234")).description("핸드폰 번호를 보내며 - 없이 숫자만 보냅니다.")
-//                        )
-//                ));
-//
-//    }
+    @Test
+    public void check_phoneNum() throws Exception {
+
+        SmsDto.SmsRequestDto smsRequestDto = new SmsDto.SmsRequestDto();
+        smsRequestDto.setPhoneNumber("01095233114");
+
+        ObjectMapper json = new ObjectMapper();
+        String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(smsRequestDto);
+
+        mockMvc.perform(
+                post("/user/checkPhoneNum")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonString)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk()
+                )
+                ;
+
+    }
 }
