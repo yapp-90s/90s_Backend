@@ -53,16 +53,14 @@ public class S3Service{
         return s3Client.getUrl(bucket, fileName).toString();
     }
 
-    public byte[] download(Long albumUid, String fileName) throws IOException {
+    public byte[] download(Long filmUid, String fileName) throws IOException {
         S3Object file = s3Client.getObject(new GetObjectRequest(bucket +
-        "/" + albumUid.toString(), fileName + ".jpeg"));
+        "/" + filmUid.toString(), fileName + ".jpeg"));
 
         S3ObjectInputStream s3OIS = file.getObjectContent();
         byte[] bytes = IOUtils.toByteArray(s3OIS);
 
         return bytes;
-//        Resource resource = new ByteArrayResource(bytes);
-//        return resource;
     }
 
 //    public void deleteByAlbum(Long albumUid){

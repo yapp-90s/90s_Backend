@@ -5,8 +5,11 @@ import com.yapp.ios2.TestConfig;
 import com.yapp.ios2.config.JwtProvider;
 import com.yapp.ios2.dto.FilmDto;
 import com.yapp.ios2.dto.LoginDto;
+import com.yapp.ios2.dto.PhotoDto;
+import com.yapp.ios2.repository.PhotoRepository;
 import com.yapp.ios2.repository.UserRepository;
 import com.yapp.ios2.service.UserService;
+import com.yapp.ios2.vo.Photo;
 import com.yapp.ios2.vo.User;
 import org.junit.Before;
 import org.junit.Rule;
@@ -59,6 +62,9 @@ public class FilmControllerTest{
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    PhotoRepository photoRepository;
+
 
     @Autowired
     JwtProvider jwtProvider;
@@ -141,7 +147,30 @@ public class FilmControllerTest{
                         requestParameters(parameterWithName("filmUid").description("사진이 소속된 필름의 아이디값."))
                         )
                 );
-//        .andDo(prettyPrint());
-
     }
+
+    @Test
+    public void download_photo() throws Exception {
+
+        jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";
+
+        Photo photo = photoRepository.findAll().get(0);
+
+        PhotoDto.PhotoDownload photoDownload = PhotoDto.PhotoDownload.builder()
+                .photoUid(photo.getUid())
+                .build();
+
+        ObjectMapper json = new ObjectMapper();
+        String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(photoDownload);
+
+        mockMvc.perform(
+                post("/film/download")
+                        .header("X-AUTH-TOKEN", jwt)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonString)
+                        .accept(MediaType.APPLICATION_OCTET_STREAM_VALUE))
+                .andExpect(status().isOk()
+                );
+    }
+
 }

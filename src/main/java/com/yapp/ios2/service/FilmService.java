@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.awt.*;
 import java.io.IOException;
 
 @Service
@@ -63,6 +64,19 @@ public class FilmService {
         photoRepository.save(newPhoto);
 
         return newPhoto;
+    }
+
+    public byte[] download(Long photoUid) throws IOException {
+
+
+        Photo photo = photoRepository.findById(photoUid)
+                .orElseThrow(
+                        () -> new EntityNotFoundException("Invalid Uid")
+                );
+
+        byte[] photoBinary = s3Service.download(photo.getFilm().getUid(), photo.getUid().toString());
+
+        return photoBinary;
     }
 
 }
