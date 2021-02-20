@@ -34,11 +34,11 @@ public class FilmController {
     }
     @PostMapping(value = "/upload")
     @ResponseBody
-    public List<Photo> upload(@RequestParam(value="image") MultipartFile[] images, @RequestParam("filmUid") Long filmUid, @AuthenticationPrincipal User user) throws IOException {
+    public Photo upload(@RequestParam(value="image") MultipartFile images, @RequestParam("filmUid") Long filmUid, @AuthenticationPrincipal User user) throws IOException {
 
-        List<Photo> photos = filmService.upload(images, filmUid);
+        Photo photo = filmService.upload(images, filmUid);
 
 
-        return photos;
+        return photo;
     }
 }

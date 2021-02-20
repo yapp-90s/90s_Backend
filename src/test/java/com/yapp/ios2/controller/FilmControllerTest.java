@@ -15,20 +15,30 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.restdocs.JUnitRestDocumentation;
 import org.springframework.restdocs.mockmvc.RestDocumentationResultHandler;
+import org.springframework.restdocs.snippet.Attributes;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileInputStream;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.fileUpload;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.restdocs.request.RequestDocumentation.*;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -70,8 +80,18 @@ public class FilmControllerTest{
                 preprocessResponse(prettyPrint())
         );
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
-                .apply(documentationConfiguration(this.restDocumentation)
-                        .uris().withScheme("https").withHost("90s.com").withPort(443))
+                .apply(
+                        documentationConfiguration(this.restDocumentation)
+                        .uris()
+                                .withScheme("https")
+                                .withHost("90s.com")
+                                .withPort(443)
+                )
+                .apply(
+                        documentationConfiguration(this.restDocumentation).operationPreprocessors()
+                        .withRequestDefaults(prettyPrint())
+                        .withResponseDefaults(prettyPrint())
+                )
                 .apply(springSecurity())
                 .alwaysDo(document)
                 .build();
@@ -99,6 +119,29 @@ public class FilmControllerTest{
                 .andDo(print())
                 .andExpect(status().isOk()
                 );
+
+    }
+
+    @Test
+    public void upload_photo() throws Exception {
+
+        jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";
+
+        MockMultipartFile multipartFile = new MockMultipartFile("testPic.jpeg", new FileInputStream(new File("src/test/java/com/yapp/ios2/data/testPicture.jpeg")));
+
+        mockMvc.perform(
+                fileUpload("/film/upload")
+                        .file("image", multipartFile.getBytes())
+                        .header("X-AUTH-TOKEN", jwt)
+                        .param("filmUid","10")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(document.document(
+                        requestParts(partWithName("image").description("업로드할 이미지 파일. jpeg 형식.")),
+                        requestParameters(parameterWithName("filmUid").description("사진이 소속된 필름의 아이디값."))
+                        )
+                );
+//        .andDo(prettyPrint());
 
     }
 }

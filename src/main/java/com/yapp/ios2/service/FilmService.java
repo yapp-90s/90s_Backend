@@ -42,7 +42,7 @@ public class FilmService {
         return film;
     }
 
-    public String upload(MultipartFile photo, Long filmUid) throws IOException {
+    public Photo upload(MultipartFile photo, Long filmUid) throws IOException {
 
 
 
@@ -62,7 +62,7 @@ public class FilmService {
 
         photoRepository.save(newPhoto);
 
-        return url;
+        return newPhoto;
     }
 
 }

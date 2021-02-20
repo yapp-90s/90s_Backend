@@ -4,7 +4,7 @@ FC JANYANG CAPTAIN;
 :icons: font
 :source-highlighter: highlightjs
 :toc: left
-:toclevels: 3
+:toclevels: 5
 :sectlinks:
 :table-caption!:
 
@@ -83,10 +83,13 @@ user/login::
 ===== user/login-with-only-email
 이미 회원 가입이 되어있는 유저가 이메일로 로그인 했을 시
 
-.Request
+====== Curl
+include::{snippets}/user-controller-test/login-with-only-email/curl-request.adoc[]
+
+====== Request
 include::{snippets}/user-controller-test/login-with-only-email/http-request.adoc[]
 
-.Response
+====== Response
 include::{snippets}/user-controller-test/login-with-only-email/http-response.adoc[]
 
 ---
@@ -94,11 +97,13 @@ include::{snippets}/user-controller-test/login-with-only-email/http-response.ado
 ===== user/login-with-email-and-phone-num
 이미 회원 가입이 되어있는 유저가 이메일과 핸드폰 번호로 로그인.
 
+====== Curl
+include::{snippets}/user-controller-test/login-with-email-and-phone-num/curl-request.adoc[]
 
-.Request
+====== Request
 include::{snippets}/user-controller-test/login-with-email-and-phone-num/http-request.adoc[]
 
-.Response
+====== Response
 include::{snippets}/user-controller-test/login-with-email-and-phone-num/http-response.adoc[]
 
 ---
@@ -106,10 +111,14 @@ include::{snippets}/user-controller-test/login-with-email-and-phone-num/http-res
 ===== user/login-with-only-email-but-no-email
 회원가입이 되어 있지 않은 유저의 최초 이메일로 로그인.
 
-.Request
+====== Curl
+include::{snippets}/user-controller-test/login-with-only-email-but-no-email/curl-request.adoc[]
+
+
+====== Request
 include::{snippets}/user-controller-test/login-with-only-email-but-no-email/http-request.adoc[]
 
-.Response
+====== Response
 include::{snippets}/user-controller-test/login-with-only-email-but-no-email/http-response.adoc[]
 
 ---
@@ -131,8 +140,37 @@ include::{snippets}/user-controller-test/login-with-only-email-but-no-email/http
 | 로그인 | Post | film/create
 |===
 
-.Request
+====== Curl
+include::{snippets}/film-controller-test/create_film/curl-request.adoc[]
+
+====== Request
 include::{snippets}/film-controller-test/create_film/http-request.adoc[]
 
-.Response
+====== Response
 include::{snippets}/film-controller-test/create_film/http-response.adoc[]
+
+==== UPLOAD
+
+===== film/upload
+필름의 사진을 업로드합니다. multipart/form-data 형태로 요청을 보내주세요. 필요한 param은 2개 입니다. 폼으로 싸서 하나는 파일로 하나는 Int 형태로 보내주세요.
+
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 로그인 | Post | film/upload
+|===
+
+====== CurlRequest
+include::{snippets}/film-controller-test/upload_photo/curl-request.adoc[]
+====== httpRequest
+include::{snippets}/film-controller-test/upload_photo/http-request.adoc[]
+====== RequestPart
+include::{snippets}/film-controller-test/upload_photo/request-parts.adoc[]
+====== RequestParameter
+include::{snippets}/film-controller-test/upload_photo/request-parameters.adoc[]
+
+
+
+====== Response
+include::{snippets}/film-controller-test/upload_photo/http-response.adoc[]
