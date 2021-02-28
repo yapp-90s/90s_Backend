@@ -34,6 +34,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.List;
+
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.fileUpload;
@@ -89,9 +91,9 @@ public class FilmControllerTest{
                 .apply(
                         documentationConfiguration(this.restDocumentation)
                         .uris()
-                                .withScheme("https")
-                                .withHost("90s.com")
-                                .withPort(443)
+                                .withScheme("http")
+                                .withHost("49.50.162.246")
+                                .withPort(8080)
                 )
                 .apply(
                         documentationConfiguration(this.restDocumentation).operationPreprocessors()
@@ -154,10 +156,11 @@ public class FilmControllerTest{
 
         jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";
 
-        Photo photo = photoRepository.findAll().get(0);
+        List<Photo> photos = photoRepository.findAll();
+
 
         PhotoDto.PhotoDownload photoDownload = PhotoDto.PhotoDownload.builder()
-                .photoUid(photo.getUid())
+                .photoUid(photos.get(photos.size()-1).getUid())
                 .build();
 
         ObjectMapper json = new ObjectMapper();

@@ -181,12 +181,14 @@ include::{snippets}/film-controller-test/create_film/http-response.adoc[]
 | 로그인 | Post | film/upload
 |===
 
-===== CurlRequest
-include::{snippets}/film-controller-test/upload_photo/curl-request.adoc[]
-===== httpRequest
-include::{snippets}/film-controller-test/upload_photo/http-request.adoc[]
+//===== CurlRequest
+//include::{snippets}/film-controller-test/upload_photo/curl-request.adoc[]
+//===== httpRequest
+//include::{snippets}/film-controller-test/upload_photo/http-request.adoc[]
+
 ===== RequestPart
 include::{snippets}/film-controller-test/upload_photo/request-parts.adoc[]
+
 ===== RequestParameter
 include::{snippets}/film-controller-test/upload_photo/request-parameters.adoc[]
 
@@ -194,3 +196,24 @@ include::{snippets}/film-controller-test/upload_photo/request-parameters.adoc[]
 
 ===== Response
 include::{snippets}/film-controller-test/upload_photo/http-response.adoc[]
+
+
+==== film/download
+
+필름의 사진을 다운로드합니다. Response로 사진 파일을 보냅니다.
+
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 로그인 | Post | film/download
+|===
+
+===== CurlRequest
+include::{snippets}/film-controller-test/download_photo/curl-request.adoc[]
+===== httpRequest
+include::{snippets}/film-controller-test/download_photo/http-request.adoc[]
+
+
+===== Response
+include::{snippets}/film-controller-test/download_photo/http-response.adoc[]
