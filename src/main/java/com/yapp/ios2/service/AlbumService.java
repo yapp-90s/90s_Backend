@@ -1,76 +1,64 @@
-//package com.yapp.ios2.service;
-//
-//import com.yapp.ios2.dto.AlbumDto;
-//import com.yapp.ios2.dto.AlbumOwnerDto;
-//import com.yapp.ios2.repository.*;
-//import com.yapp.ios2.config.exception.AlbumNotFoundException;
-//import com.yapp.ios2.repository.AlbumOwnerRepository;
-//import com.yapp.ios2.repository.AlbumRepository;
-//import com.yapp.ios2.repository.UserRepository;
-//import com.yapp.ios2.vo.*;
-//import org.joda.time.DateTime;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//
-//import java.time.LocalDate;
-//import java.time.chrono.ChronoLocalDate;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.UUID;
-//import java.util.concurrent.ThreadLocalRandom;
-//
-//@Service
-//public class AlbumService{
-//
-//    @Autowired
-//    AlbumRepository albumRepository;
-//
-//    @Autowired
-//    UserRepository userRepository;
-//
-//    @Autowired
-//    AlbumOwnerRepository albumOwnerRepository;
-//
-//    @Autowired
-//    PhotoRepository photoRepository;
-//
-//    @Autowired
-//    S3Service s3Service;
-//
-//    @Autowired
-//    CoverRepository coverRepository;
-//
-//    public Album create(String name, Integer photoLimit, Long user, Long cover, LocalDate endDate) {
-//
-//        Album newAlbum = Album.builder()
-//                .name(name)
-//                .password(UUID.randomUUID().toString())
-//                .photoLimit(photoLimit)
-//                .cover(coverRepository.findById(cover).get())
-//                .endDate(endDate)
-//                .count(0)
-//                .build();
-//
-//        albumRepository.save(newAlbum);
-//
-//        addOwner(newAlbum.getUid(), user, "ROLE_CREATOR");
-//
-//        return newAlbum;
-//    }
-//
-//    public AlbumOwner addOwner(Long albumUid, Long user, String role){
-//
-//        AlbumOwner albumOwner = AlbumOwner.builder()
-//                .album(albumRepository.findById(albumUid).get())
-//                .user(userRepository.findById(user).get())
-//                .role(role)
-//                .build();
-//
-//        albumOwnerRepository.save(albumOwner);
-//
-//        return albumOwner;
-//    }
-//
+package com.yapp.ios2.service;
+
+import com.yapp.ios2.repository.*;
+import com.yapp.ios2.vo.Album;
+import com.yapp.ios2.vo.AlbumOwner;
+import com.yapp.ios2.vo.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class AlbumService{
+
+    @Autowired
+    AlbumRepository albumRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    AlbumOwnerRepository albumOwnerRepository;
+
+    @Autowired
+    PhotoRepository photoRepository;
+
+    @Autowired
+    S3Service s3Service;
+
+    @Autowired
+    AlbumCoverRepository albumCoverRepository;
+
+    @Autowired
+    AlbumLayoutRepository albumLayoutRepository;
+
+    public Album create(User user, String name, Integer totPaper, Long coverUid, Long layoutUid) {
+
+        Album newAlbum = Album.builder()
+                .name(name)
+                .albumLayout(albumLayoutRepository.findById(coverUid).get())
+                .albumCover(albumCoverRepository.findById(layoutUid).get())
+                .totPaper(totPaper)
+                .build();
+
+        albumRepository.save(newAlbum);
+
+        addOwner(newAlbum, user, "ROLE_CREATOR");
+
+        return newAlbum;
+    }
+
+    public void addOwner(Album album, User user, String role){
+
+        AlbumOwner albumOwner = AlbumOwner.builder()
+                .album(album)
+                .user(user)
+                .role(role)
+                .build();
+
+        albumOwnerRepository.save(albumOwner);
+
+    }
+
 //    public void removeOwner(Long albumUid, Long user){
 //
 //        AlbumOwner albumOwner = albumOwnerRepository.findByAlbumAndUser(
@@ -186,4 +174,4 @@
 //        return randomNum;
 //    }
 //
-//}
+}

@@ -1,66 +1,47 @@
-//package com.yapp.ios2.controller;
-//
-//import com.amazonaws.util.IOUtils;
-//import com.yapp.ios2.dto.AlbumDto;
-//import com.yapp.ios2.dto.AlbumOwnerDto;
-//import com.yapp.ios2.dto.ResponseDto;
-//import com.yapp.ios2.repository.AlbumRepository;
-//import com.yapp.ios2.service.AlbumService;
-//import com.yapp.ios2.service.UserService;
-//import com.yapp.ios2.vo.Album;
-//import com.yapp.ios2.vo.AlbumOwner;
-//import com.yapp.ios2.vo.User;
-//import io.swagger.annotations.Api;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.core.io.ClassPathResource;
-//import org.springframework.http.HttpEntity;
-//import org.springframework.http.HttpHeaders;
-//import org.springframework.http.MediaType;
-//import org.springframework.security.access.annotation.Secured;
-//import org.springframework.security.core.annotation.AuthenticationPrincipal;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.web.bind.annotation.*;
-//
-//import javax.servlet.http.HttpServletResponse;
-//import java.io.IOException;
-//import java.util.List;
-//import java.util.UUID;
-//
-//@Api(tags = {"2. Album"})
-//@RestController
-//@RequestMapping("/album/*")
-//public class AlbumController {
-//
-//    @Autowired
-//    private AlbumService albumService;
-//
-//    @Autowired
-//    private AlbumRepository albumRepository;
-//
-//    @Autowired
-//    private UserService userService;
-//
-//    @GetMapping("/")
-//    public String home(){
-//        System.out.println("album home");
-//        return "Welcome, HERE IS ALBUM HOME";
-//    }
-//
-//    @PostMapping("/create")
-//    @ResponseBody
-//    public Album createAlbum(@AuthenticationPrincipal UserDetails user, @RequestBody AlbumDto.AlbumInfo albumInfo){
-//
-//        Album newAlbum = albumService.create(
-//                albumInfo.getName(),
-//                albumInfo.getPhotoLimit(),
-//                userService.getUserByPhone(user.getUsername()).getUid(),
-//                albumInfo.getCoverUid(),
-//                albumInfo.getEndDate()
-//        );
-//
-//        return newAlbum;
-//    }
-//
+package com.yapp.ios2.controller;
+
+import com.yapp.ios2.dto.AlbumDto;
+import com.yapp.ios2.vo.Album;
+import com.yapp.ios2.vo.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/album/*")
+public class AlbumController {
+
+    @Autowired
+    private AlbumService albumService;
+
+    @Autowired
+    private AlbumRepository albumRepository;
+
+    @Autowired
+    private UserService userService;
+
+    @GetMapping("/")
+    public String home(){
+        System.out.println("album home");
+        return "Welcome, HERE IS ALBUM HOME";
+    }
+
+    @PostMapping("/create")
+    @ResponseBody
+    public Album createAlbum(@AuthenticationPrincipal User user, @RequestBody AlbumDto.AlbumInfo albumInfo){
+
+        Album newAlbum = albumService.create(
+                albumInfo.getName(),
+                albumInfo.getPhotoLimit(),
+                userService.getUserByPhone(user.getUsername()).getUid(),
+                albumInfo.getCoverUid(),
+                albumInfo.getEndDate()
+        );
+
+        return newAlbum;
+    }
+
+
 //    @PostMapping("/addUser")
 //    public ResponseDto.BooleanDto addUser(@RequestBody AlbumOwnerDto.AlbumOwnerInfo albumOwnerInfo){
 //        AlbumOwner albumOwner = albumService.addOwner(albumOwnerInfo.getAlbumUid(), albumOwnerInfo.getUserUid(), albumOwnerInfo.getRole());
@@ -176,4 +157,4 @@
 //
 //    }
 //
-//}
+}

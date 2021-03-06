@@ -6,7 +6,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder
@@ -27,9 +26,15 @@ public class Album {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name ="album_type", referencedColumnName="uid")
-    private AlbumType albumType;
+    @JoinColumn(name ="album_cover", referencedColumnName="uid")
+    private AlbumCover albumCover;
 
+    @ManyToOne
+    @JoinColumn(name ="album_layout", referencedColumnName="uid")
+    private AlbumLayout albumLayout;
+
+    @Column
+    private Integer totPaper;
 
     @Column(columnDefinition = "boolean default false")
     private boolean isComplete;

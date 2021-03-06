@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class AlbumType {
+public class AlbumCover {
 
     @Id
     private Long uid;
@@ -24,12 +24,6 @@ public class AlbumType {
 
     @Column
     private String description;
-
-    @Column
-    private Integer photoPerPaper;
-
-    @Column
-    private Integer totalPaper;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
