@@ -43,40 +43,4 @@ public class FilmService {
         return film;
     }
 
-    public Photo upload(MultipartFile photo, Long filmUid) throws IOException {
-
-
-
-        Photo newPhoto = Photo.builder()
-                .film(filmRepository.findById(filmUid).orElseThrow(
-                        () -> new EntityNotFoundException("Invalid FilmUid")
-                ))
-                .build();
-
-        photoRepository.save(newPhoto);
-
-        String fileName = filmUid.toString() + "/" + newPhoto.getUid() + ".jpeg";
-
-        String url = s3Service.upload(photo, fileName);
-
-        newPhoto.setUrl(url);
-
-        photoRepository.save(newPhoto);
-
-        return newPhoto;
-    }
-
-    public byte[] download(Long photoUid) throws IOException {
-
-
-        Photo photo = photoRepository.findById(photoUid)
-                .orElseThrow(
-                        () -> new EntityNotFoundException("Invalid Uid")
-                );
-
-        byte[] photoBinary = s3Service.download(photo.getFilm().getUid(), photo.getUid().toString());
-
-        return photoBinary;
-    }
-
 }

@@ -1,69 +1,63 @@
-//package com.yapp.ios2.controller;
+package com.yapp.ios2.controller;
+
+
+import com.yapp.ios2.dto.PhotoDto;
+import com.yapp.ios2.repository.PhotoRepository;
+import com.yapp.ios2.service.PhotoService;
+import com.yapp.ios2.service.UserService;
+import com.yapp.ios2.vo.Photo;
+import com.yapp.ios2.vo.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+
+@RestController
+@RequestMapping("/photo/*")
+public class PhotoController {
 //
-//import com.amazonaws.services.mq.model.NotFoundException;
-//import com.yapp.ios2.dto.AlbumDto;
-//import com.yapp.ios2.dto.PhotoDto;
-//import com.yapp.ios2.repository.PhotoRepository;
-//import com.yapp.ios2.service.PhotoService;
-//import com.yapp.ios2.service.UserService;
-//import com.yapp.ios2.vo.Photo;
-//import io.swagger.annotations.Api;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.HttpEntity;
-//import org.springframework.http.HttpHeaders;
-//import org.springframework.http.MediaType;
-//import org.springframework.security.core.annotation.AuthenticationPrincipal;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.web.bind.annotation.*;
-//import org.springframework.web.multipart.MultipartFile;
-//
-//import javax.servlet.http.HttpServletResponse;
-//import java.io.File;
-//import java.io.IOException;
-//import java.util.List;
-//
-//
-//@Api(tags = {"3. Photo"})
-//@RestController
-//@RequestMapping("/photo/*")
-//public class PhotoController {
-//
-//    @Autowired
-//    private PhotoService photoService;
-//    @Autowired
-//    private PhotoRepository photoRepository;
+    @Autowired
+    private PhotoService photoService;
+    @Autowired
+    private PhotoRepository photoRepository;
 //
 //
-//    @Autowired
-//    private UserService userService;
+    @Autowired
+    private UserService userService;
 //
-//    @GetMapping("/")
-//    @ResponseBody
-//    public String home(@AuthenticationPrincipal UserDetails user){
-//
-//        return "WELCOME, " + user.getUsername() +
-//                " HERE IS PHOTO HOME " +
-//                user.getAuthorities();
-//    }
-//
-//
-//    @PostMapping(value = "/upload")
-//    @ResponseBody
-//    public List<Photo> upload(@RequestParam(value="image") MultipartFile[] images, @RequestParam("albumUid") Long albumUid, @AuthenticationPrincipal UserDetails user) throws IOException {
-//
-//        List<Photo> photos = photoService.upload(images, albumUid);
-//
-//        return photos;
-//    }
-//
-//    @PostMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-//    @ResponseBody()
-//    public byte[] download(@RequestBody PhotoDto.PhotoInfo photoInfo) throws IOException {
-//        byte[] bytes = photoService.download(photoInfo.getAlbumUid(), photoInfo.getPhotoUid());
-//
-//        return bytes;
-//    }
-//
+    @GetMapping("/")
+    @ResponseBody
+    public String home(@AuthenticationPrincipal UserDetails user){
+
+        return "WELCOME, " + user.getUsername() +
+                " HERE IS PHOTO HOME " +
+                user.getAuthorities();
+    }
+
+
+    @PostMapping(value = "/upload")
+    @ResponseBody
+    public Photo upload(@RequestParam(value="image") MultipartFile images, @RequestParam("filmUid") Long filmUid, @AuthenticationPrincipal User user) throws IOException {
+
+        Photo photo = photoService.upload(images, filmUid);
+
+        return photo;
+    }
+
+    @PostMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @ResponseBody()
+    public byte[] download(@RequestBody PhotoDto.PhotoDownload photoDownload) throws IOException {
+
+        byte[] photoBinary = photoService.download(photoDownload.getPhotoUid());
+
+        return photoBinary;
+    }
+
+
 //    @GetMapping(value = "/download/{albumUid}/{photoUid}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 //    @ResponseBody
 //    public HttpEntity<byte[]> download(@PathVariable("albumUid") Long albumUid,
@@ -109,4 +103,4 @@
 //        return photo;
 //    }
 //
-//}
+}

@@ -34,22 +34,5 @@ public class FilmController {
         return film;
 
     }
-    @PostMapping(value = "/upload")
-    @ResponseBody
-    public Photo upload(@RequestParam(value="image") MultipartFile images, @RequestParam("filmUid") Long filmUid, @AuthenticationPrincipal User user) throws IOException {
-
-        Photo photo = filmService.upload(images, filmUid);
-
-        return photo;
-    }
-
-    @PostMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    @ResponseBody()
-    public byte[] download(@RequestBody PhotoDto.PhotoDownload photoDownload) throws IOException {
-
-        byte[] photoBinary = filmService.download(photoDownload.getPhotoUid());
-
-        return photoBinary;
-    }
 
 }

@@ -142,7 +142,7 @@ include::{snippets}/user-controller-test/check_phone-num/http-response.adoc[]
 === Film
 
 ----
-필름 관련한 API 입니다. 필름 만들기, 필름에 사진 추가 등이 있습니다. 모든 요청은 JWT를 Header에 포함해서 보내주세요.
+필름 관련한 API 입니다. 모든 요청은 JWT를 Header에 포함해서 보내주세요.
 ----
 
 
@@ -170,7 +170,17 @@ include::{snippets}/film-controller-test/create_film/http-request.adoc[]
 ===== Response
 include::{snippets}/film-controller-test/create_film/http-response.adoc[]
 
-==== film/upload
+***
+
+=== photo
+
+----
+사진 관련한 API 입니다. 사진 업로드, 다운로드 등이 있습니다. 모든 요청은 JWT를 Header에 포함해서 보내주세요.
+----
+
+***
+
+==== photo/upload
 
 필름의 사진을 업로드합니다. multipart/form-data 형태로 요청을 보내주세요. 필요한 param은 2개 입니다. 폼으로 싸서 하나는 파일로 하나는 Int 형태로 보내주세요.
 
@@ -178,7 +188,7 @@ include::{snippets}/film-controller-test/create_film/http-response.adoc[]
 .Desc
 |===
 | 기능 | 방식 | URI
-| 로그인 | Post | film/upload
+| 로그인 | Post | photo/upload
 |===
 
 //===== CurlRequest
@@ -197,8 +207,9 @@ include::{snippets}/film-controller-test/upload_photo/request-parameters.adoc[]
 ===== Response
 include::{snippets}/film-controller-test/upload_photo/http-response.adoc[]
 
+***
 
-==== film/download
+==== photo/download
 
 필름의 사진을 다운로드합니다. Response로 사진 파일을 보냅니다.
 
@@ -206,7 +217,7 @@ include::{snippets}/film-controller-test/upload_photo/http-response.adoc[]
 .Desc
 |===
 | 기능 | 방식 | URI
-| 로그인 | Post | film/download
+| 로그인 | Post | photo/download
 |===
 
 ===== CurlRequest
@@ -217,3 +228,6 @@ include::{snippets}/film-controller-test/download_photo/http-request.adoc[]
 
 ===== Response
 include::{snippets}/film-controller-test/download_photo/http-response.adoc[]
+
+***
+
