@@ -1,5 +1,6 @@
-package com.yapp.ios2.config;
+package com.yapp.ios2.config.init;
 
+import com.yapp.ios2.config.JwtProvider;
 import com.yapp.ios2.repository.PhotoRepository;
 import com.yapp.ios2.repository.UserRepository;
 import com.yapp.ios2.vo.User;

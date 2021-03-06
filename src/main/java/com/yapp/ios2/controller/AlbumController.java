@@ -1,6 +1,9 @@
 package com.yapp.ios2.controller;
 
 import com.yapp.ios2.dto.AlbumDto;
+import com.yapp.ios2.repository.AlbumRepository;
+import com.yapp.ios2.service.AlbumService;
+import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.vo.Album;
 import com.yapp.ios2.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +32,13 @@ public class AlbumController {
     @PostMapping("/create")
     @ResponseBody
     public Album createAlbum(@AuthenticationPrincipal User user, @RequestBody AlbumDto.AlbumInfo albumInfo){
-
+//        create(User user, String name, Integer totPaper, Long coverUid, Long layoutUid)
         Album newAlbum = albumService.create(
+                user,
                 albumInfo.getName(),
-                albumInfo.getPhotoLimit(),
-                userService.getUserByPhone(user.getUsername()).getUid(),
+                albumInfo.getTotPaper(),
                 albumInfo.getCoverUid(),
-                albumInfo.getEndDate()
+                albumInfo.getLayoutUid()
         );
 
         return newAlbum;

@@ -1,4 +1,4 @@
-package com.yapp.ios2.config;
+package com.yapp.ios2.config.init;
 
 
 import com.yapp.ios2.repository.FilmTypeRepository;
