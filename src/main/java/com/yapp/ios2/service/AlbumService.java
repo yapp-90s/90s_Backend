@@ -31,12 +31,12 @@ public class AlbumService{
     @Autowired
     AlbumLayoutRepository albumLayoutRepository;
 
-    public Album create(User user, String name, Integer totPaper, Long coverUid, Long layoutUid) {
+    public Album create(User user, String name, Integer totPaper, Integer coverCode, Integer layoutCode) {
 
         Album newAlbum = Album.builder()
                 .name(name)
-                .albumLayout(albumLayoutRepository.findById(coverUid).get())
-                .albumCover(albumCoverRepository.findById(layoutUid).get())
+                .albumLayout(albumLayoutRepository.findAlbumLayoutByCode(coverCode))
+                .albumCover(albumCoverRepository.findAlbumCoverByCode(layoutCode))
                 .totPaper(totPaper)
                 .build();
 

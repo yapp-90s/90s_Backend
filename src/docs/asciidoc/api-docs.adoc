@@ -172,7 +172,7 @@ include::{snippets}/film-controller-test/create_film/http-response.adoc[]
 
 ***
 
-=== photo
+=== Photo
 
 ----
 사진 관련한 API 입니다. 사진 업로드, 다운로드 등이 있습니다. 모든 요청은 JWT를 Header에 포함해서 보내주세요.
@@ -197,15 +197,15 @@ include::{snippets}/film-controller-test/create_film/http-response.adoc[]
 //include::{snippets}/film-controller-test/upload_photo/http-request.adoc[]
 
 ===== RequestPart
-include::{snippets}/film-controller-test/upload_photo/request-parts.adoc[]
+include::{snippets}/photo-controller-test/upload_photo/request-parts.adoc[]
 
 ===== RequestParameter
-include::{snippets}/film-controller-test/upload_photo/request-parameters.adoc[]
+include::{snippets}/photo-controller-test/upload_photo/request-parameters.adoc[]
 
 
 
 ===== Response
-include::{snippets}/film-controller-test/upload_photo/http-response.adoc[]
+include::{snippets}/photo-controller-test/upload_photo/http-response.adoc[]
 
 ***
 
@@ -221,13 +221,41 @@ include::{snippets}/film-controller-test/upload_photo/http-response.adoc[]
 |===
 
 ===== CurlRequest
-include::{snippets}/film-controller-test/download_photo/curl-request.adoc[]
+include::{snippets}/photo-controller-test/download_photo/curl-request.adoc[]
 ===== httpRequest
-include::{snippets}/film-controller-test/download_photo/http-request.adoc[]
+include::{snippets}/photo-controller-test/download_photo/http-request.adoc[]
 
 
 ===== Response
-include::{snippets}/film-controller-test/download_photo/http-response.adoc[]
+include::{snippets}/photo-controller-test/download_photo/http-response.adoc[]
 
 ***
 
+=== Album
+
+----
+앨범 관련한 API 입니다. 모든 요청은 JWT를 Header에 포함해서 보내주세요.
+----
+
+***
+
+==== album/create
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 앨범 만들기 | Post | album/create
+|===
+
+----
+앨범을 만듭니다.
+----
+
+===== Curl
+include::{snippets}/album-controller-test/create_album/curl-request.adoc[]
+
+===== Request
+include::{snippets}/album-controller-test/create_album/http-request.adoc[]
+
+===== Response
+include::{snippets}/album-controller-test/create_album/http-response.adoc[]

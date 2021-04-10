@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Builder
 @Entity
-@Table(name = "cover")
+@Table(name = "AlbumCover")
 @Getter
 @Setter
 @ToString
@@ -18,6 +18,9 @@ public class AlbumCover {
 
     @Id
     private Long uid;
+
+    @Column(unique = true)
+    private Integer code;
 
     @Column
     private String name;

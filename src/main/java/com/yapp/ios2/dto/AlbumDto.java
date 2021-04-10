@@ -28,11 +28,12 @@ public class AlbumDto {
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
+    @Builder
     public static class AlbumInfo {
-        private Long albumUid;
+//        private Long albumUid;
         private String name;
-        private Long layoutUid;
-        private Long coverUid;
+        private Integer layoutCode;
+        private Integer coverCode;
         private Integer totPaper;
 
     }

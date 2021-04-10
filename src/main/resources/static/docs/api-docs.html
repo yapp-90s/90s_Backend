@@ -482,18 +482,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_response_2">Response</a></li>
 </ul>
 </li>
-<li><a href="#_filmupload">film/upload</a>
+</ul>
+</li>
+<li><a href="#_photo">Photo</a>
+<ul class="sectlevel3">
+<li><a href="#_photoupload">photo/upload</a>
 <ul class="sectlevel4">
 <li><a href="#_requestpart">RequestPart</a></li>
 <li><a href="#_requestparameter">RequestParameter</a></li>
 <li><a href="#_response_3">Response</a></li>
 </ul>
 </li>
-<li><a href="#_filmdownload">film/download</a>
+<li><a href="#_photodownload">photo/download</a>
 <ul class="sectlevel4">
 <li><a href="#_curlrequest">CurlRequest</a></li>
 <li><a href="#_httprequest">httpRequest</a></li>
 <li><a href="#_response_4">Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_album">Album</a>
+<ul class="sectlevel3">
+<li><a href="#_albumcreate">album/create</a>
+<ul class="sectlevel4">
+<li><a href="#_curl_3">Curl</a></li>
+<li><a href="#_request_3">Request</a></li>
+<li><a href="#_response_5">Response</a></li>
 </ul>
 </li>
 </ul>
@@ -860,7 +875,7 @@ Content-Length: 22
 <h3 id="_film"><a class="link" href="#_film">Film</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre>필름 관련한 API 입니다. 필름 만들기, 필름에 사진 추가 등이 있습니다. 모든 요청은 JWT를 Header에 포함해서 보내주세요.</pre>
+<pre>필름 관련한 API 입니다. 모든 요청은 JWT를 Header에 포함해서 보내주세요.</pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -989,10 +1004,20 @@ Content-Length: 1106
 }</code></pre>
 </div>
 </div>
+<hr>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_photo"><a class="link" href="#_photo">Photo</a></h3>
+<div class="listingblock">
+<div class="content">
+<pre>사진 관련한 API 입니다. 사진 업로드, 다운로드 등이 있습니다. 모든 요청은 JWT를 Header에 포함해서 보내주세요.</pre>
+</div>
+</div>
+<hr>
 <div class="sect3">
-<h4 id="_filmupload"><a class="link" href="#_filmupload">film/upload</a></h4>
+<h4 id="_photoupload"><a class="link" href="#_photoupload">photo/upload</a></h4>
 <div class="paragraph">
 <p>필름의 사진을 업로드합니다. multipart/form-data 형태로 요청을 보내주세요. 필요한 param은 2개 입니다. 폼으로 싸서 하나는 파일로 하나는 Int 형태로 보내주세요.</p>
 </div>
@@ -1012,7 +1037,7 @@ Content-Length: 1106
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">로그인</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Post</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">film/upload</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">photo/upload</p></td>
 </tr>
 </tbody>
 </table>
@@ -1073,8 +1098,8 @@ X-Frame-Options: DENY
 Content-Length: 1380
 
 {
-  "uid" : 31,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/10/31.jpeg",
+  "uid" : 32,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/10/32.jpeg",
   "film" : {
     "uid" : 10,
     "name" : "Test Film",
@@ -1099,28 +1124,29 @@ Content-Length: 1380
       "updated_at" : "2021-02-06T09:54:25",
       "roles" : [ "ROLE_TESTER" ],
       "enabled" : true,
-      "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9URVNURVIiXSwiaWF0IjoxNjE0NDkwNzczLCJleHAiOjIyNDUyMTA3NzN9.AzjxdpSs1ZdbQEGdLTo2MU_IjsgdfxbtXxZjBxJLVMI",
-      "accountNonExpired" : true,
-      "accountNonLocked" : true,
-      "credentialsNonExpired" : true,
       "authorities" : [ {
         "authority" : "ROLE_TESTER"
       } ],
-      "username" : "010-0000-0002"
+      "username" : "010-0000-0002",
+      "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9URVNURVIiXSwiaWF0IjoxNjE1MDEzOTEyLCJleHAiOjIyNDU3MzM5MTJ9.TXmmnaFRQWXMTOOe0SUjDQpDFnAyfsIM2URxHdux064",
+      "accountNonExpired" : true,
+      "accountNonLocked" : true,
+      "credentialsNonExpired" : true
     },
     "createdAt" : "2021-02-06T09:55:40",
     "printStartAt" : null,
     "printEndAt" : null
   },
-  "createdAt" : "2021-02-28T14:39:33.067845",
-  "updatedAt" : "2021-02-28T14:39:33.757391"
+  "createdAt" : "2021-03-06T15:58:31.530105",
+  "updatedAt" : "2021-03-06T15:58:32.246238"
 }</code></pre>
 </div>
 </div>
+<hr>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_filmdownload"><a class="link" href="#_filmdownload">film/download</a></h4>
+<h4 id="_photodownload"><a class="link" href="#_photodownload">photo/download</a></h4>
 <div class="paragraph">
 <p>필름의 사진을 다운로드합니다. Response로 사진 파일을 보냅니다.</p>
 </div>
@@ -1140,7 +1166,7 @@ Content-Length: 1380
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">로그인</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Post</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">film/download</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">photo/download</p></td>
 </tr>
 </tbody>
 </table>
@@ -1148,12 +1174,12 @@ Content-Length: 1380
 <h5 id="_curlrequest"><a class="link" href="#_curlrequest">CurlRequest</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://localhost:8080/film/download' -i -X POST \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://localhost:8080/photo/download' -i -X POST \
     -H 'Content-Type: application/json' \
     -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo' \
     -H 'Accept: application/octet-stream' \
     -d '{
-  "photoUid" : 30
+  "photoUid" : 32
 }'</code></pre>
 </div>
 </div>
@@ -1162,7 +1188,7 @@ Content-Length: 1380
 <h5 id="_httprequest"><a class="link" href="#_httprequest">httpRequest</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /film/download HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /photo/download HTTP/1.1
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo
 Accept: application/octet-stream
@@ -1170,7 +1196,7 @@ Content-Length: 21
 Host: localhost:8080
 
 {
-  "photoUid" : 30
+  "photoUid" : 32
 }</code></pre>
 </div>
 </div>
@@ -1522,6 +1548,126 @@ r�y4��֣e��d�"�a�P�z:��ԡ�m����1��Gl��
 ���Ѹ�EF��"�:� VnZ�1��e_1+��L`��u��Vt8�0�'5Bė�����&lt;U���]�p���E�ʘ����X��z��9�]��f��5D���5�U����x�U�U	�k&gt;i2}k%�Nj�Ď+&gt;�Hr	�rU'&lt;T���Ͷ�[��Q��Bx�p�\�&lt;Uj��cT�ejB[4҈ө�I�K=�&lt;oN��X�Z����=*�f�&amp;eY�Nj�����MV���f��O��Q������\W/�ٴ�2�k��2cҪ�c���O�i ��*qV�����X�jJR��I f�s��#ب�Yw#h���P?�5Y�n�T{+6O�k��</code></pre>
 </div>
 </div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_album"><a class="link" href="#_album">Album</a></h3>
+<div class="listingblock">
+<div class="content">
+<pre>앨범 관련한 API 입니다. 모든 요청은 JWT를 Header에 포함해서 보내주세요.</pre>
+</div>
+</div>
+<hr>
+<div class="sect3">
+<h4 id="_albumcreate"><a class="link" href="#_albumcreate">album/create</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Desc</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">앨범 만들기</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">album/create</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre>앨범을 만듭니다.</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_curl_3"><a class="link" href="#_curl_3">Curl</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://localhost:8080/album/create' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo' \
+    -H 'Accept: application/json' \
+    -d '{
+  "name" : "테스트앨범",
+  "layoutCode" : 2001,
+  "coverCode" : 1001,
+  "totPaper" : 5
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_request_3"><a class="link" href="#_request_3">Request</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /album/create HTTP/1.1
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo
+Accept: application/json
+Content-Length: 95
+Host: localhost:8080
+
+{
+  "name" : "테스트앨범",
+  "layoutCode" : 2001,
+  "coverCode" : 1001,
+  "totPaper" : 5
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_response_5"><a class="link" href="#_response_5">Response</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 644
+
+{
+  "uid" : 10,
+  "name" : "테스트앨범",
+  "albumCover" : {
+    "uid" : 5,
+    "code" : 2001,
+    "name" : "awsomemix",
+    "description" : null,
+    "createdAt" : "2021-03-06T18:20:59",
+    "releasedAt" : null,
+    "path" : "static/awsomemix.jpeg"
+  },
+  "albumLayout" : {
+    "uid" : 1,
+    "code" : 1001,
+    "name" : "1990",
+    "description" : null,
+    "photoPerPaper" : 3,
+    "createdAt" : "2021-03-06T18:24:38",
+    "releasedAt" : null,
+    "path" : "static/1990.jpeg"
+  },
+  "totPaper" : 5,
+  "createdAt" : "2021-03-06T18:42:29.823103",
+  "updatedAt" : "2021-03-06T18:42:29.823167",
+  "completedAt" : null,
+  "complete" : false
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1531,7 +1677,7 @@ r�y4��֣e��d�"�a�P�z:��ԡ�m����1��Gl��
 <div id="footer">
 <div id="footer-text">
 Version 2.0.1<br>
-Last updated 2021-02-28 14:39:09 +0900
+Last updated 2021-03-06 18:45:12 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">

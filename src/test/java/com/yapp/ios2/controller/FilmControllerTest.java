@@ -110,13 +110,13 @@ public class FilmControllerTest{
 
         jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";
 
-        FilmDto loginDto = FilmDto.builder()
+        FilmDto filmDto = FilmDto.builder()
                 .name("Test Film")
                 .filmCode(1001)
                 .build();
 
         ObjectMapper json = new ObjectMapper();
-        String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(loginDto);
+        String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(filmDto);
 
         mockMvc.perform(
                 post("/film/create")

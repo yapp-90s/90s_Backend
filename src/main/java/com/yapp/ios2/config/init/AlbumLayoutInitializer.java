@@ -27,11 +27,22 @@ public class AlbumLayoutInitializer {
                 "90sretroclub",
                 "oneandonly"
         );
+        List<Integer> albumLayoutCodes = Arrays.asList(
+                1001,
+                1002,
+                1003,
+                1004,
+                2001,
+                2002,
+                2003,
+                3004
+        );
         if(albumLayoutRepository.findAll().isEmpty()){
             for(int i = 0; i < layouts.size(); i++){
                 AlbumLayout albumLayout = albumLayoutRepository.findById(Long.valueOf(i+1)).orElse(
                         AlbumLayout.builder()
                                 .uid(Long.valueOf(i+1))
+                                .code(albumLayoutCodes.get(i))
                                 .name(layouts.get(i))
                                 .path("static/" + layouts.get(i) + ".jpeg")
                                 .photoPerPaper(3)

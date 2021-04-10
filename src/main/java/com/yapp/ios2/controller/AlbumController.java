@@ -37,8 +37,8 @@ public class AlbumController {
                 user,
                 albumInfo.getName(),
                 albumInfo.getTotPaper(),
-                albumInfo.getCoverUid(),
-                albumInfo.getLayoutUid()
+                albumInfo.getCoverCode(),
+                albumInfo.getLayoutCode()
         );
 
         return newAlbum;

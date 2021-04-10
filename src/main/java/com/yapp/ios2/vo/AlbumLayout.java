@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Builder
 @Entity
-@Table(name = "layout")
+@Table(name = "AlbumLayout")
 @Getter
 @Setter
 @ToString
@@ -21,6 +21,9 @@ public class AlbumLayout {
 
     @Id
     private Long uid;
+
+    @Column(unique = true)
+    private Integer code;
 
     @Column
     private String name;

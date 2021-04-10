@@ -25,11 +25,24 @@ public class AlbumCoverInitializer {
                 "90sretroclub",
                 "oneandonly"
         );
+
+        List<Integer> albumCoverCodeList = Arrays.asList(
+                1001,
+                1002,
+                1003,
+                1004,
+                2001,
+                2002,
+                2003,
+                3004
+        );
+
         if(coverRepository.findAll().isEmpty()){
             for(int i = 0; i < covers.size(); i++){
                 AlbumCover albumCover = coverRepository.findById(Long.valueOf(i+1)).orElse(
                         AlbumCover.builder()
                                 .uid(Long.valueOf(i+1))
+                                .code(albumCoverCodeList.get(i))
                                 .name(covers.get(i))
                                 .path("static/" + covers.get(i) + ".jpeg")
                                 .build()
