@@ -482,6 +482,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_response_2">Response</a></li>
 </ul>
 </li>
+<li><a href="#_filmgetfilms">film/getFilms</a>
+<ul class="sectlevel4">
+<li><a href="#_curl_3">Curl</a></li>
+<li><a href="#_request_3">Request</a></li>
+<li><a href="#_response_3">Response</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_photo">Photo</a>
@@ -490,14 +497,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel4">
 <li><a href="#_requestpart">RequestPart</a></li>
 <li><a href="#_requestparameter">RequestParameter</a></li>
-<li><a href="#_response_3">Response</a></li>
+<li><a href="#_response_4">Response</a></li>
 </ul>
 </li>
 <li><a href="#_photodownload">photo/download</a>
 <ul class="sectlevel4">
 <li><a href="#_curlrequest">CurlRequest</a></li>
 <li><a href="#_httprequest">httpRequest</a></li>
-<li><a href="#_response_4">Response</a></li>
+<li><a href="#_response_5">Response</a></li>
 </ul>
 </li>
 </ul>
@@ -506,9 +513,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel3">
 <li><a href="#_albumcreate">album/create</a>
 <ul class="sectlevel4">
-<li><a href="#_curl_3">Curl</a></li>
-<li><a href="#_request_3">Request</a></li>
-<li><a href="#_response_5">Response</a></li>
+<li><a href="#_curl_4">Curl</a></li>
+<li><a href="#_request_4">Request</a></li>
+<li><a href="#_response_6">Response</a></li>
 </ul>
 </li>
 </ul>
@@ -1007,6 +1014,69 @@ Content-Length: 1106
 <hr>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_filmgetfilms"><a class="link" href="#_filmgetfilms">film/getFilms</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Desc</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">로그인</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">film/getFilms</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="_curl_3"><a class="link" href="#_curl_3">Curl</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://localhost:8080/film/getFilms' -i -X GET \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo' \
+    -H 'Accept: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_request_3"><a class="link" href="#_request_3">Request</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /film/getFilms HTTP/1.1
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo
+Accept: application/json
+Host: localhost:8080</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_response_3"><a class="link" href="#_response_3">Response</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 3
+
+[ ]</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_photo"><a class="link" href="#_photo">Photo</a></h3>
@@ -1084,7 +1154,7 @@ Content-Length: 1106
 </table>
 </div>
 <div class="sect4">
-<h5 id="_response_3"><a class="link" href="#_response_3">Response</a></h5>
+<h5 id="_response_4"><a class="link" href="#_response_4">Response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -1202,7 +1272,7 @@ Host: localhost:8080
 </div>
 </div>
 <div class="sect4">
-<h5 id="_response_4"><a class="link" href="#_response_4">Response</a></h5>
+<h5 id="_response_5"><a class="link" href="#_response_5">Response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -1588,7 +1658,7 @@ r�y4��֣e��d�"�a�P�z:��ԡ�m����1��Gl��
 </div>
 </div>
 <div class="sect4">
-<h5 id="_curl_3"><a class="link" href="#_curl_3">Curl</a></h5>
+<h5 id="_curl_4"><a class="link" href="#_curl_4">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://localhost:8080/album/create' -i -X POST \
@@ -1605,7 +1675,7 @@ r�y4��֣e��d�"�a�P�z:��ԡ�m����1��Gl��
 </div>
 </div>
 <div class="sect4">
-<h5 id="_request_3"><a class="link" href="#_request_3">Request</a></h5>
+<h5 id="_request_4"><a class="link" href="#_request_4">Request</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /album/create HTTP/1.1
@@ -1625,7 +1695,7 @@ Host: localhost:8080
 </div>
 </div>
 <div class="sect4">
-<h5 id="_response_5"><a class="link" href="#_response_5">Response</a></h5>
+<h5 id="_response_6"><a class="link" href="#_response_6">Response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -1677,7 +1747,7 @@ Content-Length: 644
 <div id="footer">
 <div id="footer-text">
 Version 2.0.1<br>
-Last updated 2021-03-06 18:45:12 +0900
+Last updated 2021-04-10 18:02:04 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">

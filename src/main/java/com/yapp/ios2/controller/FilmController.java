@@ -34,7 +34,7 @@ public class FilmController {
         return film;
     }
 
-    @PostMapping(value = "/getFilms")
+    @GetMapping(value = "/getFilms")
     @ResponseBody
     public List<Film> getFilms(@AuthenticationPrincipal User user) {
 

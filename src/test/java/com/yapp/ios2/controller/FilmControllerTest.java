@@ -40,6 +40,7 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.fileUpload;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
@@ -131,49 +132,65 @@ public class FilmControllerTest{
     }
 
     @Test
-    public void upload_photo() throws Exception {
+    public void get_Films() throws Exception {
 
         jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";
 
         MockMultipartFile multipartFile = new MockMultipartFile("testPic.jpeg", new FileInputStream(new File("src/test/java/com/yapp/ios2/data/testPicture.jpeg")));
 
         mockMvc.perform(
-                fileUpload("/film/upload")
-                        .file("image", multipartFile.getBytes())
+                get("/film/getFilms")
                         .header("X-AUTH-TOKEN", jwt)
-                        .param("filmUid","10")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andDo(document.document(
-                        requestParts(partWithName("image").description("업로드할 이미지 파일. jpeg 형식.")),
-                        requestParameters(parameterWithName("filmUid").description("사진이 소속된 필름의 아이디값."))
-                        )
-                );
+        ;
     }
 
-    @Test
-    public void download_photo() throws Exception {
 
-        jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";
-
-        List<Photo> photos = photoRepository.findAll();
-
-
-        PhotoDto.PhotoDownload photoDownload = PhotoDto.PhotoDownload.builder()
-                .photoUid(photos.get(photos.size()-1).getUid())
-                .build();
-
-        ObjectMapper json = new ObjectMapper();
-        String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(photoDownload);
-
-        mockMvc.perform(
-                post("/film/download")
-                        .header("X-AUTH-TOKEN", jwt)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(jsonString)
-                        .accept(MediaType.APPLICATION_OCTET_STREAM_VALUE))
-                .andExpect(status().isOk()
-                );
-    }
+//    @Test
+//    public void upload_photo() throws Exception {
+//
+//        jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";
+//
+//        MockMultipartFile multipartFile = new MockMultipartFile("testPic.jpeg", new FileInputStream(new File("src/test/java/com/yapp/ios2/data/testPicture.jpeg")));
+//
+//        mockMvc.perform(
+//                fileUpload("/film/upload")
+//                        .file("image", multipartFile.getBytes())
+//                        .header("X-AUTH-TOKEN", jwt)
+//                        .param("filmUid","10")
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andDo(document.document(
+//                        requestParts(partWithName("image").description("업로드할 이미지 파일. jpeg 형식.")),
+//                        requestParameters(parameterWithName("filmUid").description("사진이 소속된 필름의 아이디값."))
+//                        )
+//                );
+//    }
+//
+//    @Test
+//    public void download_photo() throws Exception {
+//
+//        jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";
+//
+//        List<Photo> photos = photoRepository.findAll();
+//
+//
+//        PhotoDto.PhotoDownload photoDownload = PhotoDto.PhotoDownload.builder()
+//                .photoUid(photos.get(photos.size()-1).getUid())
+//                .build();
+//
+//        ObjectMapper json = new ObjectMapper();
+//        String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(photoDownload);
+//
+//        mockMvc.perform(
+//                post("/film/download")
+//                        .header("X-AUTH-TOKEN", jwt)
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(jsonString)
+//                        .accept(MediaType.APPLICATION_OCTET_STREAM_VALUE))
+//                .andExpect(status().isOk()
+//                );
+//    }
 
 }
