@@ -32,7 +32,15 @@ public class FilmController {
         Film film = filmService.createFilm(filmDto.getFilmCode(), filmDto.getName(), user);
 
         return film;
+    }
 
+    @PostMapping(value = "/getFilms")
+    @ResponseBody
+    public List<Film> getFilms(@AuthenticationPrincipal User user) {
+
+        List<Film> films = filmService.getFilms(user);
+
+        return films;
     }
 
 }

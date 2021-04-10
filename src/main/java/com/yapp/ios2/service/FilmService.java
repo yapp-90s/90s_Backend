@@ -1,5 +1,6 @@
 package com.yapp.ios2.service;
 
+
 import com.yapp.ios2.config.exception.EntityNotFoundException;
 import com.yapp.ios2.config.exception.InvalidValueException;
 import com.yapp.ios2.repository.FilmRepository;
@@ -12,8 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.awt.*;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class FilmService {
@@ -41,6 +43,13 @@ public class FilmService {
         filmRepository.save(film);
 
         return film;
+    }
+
+    public List<Film> getFilms(User user){
+
+        filmRepository.findAll();
+
+        return filmRepository.findAll();
     }
 
 }
