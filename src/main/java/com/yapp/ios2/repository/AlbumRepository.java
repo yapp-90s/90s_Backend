@@ -12,6 +12,8 @@ import java.util.UUID;
 
 public interface AlbumRepository extends JpaRepository<Album, Long>{
 
+    List<Album> findAllByName(String Name);
+
     @Query("select a from Album a, AlbumOwner ao where ao.user = :user and a = ao.album")
     List<Album> findByUser(@Param("user")User user);
 
