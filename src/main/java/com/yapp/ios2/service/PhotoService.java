@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class PhotoService{
@@ -27,9 +28,19 @@ public class PhotoService{
     @Autowired
     S3Service s3Service;
 
+
+    public List<Photo> getPhotosByFilm(Long filmUid){
+        List<Photo> photos = photoRepository.findAllByFilm(
+                filmRepository.findById(filmUid).orElseThrow(
+                        () -> new EntityNotFoundException("Invalid FilmUid")
+                )
+        );
+        return photos;
+    }
+
+
+
     public Photo upload(MultipartFile photo, Long filmUid) throws IOException {
-
-
 
         Photo newPhoto = Photo.builder()
                 .film(filmRepository.findById(filmUid).orElseThrow(

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/photo/*")
@@ -38,6 +39,14 @@ public class PhotoController {
                 user.getAuthorities();
     }
 
+    @GetMapping("/getPhotoInfosByFilm/{filmUid}")
+    @ResponseBody
+    public List<Photo> getPhotoInfosByFilm(@PathVariable("filmUid") Long filmUid){
+
+        return getPhotoInfosByFilm(filmUid);
+
+    }
+
 
     @PostMapping(value = "/upload")
     @ResponseBody
@@ -57,50 +66,4 @@ public class PhotoController {
         return photoBinary;
     }
 
-
-//    @GetMapping(value = "/download/{albumUid}/{photoUid}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-//    @ResponseBody
-//    public HttpEntity<byte[]> download(@PathVariable("albumUid") Long albumUid,
-//                                       @PathVariable("photoUid") Long photoUid,
-//                                       HttpServletResponse response) throws IOException {
-//        byte[] bytes = photoService.download(albumUid, photoUid);
-//
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-//        response.setHeader("Content-Disposition", "attachment; filename=" + photoUid.toString() + ".jpeg");
-//
-//        return new HttpEntity(bytes, headers);
-//    }
-//
-//    @PostMapping(value = "/getPhotos")
-//    @ResponseBody
-//    public List<Photo> getPhotos(@RequestBody AlbumDto.AlbumUid albumUid){
-//
-//        List<Photo> photos = photoService.getPhotos(albumUid.getUid());
-//
-//        return photos;
-//    }
-////    public List<PhotoDto.PhotoInfo> getPhotos(@RequestBody AlbumDto.AlbumUid albumUid){
-////
-////        List<PhotoDto.PhotoInfo> photos = PhotoDto.convertFromPhotoListToPhotoInfoList(
-////                photoService.getPhotos(albumUid.getUid())
-////        );
-////
-////        return photos;
-////    }
-//
-//    @PutMapping("/updatePhotoOrder/{photoUid}/{photoOrder}")
-//    @ResponseBody
-//    public Photo updatePhotoOrder(@PathVariable("photoUid") Long photoUid, @PathVariable("photoOrder") Integer photoOrder){
-//        Photo photo = photoRepository.findById(photoUid).orElseThrow(
-//                () -> new NotFoundException("없는 사진인데!")
-//        );
-//
-//        photo.setPhotoOrder(photoOrder);
-//
-//        photoRepository.save(photo);
-//
-//        return photo;
-//    }
-//
 }
