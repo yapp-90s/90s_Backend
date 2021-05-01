@@ -49,7 +49,7 @@ public class FilmService {
 
         filmRepository.findAll();
 
-        return filmRepository.findAll();
+        return filmRepository.findAllByUser(user);
     }
 
 }

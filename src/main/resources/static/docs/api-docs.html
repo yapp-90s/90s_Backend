@@ -928,7 +928,7 @@ Content-Length: 22
 <h5 id="_curl_2"><a class="link" href="#_curl_2">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'https://90s.com/film/create' -i -X POST \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://localhost:8080/film/create' -i -X POST \
     -H 'Content-Type: application/json' \
     -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo' \
     -H 'Accept: application/json' \
@@ -948,7 +948,7 @@ Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo
 Accept: application/json
 Content-Length: 47
-Host: 90s.com
+Host: localhost:8080
 
 {
   "filmCode" : 1001,
@@ -968,20 +968,19 @@ X-XSS-Protection: 1; mode=block
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
 Content-Length: 1106
 
 {
-  "uid" : 10,
+  "uid" : 12,
   "name" : "Test Film",
   "filmType" : {
     "uid" : 1,
     "code" : 1001,
     "name" : "test0",
     "description" : "Description of test0",
-    "createdAt" : "2021-02-06T09:54:25",
-    "updatedAt" : "2021-02-06T09:54:25",
+    "createdAt" : "2021-03-06T18:20:59",
+    "updatedAt" : "2021-03-06T18:20:59",
     "releasedAt" : null
   },
   "user" : {
@@ -992,20 +991,20 @@ Content-Length: 1106
     "emailApple" : "tester2@90s.com",
     "emailGoogle" : "tester2@90s.com",
     "phoneNum" : "010-0000-0002",
-    "created_at" : "2021-02-06T09:54:25",
-    "updated_at" : "2021-02-06T09:54:25",
+    "created_at" : "2021-03-06T18:20:59",
+    "updated_at" : "2021-03-06T18:20:59",
     "roles" : [ "ROLE_TESTER" ],
     "enabled" : true,
     "authorities" : [ {
       "authority" : "ROLE_TESTER"
     } ],
     "username" : "010-0000-0002",
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9URVNURVIiXSwiaWF0IjoxNjEyNTcyOTM5LCJleHAiOjIyNDMyOTI5Mzl9.2O-Q8nQStcFKLQx4f6QendqKXig1s2HXtj9P4jcz7TA",
+    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9URVNURVIiXSwiaWF0IjoxNjE4MDQ1NDQxLCJleHAiOjIyNDg3NjU0NDF9.jRh9nOuzL_eHd5NAZrx5h5BoBczyMXu4xZOGZo1_n9Q",
     "accountNonExpired" : true,
     "accountNonLocked" : true,
     "credentialsNonExpired" : true
   },
-  "createdAt" : "2021-02-06T09:55:39.660341",
+  "createdAt" : "2021-04-10T18:04:01.256495",
   "printStartAt" : null,
   "printEndAt" : null
 }</code></pre>
@@ -1069,9 +1068,45 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 3
+Content-Length: 1103
 
-[ ]</code></pre>
+[ {
+  "uid" : 12,
+  "name" : "Test Film",
+  "filmType" : {
+    "uid" : 1,
+    "code" : 1001,
+    "name" : "test0",
+    "description" : "Description of test0",
+    "createdAt" : "2021-03-06T18:20:59",
+    "updatedAt" : "2021-03-06T18:20:59",
+    "releasedAt" : null
+  },
+  "user" : {
+    "uid" : 7,
+    "name" : "90s_tester2",
+    "password" : null,
+    "emailKakao" : "tester2@90s.com",
+    "emailApple" : "tester2@90s.com",
+    "emailGoogle" : "tester2@90s.com",
+    "phoneNum" : "010-0000-0002",
+    "created_at" : "2021-03-06T18:20:59",
+    "updated_at" : "2021-03-06T18:20:59",
+    "roles" : [ "ROLE_TESTER" ],
+    "enabled" : true,
+    "authorities" : [ {
+      "authority" : "ROLE_TESTER"
+    } ],
+    "username" : "010-0000-0002",
+    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9URVNURVIiXSwiaWF0IjoxNjE5ODU1NDI1LCJleHAiOjIyNTA1NzU0MjV9.BU91c_ZbTk-LLWC9X-jL0_uJcT9MKbtIDjfxOTzjHm8",
+    "accountNonExpired" : true,
+    "accountNonLocked" : true,
+    "credentialsNonExpired" : true
+  },
+  "createdAt" : "2021-04-10T18:04:01",
+  "printStartAt" : null,
+  "printEndAt" : null
+} ]</code></pre>
 </div>
 </div>
 <hr>

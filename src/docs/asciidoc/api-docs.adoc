@@ -176,8 +176,10 @@ include::{snippets}/film-controller-test/create_film/http-response.adoc[]
 .Desc
 |===
 | 기능 | 방식 | URI
-| 로그인 | get | film/getFilms
+| 필름 가져오기 | get | film/getFilms
 |===
+
+요청한 JWT를 이용해 해당 유저가 만든 필름의 목록을 가져옵니다.
 
 ===== Curl
 include::{snippets}/film-controller-test/get_-films/curl-request.adoc[]
@@ -186,7 +188,7 @@ include::{snippets}/film-controller-test/get_-films/curl-request.adoc[]
 include::{snippets}/film-controller-test/get_-films/http-request.adoc[]
 
 ===== Response
-include::{snippets}/film-controller-test/get_-films/http-response.adoc[]
+include::{snippets}/film-controller-test/_-films/http-response.adoc[]
 
 ***
 
