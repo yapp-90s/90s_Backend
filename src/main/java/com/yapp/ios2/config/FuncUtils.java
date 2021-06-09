@@ -1,4 +1,4 @@
-package com.yapp.ios2.testConfig;
+package com.yapp.ios2.config;
 
 import com.yapp.ios2.repository.AlbumRepository;
 import com.yapp.ios2.repository.FilmRepository;
@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-public class TestFunc {
+public class FuncUtils {
 
     public static User createTester(UserRepository userRepository, PasswordEncoder passwordEncoder){
         User testUser = userRepository.findUserByPhone("010-1234-1234").orElse(
@@ -44,16 +44,16 @@ public class TestFunc {
 
     public static void createDummyFilms(FilmRepository filmRepository, FilmService filmService, User tester){
         for(int i = 1; i < 4; i++){
-            String name = String.format("dummyFilm%02d",i);
+            String name = String.format("dummyFilm%02d",i) + tester.getName();
             if(filmRepository.findAllByName(name).isEmpty()){
-                filmService.createFilm(1001, name, tester);
+                filmService.createFilm(1000 + 1, name, tester);
             }
         }
     }
 
     public static void createDummyAlbums(AlbumRepository albumRepository, AlbumService albumService, User tester){
         for(int i = 1; i < 4; i++){
-            String name = String.format("dummyAlbum%02d",i);
+            String name = String.format("dummyAlbum%02d",i)+tester.getName();
             if(albumRepository.findAllByName(name).isEmpty()){
                 albumService.create(
                         tester,

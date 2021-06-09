@@ -1,6 +1,7 @@
 package com.yapp.ios2.testConfig;
 
 import com.yapp.ios2.config.JwtProvider;
+import com.yapp.ios2.config.FuncUtils;
 import com.yapp.ios2.repository.FilmRepository;
 import com.yapp.ios2.repository.UserRepository;
 import com.yapp.ios2.service.FilmService;
@@ -91,7 +92,7 @@ public class TestInit {
                 .alwaysDo(document)
                 .build();
 
-        user = TestFunc.createTester(userRepository, passwordEncoder);
+        user = FuncUtils.createTester(userRepository, passwordEncoder);
 
     }
 

@@ -7,7 +7,7 @@ import com.yapp.ios2.config.JwtProvider;
 import com.yapp.ios2.dto.*;
 import com.yapp.ios2.repository.UserRepository;
 import com.yapp.ios2.service.UserService;
-import com.yapp.ios2.testConfig.TestFunc;
+import com.yapp.ios2.config.FuncUtils;
 import com.yapp.ios2.vo.User;
 import org.junit.Before;
 import org.junit.Rule;
@@ -147,7 +147,7 @@ public class UserControllerTest{
         loginDto.setEmailGoogle("");
         loginDto.setPhoneNum("");
 
-        User user = TestFunc.createTester(userRepository, passwordEncoder);
+        User user = FuncUtils.createTester(userRepository, passwordEncoder);
 
         ObjectMapper json = new ObjectMapper();
         String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(loginDto);
@@ -162,7 +162,7 @@ public class UserControllerTest{
                 .andDo(document.document(
                 ));
 
-        TestFunc.deleteTester(userService, user);
+        FuncUtils.deleteTester(userService, user);
 
     }
 
@@ -175,7 +175,7 @@ public class UserControllerTest{
         loginDto.setEmailGoogle("");
         loginDto.setPhoneNum("");
 
-        User user = TestFunc.createTester(userRepository, passwordEncoder);
+        User user = FuncUtils.createTester(userRepository, passwordEncoder);
 
         ObjectMapper json = new ObjectMapper();
         String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(loginDto);
