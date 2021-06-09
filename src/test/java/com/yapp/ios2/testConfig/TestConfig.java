@@ -1,4 +1,4 @@
-package com.yapp.ios2;
+package com.yapp.ios2.testConfig;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

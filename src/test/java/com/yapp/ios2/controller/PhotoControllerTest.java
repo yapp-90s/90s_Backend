@@ -1,11 +1,10 @@
 package com.yapp.ios2.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yapp.ios2.TestConfig;
+import com.yapp.ios2.testConfig.TestConfig;
 import com.yapp.ios2.config.JwtProvider;
-import com.yapp.ios2.dto.FilmDto;
-import com.yapp.ios2.dto.LoginDto;
 import com.yapp.ios2.dto.PhotoDto;
+import com.yapp.ios2.repository.FilmRepository;
 import com.yapp.ios2.repository.PhotoRepository;
 import com.yapp.ios2.repository.UserRepository;
 import com.yapp.ios2.service.UserService;
@@ -21,16 +20,12 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.restdocs.JUnitRestDocumentation;
 import org.springframework.restdocs.mockmvc.RestDocumentationResultHandler;
-import org.springframework.restdocs.snippet.Attributes;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -38,11 +33,9 @@ import java.util.List;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.fileUpload;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
-import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.*;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -66,7 +59,8 @@ public class PhotoControllerTest{
     UserRepository userRepository;
     @Autowired
     PhotoRepository photoRepository;
-
+    @Autowired
+    FilmRepository filmRepository;
 
     @Autowired
     JwtProvider jwtProvider;
@@ -151,4 +145,20 @@ public class PhotoControllerTest{
                 );
     }
 
+    @Test
+    public void getPhotoInfosByFilm() throws Exception{
+
+        User user = userRepository.findUserByName("90s_tester").get();
+
+        String jwt = jwtProvider.createToken(user.getUid().toString(), user.getRoles());
+
+        filmRepository.findAllByUser(user).get(0);
+
+        mockMvc.perform(
+                get("/photo/getPhotoInfosByFilm/{filmUid}")
+                        .header("X-AUTH-TOKEN", jwt)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+        ;
+    }
 }

@@ -1,5 +1,6 @@
 package com.yapp.ios2;
 
+import com.yapp.ios2.testConfig.TestConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

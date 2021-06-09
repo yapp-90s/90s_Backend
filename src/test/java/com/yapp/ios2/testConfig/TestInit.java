@@ -1,11 +1,12 @@
-package com.yapp.ios2.controller;
+package com.yapp.ios2.testConfig;
 
-import com.yapp.ios2.TestConfig;
 import com.yapp.ios2.config.JwtProvider;
+import com.yapp.ios2.repository.FilmRepository;
 import com.yapp.ios2.repository.UserRepository;
+import com.yapp.ios2.service.FilmService;
+import com.yapp.ios2.service.PhotoService;
 import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.vo.User;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.runner.RunWith;
@@ -19,8 +20,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
-import java.util.Collections;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
@@ -37,13 +36,22 @@ public class TestInit {
     public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
 
     @Autowired
-    UserService userService;
+    public UserService userService;
+
+    @Autowired
+    public PhotoService photoService;
+
+    @Autowired
+    public FilmService filmService;
 
     @Autowired
     WebApplicationContext context;
 
     @Autowired
-    UserRepository userRepository;
+    public UserRepository userRepository;
+
+    @Autowired
+    public FilmRepository filmRepository;
 
     @Autowired
     JwtProvider jwtProvider;
@@ -51,14 +59,14 @@ public class TestInit {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    MockMvc mockMvc;
+    public MockMvc mockMvc;
     RestDocumentationResultHandler document;
 
-    User testUser;
+    public User testUser;
 
-    String jwt;
+    public String jwt;
 
-    User user;
+    public User user;
 
     @Before
     public void setUp() {

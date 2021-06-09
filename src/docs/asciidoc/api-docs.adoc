@@ -188,7 +188,7 @@ include::{snippets}/film-controller-test/get_-films/curl-request.adoc[]
 include::{snippets}/film-controller-test/get_-films/http-request.adoc[]
 
 ===== Response
-include::{snippets}/film-controller-test/_-films/http-response.adoc[]
+include::{snippets}/film-controller-test/get_-films/http-response.adoc[]
 
 ***
 

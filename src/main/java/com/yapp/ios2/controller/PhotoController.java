@@ -43,7 +43,7 @@ public class PhotoController {
     @ResponseBody
     public List<Photo> getPhotoInfosByFilm(@PathVariable("filmUid") Long filmUid){
 
-        return getPhotoInfosByFilm(filmUid);
+        return photoService.getPhotosByFilm(filmUid);
 
     }
 
