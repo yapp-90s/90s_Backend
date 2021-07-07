@@ -20,7 +20,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Component
-public class DefaultUserInitializer{
+public class DummyDataInitializer {
 
     @Autowired
     JwtProvider jwtProvider;
