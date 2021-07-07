@@ -119,6 +119,14 @@ public class UserControllerTest{
 //    }
 
     @Test
+    public void run() throws Exception{
+//        login_ErrorCode_C001();
+        loginWithEmailAndPhoneNum();
+        loginWithOnlyEmailButNoEmail();
+        loginWithOnlyEmail();
+    }
+
+    @Test
     public void login_ErrorCode_C001() throws Exception {
 
         LoginDto loginDto = new LoginDto();

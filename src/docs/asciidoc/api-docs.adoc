@@ -246,8 +246,32 @@ include::{snippets}/photo-controller-test/download_photo/curl-request.adoc[]
 include::{snippets}/photo-controller-test/download_photo/http-request.adoc[]
 
 
+//===== Response
+//include::{snippets}/photo-controller-test/download_photo/http-response.adoc[]
+
+***
+
+***
+
+==== photo/getPhotoInfosByFilm/{filmUid}
+
+필름 안의 사진 정보를 가져옵니다.
+
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 로그인 | GET | photo/getPhotoInfosByFilm/{filmUid}
+|===
+
+===== CurlRequest
+include::{snippets}/photo-controller-test/get-photo-infos-by-film/curl-request.adoc[]
+===== httpRequest
+include::{snippets}/photo-controller-test/get-photo-infos-by-film/http-request.adoc[]
+
+
 ===== Response
-include::{snippets}/photo-controller-test/download_photo/http-response.adoc[]
+include::{snippets}/photo-controller-test/get-photo-infos-by-film/http-response.adoc[]
 
 ***
 
@@ -279,3 +303,26 @@ include::{snippets}/album-controller-test/create_album/http-request.adoc[]
 
 ===== Response
 include::{snippets}/album-controller-test/create_album/http-response.adoc[]
+
+***
+
+==== album/getAlbums
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 앨범 만들기 | get | album/getAlbums
+|===
+
+----
+앨범을 만듭니다.
+----
+
+===== Curl
+include::{snippets}/album-controller-test/get-albums/curl-request.adoc[]
+
+===== Request
+include::{snippets}/album-controller-test/get-albums/http-request.adoc[]
+
+===== Response
+include::{snippets}/album-controller-test/get-albums/http-response.adoc[]

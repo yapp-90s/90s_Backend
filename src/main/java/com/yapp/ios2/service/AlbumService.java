@@ -7,6 +7,8 @@ import com.yapp.ios2.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AlbumService{
 
@@ -116,12 +118,12 @@ public class AlbumService{
 //        return album;
 //    }
 //
-//    public List<Album> getAlbumsByUser(User user) {
-//
-//        List<Album> albums = albumRepository.findByUser(user);
-//
-//        return albums;
-//    }
+    public List<Album> getAlbumsByUser(User user) {
+
+        List<Album> albums = albumRepository.findByUser(user);
+
+        return albums;
+    }
 //
 //    public List<AlbumOwnerDto.AlbumOwnerInfo> getAlbumOwners(Long albumUid){
 //
