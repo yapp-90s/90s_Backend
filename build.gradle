@@ -117,7 +117,7 @@ task docker90sServerRun{
                 println "\n\$ ${command}"
                 execute command, ignoreError:true
 
-                command = "docker run --name=${containerName} -p ${inPort}:${outPort} -v /tmp/log:/logs --link mysql-docker-test ${imageName}"
+                command = "docker run -d --name=${containerName} -p ${inPort}:${outPort} -v /tmp/log:/logs --link mysql-docker-test ${imageName}"
 //                docker run --name 90s_sub -p 8081:8080 -v /tmp/log:/logs --link mysql-docker radiata03/90s:2.0.1
                 println "\n\$ ${command}"
                 execute command, ignoreError:true

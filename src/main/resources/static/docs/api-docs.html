@@ -524,6 +524,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_response_6">Response</a></li>
 </ul>
 </li>
+<li><a href="#_albumgetalbums">album/getAlbums</a>
+<ul class="sectlevel4">
+<li><a href="#_curl_5">Curl</a></li>
+<li><a href="#_request_5">Request</a></li>
+<li><a href="#_response_7">Response</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1627,6 +1634,135 @@ Content-Length: 644
 }</code></pre>
 </div>
 </div>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_albumgetalbums"><a class="link" href="#_albumgetalbums">album/getAlbums</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Desc</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">앨범 만들기</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">album/getAlbums</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre>앨범을 만듭니다.</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_curl_5"><a class="link" href="#_curl_5">Curl</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'https://90s.com/album/getAlbums' -i -X GET \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MjAiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2MDExMDQ3NzgsImV4cCI6MjIzMTgyNDc3OH0.ONO4cx9OPjdqh3XLmCnbKKARk6s3rohxzlTmWJ7-lwE' \
+    -H 'Accept: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_request_5"><a class="link" href="#_request_5">Request</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/getAlbums HTTP/1.1
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MjAiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2MDExMDQ3NzgsImV4cCI6MjIzMTgyNDc3OH0.ONO4cx9OPjdqh3XLmCnbKKARk6s3rohxzlTmWJ7-lwE
+Accept: application/json
+Host: 90s.com</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_response_7"><a class="link" href="#_response_7">Response</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Content-Length: 1307
+
+[ {
+  "uid" : 521,
+  "name" : "NameOfAlbum 3",
+  "password" : "3d9f9912-2f1b-4589-ac13-2fcc057261c9",
+  "photoLimit" : 4,
+  "count" : 0,
+  "orderStatus" : {
+    "uid" : 1,
+    "status" : "pending"
+  },
+  "cover" : {
+    "uid" : 1,
+    "name" : "1990",
+    "path" : "static/1990.jpeg"
+  },
+  "layout" : 1,
+  "endDate" : "2023-09-26",
+  "created_at" : "2020-09-26T16:19:39",
+  "updated_at" : "2020-09-26T16:19:39",
+  "complete" : false
+}, {
+  "uid" : 523,
+  "name" : "NameOfAlbum 3",
+  "password" : "beed864a-28a5-4a22-8230-4432618ae301",
+  "photoLimit" : 4,
+  "count" : 0,
+  "orderStatus" : {
+    "uid" : 1,
+    "status" : "pending"
+  },
+  "cover" : {
+    "uid" : 1,
+    "name" : "1990",
+    "path" : "static/1990.jpeg"
+  },
+  "layout" : 1,
+  "endDate" : "2023-09-26",
+  "created_at" : "2020-09-26T16:19:39",
+  "updated_at" : "2020-09-26T16:19:39",
+  "complete" : false
+}, {
+  "uid" : 525,
+  "name" : "NameOfAlbum 3",
+  "password" : "b59df5a7-e9a6-4f76-9f91-056b423c67ad",
+  "photoLimit" : 4,
+  "count" : 0,
+  "orderStatus" : {
+    "uid" : 1,
+    "status" : "pending"
+  },
+  "cover" : {
+    "uid" : 1,
+    "name" : "1990",
+    "path" : "static/1990.jpeg"
+  },
+  "layout" : 1,
+  "endDate" : "2023-09-26",
+  "created_at" : "2020-09-26T16:19:39",
+  "updated_at" : "2020-09-26T16:19:39",
+  "complete" : false
+} ]</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1636,7 +1772,7 @@ Content-Length: 644
 <div id="footer">
 <div id="footer-text">
 Version 2.0.1<br>
-Last updated 2021-07-06 22:40:00 +0900
+Last updated 2021-07-07 18:10:56 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">
