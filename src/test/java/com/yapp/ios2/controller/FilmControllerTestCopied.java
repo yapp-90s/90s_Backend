@@ -1,6 +1,7 @@
 package com.yapp.ios2.controller;
 
 import com.yapp.ios2.testConfig.TestInit;
+import com.yapp.ios2.vo.User;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
@@ -22,6 +23,23 @@ public class FilmControllerTestCopied extends TestInit {
 
         mockMvc.perform(
                 get("/film/getFilms")
+                        .header("X-AUTH-TOKEN", jwt)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+        ;
+    }
+
+    @Test
+    public void start_printing() throws Exception {
+
+        User user = userRepository.findUserByName("90s_tester").get();
+
+        String jwt = jwtProvider.createToken(user.getUid().toString(), user.getRoles());
+
+        Long filmUid = filmRepository.findAllByUser(user).get(0).getUid();
+
+        mockMvc.perform(
+                get("/film/startPrinting/" + filmUid.toString())
                         .header("X-AUTH-TOKEN", jwt)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

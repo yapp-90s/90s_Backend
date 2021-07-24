@@ -74,7 +74,7 @@ public class UserControllerTest{
         );
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
                 .apply(documentationConfiguration(this.restDocumentation)
-                        .uris().withScheme("https").withHost("90s.com").withPort(443))
+                        .uris().withScheme("http").withHost("49.50.162.246").withPort(8080))
                 .apply(springSecurity())
                 .alwaysDo(document)
                 .build();

@@ -80,7 +80,7 @@ public class DummyDataInitializer {
             for (int i = 0; i < 5; i++) {
                 String name = "tester" + i;
 
-                if (userRepository.findUserByPhone(String.format("010-1234-%04d", i)).isPresent()) continue;
+                if (userRepository.findUserByPhone(String.format("010-0000-%04d", i)).isPresent()) continue;
 
                 User testUser = userRepository.findUserByPhone(String.format("010-0000-%04d", i)).orElse(
                         User.builder()

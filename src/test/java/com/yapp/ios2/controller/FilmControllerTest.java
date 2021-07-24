@@ -1,12 +1,14 @@
 package com.yapp.ios2.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yapp.ios2.repository.FilmRepository;
 import com.yapp.ios2.testConfig.TestConfig;
 import com.yapp.ios2.config.JwtProvider;
 import com.yapp.ios2.dto.FilmDto;
 import com.yapp.ios2.repository.PhotoRepository;
 import com.yapp.ios2.repository.UserRepository;
 import com.yapp.ios2.service.UserService;
+import com.yapp.ios2.testConfig.TestInit;
 import com.yapp.ios2.vo.User;
 import org.junit.Before;
 import org.junit.Rule;
@@ -38,59 +40,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestConfig.class)
 @ActiveProfiles("test")
-public class FilmControllerTest{
-
-    @Rule
-    public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
-
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    WebApplicationContext context;
-
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
-    PhotoRepository photoRepository;
-
-
-    @Autowired
-    JwtProvider jwtProvider;
-
-    @Autowired
-    PasswordEncoder passwordEncoder;
-
-    MockMvc mockMvc;
-    RestDocumentationResultHandler document;
-
-    User testUser;
-
-    String jwt;
-
-    @Before
-    public void setUp() {
-        this.document = document(
-                "{class-name}/{method-name}",
-                preprocessResponse(prettyPrint())
-        );
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
-                .apply(
-                        documentationConfiguration(this.restDocumentation)
-                        .uris()
-                                .withScheme("http")
-                                .withHost("49.50.162.246")
-                                .withPort(8080)
-                )
-                .apply(
-                        documentationConfiguration(this.restDocumentation).operationPreprocessors()
-                        .withRequestDefaults(prettyPrint())
-                        .withResponseDefaults(prettyPrint())
-                )
-                .apply(springSecurity())
-                .alwaysDo(document)
-                .build();
-    }
+public class FilmControllerTest extends TestInit {
 
     @Test
     public void create_film() throws Exception {
@@ -117,10 +67,13 @@ public class FilmControllerTest{
 
     }
 
+
     @Test
     public void get_Films() throws Exception {
 
-        jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";
+        User user = userRepository.findUserByName("90s_tester").get();
+
+        String jwt = jwtProvider.createToken(user.getUid().toString(), user.getRoles());
 
 
         mockMvc.perform(
@@ -131,8 +84,26 @@ public class FilmControllerTest{
         ;
     }
 
+    @Test
+    public void start_printing() throws Exception {
 
-//    @Test
+        User user = userRepository.findUserByName("90s_tester").get();
+
+        String jwt = jwtProvider.createToken(user.getUid().toString(), user.getRoles());
+
+        Long filmUid = filmRepository.findAllByUser(user).get(0).getUid();
+
+        mockMvc.perform(
+                get("/film/startPrinting/" + filmUid.toString())
+                        .header("X-AUTH-TOKEN", jwt)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+
+        ;
+    }
+
+    //    @Test
 //    public void upload_photo() throws Exception {
 //
 //        jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";

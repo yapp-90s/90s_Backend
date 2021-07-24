@@ -47,6 +47,7 @@ public class FilmTypeInitializer {
                             .name(filmTypeNameList.get(i))
                             .code(filmTypeCodeList.get(i))
                             .description(filmTypeDescList.get(i))
+                            .max(36)
                             .build()
             );
             filmTypeRepository.save(filmType);

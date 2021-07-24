@@ -43,4 +43,13 @@ public class FilmController {
         return films;
     }
 
+    @GetMapping(value = "/startPrinting/{filmUid}")
+    @ResponseBody
+    public Film startPrinting(@AuthenticationPrincipal User user, @PathVariable("filmUid") Long filmUid) {
+
+        Film film = filmService.startPrinting(filmUid);
+
+        return film;
+    }
+
 }

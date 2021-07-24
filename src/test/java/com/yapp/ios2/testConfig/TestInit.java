@@ -55,7 +55,7 @@ public class TestInit {
     public FilmRepository filmRepository;
 
     @Autowired
-    JwtProvider jwtProvider;
+    public JwtProvider jwtProvider;
 
     @Autowired
     PasswordEncoder passwordEncoder;
