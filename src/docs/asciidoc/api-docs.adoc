@@ -15,6 +15,17 @@ FC JANYANG CAPTAIN;
 === HOST & PORT
 http://49.50.162.246:8080/
 
+=== Dummy Test User List
+
+|===
+|1| email_apple     | email_google    | email_kakao     | name        | phone_num
+|2| tryer@90s.com   | tryer@90s.com   | tryer@90s.com   | 90s_TRYER   | 010-0000-0000
+|3| tester@90s.com  | tester@90s.com  | tester@90s.com  | 90s_tester  | 010-1234-1234
+|4| tester1@90s.com | tester1@90s.com | tester1@90s.com | 90s_tester1 | 010-0000-0001
+|5| tester2@90s.com | tester2@90s.com | tester2@90s.com | 90s_tester2 | 010-0000-0002
+|6| tester3@90s.com | tester3@90s.com | tester3@90s.com | 90s_tester3 | 010-0000-0003
+|7| tester4@90s.com | tester4@90s.com | tester4@90s.com | 90s_tester4 | 010-0000-0004
+|===
 
 === HTTP verbs
 두가지만 사용합니다. GET! POST!
