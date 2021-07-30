@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -50,6 +51,19 @@ public class FilmService {
         filmRepository.findAll();
 
         return filmRepository.findAllByUser(user);
+    }
+
+    public Film startPrinting(Long filmUid){
+        Film film = filmRepository.findById(filmUid).get();
+
+//      일단 인화 기간은 3일로 합니다.
+        LocalDateTime now = LocalDateTime.now();
+        film.setPrintStartAt(now);
+        film.setPrintEndAt(now.plusDays(3));
+        filmRepository.save(film);
+
+        return film;
+
     }
 
 }

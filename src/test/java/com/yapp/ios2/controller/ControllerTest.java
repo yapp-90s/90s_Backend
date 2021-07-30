@@ -1,12 +1,10 @@
-package com.yapp.ios2.testConfig;
+package com.yapp.ios2.controller;
 
 import com.yapp.ios2.config.JwtProvider;
-import com.yapp.ios2.config.FuncUtils;
-import com.yapp.ios2.repository.FilmRepository;
+import com.yapp.ios2.repository.PhotoRepository;
 import com.yapp.ios2.repository.UserRepository;
-import com.yapp.ios2.service.FilmService;
-import com.yapp.ios2.service.PhotoService;
 import com.yapp.ios2.service.UserService;
+import com.yapp.ios2.testConfig.TestConfig;
 import com.yapp.ios2.vo.User;
 import org.junit.Before;
 import org.junit.Rule;
@@ -31,43 +29,35 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestConfig.class)
 @ActiveProfiles("test")
-public class TestInit {
+public class ControllerTest {
 
     @Rule
     public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
 
     @Autowired
-    public UserService userService;
-
-    @Autowired
-    public PhotoService photoService;
-
-    @Autowired
-    public FilmService filmService;
+    UserService userService;
 
     @Autowired
     WebApplicationContext context;
 
     @Autowired
-    public UserRepository userRepository;
+    UserRepository userRepository;
+    @Autowired
+    PhotoRepository photoRepository;
+
 
     @Autowired
-    public FilmRepository filmRepository;
-
-    @Autowired
-    public JwtProvider jwtProvider;
+    JwtProvider jwtProvider;
 
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public MockMvc mockMvc;
+    MockMvc mockMvc;
     RestDocumentationResultHandler document;
 
-    public User testUser;
+    User testUser;
 
-    public String jwt;
-
-    public User user;
+    String jwt;
 
     @Before
     public void setUp() {
@@ -91,18 +81,6 @@ public class TestInit {
                 .apply(springSecurity())
                 .alwaysDo(document)
                 .build();
-
-        user = FuncUtils.createTester(userRepository, passwordEncoder);
-
     }
-
-
-//    @After
-//    public void After(){
-//
-//        userRepository.delete(this.testUser);
-//
-//    }
-
 
 }

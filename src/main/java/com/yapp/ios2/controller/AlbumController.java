@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/album/*")
 public class AlbumController {
@@ -71,19 +73,19 @@ public class AlbumController {
 //
 //
 //
-//    @GetMapping("/getAlbums")
-//    @ResponseBody
-//    public List<Album> getAlbums(@AuthenticationPrincipal UserDetails user){
-//        List<Album> albums = albumService.getAlbumsByUser(userService.getUserByPhone(user.getUsername()));
-//
+    @GetMapping("/getAlbums")
+    @ResponseBody
+    public List<Album> getAlbums(@AuthenticationPrincipal User user){
+        List<Album> albums = albumService.getAlbumsByUser(user);
+
 //        albums.forEach(
 //                album -> {
 //                    albumService.completeChecker(album.getUid());
 //                }
 //        );
-//
-//        return albums;
-//    }
+
+        return albums;
+    }
 //
 //    @PostMapping("/getAlbum")
 //    public Album getAlbum(@RequestBody AlbumDto.AlbumUid albumUid){

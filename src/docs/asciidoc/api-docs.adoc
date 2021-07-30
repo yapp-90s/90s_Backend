@@ -9,8 +9,23 @@ FC JANYANG CAPTAIN;
 :table-caption!:
 
 :snippets: ../../../build/generated-snippets
-
+:imagesdir: ../../main/resources/static/docs
 == Overview
+
+=== HOST & PORT
+http://49.50.162.246:8080/
+
+=== Dummy Test User List
+
+|===
+|1| email_apple     | email_google    | email_kakao     | name        | phone_num
+|2| tryer@90s.com   | tryer@90s.com   | tryer@90s.com   | 90s_TRYER   | 010-0000-0000
+|3| tester@90s.com  | tester@90s.com  | tester@90s.com  | 90s_tester  | 010-1234-1234
+|4| tester1@90s.com | tester1@90s.com | tester1@90s.com | 90s_tester1 | 010-0000-0001
+|5| tester2@90s.com | tester2@90s.com | tester2@90s.com | 90s_tester2 | 010-0000-0002
+|6| tester3@90s.com | tester3@90s.com | tester3@90s.com | 90s_tester3 | 010-0000-0003
+|7| tester4@90s.com | tester4@90s.com | tester4@90s.com | 90s_tester4 | 010-0000-0004
+|===
 
 === HTTP verbs
 두가지만 사용합니다. GET! POST!
@@ -24,6 +39,8 @@ FC JANYANG CAPTAIN;
 | `POST`
 | Post로 Request를 보낼때는 보통 Json형태로 데이터를 넘겨주시면 됩니다.
 |===
+
+
 
 
 //=== Status-Code
@@ -191,6 +208,28 @@ include::{snippets}/film-controller-test/get_-films/http-request.adoc[]
 include::{snippets}/film-controller-test/get_-films/http-response.adoc[]
 
 ***
+==== film/startPrinting
+
+.Desc
+필름을 인화 합니다. GET으로 요청하면 필름의 상태가 인화 시작으로 변경됩니다. 해당 요청으로 인해 필름이 시작되는 날짜와 종료되는 날짜가 설정되며, 필름 종료 이후 시간에는 필름 인화가 끝난 것으로 봅니다.
+현재 필름 인화는 3일이 걸립니다.
+
+|===
+| 기능 | 방식 | URI
+| 필름 인화 | get | film/startPrinting/{film-uid}
+|===
+
+===== Curl
+include::{snippets}/film-controller-test/start_printing/curl-request.adoc[]
+
+===== Request
+include::{snippets}/film-controller-test/start_printing/http-request.adoc[]
+
+===== Response
+include::{snippets}/film-controller-test/start_printing/http-response.adoc[]
+
+
+***
 
 === Photo
 
@@ -246,8 +285,32 @@ include::{snippets}/photo-controller-test/download_photo/curl-request.adoc[]
 include::{snippets}/photo-controller-test/download_photo/http-request.adoc[]
 
 
+//===== Response
+//include::{snippets}/photo-controller-test/download_photo/http-response.adoc[]
+
+***
+
+***
+
+==== photo/getPhotoInfosByFilm/{filmUid}
+
+필름 안의 사진 정보를 가져옵니다.
+
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 로그인 | GET | photo/getPhotoInfosByFilm/{filmUid}
+|===
+
+===== CurlRequest
+include::{snippets}/photo-controller-test/get-photo-infos-by-film/curl-request.adoc[]
+===== httpRequest
+include::{snippets}/photo-controller-test/get-photo-infos-by-film/http-request.adoc[]
+
+
 ===== Response
-include::{snippets}/photo-controller-test/download_photo/http-response.adoc[]
+include::{snippets}/photo-controller-test/get-photo-infos-by-film/http-response.adoc[]
 
 ***
 
@@ -279,3 +342,26 @@ include::{snippets}/album-controller-test/create_album/http-request.adoc[]
 
 ===== Response
 include::{snippets}/album-controller-test/create_album/http-response.adoc[]
+
+***
+
+==== album/getAlbums
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 앨범 만들기 | get | album/getAlbums
+|===
+
+----
+앨범을 만듭니다.
+----
+
+===== Curl
+include::{snippets}/album-controller-test/get-albums/curl-request.adoc[]
+
+===== Request
+include::{snippets}/album-controller-test/get-albums/http-request.adoc[]
+
+===== Response
+include::{snippets}/album-controller-test/get-albums/http-response.adoc[]

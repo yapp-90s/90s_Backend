@@ -31,6 +31,9 @@ public class FilmType {
     @Column(length = 999, nullable = true)
     private String description;
 
+    @Column
+    private Integer max;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 

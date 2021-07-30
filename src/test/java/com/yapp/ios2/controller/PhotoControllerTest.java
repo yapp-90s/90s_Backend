@@ -152,10 +152,10 @@ public class PhotoControllerTest{
 
         String jwt = jwtProvider.createToken(user.getUid().toString(), user.getRoles());
 
-        filmRepository.findAllByUser(user).get(0);
+        Long filmUid = filmRepository.findAllByUser(user).get(0).getUid();
 
         mockMvc.perform(
-                get("/photo/getPhotoInfosByFilm/{filmUid}")
+                get("/photo/getPhotoInfosByFilm/" + filmUid.toString())
                         .header("X-AUTH-TOKEN", jwt)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
