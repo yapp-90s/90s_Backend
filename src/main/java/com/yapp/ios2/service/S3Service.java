@@ -63,13 +63,18 @@ public class S3Service{
         return bytes;
     }
 
-//    public void deleteByAlbum(Long albumUid){
-//
-//        for (S3ObjectSummary file : s3Client.listObjects(bucket, albumUid.toString() + "/").getObjectSummaries()){
+    // Delete Only 1 file.
+    public void delete(Long filmUid, Long photoUid){
+
+        s3Client.deleteObject(
+            bucket, s3Client.getObject(bucket, filmUid.toString() + "/" + photoUid.toString() + ".jpeg").getKey()
+        );
+
+//        for (S3ObjectSummary file : s3Client.listObjects(bucket, filmUid.toString() + "/").getObjectSummaries()){
 //            s3Client.deleteObject(bucket, file.getKey());
 //        }
-//
-//    }
+
+    }
 
 
 }

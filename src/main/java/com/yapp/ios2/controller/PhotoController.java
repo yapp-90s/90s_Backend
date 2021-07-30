@@ -66,4 +66,14 @@ public class PhotoController {
         return photoBinary;
     }
 
+    @GetMapping(value = "/delete/{photoUid}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @ResponseBody()
+    public boolean photoUid(@PathVariable("photoUid") Long photoUid) throws IOException {
+
+        photoService.delete(photoUid);
+
+        return true;
+    }
+
+
 }
