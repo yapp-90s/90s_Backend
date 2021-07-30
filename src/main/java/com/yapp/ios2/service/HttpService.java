@@ -1,0 +1,55 @@
+package com.yapp.ios2.service;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+@Service
+public class HttpService {
+
+
+    public boolean sendReq( String url, String json ){
+
+        HttpClient client = HttpClientBuilder.create().build(); // HttpClient 생성
+        HttpPost httpPost = new HttpPost(url);
+
+        try {
+            httpPost.setHeader("Accept", "application/json");
+            httpPost.setHeader("Connection", "keep-alive");
+            httpPost.setHeader("Content-Type", "application/json");
+
+            httpPost.setEntity(new StringEntity(json));
+
+            HttpResponse response = client.execute(httpPost);
+
+            //Response 출력
+            if (response.getStatusLine().getStatusCode() == 200) {
+
+                ResponseHandler<String> handler = new BasicResponseHandler();
+                String body = handler.handleResponse(response);
+                System.out.println("[RESPONSE] requestHttpJson() " + body);
+
+                ObjectMapper objectMapper = new ObjectMapper();
+                JsonNode node = objectMapper.readTree(body);
+
+                return true;
+            } else {
+                System.out.println("response is error : " + response.getStatusLine().getStatusCode());
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return true;
+    }
+
+
+}

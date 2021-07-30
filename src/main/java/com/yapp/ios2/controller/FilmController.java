@@ -1,5 +1,6 @@
 package com.yapp.ios2.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.yapp.ios2.dto.FilmDto;
 import com.yapp.ios2.dto.LoginDto;
 import com.yapp.ios2.dto.PhotoDto;
@@ -45,11 +46,11 @@ public class FilmController {
 
     @GetMapping(value = "/startPrinting/{filmUid}")
     @ResponseBody
-    public Film startPrinting(@AuthenticationPrincipal User user, @PathVariable("filmUid") Long filmUid) {
+    public Boolean startPrinting(@AuthenticationPrincipal User user, @PathVariable("filmUid") Long filmUid) throws JsonProcessingException {
 
-        Film film = filmService.startPrinting(filmUid);
+        Boolean res = filmService.startPrinting(filmUid);
 
-        return film;
+        return res;
     }
 
 }
