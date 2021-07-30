@@ -8,6 +8,7 @@ import com.yapp.ios2.repository.FilmRepository;
 import com.yapp.ios2.repository.PhotoRepository;
 import com.yapp.ios2.repository.UserRepository;
 import com.yapp.ios2.service.UserService;
+import com.yapp.ios2.testConfig.TestInit;
 import com.yapp.ios2.vo.Photo;
 import com.yapp.ios2.vo.User;
 import org.junit.Before;
@@ -44,60 +45,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestConfig.class)
 @ActiveProfiles("test")
-public class PhotoControllerTest{
-
-    @Rule
-    public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
-
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    WebApplicationContext context;
-
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
-    PhotoRepository photoRepository;
-    @Autowired
-    FilmRepository filmRepository;
-
-    @Autowired
-    JwtProvider jwtProvider;
-
-    @Autowired
-    PasswordEncoder passwordEncoder;
-
-    MockMvc mockMvc;
-    RestDocumentationResultHandler document;
-
-    User testUser;
-
-    String jwt;
-
-    @Before
-    public void setUp() {
-        this.document = document(
-                "{class-name}/{method-name}",
-                preprocessResponse(prettyPrint())
-        );
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
-                .apply(
-                        documentationConfiguration(this.restDocumentation)
-                                .uris()
-                                .withScheme("http")
-                                .withHost("49.50.162.246")
-                                .withPort(8080)
-                )
-                .apply(
-                        documentationConfiguration(this.restDocumentation).operationPreprocessors()
-                                .withRequestDefaults(prettyPrint())
-                                .withResponseDefaults(prettyPrint())
-                )
-                .apply(springSecurity())
-                .alwaysDo(document)
-                .build();
-    }
+public class PhotoControllerTest extends TestInit {
 
     @Test
     public void upload_photo() throws Exception {
@@ -161,4 +109,23 @@ public class PhotoControllerTest{
                 .andExpect(status().isOk())
         ;
     }
+
+    @Test
+    public void delete() throws Exception{
+
+        User user = userRepository.findUserByName("90s_tester").get();
+
+        String jwt = jwtProvider.createToken(user.getUid().toString(), user.getRoles());
+
+        Long photoUid = photoRepository.findAllByFilm(filmRepository.findAllByUser(user).get(0)).get(0).getUid();
+
+
+        mockMvc.perform(
+                get("/photo/delete/" + photoUid.toString())
+                        .header("X-AUTH-TOKEN", jwt)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+        ;
+    }
+
 }

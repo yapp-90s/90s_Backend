@@ -3,6 +3,7 @@ package com.yapp.ios2.testConfig;
 import com.yapp.ios2.config.JwtProvider;
 import com.yapp.ios2.config.FuncUtils;
 import com.yapp.ios2.repository.FilmRepository;
+import com.yapp.ios2.repository.PhotoRepository;
 import com.yapp.ios2.repository.UserRepository;
 import com.yapp.ios2.service.FilmService;
 import com.yapp.ios2.service.PhotoService;
@@ -55,13 +56,16 @@ public class TestInit {
     public FilmRepository filmRepository;
 
     @Autowired
+    public PhotoRepository photoRepository;
+
+    @Autowired
     public JwtProvider jwtProvider;
 
     @Autowired
     PasswordEncoder passwordEncoder;
 
     public MockMvc mockMvc;
-    RestDocumentationResultHandler document;
+    protected RestDocumentationResultHandler document;
 
     public User testUser;
 

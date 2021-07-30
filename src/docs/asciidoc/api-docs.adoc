@@ -66,17 +66,14 @@ http://49.50.162.246:8080/
 == Controller
 === User
 
-
 ----
 회원 관련한 API 입니다. 회원가입, 로그인, 이메일 및 비밀번호 찾기 등이 있습니다.
 ----
-
 
 |===
 | Controller | URI
 | User | user/**
 |===
-
 
 ***
 ==== user/login
@@ -175,7 +172,7 @@ include::{snippets}/user-controller-test/check_phone-num/http-response.adoc[]
 .Desc
 |===
 | 기능 | 방식 | URI
-| 로그인 | Post | film/create
+| 필름 생성 | Post | film/create
 |===
 
 ===== Curl
@@ -247,7 +244,7 @@ include::{snippets}/film-controller-test/start_printing/http-response.adoc[]
 .Desc
 |===
 | 기능 | 방식 | URI
-| 로그인 | Post | photo/upload
+| 사진 업로드 | Post | photo/upload
 |===
 
 //===== CurlRequest
@@ -276,7 +273,7 @@ include::{snippets}/photo-controller-test/upload_photo/http-response.adoc[]
 .Desc
 |===
 | 기능 | 방식 | URI
-| 로그인 | Post | photo/download
+| 사진 다운로드 | Post | photo/download
 |===
 
 ===== CurlRequest
@@ -300,17 +297,35 @@ include::{snippets}/photo-controller-test/download_photo/http-request.adoc[]
 .Desc
 |===
 | 기능 | 방식 | URI
-| 로그인 | GET | photo/getPhotoInfosByFilm/{filmUid}
+| 필름 정보로 사진 정보 가져오기 | GET | photo/getPhotoInfosByFilm/{filmUid}
 |===
 
 ===== CurlRequest
 include::{snippets}/photo-controller-test/get-photo-infos-by-film/curl-request.adoc[]
 ===== httpRequest
 include::{snippets}/photo-controller-test/get-photo-infos-by-film/http-request.adoc[]
-
-
 ===== Response
 include::{snippets}/photo-controller-test/get-photo-infos-by-film/http-response.adoc[]
+
+***
+
+==== photo/delete/{filmUid}
+
+필름을 삭제합니다.
+필름에 추가한 사진을 삭제할 때 사용하시면 될 것 같아요.
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 사진 삭제 | GET | photo/delete/{filmUid}
+|===
+
+===== CurlRequest
+include::{snippets}/photo-controller-test/delete/curl-request.adoc[]
+===== httpRequest
+include::{snippets}/photo-controller-test/delete/http-request.adoc[]
+===== Response
+include::{snippets}/photo-controller-test/delete/http-response.adoc[]
 
 ***
 
@@ -350,11 +365,11 @@ include::{snippets}/album-controller-test/create_album/http-response.adoc[]
 .Desc
 |===
 | 기능 | 방식 | URI
-| 앨범 만들기 | get | album/getAlbums
+| 엘범들 정보 가져오기 | get | album/getAlbums
 |===
 
 ----
-앨범을 만듭니다.
+유저가 만든 모든 엘범들의 정보를 가져옵니다.
 ----
 
 ===== Curl
