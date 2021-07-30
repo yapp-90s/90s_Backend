@@ -66,4 +66,14 @@ public class PhotoController {
         return photoBinary;
     }
 
+    @GetMapping(value = "/delete/{photoUid}")
+//    @ResponseBody()
+    public boolean delete(@PathVariable("photoUid") Long photoUid) throws IOException {
+
+        photoService.delete(photoUid);
+
+        return true;
+    }
+
+
 }

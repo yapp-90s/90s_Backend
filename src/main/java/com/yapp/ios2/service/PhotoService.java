@@ -74,6 +74,17 @@ public class PhotoService{
         return photoBinary;
     }
 
+    public void delete(Long photoUid) throws IOException {
+
+        Photo photo = photoRepository.findById(photoUid).get();
+
+        s3Service.delete(photo.getFilm().getUid(), photoUid);
+
+        photoRepository.delete(photo);
+
+    }
+
+
 
 //    정민이 API 호출
     public void sendOtherApi(Object sendObj) {

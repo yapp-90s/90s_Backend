@@ -522,6 +522,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_response_6">Response</a></li>
 </ul>
 </li>
+<li><a href="#_photodeletefilmuid">photo/delete/{filmUid}</a>
+<ul class="sectlevel4">
+<li><a href="#_curlrequest_3">CurlRequest</a></li>
+<li><a href="#_httprequest_3">httpRequest</a></li>
+<li><a href="#_response_7">Response</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_album">Album</a>
@@ -530,14 +537,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel4">
 <li><a href="#_curl_5">Curl</a></li>
 <li><a href="#_request_5">Request</a></li>
-<li><a href="#_response_7">Response</a></li>
+<li><a href="#_response_8">Response</a></li>
 </ul>
 </li>
 <li><a href="#_albumgetalbums">album/getAlbums</a>
 <ul class="sectlevel4">
 <li><a href="#_curl_6">Curl</a></li>
 <li><a href="#_request_6">Request</a></li>
-<li><a href="#_response_8">Response</a></li>
+<li><a href="#_response_9">Response</a></li>
 </ul>
 </li>
 </ul>
@@ -1016,7 +1023,7 @@ Content-Length: 22
 <td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">로그인</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필름 생성</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Post</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">film/create</p></td>
 </tr>
@@ -1345,7 +1352,7 @@ Content-Length: 1173
 <td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">로그인</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">사진 업로드</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Post</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">photo/upload</p></td>
 </tr>
@@ -1474,7 +1481,7 @@ Content-Length: 1380
 <td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">로그인</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">사진 다운로드</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Post</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">photo/download</p></td>
 </tr>
@@ -1533,7 +1540,7 @@ Host: localhost:8080
 <td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">로그인</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필름 정보로 사진 정보 가져오기</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">photo/getPhotoInfosByFilm/{filmUid}</p></td>
 </tr>
@@ -1709,6 +1716,73 @@ Content-Length: 4292
 <hr>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_photodeletefilmuid"><a class="link" href="#_photodeletefilmuid">photo/delete/{filmUid}</a></h4>
+<div class="paragraph">
+<p>필름을 삭제합니다.
+필름에 추가한 사진을 삭제할 때 사용하시면 될 것 같아요.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Desc</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">사진 삭제</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">photo/delete/{filmUid}</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="_curlrequest_3"><a class="link" href="#_curlrequest_3">CurlRequest</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://localhost:8080/photo/delete/34' -i -X GET \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwicm9sZXMiOlsiUk9MRV9URVNURVIiXSwiaWF0IjoxNjI3NjA5ODEzLCJleHAiOjIyNTgzMjk4MTN9.zHR8y0Fjxm87gQuosqEnwEK_ZwW0UJMbVjziaKeARdY' \
+    -H 'Accept: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_httprequest_3"><a class="link" href="#_httprequest_3">httpRequest</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /photo/delete/34 HTTP/1.1
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwicm9sZXMiOlsiUk9MRV9URVNURVIiXSwiaWF0IjoxNjI3NjA5ODEzLCJleHAiOjIyNTgzMjk4MTN9.zHR8y0Fjxm87gQuosqEnwEK_ZwW0UJMbVjziaKeARdY
+Accept: application/json
+Host: localhost:8080</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_response_7"><a class="link" href="#_response_7">Response</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 4
+
+true</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_album"><a class="link" href="#_album">Album</a></h3>
@@ -1783,7 +1857,7 @@ Host: localhost:8080
 </div>
 </div>
 <div class="sect4">
-<h5 id="_response_7"><a class="link" href="#_response_7">Response</a></h5>
+<h5 id="_response_8"><a class="link" href="#_response_8">Response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -1845,7 +1919,7 @@ Content-Length: 644
 <td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">앨범 만들기</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">엘범들 정보 가져오기</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">get</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">album/getAlbums</p></td>
 </tr>
@@ -1853,7 +1927,7 @@ Content-Length: 644
 </table>
 <div class="listingblock">
 <div class="content">
-<pre>앨범을 만듭니다.</pre>
+<pre>유저가 만든 모든 엘범들의 정보를 가져옵니다.</pre>
 </div>
 </div>
 <div class="sect4">
@@ -1878,7 +1952,7 @@ Host: 90s.com</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_response_8"><a class="link" href="#_response_8">Response</a></h5>
+<h5 id="_response_9"><a class="link" href="#_response_9">Response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -1964,7 +2038,11 @@ Content-Length: 1307
 <div id="footer">
 <div id="footer-text">
 Version 2.0.1<br>
+<<<<<<< HEAD
 Last updated 2021-07-30 11:19:03 +0900
+=======
+Last updated 2021-07-30 10:55:37 +0900
+>>>>>>> feature/photo
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">
