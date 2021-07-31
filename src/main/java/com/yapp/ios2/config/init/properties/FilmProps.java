@@ -1,27 +1,33 @@
 package com.yapp.ios2.config.init.properties;
 
+import com.yapp.ios2.vo.Film;
+import com.yapp.ios2.vo.FilmType;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+
 @Component
-@ConfigurationProperties(prefix = "films")
+@ConfigurationProperties("film")
 @Getter
-@Setter
-@Data
 public class FilmProps {
 
-    private List<FilmProp> filmProps;
+    private final List<FilmType> films;
 
-    @Getter
-    @Setter
-    public class FilmProp{
-        private String name;
-        private Integer code;
-        private Integer max;
+    public FilmProps(List<FilmType> films) {
+        this.films = films;
     }
+
+//    @Getter
+//    @Setter
+//    public class Film{
+//        private String name;
+//        private Integer code;
+//        private Integer max;
+//    }
 }
