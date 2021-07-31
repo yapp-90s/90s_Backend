@@ -37,8 +37,8 @@ public class AlbumService{
 
         Album newAlbum = Album.builder()
                 .name(name)
-                .albumLayout(albumLayoutRepository.findAlbumLayoutByCode(coverCode))
-                .albumCover(albumCoverRepository.findAlbumCoverByCode(layoutCode))
+                .albumLayout(albumLayoutRepository.findAlbumLayoutByCode(coverCode).get())
+                .albumCover(albumCoverRepository.findAlbumCoverByCode(layoutCode).get())
                 .build();
 
         albumRepository.save(newAlbum);

@@ -22,12 +22,4 @@ public class FilmProps {
     public FilmProps(List<FilmType> films) {
         this.films = films;
     }
-
-//    @Getter
-//    @Setter
-//    public class Film{
-//        private String name;
-//        private Integer code;
-//        private Integer max;
-//    }
 }

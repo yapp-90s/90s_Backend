@@ -1,5 +1,6 @@
 package com.yapp.ios2.config.init;
 
+import com.yapp.ios2.config.init.properties.AlbumProps;
 import com.yapp.ios2.repository.AlbumCoverRepository;
 import com.yapp.ios2.repository.AlbumLayoutRepository;
 import com.yapp.ios2.vo.AlbumCover;
@@ -15,41 +16,21 @@ public class AlbumLayoutInitializer {
 
     @Autowired
     AlbumLayoutRepository albumLayoutRepository;
+    @Autowired
+    AlbumProps albumProps;
 
     public void run(String... args) throws Exception {
-        List<String> layouts = Arrays.asList(
-                "1990",
-                "paradiso",
-                "happilyeverafter",
-                "favoritethings",
-                "awsomemix",
-                "lessbutbetter",
-                "90sretroclub",
-                "oneandonly"
-        );
-        List<Integer> albumLayoutCodes = Arrays.asList(
-                1001,
-                1002,
-                1003,
-                1004,
-                2001,
-                2002,
-                2003,
-                3004
-        );
-        if(albumLayoutRepository.findAll().isEmpty()){
-            for(int i = 0; i < layouts.size(); i++){
-                AlbumLayout albumLayout = albumLayoutRepository.findById(Long.valueOf(i+1)).orElse(
-                        AlbumLayout.builder()
-                                .uid(Long.valueOf(i+1))
-                                .code(albumLayoutCodes.get(i))
-                                .name(layouts.get(i))
-                                .path("static/" + layouts.get(i) + ".jpeg")
-                                .photoPerPaper(3)
-                                .build()
-                );
-                albumLayoutRepository.save(albumLayout);
-            }
+
+        for(AlbumLayout albumLayoutProp : albumProps.getLayouts()){
+            AlbumLayout albumLayout = albumLayoutRepository.findAlbumLayoutByCode(albumLayoutProp.getCode()).orElse(
+                    AlbumLayout.builder()
+                            .code(albumLayoutProp.getCode())
+                            .name(albumLayoutProp.getName())
+                            .totPaper(albumLayoutProp.getTotPaper())
+                            .photoPerPaper(albumLayoutProp.getPhotoPerPaper())
+                            .build()
+            );
+            albumLayoutRepository.save(albumLayout);
         }
     }
 }
