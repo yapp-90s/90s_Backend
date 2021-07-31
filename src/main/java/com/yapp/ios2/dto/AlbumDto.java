@@ -34,7 +34,6 @@ public class AlbumDto {
         private String name;
         private Integer layoutCode;
         private Integer coverCode;
-        private Integer totPaper;
 
     }
 

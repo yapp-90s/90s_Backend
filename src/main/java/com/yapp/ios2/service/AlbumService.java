@@ -33,13 +33,12 @@ public class AlbumService{
     @Autowired
     AlbumLayoutRepository albumLayoutRepository;
 
-    public Album create(User user, String name, Integer totPaper, Integer coverCode, Integer layoutCode) {
+    public Album create(User user, String name, Integer coverCode, Integer layoutCode) {
 
         Album newAlbum = Album.builder()
                 .name(name)
                 .albumLayout(albumLayoutRepository.findAlbumLayoutByCode(coverCode))
                 .albumCover(albumCoverRepository.findAlbumCoverByCode(layoutCode))
-                .totPaper(totPaper)
                 .build();
 
         albumRepository.save(newAlbum);

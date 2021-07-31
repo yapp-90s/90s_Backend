@@ -4,6 +4,7 @@ package com.yapp.ios2.vo;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -22,6 +23,9 @@ public class Album {
     @GeneratedValue
     private Long uid;
 
+    @Column
+    private Integer code;
+
     @Column(length = 45, nullable = false)
     private String name;
 
@@ -32,9 +36,6 @@ public class Album {
     @ManyToOne
     @JoinColumn(name ="album_layout", referencedColumnName="uid")
     private AlbumLayout albumLayout;
-
-    @Column
-    private Integer totPaper;
 
     @Column(columnDefinition = "boolean default false")
     private boolean isComplete;

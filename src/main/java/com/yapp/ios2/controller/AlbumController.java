@@ -38,7 +38,6 @@ public class AlbumController {
         Album newAlbum = albumService.create(
                 user,
                 albumInfo.getName(),
-                albumInfo.getTotPaper(),
                 albumInfo.getCoverCode(),
                 albumInfo.getLayoutCode()
         );

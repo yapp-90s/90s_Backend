@@ -58,7 +58,6 @@ public class FuncUtils {
                 albumService.create(
                         tester,
                         name,
-                        10,
                         1001,
                         1001
                         );

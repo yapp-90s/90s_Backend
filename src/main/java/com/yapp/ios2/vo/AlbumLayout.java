@@ -32,6 +32,9 @@ public class AlbumLayout {
     private String description;
 
     @Column
+    private Integer totPaper;
+
+    @Column
     private Integer photoPerPaper;
 
     @CreationTimestamp
