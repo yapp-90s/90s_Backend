@@ -55,4 +55,14 @@ public class AlbumDto {
         private String message;
     }
 
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class AddPhotoInAlbum{
+        private Long photoUid;
+        private Long albumUid;
+        private Integer paperNum;
+        private Integer sequence;
+    }
 }

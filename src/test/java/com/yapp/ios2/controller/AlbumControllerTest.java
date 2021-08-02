@@ -7,6 +7,9 @@ import com.yapp.ios2.dto.AlbumDto;
 import com.yapp.ios2.repository.PhotoRepository;
 import com.yapp.ios2.repository.UserRepository;
 import com.yapp.ios2.service.UserService;
+import com.yapp.ios2.testConfig.TestInit;
+import com.yapp.ios2.vo.Album;
+import com.yapp.ios2.vo.Photo;
 import com.yapp.ios2.vo.User;
 import org.junit.Before;
 import org.junit.Rule;
@@ -36,59 +39,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestConfig.class)
 @ActiveProfiles("test")
-public class AlbumControllerTest{
-
-    @Rule
-    public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
-
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    WebApplicationContext context;
-
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
-    PhotoRepository photoRepository;
-
-
-    @Autowired
-    JwtProvider jwtProvider;
-
-    @Autowired
-    PasswordEncoder passwordEncoder;
-
-    MockMvc mockMvc;
-    RestDocumentationResultHandler document;
-
-    User testUser;
-
-    String jwt;
-
-    @Before
-    public void setUp() {
-        this.document = document(
-                "{class-name}/{method-name}",
-                preprocessResponse(prettyPrint())
-        );
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
-                .apply(
-                        documentationConfiguration(this.restDocumentation)
-                                .uris()
-                                .withScheme("http")
-                                .withHost("49.50.162.246")
-                                .withPort(8080)
-                )
-                .apply(
-                        documentationConfiguration(this.restDocumentation).operationPreprocessors()
-                                .withRequestDefaults(prettyPrint())
-                                .withResponseDefaults(prettyPrint())
-                )
-                .apply(springSecurity())
-                .alwaysDo(document)
-                .build();
-    }
+public class AlbumControllerTest extends TestInit {
 
     @Test
     public void run() throws Exception{
@@ -104,7 +55,6 @@ public class AlbumControllerTest{
                 .name("테스트앨범")
                 .coverCode(1001)
                 .layoutCode(2001)
-                .totPaper(5)
                 .build();
 
         ObjectMapper json = new ObjectMapper();
@@ -131,6 +81,38 @@ public class AlbumControllerTest{
                 get("/album/getAlbums")
                         .header("X-AUTH-TOKEN", jwt)
                         .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk()
+                );
+
+    }
+
+    @Test
+    public void add_photo_in_album() throws Exception {
+
+        jwt = user.getJWT();
+
+        Album album = albumService.getAlbumsByUser(user).get(0);
+
+        Photo photo = photoRepository.findAllByUser(user).get(0);
+
+        AlbumDto.AddPhotoInAlbum addPhotoInAlbum = AlbumDto.AddPhotoInAlbum.builder()
+                .albumUid(album.getUid())
+                .photoUid(photo.getUid())
+                .paperNum(1)
+                .sequence(2)
+                .build();
+
+        ObjectMapper json = new ObjectMapper();
+        String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(addPhotoInAlbum);
+
+
+        mockMvc.perform(
+                post("/album/addPhotoInAlbum")
+                        .header("X-AUTH-TOKEN", jwt)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonString)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk()

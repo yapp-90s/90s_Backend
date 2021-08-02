@@ -2,13 +2,17 @@ package com.yapp.ios2.testConfig;
 
 import com.yapp.ios2.config.JwtProvider;
 import com.yapp.ios2.config.FuncUtils;
+import com.yapp.ios2.repository.AlbumRepository;
 import com.yapp.ios2.repository.FilmRepository;
 import com.yapp.ios2.repository.PhotoRepository;
 import com.yapp.ios2.repository.UserRepository;
+import com.yapp.ios2.service.AlbumService;
 import com.yapp.ios2.service.FilmService;
 import com.yapp.ios2.service.PhotoService;
 import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.vo.User;
+import lombok.Getter;
+import lombok.Setter;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.runner.RunWith;
@@ -38,40 +42,46 @@ public class TestInit {
     public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
 
     @Autowired
-    public UserService userService;
+    protected UserService userService;
 
     @Autowired
-    public PhotoService photoService;
+    protected PhotoService photoService;
 
     @Autowired
-    public FilmService filmService;
+    protected FilmService filmService;
+
+    @Autowired
+    protected AlbumService albumService;
 
     @Autowired
     WebApplicationContext context;
 
     @Autowired
-    public UserRepository userRepository;
+    protected UserRepository userRepository;
 
     @Autowired
-    public FilmRepository filmRepository;
+    protected FilmRepository filmRepository;
 
     @Autowired
-    public PhotoRepository photoRepository;
+    protected PhotoRepository photoRepository;
 
     @Autowired
-    public JwtProvider jwtProvider;
+    protected AlbumRepository albumRepository;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    protected JwtProvider jwtProvider;
 
-    public MockMvc mockMvc;
+    @Autowired
+    protected PasswordEncoder passwordEncoder;
+
+    protected MockMvc mockMvc;
     protected RestDocumentationResultHandler document;
 
-    public User testUser;
+    protected User testUser;
 
-    public String jwt;
+    protected String jwt;
 
-    public User user;
+    protected User user;
 
     @Before
     public void setUp() {

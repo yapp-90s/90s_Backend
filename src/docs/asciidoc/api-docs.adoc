@@ -380,3 +380,29 @@ include::{snippets}/album-controller-test/get-albums/http-request.adoc[]
 
 ===== Response
 include::{snippets}/album-controller-test/get-albums/http-response.adoc[]
+
+***
+
+==== album/addPhotoInAlbum
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 엘범에 사진 추가 하기 | post | album/addPhotoInAlbum
+|===
+
+----
+엘범에 사진을 추가합니다.
+POST 방식이며 Json으로 데이터를 받으며, 받을 때는 '앨범ID', '사진ID', '사진이 들어갈 장수(Paper)', 사진의 위치(해당 페이지에서의 순서)를 받습니다.
+기존에 해당 위치에 사진이 있다면 해당 사진을 대체(Replace)하며, msg로 사진이 변경되었다고 받습니다.
+유효하지 않은 장수나 위치 값이면 false와 함께 msg를 응답합니다.
+----
+
+===== Curl
+include::{snippets}/album-controller-test/add_photo_in_album/curl-request.adoc[]
+
+===== Request
+include::{snippets}/album-controller-test/add_photo_in_album/http-request.adoc[]
+
+===== Response
+include::{snippets}/album-controller-test/add_photo_in_album/http-response.adoc[]

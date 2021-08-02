@@ -1,9 +1,10 @@
 package com.yapp.ios2.service;
 
+import com.yapp.ios2.config.exception.EntityNotFoundException;
+import com.yapp.ios2.config.exception.UserNotFoundException;
+import com.yapp.ios2.dto.ResponseDto;
 import com.yapp.ios2.repository.*;
-import com.yapp.ios2.vo.Album;
-import com.yapp.ios2.vo.AlbumOwner;
-import com.yapp.ios2.vo.User;
+import com.yapp.ios2.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,9 @@ public class AlbumService{
 
     @Autowired
     PhotoRepository photoRepository;
+
+    @Autowired
+    PhotoInAlbumRepository photoInAlbumRepository;
 
     @Autowired
     S3Service s3Service;
@@ -123,6 +127,52 @@ public class AlbumService{
 
         return albums;
     }
+
+    public ResponseDto.BooleanDto addPhotoInAlbum(Long albumUid, Long photoUid, Integer paperNum, Integer sequence) {
+
+        ResponseDto.BooleanDto result = ResponseDto.BooleanDto.builder()
+                .result(false)
+                .msg("")
+                .build();
+
+        Photo photo = photoRepository.findById(photoUid).orElseThrow(
+                () -> new EntityNotFoundException(String.format("Photo UID (%d) is not Exist.", photoUid.intValue()))
+        );
+        Album album = albumRepository.findById(albumUid).orElseThrow(
+                () -> new EntityNotFoundException(String.format("Album UID (%d) is not Exist.", albumUid.intValue()))
+        );
+
+        // 유호성 검사
+
+        if( !photoInAlbumRepository.findAllByPaperNumAndSequence(paperNum, sequence).isEmpty() ){
+            // 저장하려는 사진 위치에 이미 사진이 있는지 여부.
+
+            ResponseDto.BooleanDto.builder()
+                .msg("Photo is Changed.")
+                .build();
+
+
+        }else if ( album.getAlbumLayout().getTotPaper() < paperNum || album.getAlbumLayout().getPhotoPerPaper() < sequence ){
+            // 저장하려는 위치가 정당한지 여부(전체 사진 페이지를 넘기지 않는지, 각 페이지별 들어가는 사진 순서에 해당하는 지)
+
+            return ResponseDto.BooleanDto.builder()
+                    .result(false)
+                    .msg("Invalid Value in PaperNum or Sequence.")
+                    .build();
+        }
+
+        PhotoInAlbum photoInAlbum = PhotoInAlbum.builder()
+                .photo(photo)
+                .album(album)
+                .paperNum(paperNum)
+                .sequence(sequence)
+                .build();
+
+        photoInAlbumRepository.save(photoInAlbum);
+
+        return ResponseDto.BooleanDto.builder().result(true).build();
+    }
+
 //
 //    public List<AlbumOwnerDto.AlbumOwnerInfo> getAlbumOwners(Long albumUid){
 //

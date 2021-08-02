@@ -46,11 +46,11 @@ public class FilmController {
 
     @GetMapping(value = "/startPrinting/{filmUid}")
     @ResponseBody
-    public Boolean startPrinting(@AuthenticationPrincipal User user, @PathVariable("filmUid") Long filmUid) throws JsonProcessingException {
+    public ResponseDto.BooleanDto startPrinting(@AuthenticationPrincipal User user, @PathVariable("filmUid") Long filmUid) throws JsonProcessingException {
 
-        Boolean res = filmService.startPrinting(filmUid);
+        ResponseDto.BooleanDto result = filmService.startPrinting(filmUid);
 
-        return res;
+        return result;
     }
 
 }

@@ -1,6 +1,7 @@
 package com.yapp.ios2.controller;
 
 import com.yapp.ios2.dto.AlbumDto;
+import com.yapp.ios2.dto.ResponseDto;
 import com.yapp.ios2.repository.AlbumRepository;
 import com.yapp.ios2.service.AlbumService;
 import com.yapp.ios2.service.UserService;
@@ -85,15 +86,20 @@ public class AlbumController {
 
         return albums;
     }
-//
-//    @PostMapping("/getAlbum")
-//    public Album getAlbum(@RequestBody AlbumDto.AlbumUid albumUid){
-//        Album album = albumService.getAlbum(albumUid.getUid());
-//        albumService.completeChecker(album.getUid());
-//        return album;
-//    }
-//
-//
+
+    @PostMapping("/addPhotoInAlbum")
+    public ResponseDto.BooleanDto addPhotoInAlbum(@RequestBody AlbumDto.AddPhotoInAlbum addPhotoInAlbum){
+        ResponseDto.BooleanDto result = albumService.addPhotoInAlbum(
+                addPhotoInAlbum.getAlbumUid(), //albumUid
+                addPhotoInAlbum.getPhotoUid(), //photoUid
+                addPhotoInAlbum.getPaperNum(), //paperNum
+                addPhotoInAlbum.getSequence()  //sequence
+        );
+
+        return result;
+    }
+
+    //
 //    @GetMapping("/getAlbumPassword/{albumUid}")
 //    public String getAlbumPassword(@PathVariable("albumUid") Long albumUid){
 //

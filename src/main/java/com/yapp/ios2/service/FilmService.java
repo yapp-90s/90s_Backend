@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yapp.ios2.config.exception.EntityNotFoundException;
 import com.yapp.ios2.config.exception.InvalidValueException;
+import com.yapp.ios2.dto.ResponseDto;
 import com.yapp.ios2.dto.StartPrintingDto;
 import com.yapp.ios2.repository.FilmRepository;
 import com.yapp.ios2.repository.FilmTypeRepository;
@@ -66,7 +67,7 @@ public class FilmService {
         return filmRepository.findAllByUser(user);
     }
 
-    public boolean startPrinting(Long filmUid) throws JsonProcessingException{
+    public ResponseDto.BooleanDto startPrinting(Long filmUid) throws JsonProcessingException{
 
         Film film = filmRepository.findById(filmUid).get();
 
@@ -88,7 +89,7 @@ public class FilmService {
             if(httpService.sendReq(aiHostName, jsonString)){
                 continue;
             }else{
-                return false;
+                return ResponseDto.BooleanDto.builder().result(false).build();
             }
         }
 
@@ -100,7 +101,7 @@ public class FilmService {
         film.setPrintEndAt(now.plusDays(3));
         filmRepository.save(film);
 
-        return true;
+        return ResponseDto.BooleanDto.builder().result(true).build();
 
     }
 
