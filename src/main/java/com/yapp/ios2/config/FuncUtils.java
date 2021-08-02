@@ -1,5 +1,6 @@
 package com.yapp.ios2.config;
 
+import com.yapp.ios2.config.init.properties.FilmProps;
 import com.yapp.ios2.repository.AlbumRepository;
 import com.yapp.ios2.repository.FilmRepository;
 import com.yapp.ios2.repository.UserRepository;
@@ -8,6 +9,7 @@ import com.yapp.ios2.service.FilmService;
 import com.yapp.ios2.service.PhotoService;
 import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.vo.Film;
+import com.yapp.ios2.vo.FilmType;
 import com.yapp.ios2.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -42,26 +44,25 @@ public class FuncUtils {
         userService.delete(user);
     }
 
-    public static void createDummyFilms(FilmRepository filmRepository, FilmService filmService, User tester){
-        for(int i = 1; i < 4; i++){
-            String name = String.format("dummyFilm%02d",i) + tester.getName();
+    public static void createDummyFilms(List<FilmType> filmTypes, FilmRepository filmRepository, FilmService filmService, User tester){
+        for(FilmType filmType : filmTypes){
+            String name = String.format("dummyFilm%04d_", filmType.getCode()) + tester.getName();
             if(filmRepository.findAllByName(name).isEmpty()){
-                filmService.createFilm(1000 + 1, name, tester);
+                filmService.createFilm(filmType.getCode(), name, tester);
             }
         }
     }
 
     public static void createDummyAlbums(AlbumRepository albumRepository, AlbumService albumService, User tester){
-        for(int i = 1; i < 4; i++){
-            String name = String.format("dummyAlbum%02d",i)+tester.getName();
+        for(int i = 1; i <= 4; i++){
+            String name = String.format("dummyAlbum%02d_",i)+tester.getName();
             if(albumRepository.findAllByName(name).isEmpty()){
                 albumService.create(
                         tester,
                         name,
-                        1001,
-                        1001
+                        1000 + i,
+                        1000 + i
                         );
-//                create(User user, String name, Integer totPaper, Integer coverCode, Integer layoutCode) {
              }
         }
     }

@@ -1,6 +1,6 @@
 package com.yapp.ios2.config.init;
 
-import com.yapp.ios2.config.init.properties.AlbumProps;
+import com.yapp.ios2.config.init.properties.LayoutProps;
 import com.yapp.ios2.repository.AlbumCoverRepository;
 import com.yapp.ios2.repository.AlbumLayoutRepository;
 import com.yapp.ios2.vo.AlbumCover;
@@ -17,11 +17,11 @@ public class AlbumLayoutInitializer {
     @Autowired
     AlbumLayoutRepository albumLayoutRepository;
     @Autowired
-    AlbumProps albumProps;
+    LayoutProps layoutProps;
 
     public void run(String... args) throws Exception {
 
-        for(AlbumLayout albumLayoutProp : albumProps.getLayouts()){
+        for(AlbumLayout albumLayoutProp : layoutProps.getLayouts()){
             AlbumLayout albumLayout = albumLayoutRepository.findAlbumLayoutByCode(albumLayoutProp.getCode()).orElse(
                     AlbumLayout.builder()
                             .code(albumLayoutProp.getCode())

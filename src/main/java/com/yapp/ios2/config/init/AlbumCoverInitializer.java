@@ -1,6 +1,6 @@
 package com.yapp.ios2.config.init;
 
-import com.yapp.ios2.config.init.properties.AlbumProps;
+import com.yapp.ios2.config.init.properties.CoverProps;
 import com.yapp.ios2.repository.AlbumCoverRepository;
 import com.yapp.ios2.vo.AlbumCover;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +15,10 @@ public class AlbumCoverInitializer {
     @Autowired
     AlbumCoverRepository coverRepository;
     @Autowired
-    AlbumProps albumProps;
+    CoverProps coverProps;
 
     public void run(String... args) throws Exception {
-
-        for( AlbumCover albumCoverProp : albumProps.getCovers()){
+        for( AlbumCover albumCoverProp : coverProps.getCovers()){
             AlbumCover albumCover = coverRepository.findAlbumCoverByCode(albumCoverProp.getCode()).orElse(
                     AlbumCover.builder()
                             .code(albumCoverProp.getCode())

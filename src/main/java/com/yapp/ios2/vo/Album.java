@@ -23,9 +23,6 @@ public class Album {
     @GeneratedValue
     private Long uid;
 
-    @Column
-    private Integer code;
-
     @Column(length = 45, nullable = false)
     private String name;
 
@@ -36,9 +33,6 @@ public class Album {
     @ManyToOne
     @JoinColumn(name ="album_layout", referencedColumnName="uid")
     private AlbumLayout albumLayout;
-
-    @Column(columnDefinition = "boolean default false")
-    private boolean isComplete;
 
     @CreationTimestamp
     private LocalDateTime createdAt;

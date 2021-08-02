@@ -2,6 +2,7 @@ package com.yapp.ios2.config.init;
 
 import com.yapp.ios2.config.FuncUtils;
 import com.yapp.ios2.config.JwtProvider;
+import com.yapp.ios2.config.init.properties.FilmProps;
 import com.yapp.ios2.repository.AlbumRepository;
 import com.yapp.ios2.repository.FilmRepository;
 import com.yapp.ios2.repository.PhotoRepository;
@@ -39,6 +40,8 @@ public class DummyDataInitializer {
     FilmService filmService;
     @Autowired
     AlbumService albumService;
+    @Autowired
+    FilmProps filmProps;
 
     public void run(String... args) throws Exception {
 
@@ -100,7 +103,7 @@ public class DummyDataInitializer {
 
             for (User user : users) {
 
-                FuncUtils.createDummyFilms(filmRepository, filmService, user);
+                FuncUtils.createDummyFilms(filmProps.getFilms(), filmRepository, filmService, user);
 
                 FuncUtils.addPhotoInFilmByUser(photoService, filmService, user);
 

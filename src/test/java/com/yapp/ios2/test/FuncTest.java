@@ -1,14 +1,18 @@
 package com.yapp.ios2.test;
 
 import com.yapp.ios2.config.FuncUtils;
+import com.yapp.ios2.config.init.properties.FilmProps;
 import com.yapp.ios2.testConfig.TestInit;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class FuncTest extends TestInit {
+    @Autowired
+    FilmProps filmProps;
 
     @Test
     public void get_Films() throws Exception {
@@ -31,7 +35,7 @@ public class FuncTest extends TestInit {
 
     @Test
     public void create_film_test() throws Exception{
-        FuncUtils.createDummyFilms(filmRepository, filmService, user);
+        FuncUtils.createDummyFilms(filmProps.getFilms(), filmRepository, filmService, user);
     }
 
 }

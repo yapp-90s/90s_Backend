@@ -3,10 +3,7 @@ package com.yapp.ios2.vo;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Builder
@@ -20,6 +17,7 @@ import java.time.LocalDateTime;
 public class AlbumLayout {
 
     @Id
+    @GeneratedValue
     private Long uid;
 
     @Column(unique = true)

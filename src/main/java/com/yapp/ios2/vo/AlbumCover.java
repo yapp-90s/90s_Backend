@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 public class AlbumCover {
 
     @Id
+    @GeneratedValue
     private Long uid;
 
     @Column(unique = true)
