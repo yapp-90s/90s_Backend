@@ -115,6 +115,14 @@ public class AlbumController {
         return result;
     }
 
+    @DeleteMapping("/delete/{albumUid}")
+    public ResponseDto.BooleanDto delete(@PathVariable("albumUid") Long albumUid){
+
+        ResponseDto.BooleanDto result = albumService.delete(albumUid);
+
+        return result;
+    }
+
     //
 //    @GetMapping("/getAlbumPassword/{albumUid}")
 //    public String getAlbumPassword(@PathVariable("albumUid") Long albumUid){

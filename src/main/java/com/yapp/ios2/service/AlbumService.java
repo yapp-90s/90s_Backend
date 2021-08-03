@@ -229,6 +229,23 @@ public class AlbumService{
                 .build();
     }
 
+    public ResponseDto.BooleanDto delete(Long albumUid){
+
+        Album album = albumRepository.findById(albumUid).orElseThrow(
+                () -> new EntityNotFoundException("Album is not Existed.")
+        );
+
+        List<PhotoInAlbum> photoInAlbums = photoInAlbumRepository.findAllByAlbum(album);
+
+        photoInAlbumRepository.deleteAll(photoInAlbums);
+
+        albumRepository.delete(album);
+
+        return ResponseDto.BooleanDto.builder()
+                .result(true)
+                .build();
+    }
+
 //
 //    public String invite(Long albumUid, Long userUid){
 //

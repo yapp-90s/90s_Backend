@@ -15,4 +15,5 @@ public interface PhotoInAlbumRepository extends JpaRepository<PhotoInAlbum, Long
     @Query("select p from PhotoInAlbum p where p.paperNum = :paperNum and p.sequence = :sequence")
     List<PhotoInAlbum> findAllByPaperNumAndSequence(@Param("paperNum")Integer paperNum, @Param("sequence")Integer sequence);
 
+    List<PhotoInAlbum> findAllByAlbum(Album album);
 }
