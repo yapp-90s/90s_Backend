@@ -138,4 +138,21 @@ public class AlbumControllerTest extends TestInit {
 
     }
 
+    @Test
+    public void delete_album() throws Exception {
+
+        String jwt = user.getJWT();
+
+        Album album = albumRepository.findByUser(user).get(0);
+
+        mockMvc.perform(
+                delete("/album/delete/" + album.getUid())
+                        .header("X-AUTH-TOKEN", jwt)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk()
+                );
+
+    }
 }
