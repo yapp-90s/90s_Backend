@@ -8,6 +8,7 @@ import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.vo.Album;
 import com.yapp.ios2.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -95,6 +96,21 @@ public class AlbumController {
                 addPhotoInAlbum.getPaperNum(), //paperNum
                 addPhotoInAlbum.getSequence()  //sequence
         );
+
+        return result;
+    }
+
+    // 앨범 완성 상태 바꾸기
+    @GetMapping("/complete/{albumUid}")
+    @ResponseBody
+    public ResponseDto.BooleanDto complete(@PathVariable("albumUid")Long albumUid){
+
+         ResponseDto.BooleanDto result = albumService.complete(albumUid);
+//        albums.forEach(
+//                album -> {
+//                    albumService.completeChecker(album.getUid());
+//                }
+//        );
 
         return result;
     }

@@ -547,6 +547,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_response_9">Response</a></li>
 </ul>
 </li>
+<li><a href="#_albumaddphotoinalbum">album/addPhotoInAlbum</a>
+<ul class="sectlevel4">
+<li><a href="#_curl_7">Curl</a></li>
+<li><a href="#_request_7">Request</a></li>
+<li><a href="#_response_10">Response</a></li>
+</ul>
+</li>
+<li><a href="#_albumcompletealbumuid">album/complete/{albumUid}</a>
+<ul class="sectlevel4">
+<li><a href="#_curl_8">Curl</a></li>
+<li><a href="#_request_8">Request</a></li>
+<li><a href="#_response_11">Response</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1212,8 +1226,8 @@ Content-Length: 3
 <h5 id="_curl_4"><a class="link" href="#_curl_4">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://localhost:8080/film/startPrinting/29' -i -X GET \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwicm9sZXMiOlsiUk9MRV9URVNURVIiXSwiaWF0IjoxNjI3MTEwMDE1LCJleHAiOjIyNTc4MzAwMTV9.EQnC0dD_aWwlznhzQ6y-HtuB-Eo6oI3swxKZtFd2C0M' \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://localhost:8080/film/startPrinting/46' -i -X GET \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzg4MDU2OCwiZXhwIjoyMjU4NjAwNTY4fQ.WNu8zH9BgdejhRKPEJB4dgOVq2YJ2MY2rqaiR1b7O0k' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -1222,8 +1236,8 @@ Content-Length: 3
 <h5 id="_request_4"><a class="link" href="#_request_4">Request</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /film/startPrinting/29 HTTP/1.1
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwicm9sZXMiOlsiUk9MRV9URVNURVIiXSwiaWF0IjoxNjI3MTEwMDE1LCJleHAiOjIyNTc4MzAwMTV9.EQnC0dD_aWwlznhzQ6y-HtuB-Eo6oI3swxKZtFd2C0M
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /film/startPrinting/46 HTTP/1.1
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzg4MDU2OCwiZXhwIjoyMjU4NjAwNTY4fQ.WNu8zH9BgdejhRKPEJB4dgOVq2YJ2MY2rqaiR1b7O0k
 Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
@@ -1241,45 +1255,11 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 1173
+Content-Length: 37
 
 {
-  "uid" : 29,
-  "name" : "dummyFilm0190s_tester",
-  "filmType" : {
-    "uid" : 1,
-    "code" : 1001,
-    "name" : "test0",
-    "description" : "Description of test0",
-    "max" : null,
-    "createdAt" : "2021-07-24T15:01:58",
-    "updatedAt" : "2021-07-24T15:01:58",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 6,
-    "name" : "90s_tester",
-    "password" : null,
-    "emailKakao" : "tester@90s.com",
-    "emailApple" : "tester@90s.com",
-    "emailGoogle" : "tester@90s.com",
-    "phoneNum" : "010-1234-1234",
-    "created_at" : "2021-07-24T15:02:00",
-    "updated_at" : "2021-07-24T15:02:00",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-1234-1234",
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwicm9sZXMiOlsiUk9MRV9URVNURVIiXSwiaWF0IjoxNjI3MTEwMDE2LCJleHAiOjIyNTc4MzAwMTZ9.oHj01thtPCcEDF8FlOzQ27CM2GRjTinTWVwo4aM6JrI",
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true
-  },
-  "createdAt" : "2021-07-24T15:02:04",
-  "printStartAt" : "2021-07-24T16:00:16.341521",
-  "printEndAt" : "2021-07-27T16:00:16.341521"
+  "result" : true,
+  "msg" : null
 }</code></pre>
 </div>
 </div>
@@ -1954,6 +1934,170 @@ Content-Length: 1307
 } ]</code></pre>
 </div>
 </div>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_albumaddphotoinalbum"><a class="link" href="#_albumaddphotoinalbum">album/addPhotoInAlbum</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Desc</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">엘범에 사진 추가 하기</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">post</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">album/addPhotoInAlbum</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre>엘범에 사진을 추가합니다.
+POST 방식이며 Json으로 데이터를 받으며, 받을 때는 '앨범ID', '사진ID', '사진이 들어갈 장수(Paper)', 사진의 위치(해당 페이지에서의 순서)를 받습니다.
+기존에 해당 위치에 사진이 있다면 해당 사진을 대체(Replace)하며, msg로 사진이 변경되었다고 받습니다.
+유효하지 않은 장수나 위치 값이면 false와 함께 msg를 응답합니다.</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_curl_7"><a class="link" href="#_curl_7">Curl</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://localhost:8080/album/addPhotoInAlbum' -i -X POST \
+    -H 'Content-Type: application/json' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzg2OTI0OSwiZXhwIjoyMjU4NTg5MjQ5fQ.-9hgpi3MoBDM4UciEeoJsmUfGV3OSyc5jztwUEAA18o' \
+    -H 'Accept: application/json' \
+    -d '{
+  "photoUid" : 50,
+  "albumUid" : 62,
+  "paperNum" : 1,
+  "sequence" : 2
+}'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_request_7"><a class="link" href="#_request_7">Request</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /album/addPhotoInAlbum HTTP/1.1
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzg2OTI0OSwiZXhwIjoyMjU4NTg5MjQ5fQ.-9hgpi3MoBDM4UciEeoJsmUfGV3OSyc5jztwUEAA18o
+Accept: application/json
+Content-Length: 76
+Host: localhost:8080
+
+{
+  "photoUid" : 50,
+  "albumUid" : 62,
+  "paperNum" : 1,
+  "sequence" : 2
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_response_10"><a class="link" href="#_response_10">Response</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 37
+
+{
+  "result" : true,
+  "msg" : null
+}</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_albumcompletealbumuid"><a class="link" href="#_albumcompletealbumuid">album/complete/{albumUid}</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Desc</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">앨범 완성 상태로 변경</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">album/complete/{albumUid}</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre>제작 중인 엘범을 완성 상태로 변경합니다.
+해당 API 요청하면 DB 상의 앨범 내의 'completed_at' 값이 NULL 에서 변경한 날짜 값으로 변경됩니다.</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_curl_8"><a class="link" href="#_curl_8">Curl</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://localhost:8080/album/complete/62' -i -X GET \
+    -H 'Content-Type: application/json' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzg3MTQzNCwiZXhwIjoyMjU4NTkxNDM0fQ.50GNalRXzUNARNoY-kku8YWaAL4tkTz7r7eWX_i6D1o' \
+    -H 'Accept: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_request_8"><a class="link" href="#_request_8">Request</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/complete/62 HTTP/1.1
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzg3MTQzNCwiZXhwIjoyMjU4NTkxNDM0fQ.50GNalRXzUNARNoY-kku8YWaAL4tkTz7r7eWX_i6D1o
+Accept: application/json
+Host: localhost:8080</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_response_11"><a class="link" href="#_response_11">Response</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 37
+
+{
+  "result" : true,
+  "msg" : null
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1963,7 +2107,7 @@ Content-Length: 1307
 <div id="footer">
 <div id="footer-text">
 Version 2.0.1<br>
-Last updated 2021-07-31 14:53:44 +0900
+Last updated 2021-08-02 13:27:30 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">

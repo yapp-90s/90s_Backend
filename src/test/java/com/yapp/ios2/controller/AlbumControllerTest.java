@@ -120,4 +120,22 @@ public class AlbumControllerTest extends TestInit {
 
     }
 
+    @Test
+    public void complete() throws Exception {
+
+        String jwt = user.getJWT();
+
+        Album album = albumRepository.findByUser(user).get(0);
+
+        mockMvc.perform(
+                get("/album/complete/" + album.getUid())
+                        .header("X-AUTH-TOKEN", jwt)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk()
+                );
+
+    }
+
 }

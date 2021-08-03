@@ -8,6 +8,7 @@ import com.yapp.ios2.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -212,9 +213,22 @@ public class AlbumService{
 //        }
 //    }
 //
-//    public void albumStatusChecker(Long albumUid){
-//
-//    }
+    // 엘범 완성
+    public ResponseDto.BooleanDto complete(Long albumUid){
+
+        Album album = albumRepository.findById(albumUid).orElseThrow(
+                () -> new EntityNotFoundException("Album is not Existed.")
+        );
+
+        album.setCompletedAt(LocalDateTime.now());
+
+        albumRepository.save(album);
+
+        return ResponseDto.BooleanDto.builder()
+                .result(true)
+                .build();
+    }
+
 //
 //    public String invite(Long albumUid, Long userUid){
 //

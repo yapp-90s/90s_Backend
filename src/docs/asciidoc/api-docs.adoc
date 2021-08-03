@@ -406,3 +406,27 @@ include::{snippets}/album-controller-test/add_photo_in_album/http-request.adoc[]
 
 ===== Response
 include::{snippets}/album-controller-test/add_photo_in_album/http-response.adoc[]
+
+***
+
+==== album/complete/{albumUid}
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 앨범 완성 상태로 변경 | get | album/complete/{albumUid}
+|===
+
+----
+제작 중인 엘범을 완성 상태로 변경합니다.
+해당 API 요청하면 DB 상의 앨범 내의 'completed_at' 값이 NULL 에서 변경한 날짜 값으로 변경됩니다.
+----
+
+===== Curl
+include::{snippets}/album-controller-test/complete/curl-request.adoc[]
+
+===== Request
+include::{snippets}/album-controller-test/complete/http-request.adoc[]
+
+===== Response
+include::{snippets}/album-controller-test/complete/http-response.adoc[]
