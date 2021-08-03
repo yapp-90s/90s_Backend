@@ -40,8 +40,9 @@ public class FilmService {
     @Autowired
     PhotoRepository photoRepository;
     @Autowired
+    PhotoService photoService;
+    @Autowired
     HttpService httpService;
-
     @Autowired
     S3Service s3Service;
 
@@ -61,10 +62,9 @@ public class FilmService {
     }
 
     public List<Film> getFilms(User user){
-
-        filmRepository.findAll();
-
-        return filmRepository.findAllByUser(user);
+        // 삭제 되지 않은 필름만 가져옴.
+        // 삭제 되지 않은 필름은 deleteAt 이 Null.
+        return filmRepository.findAllByUserAndDeleteAt(user);
     }
 
     public ResponseDto.BooleanDto startPrinting(Long filmUid) throws JsonProcessingException{
@@ -103,6 +103,19 @@ public class FilmService {
 
         return ResponseDto.BooleanDto.builder().result(true).build();
 
+    }
+
+    public ResponseDto.BooleanDto delete(Long filmUid) throws IOException{
+
+        Film film = filmRepository.findById(filmUid).orElseThrow(
+                () -> new EntityNotFoundException("No Film with " + filmUid.toString() + " Uid. Wrong FilmUid.")
+        );
+
+        film.setDeleteAt(LocalDateTime.now());
+
+        filmRepository.save(film);
+
+        return ResponseDto.BooleanDto.builder().result(true).build();
     }
 
 }

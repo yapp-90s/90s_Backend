@@ -9,6 +9,7 @@ import com.yapp.ios2.repository.PhotoRepository;
 import com.yapp.ios2.repository.UserRepository;
 import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.testConfig.TestInit;
+import com.yapp.ios2.vo.Album;
 import com.yapp.ios2.vo.User;
 import org.junit.Before;
 import org.junit.Rule;
@@ -28,9 +29,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.fileUpload;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
@@ -102,6 +101,25 @@ public class FilmControllerTest extends TestInit {
 
         ;
     }
+
+    @Test
+    public void delete_film() throws Exception {
+
+        String jwt = user.getJWT();
+
+        Album album = albumRepository.findByUser(user).get(0);
+
+        mockMvc.perform(
+                delete("/album/delete/" + album.getUid())
+                        .header("X-AUTH-TOKEN", jwt)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk()
+                );
+    }
+
+
 
     //    @Test
 //    public void upload_photo() throws Exception {

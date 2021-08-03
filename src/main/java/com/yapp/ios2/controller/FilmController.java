@@ -53,4 +53,12 @@ public class FilmController {
         return result;
     }
 
+    @DeleteMapping("/delete/{filmUid}")
+    public ResponseDto.BooleanDto delete(@PathVariable("filmUid") Long filmUid) throws IOException{
+
+        ResponseDto.BooleanDto result = filmService.delete(filmUid);
+
+        return result;
+    }
+
 }

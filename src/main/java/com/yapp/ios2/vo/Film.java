@@ -42,4 +42,7 @@ public class Film {
 
     @Column
     private LocalDateTime printEndAt;
+
+    @Column
+    private LocalDateTime deleteAt;
 }

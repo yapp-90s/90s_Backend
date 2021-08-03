@@ -153,6 +153,5 @@ public class AlbumControllerTest extends TestInit {
                 .andDo(print())
                 .andExpect(status().isOk()
                 );
-
     }
 }
