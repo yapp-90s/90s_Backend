@@ -36,9 +36,6 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestConfig.class)
-@ActiveProfiles("test")
 public class AlbumControllerTest extends TestInit {
 
     @Test
@@ -49,12 +46,10 @@ public class AlbumControllerTest extends TestInit {
     @Test
     public void create_album() throws Exception {
 
-        jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";
-
         AlbumDto.AlbumInfo albumInfo = AlbumDto.AlbumInfo.builder()
                 .name("테스트앨범")
                 .coverCode(1001)
-                .layoutCode(2001)
+                .layoutCode(1002)
                 .build();
 
         ObjectMapper json = new ObjectMapper();
@@ -62,7 +57,7 @@ public class AlbumControllerTest extends TestInit {
 
         mockMvc.perform(
                 post("/album/create")
-                        .header("X-AUTH-TOKEN", jwt)
+                        .header("X-AUTH-TOKEN", user.getJWT())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonString)
                         .accept(MediaType.APPLICATION_JSON))
@@ -75,11 +70,9 @@ public class AlbumControllerTest extends TestInit {
     @Test
     public void get_albums() throws Exception {
 
-        jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";
-
         mockMvc.perform(
                 get("/album/getAlbums")
-                        .header("X-AUTH-TOKEN", jwt)
+                        .header("X-AUTH-TOKEN", user.getJWT())
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())

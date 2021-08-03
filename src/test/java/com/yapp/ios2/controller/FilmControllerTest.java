@@ -10,6 +10,7 @@ import com.yapp.ios2.repository.UserRepository;
 import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.testConfig.TestInit;
 import com.yapp.ios2.vo.Album;
+import com.yapp.ios2.vo.Film;
 import com.yapp.ios2.vo.User;
 import org.junit.Before;
 import org.junit.Rule;
@@ -36,15 +37,12 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestConfig.class)
-@ActiveProfiles("test")
 public class FilmControllerTest extends TestInit {
 
     @Test
     public void create_film() throws Exception {
 
-        jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";
+
 
         FilmDto filmDto = FilmDto.builder()
                 .name("Test Film")
@@ -56,7 +54,7 @@ public class FilmControllerTest extends TestInit {
 
         mockMvc.perform(
                 post("/film/create")
-                        .header("X-AUTH-TOKEN", jwt)
+                        .header("X-AUTH-TOKEN", user.getJWT())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonString)
                         .accept(MediaType.APPLICATION_JSON))
@@ -70,14 +68,9 @@ public class FilmControllerTest extends TestInit {
     @Test
     public void get_Films() throws Exception {
 
-        User user = userRepository.findUserByName("90s_tester").get();
-
-        String jwt = jwtProvider.createToken(user.getUid().toString(), user.getRoles());
-
-
         mockMvc.perform(
                 get("/film/getFilms")
-                        .header("X-AUTH-TOKEN", jwt)
+                        .header("X-AUTH-TOKEN", user.getJWT())
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
         ;
@@ -86,15 +79,11 @@ public class FilmControllerTest extends TestInit {
     @Test
     public void start_printing() throws Exception {
 
-        User user = userRepository.findUserByName("90s_tester").get();
-
-        String jwt = jwtProvider.createToken(user.getUid().toString(), user.getRoles());
-
         Long filmUid = filmRepository.findAllByUser(user).get(0).getUid();
 
         mockMvc.perform(
                 get("/film/startPrinting/" + filmUid.toString())
-                        .header("X-AUTH-TOKEN", jwt)
+                        .header("X-AUTH-TOKEN", user.getJWT())
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -107,10 +96,10 @@ public class FilmControllerTest extends TestInit {
 
         String jwt = user.getJWT();
 
-        Album album = albumRepository.findByUser(user).get(0);
+        Film film = filmRepository.findAllByUser(user).get(0);
 
         mockMvc.perform(
-                delete("/album/delete/" + album.getUid())
+                delete("/film/delete/" + film.getUid())
                         .header("X-AUTH-TOKEN", jwt)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))

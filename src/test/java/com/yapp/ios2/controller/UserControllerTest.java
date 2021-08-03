@@ -8,6 +8,7 @@ import com.yapp.ios2.dto.*;
 import com.yapp.ios2.repository.UserRepository;
 import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.config.FuncUtils;
+import com.yapp.ios2.testConfig.TestInit;
 import com.yapp.ios2.vo.User;
 import org.junit.Before;
 import org.junit.Rule;
@@ -37,90 +38,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestConfig.class)
-@ActiveProfiles("test")
-public class UserControllerTest{
-    @Rule
-    public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
-
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    WebApplicationContext context;
-
-    @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    JwtProvider jwtProvider;
-
-    @Autowired
-    PasswordEncoder passwordEncoder;
-
-    MockMvc mockMvc;
-    RestDocumentationResultHandler document;
-
-    User testUser;
-
-    String jwt;
-
-    @Before
-    public void setUp() {
-        this.document = document(
-                "{class-name}/{method-name}",
-                preprocessResponse(prettyPrint())
-        );
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
-                .apply(documentationConfiguration(this.restDocumentation)
-                        .uris().withScheme("http").withHost("49.50.162.246").withPort(8080))
-                .apply(springSecurity())
-                .alwaysDo(document)
-                .build();
-
-    }
-
-//    @Test
-//    public void join() throws Exception {
-//
-//        JoinDto joinDto = new JoinDto();
-//        joinDto.setEmailKakao("tester@90s.com");
-//        joinDto.setName("tester");
-//        joinDto.setPhone("010-9523-3114");
-//
-//        ObjectMapper json = new ObjectMapper();
-//        String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(joinDto);
-//
-//        mockMvc.perform(
-//                post("/user/join")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(jsonString)
-//                        .accept(MediaType.APPLICATION_JSON))
-//                .andDo(print())
-//                .andExpect(status().isOk())
-//                .andDo(print());
-//
-//        deleteTester(userService, userRepository, jwtProvider);
-
-//                .andDo(document.document(
-//                        requestFields(
-//                                fieldWithPath("email").description("이메일").attributes(new Attributes.Attribute("format", "test@90s.com")),
-//                                fieldWithPath("name").description("유저 이름"),
-//                                fieldWithPath("password").description("비밀번호").attributes(new Attributes.Attribute("format", "카카오 로그인 시에는 null로 보내지 않아도 무관합니다.")),
-//                                fieldWithPath("phone").type("String").description("핸드폰 번호").attributes(new Attributes.Attribute("format", "010-1234-5678")),
-//                                fieldWithPath("sosial").type("Boolean").description("카카오 로그인 여부").attributes(new Attributes.Attribute("format", "true / false"))
-//                        )
-//                ));
-
-//        if(userRepository.findByEmail("tester@90s.com").isPresent()){
-//            userRepository.delete(userRepository.findByEmail("tester@90s.com").get());
-//        }
-//    }
+//@RunWith(SpringRunner.class)
+//@SpringBootTest(classes = TestConfig.class)
+//@ActiveProfiles("test")
+public class UserControllerTest extends TestInit {
 
     @Test
     public void run() throws Exception{
-//        login_ErrorCode_C001();
         loginWithEmailAndPhoneNum();
         loginWithOnlyEmailButNoEmail();
         loginWithOnlyEmail();
@@ -141,7 +65,7 @@ public class UserControllerTest{
                         .content(jsonString)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isOk())
+                .andExpect(status().is4xxClientError())
                 .andDo(document.document(
                 ));
     }
@@ -194,7 +118,7 @@ public class UserControllerTest{
                         .content(jsonString)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isOk())
+                .andExpect(status().is5xxServerError())
                 .andDo(document.document())
         ;
     }

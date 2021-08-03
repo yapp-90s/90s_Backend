@@ -42,23 +42,18 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestConfig.class)
-@ActiveProfiles("test")
 public class PhotoControllerTest extends TestInit {
 
     @Test
     public void upload_photo() throws Exception {
-
-        jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";
 
         MockMultipartFile multipartFile = new MockMultipartFile("testPic.jpeg", new FileInputStream(new File("src/test/java/com/yapp/ios2/data/testPicture.jpeg")));
 
         mockMvc.perform(
                 fileUpload("/photo/upload")
                         .file("image", multipartFile.getBytes())
-                        .header("X-AUTH-TOKEN", jwt)
-                        .param("filmUid","10")
+                        .header("X-AUTH-TOKEN", user.getJWT())
+                        .param("filmUid", filmRepository.findAllByUser(user).get(0).getUid().toString())
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(document.document(
@@ -71,23 +66,12 @@ public class PhotoControllerTest extends TestInit {
     @Test
     public void download_photo() throws Exception {
 
-        jwt = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3Iiwicm9sZXMiOlsiUk9MRV9UUllFUiJdLCJpYXQiOjE2MTI1NzA3MjQsImV4cCI6MjI0MzI5MDcyNH0.UCZtpbxD_3-mUAAtZwphgRSw-ZT7-DIbN2VZFzR0FQo";
-
-        List<Photo> photos = photoRepository.findAll();
-
-
-        PhotoDto.PhotoDownload photoDownload = PhotoDto.PhotoDownload.builder()
-                .photoUid(photos.get(photos.size()-1).getUid())
-                .build();
-
-        ObjectMapper json = new ObjectMapper();
-        String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(photoDownload);
+        List<Photo> photos = photoRepository.findAllByUser(user);
 
         mockMvc.perform(
-                post("/photo/download")
-                        .header("X-AUTH-TOKEN", jwt)
+                get("/photo/download/" + photos.get(0).getUid())
+                        .header("X-AUTH-TOKEN", user.getJWT())
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(jsonString)
                         .accept(MediaType.APPLICATION_OCTET_STREAM_VALUE))
                 .andExpect(status().isOk()
                 );
@@ -96,15 +80,11 @@ public class PhotoControllerTest extends TestInit {
     @Test
     public void getPhotoInfosByFilm() throws Exception{
 
-        User user = userRepository.findUserByName("90s_tester").get();
-
-        String jwt = jwtProvider.createToken(user.getUid().toString(), user.getRoles());
-
         Long filmUid = filmRepository.findAllByUser(user).get(0).getUid();
 
         mockMvc.perform(
-                get("/photo/getPhotoInfosByFilm/" + filmUid.toString())
-                        .header("X-AUTH-TOKEN", jwt)
+                get("/photo/getPhotoInfosByFilm/" + filmUid)
+                        .header("X-AUTH-TOKEN", user.getJWT())
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
         ;
@@ -113,16 +93,11 @@ public class PhotoControllerTest extends TestInit {
     @Test
     public void delete() throws Exception{
 
-        User user = userRepository.findUserByName("90s_tester").get();
-
-        String jwt = jwtProvider.createToken(user.getUid().toString(), user.getRoles());
-
         Long photoUid = photoRepository.findAllByFilm(filmRepository.findAllByUser(user).get(0)).get(0).getUid();
 
-
         mockMvc.perform(
-                get("/photo/delete/" + photoUid.toString())
-                        .header("X-AUTH-TOKEN", jwt)
+                get("/photo/delete/" + photoUid)
+                        .header("X-AUTH-TOKEN", user.getJWT())
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
         ;

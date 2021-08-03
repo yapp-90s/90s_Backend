@@ -225,6 +225,30 @@ include::{snippets}/film-controller-test/start_printing/http-request.adoc[]
 ===== Response
 include::{snippets}/film-controller-test/start_printing/http-response.adoc[]
 
+***
+==== film/delete/{filmUid}
+
+.Desc
+----
+필름을 삭제합니다.
+필름을 삭제하면 해당 필름의 데이터가 없어지는 것이 아닌 DB상의 필름 테이블의 deletedAt 칼럼 값이 현재 시간 기준으로 들어가게 됩니다.
+즉, film 데이터 중 deleteAt 값이 Null 이 아닌 데이터는 삭제된 필름입니다.
+----
+
+
+|===
+| 기능 | 방식 | URI
+| 필름 삭제 | delete | film/delete/{film-uid}
+|===
+
+===== Curl
+include::{snippets}/film-controller-test/delete_film/curl-request.adoc[]
+
+===== Request
+include::{snippets}/film-controller-test/delete_film/http-request.adoc[]
+
+===== Response
+include::{snippets}/film-controller-test/delete_film/http-response.adoc[]
 
 ***
 
@@ -265,7 +289,7 @@ include::{snippets}/photo-controller-test/upload_photo/http-response.adoc[]
 
 ***
 
-==== photo/download
+==== photo/download/{photoUid}
 
 필름의 사진을 다운로드합니다. Response로 사진 파일을 보냅니다.
 
@@ -273,7 +297,7 @@ include::{snippets}/photo-controller-test/upload_photo/http-response.adoc[]
 .Desc
 |===
 | 기능 | 방식 | URI
-| 사진 다운로드 | Post | photo/download
+| 사진 다운로드 | get | photo/download/{photoUid}
 |===
 
 ===== CurlRequest
@@ -429,4 +453,29 @@ include::{snippets}/album-controller-test/complete/curl-request.adoc[]
 include::{snippets}/album-controller-test/complete/http-request.adoc[]
 
 ===== Response
+
 include::{snippets}/album-controller-test/complete/http-response.adoc[]
+
+***
+
+==== album/delete/{albumUid}
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 엘범 삭제 | delete | album/delete/{albumUid}
+|===
+
+----
+엘범을 삭제합니다.
+----
+
+===== Curl
+include::{snippets}/album-controller-test/delete_album/curl-request.adoc[]
+
+===== Request
+include::{snippets}/album-controller-test/delete_album/http-request.adoc[]
+
+===== Response
+
+include::{snippets}/album-controller-test/delete_album/http-response.adoc[]

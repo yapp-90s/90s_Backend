@@ -57,11 +57,11 @@ public class PhotoController {
         return photo;
     }
 
-    @PostMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @GetMapping(value = "/download/{photoUid}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     @ResponseBody()
-    public byte[] download(@RequestBody PhotoDto.PhotoDownload photoDownload) throws IOException {
+    public byte[] download(@PathVariable(value="photoUid") Long photoUid) throws IOException {
 
-        byte[] photoBinary = photoService.download(photoDownload.getPhotoUid());
+        byte[] photoBinary = photoService.download(photoUid);
 
         return photoBinary;
     }

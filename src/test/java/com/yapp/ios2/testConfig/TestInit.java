@@ -90,25 +90,40 @@ public class TestInit {
                 preprocessResponse(prettyPrint())
         );
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
-                .apply(
-                        documentationConfiguration(this.restDocumentation)
-                                .uris()
-                                .withScheme("http")
-                                .withHost("49.50.162.246")
-                                .withPort(8080)
-                )
-                .apply(
-                        documentationConfiguration(this.restDocumentation).operationPreprocessors()
-                                .withRequestDefaults(prettyPrint())
-                                .withResponseDefaults(prettyPrint())
-                )
+                .apply(documentationConfiguration(this.restDocumentation)
+                        .uris().withScheme("http").withHost("49.50.162.246").withPort(8080))
                 .apply(springSecurity())
                 .alwaysDo(document)
                 .build();
-
         user = FuncUtils.createTester(userRepository, passwordEncoder);
-
     }
+//
+//    @Before
+//    public void setUp() {
+//        this.document = document(
+//                "{class-name}/{method-name}",
+//                preprocessResponse(prettyPrint())
+//        );
+//        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
+//                .apply(
+//                        documentationConfiguration(this.restDocumentation)
+//                                .uris()
+//                                .withScheme("http")
+//                                .withHost("49.50.162.246")
+//                                .withPort(8080)
+//                )
+//                .apply(
+//                        documentationConfiguration(this.restDocumentation).operationPreprocessors()
+//                                .withRequestDefaults(prettyPrint())
+//                                .withResponseDefaults(prettyPrint())
+//                )
+//                .apply(springSecurity())
+//                .alwaysDo(document)
+//                .build();
+//
+//        user = FuncUtils.createTester(userRepository, passwordEncoder);
+//
+//    }
 
 
 //    @After
