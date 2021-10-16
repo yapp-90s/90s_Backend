@@ -22,9 +22,6 @@ public class AlbumController {
     private AlbumService albumService;
 
     @Autowired
-    private AlbumRepository albumRepository;
-
-    @Autowired
     private UserService userService;
 
     @GetMapping("/")

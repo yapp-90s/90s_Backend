@@ -30,6 +30,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -91,12 +93,12 @@ public class PhotoControllerTest extends TestInit {
     }
 
     @Test
-    public void delete() throws Exception{
+    public void delete_photo() throws Exception{
 
         Long photoUid = photoRepository.findAllByFilm(filmRepository.findAllByUser(user).get(0)).get(0).getUid();
 
         mockMvc.perform(
-                get("/photo/delete/" + photoUid)
+                delete("/photo/delete/" + photoUid)
                         .header("X-AUTH-TOKEN", user.getJWT())
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
