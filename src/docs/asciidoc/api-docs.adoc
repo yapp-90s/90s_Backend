@@ -13,7 +13,7 @@ FC JANYANG CAPTAIN;
 == Overview
 
 === HOST & PORT
-http://49.50.162.246:8080/
+http://133.186.220.56/
 
 === Dummy Test User List
 
