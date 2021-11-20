@@ -54,6 +54,7 @@ bootJar {
 
 //jib Setting
 jib {
+
     from {
         image = 'openjdk:15'
     }
@@ -64,6 +65,18 @@ jib {
     container {
         ports = ['8080']
         volumes = ["/tmp", "/logs"]
+    }
+}
+
+task dockerImageBuildAndPush {
+    dependsOn asciidoctor
+    doFirst{
+        jibDockerBuild
+    }
+    doLast{
+        def command = "docker push radiata03/90s:" + "${project.version}".toString()
+        println "\n\$ ${command}"
+        execute(command, ignoreError:true){r->println r}
     }
 }
 

@@ -13,7 +13,11 @@ FC JANYANG CAPTAIN;
 == Overview
 
 === HOST & PORT
+== Main Host ( API Doc & API )
 http://133.186.220.56/
+
+== phpMyAdmin
+http://133.186.220.56:81/
 
 === Dummy Test User List
 
