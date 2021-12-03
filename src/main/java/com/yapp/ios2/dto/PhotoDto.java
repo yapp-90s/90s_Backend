@@ -3,16 +3,18 @@ package com.yapp.ios2.dto;
 import lombok.*;
 
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Getter
 @Setter
 public class PhotoDto {
 
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Builder
-    public static class PhotoDownload {
-        private Long photoUid;
-
-    }
+	private Integer photoUid;
+	
+	private String url;
+	
+	private String filmUid;
+	
 }
