@@ -834,7 +834,7 @@ Content-Length: 176
 <h5 id="_2curl"><a class="link" href="#_2curl">2Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://49.50.162.246:8080/user/login' -i -X POST \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/user/login' -i -X POST \
     -H 'Content-Type: application/json' \
     -H 'Accept: application/json' \
     -d '{
@@ -854,7 +854,7 @@ Content-Length: 176
 Content-Type: application/json
 Accept: application/json
 Content-Length: 113
-Host: 49.50.162.246:8080
+Host: 133.186.220.56
 
 {
   "emailKakao" : "tester0@90s.com",
@@ -880,7 +880,7 @@ X-Frame-Options: DENY
 Content-Length: 173
 
 {
-  "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjI3OTY0ODU3LCJleHAiOjIyNTg2ODQ4NTd9.g5AmtkdLZURsyqdwQ8xbxvytoOfutxjnwaeZHxCQ_0I"
+  "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc1NTc0LCJleHAiOjIyNjk1OTU1NzR9.kEUcvIc5_PbkCLcms2GZbErG8F3E2KkPpHoepR1u9ps"
 }</code></pre>
 </div>
 </div>
@@ -893,7 +893,7 @@ Content-Length: 173
 <h5 id="_3curl"><a class="link" href="#_3curl">3Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://49.50.162.246:8080/user/login' -i -X POST \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/user/login' -i -X POST \
     -H 'Content-Type: application/json' \
     -H 'Accept: application/json' \
     -d '{
@@ -913,7 +913,7 @@ Content-Length: 173
 Content-Type: application/json
 Accept: application/json
 Content-Length: 101
-Host: 49.50.162.246:8080
+Host: 133.186.220.56
 
 {
   "emailKakao" : "noTester@90s.com",
@@ -980,7 +980,7 @@ Content-Length: 93
 <h5 id="_curl"><a class="link" href="#_curl">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://49.50.162.246:8080/user/checkPhoneNum' -i -X POST \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/user/checkPhoneNum' -i -X POST \
     -H 'Content-Type: application/json' \
     -H 'Accept: application/json' \
     -d '{
@@ -997,7 +997,7 @@ Content-Length: 93
 Content-Type: application/json
 Accept: application/json
 Content-Length: 37
-Host: 49.50.162.246:8080
+Host: 133.186.220.56
 
 {
   "phoneNumber" : "010-9523-3114"
@@ -1020,7 +1020,7 @@ X-Frame-Options: DENY
 Content-Length: 22
 
 {
-  "num" : "189811"
+  "num" : "554752"
 }</code></pre>
 </div>
 </div>
@@ -1163,8 +1163,8 @@ Content-Length: 180
 <h5 id="_curl_3"><a class="link" href="#_curl_3">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://49.50.162.246:8080/film/getFilms' -i -X GET \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1NywiZXhwIjoyMjU4Njg1MTU3fQ._00DckJgm4nr22A8OE6AEdEx7JGozRkH4gqVrT4rJH0' \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/film/getFilms' -i -X GET \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc1NzM2LCJleHAiOjIyNjk1OTU3MzZ9.NsTK-OES78fsa_Gbr5upFHSesLk1v6REmVT-E3RY0IE' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -1174,9 +1174,9 @@ Content-Length: 180
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /film/getFilms HTTP/1.1
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1NywiZXhwIjoyMjU4Njg1MTU3fQ._00DckJgm4nr22A8OE6AEdEx7JGozRkH4gqVrT4rJH0
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc1NzM2LCJleHAiOjIyNjk1OTU3MzZ9.NsTK-OES78fsa_Gbr5upFHSesLk1v6REmVT-E3RY0IE
 Accept: application/json
-Host: 49.50.162.246:8080</code></pre>
+Host: 133.186.220.56</code></pre>
 </div>
 </div>
 </div>
@@ -1192,1145 +1192,165 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 34166
+Content-Length: 3945
 
 [ {
-  "uid" : 22,
+  "filmUid" : 22,
   "name" : "dummyFilm1001_90s_TRYER",
-  "filmType" : {
-    "uid" : 1,
-    "code" : 1001,
-    "name" : "None",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:37",
-    "updatedAt" : "2021-08-01T00:10:37",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 16,
-    "name" : "90s_TRYER",
-    "password" : null,
-    "emailKakao" : "tester0@90s.com",
-    "emailApple" : "tryer@90s.com",
-    "emailGoogle" : "tryer@90s.com",
-    "phoneNum" : "010-0000-0000",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-03T13:27:37",
-    "roles" : [ "ROLE_TRYER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjI3OTY1MTU4LCJleHAiOjIyNTg2ODUxNTh9.GmY_InvoXyz92Ia_RjT4M8Z6ZALIxc35AZFRL_6NZKE",
-    "authorities" : [ {
-      "authority" : "ROLE_TRYER"
-    } ],
-    "username" : "010-0000-0000"
-  },
-  "createdAt" : "2021-08-01T00:10:39",
+  "filmTypeUid" : 1,
+  "createAt" : "2021-12-06T23:51:13.47248",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 23,
+  "filmUid" : 23,
   "name" : "dummyFilm1002_90s_TRYER",
-  "filmType" : {
-    "uid" : 2,
-    "code" : 1002,
-    "name" : "Mono",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 16,
-    "name" : "90s_TRYER",
-    "password" : null,
-    "emailKakao" : "tester0@90s.com",
-    "emailApple" : "tryer@90s.com",
-    "emailGoogle" : "tryer@90s.com",
-    "phoneNum" : "010-0000-0000",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-03T13:27:37",
-    "roles" : [ "ROLE_TRYER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjI3OTY1MTU4LCJleHAiOjIyNTg2ODUxNTh9.GmY_InvoXyz92Ia_RjT4M8Z6ZALIxc35AZFRL_6NZKE",
-    "authorities" : [ {
-      "authority" : "ROLE_TRYER"
-    } ],
-    "username" : "010-0000-0000"
-  },
-  "createdAt" : "2021-08-01T00:10:39",
+  "filmTypeUid" : 2,
+  "createAt" : "2021-12-06T23:51:13.546913",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 24,
+  "filmUid" : 24,
   "name" : "dummyFilm1003_90s_TRYER",
-  "filmType" : {
-    "uid" : 3,
-    "code" : 1003,
-    "name" : "Moss Pink",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 16,
-    "name" : "90s_TRYER",
-    "password" : null,
-    "emailKakao" : "tester0@90s.com",
-    "emailApple" : "tryer@90s.com",
-    "emailGoogle" : "tryer@90s.com",
-    "phoneNum" : "010-0000-0000",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-03T13:27:37",
-    "roles" : [ "ROLE_TRYER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjI3OTY1MTU4LCJleHAiOjIyNTg2ODUxNTh9.GmY_InvoXyz92Ia_RjT4M8Z6ZALIxc35AZFRL_6NZKE",
-    "authorities" : [ {
-      "authority" : "ROLE_TRYER"
-    } ],
-    "username" : "010-0000-0000"
-  },
-  "createdAt" : "2021-08-01T00:10:39",
+  "filmTypeUid" : 3,
+  "createAt" : "2021-12-06T23:51:13.619375",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 25,
+  "filmUid" : 25,
   "name" : "dummyFilm1004_90s_TRYER",
-  "filmType" : {
-    "uid" : 4,
-    "code" : 1004,
-    "name" : "Forget Me Not",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 16,
-    "name" : "90s_TRYER",
-    "password" : null,
-    "emailKakao" : "tester0@90s.com",
-    "emailApple" : "tryer@90s.com",
-    "emailGoogle" : "tryer@90s.com",
-    "phoneNum" : "010-0000-0000",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-03T13:27:37",
-    "roles" : [ "ROLE_TRYER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjI3OTY1MTU4LCJleHAiOjIyNTg2ODUxNTh9.GmY_InvoXyz92Ia_RjT4M8Z6ZALIxc35AZFRL_6NZKE",
-    "authorities" : [ {
-      "authority" : "ROLE_TRYER"
-    } ],
-    "username" : "010-0000-0000"
-  },
-  "createdAt" : "2021-08-01T00:10:39",
+  "filmTypeUid" : 4,
+  "createAt" : "2021-12-06T23:51:13.704432",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 47,
-  "name" : "dummyFilm1002_90s_tester",
-  "filmType" : {
-    "uid" : 2,
-    "code" : 1002,
-    "name" : "Mono",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 17,
-    "name" : "90s_tester",
-    "password" : null,
-    "emailKakao" : "tester@90s.com",
-    "emailApple" : "tester@90s.com",
-    "emailGoogle" : "tester@90s.com",
-    "phoneNum" : "010-1234-1234",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.Vujt8ALP917cqHoaDptO2lbj23-9zfWDSZ9gi3eY6q0",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-1234-1234"
-  },
-  "createdAt" : "2021-08-01T00:10:43",
-  "printStartAt" : "2021-08-02T17:05:35",
-  "printEndAt" : "2021-08-05T17:05:35",
-  "deleteAt" : null
-}, {
-  "uid" : 48,
-  "name" : "dummyFilm1003_90s_tester",
-  "filmType" : {
-    "uid" : 3,
-    "code" : 1003,
-    "name" : "Moss Pink",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 17,
-    "name" : "90s_tester",
-    "password" : null,
-    "emailKakao" : "tester@90s.com",
-    "emailApple" : "tester@90s.com",
-    "emailGoogle" : "tester@90s.com",
-    "phoneNum" : "010-1234-1234",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.Vujt8ALP917cqHoaDptO2lbj23-9zfWDSZ9gi3eY6q0",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-1234-1234"
-  },
-  "createdAt" : "2021-08-01T00:10:43",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
-}, {
-  "uid" : 49,
-  "name" : "dummyFilm1004_90s_tester",
-  "filmType" : {
-    "uid" : 4,
-    "code" : 1004,
-    "name" : "Forget Me Not",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 17,
-    "name" : "90s_tester",
-    "password" : null,
-    "emailKakao" : "tester@90s.com",
-    "emailApple" : "tester@90s.com",
-    "emailGoogle" : "tester@90s.com",
-    "phoneNum" : "010-1234-1234",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.Vujt8ALP917cqHoaDptO2lbj23-9zfWDSZ9gi3eY6q0",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-1234-1234"
-  },
-  "createdAt" : "2021-08-01T00:10:43",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
-}, {
-  "uid" : 70,
+  "filmUid" : 82,
   "name" : "dummyFilm1001_90s_tester1",
-  "filmType" : {
-    "uid" : 1,
-    "code" : 1001,
-    "name" : "None",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:37",
-    "updatedAt" : "2021-08-01T00:10:37",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 18,
-    "name" : "90s_tester1",
-    "password" : null,
-    "emailKakao" : "tester1@90s.com",
-    "emailApple" : "tester1@90s.com",
-    "emailGoogle" : "tester1@90s.com",
-    "phoneNum" : "010-0000-0001",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOCIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.rqPotq3wqDGtQ0Y9YjApZBR4jCVQSMoR0JAI5YNoJ3U",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0001"
-  },
-  "createdAt" : "2021-08-01T00:10:46",
+  "filmTypeUid" : 1,
+  "createAt" : "2021-12-06T23:51:24.787645",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 71,
+  "filmUid" : 83,
   "name" : "dummyFilm1002_90s_tester1",
-  "filmType" : {
-    "uid" : 2,
-    "code" : 1002,
-    "name" : "Mono",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 18,
-    "name" : "90s_tester1",
-    "password" : null,
-    "emailKakao" : "tester1@90s.com",
-    "emailApple" : "tester1@90s.com",
-    "emailGoogle" : "tester1@90s.com",
-    "phoneNum" : "010-0000-0001",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOCIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.rqPotq3wqDGtQ0Y9YjApZBR4jCVQSMoR0JAI5YNoJ3U",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0001"
-  },
-  "createdAt" : "2021-08-01T00:10:46",
+  "filmTypeUid" : 2,
+  "createAt" : "2021-12-06T23:51:24.867633",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 72,
+  "filmUid" : 84,
   "name" : "dummyFilm1003_90s_tester1",
-  "filmType" : {
-    "uid" : 3,
-    "code" : 1003,
-    "name" : "Moss Pink",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 18,
-    "name" : "90s_tester1",
-    "password" : null,
-    "emailKakao" : "tester1@90s.com",
-    "emailApple" : "tester1@90s.com",
-    "emailGoogle" : "tester1@90s.com",
-    "phoneNum" : "010-0000-0001",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOCIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.rqPotq3wqDGtQ0Y9YjApZBR4jCVQSMoR0JAI5YNoJ3U",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0001"
-  },
-  "createdAt" : "2021-08-01T00:10:46",
-  "printStartAt" : "2021-08-02T17:07:00",
-  "printEndAt" : "2021-08-05T17:07:00",
+  "filmTypeUid" : 3,
+  "createAt" : "2021-12-06T23:51:24.949471",
+  "printStartAt" : null,
+  "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 73,
+  "filmUid" : 85,
   "name" : "dummyFilm1004_90s_tester1",
-  "filmType" : {
-    "uid" : 4,
-    "code" : 1004,
-    "name" : "Forget Me Not",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 18,
-    "name" : "90s_tester1",
-    "password" : null,
-    "emailKakao" : "tester1@90s.com",
-    "emailApple" : "tester1@90s.com",
-    "emailGoogle" : "tester1@90s.com",
-    "phoneNum" : "010-0000-0001",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOCIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.rqPotq3wqDGtQ0Y9YjApZBR4jCVQSMoR0JAI5YNoJ3U",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0001"
-  },
-  "createdAt" : "2021-08-01T00:10:46",
+  "filmTypeUid" : 4,
+  "createAt" : "2021-12-06T23:51:25.023558",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 94,
+  "filmUid" : 130,
   "name" : "dummyFilm1001_90s_tester2",
-  "filmType" : {
-    "uid" : 1,
-    "code" : 1001,
-    "name" : "None",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:37",
-    "updatedAt" : "2021-08-01T00:10:37",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 19,
-    "name" : "90s_tester2",
-    "password" : null,
-    "emailKakao" : "tester2@90s.com",
-    "emailApple" : "tester2@90s.com",
-    "emailGoogle" : "tester2@90s.com",
-    "phoneNum" : "010-0000-0002",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOSIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.qczN4cs4_oQOl0Iv6wAdz_xkeD6xL_JQNxjQYqKBdQg",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0002"
-  },
-  "createdAt" : "2021-08-01T00:10:49",
+  "filmTypeUid" : 1,
+  "createAt" : "2021-12-06T23:51:34.529502",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 95,
+  "filmUid" : 131,
   "name" : "dummyFilm1002_90s_tester2",
-  "filmType" : {
-    "uid" : 2,
-    "code" : 1002,
-    "name" : "Mono",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 19,
-    "name" : "90s_tester2",
-    "password" : null,
-    "emailKakao" : "tester2@90s.com",
-    "emailApple" : "tester2@90s.com",
-    "emailGoogle" : "tester2@90s.com",
-    "phoneNum" : "010-0000-0002",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOSIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.qczN4cs4_oQOl0Iv6wAdz_xkeD6xL_JQNxjQYqKBdQg",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0002"
-  },
-  "createdAt" : "2021-08-01T00:10:49",
+  "filmTypeUid" : 2,
+  "createAt" : "2021-12-06T23:51:34.653077",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 96,
+  "filmUid" : 132,
   "name" : "dummyFilm1003_90s_tester2",
-  "filmType" : {
-    "uid" : 3,
-    "code" : 1003,
-    "name" : "Moss Pink",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 19,
-    "name" : "90s_tester2",
-    "password" : null,
-    "emailKakao" : "tester2@90s.com",
-    "emailApple" : "tester2@90s.com",
-    "emailGoogle" : "tester2@90s.com",
-    "phoneNum" : "010-0000-0002",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOSIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.qczN4cs4_oQOl0Iv6wAdz_xkeD6xL_JQNxjQYqKBdQg",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0002"
-  },
-  "createdAt" : "2021-08-01T00:10:49",
+  "filmTypeUid" : 3,
+  "createAt" : "2021-12-06T23:51:34.726994",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 97,
+  "filmUid" : 133,
   "name" : "dummyFilm1004_90s_tester2",
-  "filmType" : {
-    "uid" : 4,
-    "code" : 1004,
-    "name" : "Forget Me Not",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 19,
-    "name" : "90s_tester2",
-    "password" : null,
-    "emailKakao" : "tester2@90s.com",
-    "emailApple" : "tester2@90s.com",
-    "emailGoogle" : "tester2@90s.com",
-    "phoneNum" : "010-0000-0002",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOSIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.qczN4cs4_oQOl0Iv6wAdz_xkeD6xL_JQNxjQYqKBdQg",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0002"
-  },
-  "createdAt" : "2021-08-01T00:10:49",
+  "filmTypeUid" : 4,
+  "createAt" : "2021-12-06T23:51:34.809099",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 118,
+  "filmUid" : 190,
   "name" : "dummyFilm1001_90s_tester3",
-  "filmType" : {
-    "uid" : 1,
-    "code" : 1001,
-    "name" : "None",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:37",
-    "updatedAt" : "2021-08-01T00:10:37",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 20,
-    "name" : "90s_tester3",
-    "password" : null,
-    "emailKakao" : "tester3@90s.com",
-    "emailApple" : "tester3@90s.com",
-    "emailGoogle" : "tester3@90s.com",
-    "phoneNum" : "010-0000-0003",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMCIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.ULNMlEdlrheKqmDc9B3a1wVrQFMcCyRdnuaa1U5JOFk",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0003"
-  },
-  "createdAt" : "2021-08-01T00:10:52",
+  "filmTypeUid" : 1,
+  "createAt" : "2021-12-06T23:51:47.849638",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 119,
+  "filmUid" : 191,
   "name" : "dummyFilm1002_90s_tester3",
-  "filmType" : {
-    "uid" : 2,
-    "code" : 1002,
-    "name" : "Mono",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 20,
-    "name" : "90s_tester3",
-    "password" : null,
-    "emailKakao" : "tester3@90s.com",
-    "emailApple" : "tester3@90s.com",
-    "emailGoogle" : "tester3@90s.com",
-    "phoneNum" : "010-0000-0003",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMCIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.ULNMlEdlrheKqmDc9B3a1wVrQFMcCyRdnuaa1U5JOFk",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0003"
-  },
-  "createdAt" : "2021-08-01T00:10:52",
+  "filmTypeUid" : 2,
+  "createAt" : "2021-12-06T23:51:47.920379",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 120,
+  "filmUid" : 192,
   "name" : "dummyFilm1003_90s_tester3",
-  "filmType" : {
-    "uid" : 3,
-    "code" : 1003,
-    "name" : "Moss Pink",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 20,
-    "name" : "90s_tester3",
-    "password" : null,
-    "emailKakao" : "tester3@90s.com",
-    "emailApple" : "tester3@90s.com",
-    "emailGoogle" : "tester3@90s.com",
-    "phoneNum" : "010-0000-0003",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMCIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.ULNMlEdlrheKqmDc9B3a1wVrQFMcCyRdnuaa1U5JOFk",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0003"
-  },
-  "createdAt" : "2021-08-01T00:10:52",
+  "filmTypeUid" : 3,
+  "createAt" : "2021-12-06T23:51:48.010548",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 121,
+  "filmUid" : 193,
   "name" : "dummyFilm1004_90s_tester3",
-  "filmType" : {
-    "uid" : 4,
-    "code" : 1004,
-    "name" : "Forget Me Not",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 20,
-    "name" : "90s_tester3",
-    "password" : null,
-    "emailKakao" : "tester3@90s.com",
-    "emailApple" : "tester3@90s.com",
-    "emailGoogle" : "tester3@90s.com",
-    "phoneNum" : "010-0000-0003",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMCIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.ULNMlEdlrheKqmDc9B3a1wVrQFMcCyRdnuaa1U5JOFk",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0003"
-  },
-  "createdAt" : "2021-08-01T00:10:52",
+  "filmTypeUid" : 4,
+  "createAt" : "2021-12-06T23:51:48.088579",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 142,
+  "filmUid" : 262,
   "name" : "dummyFilm1001_90s_tester4",
-  "filmType" : {
-    "uid" : 1,
-    "code" : 1001,
-    "name" : "None",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:37",
-    "updatedAt" : "2021-08-01T00:10:37",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 21,
-    "name" : "90s_tester4",
-    "password" : null,
-    "emailKakao" : "tester4@90s.com",
-    "emailApple" : "tester4@90s.com",
-    "emailGoogle" : "tester4@90s.com",
-    "phoneNum" : "010-0000-0004",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMSIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.RfQT_u3NjHdWqdGnpIXQDs-u5RaKidGKfvETNVavosg",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0004"
-  },
-  "createdAt" : "2021-08-01T00:10:56",
+  "filmTypeUid" : 1,
+  "createAt" : "2021-12-06T23:52:02.068954",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 143,
+  "filmUid" : 263,
   "name" : "dummyFilm1002_90s_tester4",
-  "filmType" : {
-    "uid" : 2,
-    "code" : 1002,
-    "name" : "Mono",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 21,
-    "name" : "90s_tester4",
-    "password" : null,
-    "emailKakao" : "tester4@90s.com",
-    "emailApple" : "tester4@90s.com",
-    "emailGoogle" : "tester4@90s.com",
-    "phoneNum" : "010-0000-0004",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMSIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.RfQT_u3NjHdWqdGnpIXQDs-u5RaKidGKfvETNVavosg",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0004"
-  },
-  "createdAt" : "2021-08-01T00:10:56",
+  "filmTypeUid" : 2,
+  "createAt" : "2021-12-06T23:52:02.147815",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 144,
+  "filmUid" : 264,
   "name" : "dummyFilm1003_90s_tester4",
-  "filmType" : {
-    "uid" : 3,
-    "code" : 1003,
-    "name" : "Moss Pink",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 21,
-    "name" : "90s_tester4",
-    "password" : null,
-    "emailKakao" : "tester4@90s.com",
-    "emailApple" : "tester4@90s.com",
-    "emailGoogle" : "tester4@90s.com",
-    "phoneNum" : "010-0000-0004",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMSIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.RfQT_u3NjHdWqdGnpIXQDs-u5RaKidGKfvETNVavosg",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0004"
-  },
-  "createdAt" : "2021-08-01T00:10:56",
+  "filmTypeUid" : 3,
+  "createAt" : "2021-12-06T23:52:02.234672",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
 }, {
-  "uid" : 145,
+  "filmUid" : 265,
   "name" : "dummyFilm1004_90s_tester4",
-  "filmType" : {
-    "uid" : 4,
-    "code" : 1004,
-    "name" : "Forget Me Not",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 21,
-    "name" : "90s_tester4",
-    "password" : null,
-    "emailKakao" : "tester4@90s.com",
-    "emailApple" : "tester4@90s.com",
-    "emailGoogle" : "tester4@90s.com",
-    "phoneNum" : "010-0000-0004",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMSIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.RfQT_u3NjHdWqdGnpIXQDs-u5RaKidGKfvETNVavosg",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-0000-0004"
-  },
-  "createdAt" : "2021-08-01T00:10:57",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
-}, {
-  "uid" : 167,
-  "name" : "test",
-  "filmType" : {
-    "uid" : 1,
-    "code" : 1001,
-    "name" : "None",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:37",
-    "updatedAt" : "2021-08-01T00:10:37",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 17,
-    "name" : "90s_tester",
-    "password" : null,
-    "emailKakao" : "tester@90s.com",
-    "emailApple" : "tester@90s.com",
-    "emailGoogle" : "tester@90s.com",
-    "phoneNum" : "010-1234-1234",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.Vujt8ALP917cqHoaDptO2lbj23-9zfWDSZ9gi3eY6q0",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-1234-1234"
-  },
-  "createdAt" : "2021-08-02T13:52:43",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
-}, {
-  "uid" : 168,
-  "name" : "test",
-  "filmType" : {
-    "uid" : 1,
-    "code" : 1001,
-    "name" : "None",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:37",
-    "updatedAt" : "2021-08-01T00:10:37",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 17,
-    "name" : "90s_tester",
-    "password" : null,
-    "emailKakao" : "tester@90s.com",
-    "emailApple" : "tester@90s.com",
-    "emailGoogle" : "tester@90s.com",
-    "phoneNum" : "010-1234-1234",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.Vujt8ALP917cqHoaDptO2lbj23-9zfWDSZ9gi3eY6q0",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-1234-1234"
-  },
-  "createdAt" : "2021-08-02T14:33:21",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
-}, {
-  "uid" : 169,
-  "name" : "test",
-  "filmType" : {
-    "uid" : 2,
-    "code" : 1002,
-    "name" : "Mono",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 17,
-    "name" : "90s_tester",
-    "password" : null,
-    "emailKakao" : "tester@90s.com",
-    "emailApple" : "tester@90s.com",
-    "emailGoogle" : "tester@90s.com",
-    "phoneNum" : "010-1234-1234",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.Vujt8ALP917cqHoaDptO2lbj23-9zfWDSZ9gi3eY6q0",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-1234-1234"
-  },
-  "createdAt" : "2021-08-02T15:57:54",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
-}, {
-  "uid" : 170,
-  "name" : "test",
-  "filmType" : {
-    "uid" : 2,
-    "code" : 1002,
-    "name" : "Mono",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:38",
-    "updatedAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 17,
-    "name" : "90s_tester",
-    "password" : null,
-    "emailKakao" : "tester@90s.com",
-    "emailApple" : "tester@90s.com",
-    "emailGoogle" : "tester@90s.com",
-    "phoneNum" : "010-1234-1234",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.Vujt8ALP917cqHoaDptO2lbj23-9zfWDSZ9gi3eY6q0",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-1234-1234"
-  },
-  "createdAt" : "2021-08-02T15:59:50",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
-}, {
-  "uid" : 171,
-  "name" : "Test",
-  "filmType" : {
-    "uid" : 1,
-    "code" : 1001,
-    "name" : "None",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:37",
-    "updatedAt" : "2021-08-01T00:10:37",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 17,
-    "name" : "90s_tester",
-    "password" : null,
-    "emailKakao" : "tester@90s.com",
-    "emailApple" : "tester@90s.com",
-    "emailGoogle" : "tester@90s.com",
-    "phoneNum" : "010-1234-1234",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.Vujt8ALP917cqHoaDptO2lbj23-9zfWDSZ9gi3eY6q0",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-1234-1234"
-  },
-  "createdAt" : "2021-08-02T16:03:31",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
-}, {
-  "uid" : 172,
-  "name" : "Test",
-  "filmType" : {
-    "uid" : 1,
-    "code" : 1001,
-    "name" : "None",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:37",
-    "updatedAt" : "2021-08-01T00:10:37",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 17,
-    "name" : "90s_tester",
-    "password" : null,
-    "emailKakao" : "tester@90s.com",
-    "emailApple" : "tester@90s.com",
-    "emailGoogle" : "tester@90s.com",
-    "phoneNum" : "010-1234-1234",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.Vujt8ALP917cqHoaDptO2lbj23-9zfWDSZ9gi3eY6q0",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-1234-1234"
-  },
-  "createdAt" : "2021-08-02T16:03:46",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
-}, {
-  "uid" : 173,
-  "name" : "Test Film",
-  "filmType" : {
-    "uid" : 1,
-    "code" : 1001,
-    "name" : "None",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:37",
-    "updatedAt" : "2021-08-01T00:10:37",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 17,
-    "name" : "90s_tester",
-    "password" : null,
-    "emailKakao" : "tester@90s.com",
-    "emailApple" : "tester@90s.com",
-    "emailGoogle" : "tester@90s.com",
-    "phoneNum" : "010-1234-1234",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE1OCwiZXhwIjoyMjU4Njg1MTU4fQ.Vujt8ALP917cqHoaDptO2lbj23-9zfWDSZ9gi3eY6q0",
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-1234-1234"
-  },
-  "createdAt" : "2021-08-03T13:31:57",
+  "filmTypeUid" : 4,
+  "createAt" : "2021-12-06T23:52:02.316691",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
@@ -2370,8 +1390,8 @@ Content-Length: 34166
 <h5 id="_curl_4"><a class="link" href="#_curl_4">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://49.50.162.246:8080/film/startPrinting/46' -i -X GET \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE4OCwiZXhwIjoyMjU4Njg1MTg4fQ._8F9YGpJYwgEHVyyncLz81gJ-OR8bjwe9mzsdTmS1sc' \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/film/startPrinting/22' -i -X GET \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc1NzgyLCJleHAiOjIyNjk1OTU3ODJ9.Stoj6oyL6irFMHgNAnxebiBhrG8df2-_0dUBn_m27vM' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -2380,10 +1400,10 @@ Content-Length: 34166
 <h5 id="_request_4"><a class="link" href="#_request_4">Request</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /film/startPrinting/46 HTTP/1.1
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTE4OCwiZXhwIjoyMjU4Njg1MTg4fQ._8F9YGpJYwgEHVyyncLz81gJ-OR8bjwe9mzsdTmS1sc
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /film/startPrinting/22 HTTP/1.1
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc1NzgyLCJleHAiOjIyNjk1OTU3ODJ9.Stoj6oyL6irFMHgNAnxebiBhrG8df2-_0dUBn_m27vM
 Accept: application/json
-Host: 49.50.162.246:8080</code></pre>
+Host: 133.186.220.56</code></pre>
 </div>
 </div>
 </div>
@@ -2399,10 +1419,10 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 37
+Content-Length: 38
 
 {
-  "result" : true,
+  "result" : false,
   "msg" : null
 }</code></pre>
 </div>
@@ -2443,9 +1463,9 @@ Content-Length: 37
 <h5 id="_curl_5"><a class="link" href="#_curl_5">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://49.50.162.246:8080/film/delete/46' -i -X DELETE \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/film/delete/22' -i -X DELETE \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTIxNywiZXhwIjoyMjU4Njg1MjE3fQ.E_S78Mv2tfLz8ViO12rO5vE2RUPJ5XlxIbYVXbONr58' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc1Nzk2LCJleHAiOjIyNjk1OTU3OTZ9.c6RXuNEjFC57BRUrGbVG3FX3A_V4QmdS5GzJ86rnfsk' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -2454,11 +1474,11 @@ Content-Length: 37
 <h5 id="_request_5"><a class="link" href="#_request_5">Request</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">DELETE /film/delete/46 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">DELETE /film/delete/22 HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTIxNywiZXhwIjoyMjU4Njg1MjE3fQ.E_S78Mv2tfLz8ViO12rO5vE2RUPJ5XlxIbYVXbONr58
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc1Nzk2LCJleHAiOjIyNjk1OTU3OTZ9.c6RXuNEjFC57BRUrGbVG3FX3A_V4QmdS5GzJ86rnfsk
 Accept: application/json
-Host: 49.50.162.246:8080</code></pre>
+Host: 133.186.220.56</code></pre>
 </div>
 </div>
 </div>
@@ -2573,52 +1593,12 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 1470
+Content-Length: 129
 
 {
-  "uid" : 174,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/46/174.jpeg",
-  "film" : {
-    "uid" : 46,
-    "name" : "dummyFilm1001_90s_tester",
-    "filmType" : {
-      "uid" : 1,
-      "code" : 1001,
-      "name" : "None",
-      "description" : "Ready",
-      "max" : 10,
-      "createdAt" : "2021-08-01T00:10:37",
-      "updatedAt" : "2021-08-01T00:10:37",
-      "releasedAt" : null
-    },
-    "user" : {
-      "uid" : 17,
-      "name" : "90s_tester",
-      "password" : null,
-      "emailKakao" : "tester@90s.com",
-      "emailApple" : "tester@90s.com",
-      "emailGoogle" : "tester@90s.com",
-      "phoneNum" : "010-1234-1234",
-      "created_at" : "2021-08-01T00:10:39",
-      "updated_at" : "2021-08-01T00:10:39",
-      "roles" : [ "ROLE_TESTER" ],
-      "enabled" : true,
-      "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTQ5NSwiZXhwIjoyMjU4Njg1NDk1fQ.E6ZxttTasUgs6wMkk8oQLvKmRcSpLvo51xycuGcZFYs",
-      "authorities" : [ {
-        "authority" : "ROLE_TESTER"
-      } ],
-      "username" : "010-1234-1234",
-      "accountNonExpired" : true,
-      "accountNonLocked" : true,
-      "credentialsNonExpired" : true
-    },
-    "createdAt" : "2021-08-01T00:10:43",
-    "printStartAt" : "2021-08-03T13:33:11",
-    "printEndAt" : "2021-08-06T13:33:11",
-    "deleteAt" : "2021-08-03T13:33:39"
-  },
-  "createdAt" : "2021-08-03T13:38:14.01395",
-  "updatedAt" : "2021-08-03T13:38:15.30031"
+  "photoUid" : 354,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/354.jpeg",
+  "filmUid" : 22
 }</code></pre>
 </div>
 </div>
@@ -2654,9 +1634,9 @@ Content-Length: 1470
 <h5 id="_curlrequest"><a class="link" href="#_curlrequest">CurlRequest</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://49.50.162.246:8080/photo/download/50' -i -X GET \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/photo/download/26' -i -X GET \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTc4NywiZXhwIjoyMjU4Njg1Nzg3fQ.TGesHdV8HML8bQBnp1eoTuEHJ0CZ5ridpiMJ-0QBYxI' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2NzMwLCJleHAiOjIyNjk1OTY3MzB9.CIVBXX24i5YcQhR5QSn5JmqyiXEVHosJuDZKNFe88Ik' \
     -H 'Accept: application/octet-stream'</code></pre>
 </div>
 </div>
@@ -2665,11 +1645,11 @@ Content-Length: 1470
 <h5 id="_httprequest"><a class="link" href="#_httprequest">httpRequest</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /photo/download/50 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /photo/download/26 HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTc4NywiZXhwIjoyMjU4Njg1Nzg3fQ.TGesHdV8HML8bQBnp1eoTuEHJ0CZ5ridpiMJ-0QBYxI
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2NzMwLCJleHAiOjIyNjk1OTY3MzB9.CIVBXX24i5YcQhR5QSn5JmqyiXEVHosJuDZKNFe88Ik
 Accept: application/octet-stream
-Host: 49.50.162.246:8080</code></pre>
+Host: 133.186.220.56</code></pre>
 </div>
 </div>
 <hr>
@@ -2705,8 +1685,8 @@ Host: 49.50.162.246:8080</code></pre>
 <h5 id="_curlrequest_2"><a class="link" href="#_curlrequest_2">CurlRequest</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://49.50.162.246:8080/photo/getPhotoInfosByFilm/46' -i -X GET \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTkwOCwiZXhwIjoyMjU4Njg1OTA4fQ.aWLwyL-EW-RTda4YUSFEoqnwHNfwq4Z8iSyUX4IwYDI' \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/photo/getPhotoInfosByFilm/22' -i -X GET \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2ODEwLCJleHAiOjIyNjk1OTY4MTB9.9NBGVlcz61uCn3FbXSEkvUkxrRmOk1shHjIfh2hwZXc' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -2715,10 +1695,10 @@ Host: 49.50.162.246:8080</code></pre>
 <h5 id="_httprequest_2"><a class="link" href="#_httprequest_2">httpRequest</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /photo/getPhotoInfosByFilm/46 HTTP/1.1
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTkwOCwiZXhwIjoyMjU4Njg1OTA4fQ.aWLwyL-EW-RTda4YUSFEoqnwHNfwq4Z8iSyUX4IwYDI
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /photo/getPhotoInfosByFilm/22 HTTP/1.1
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2ODEwLCJleHAiOjIyNjk1OTY4MTB9.9NBGVlcz61uCn3FbXSEkvUkxrRmOk1shHjIfh2hwZXc
 Accept: application/json
-Host: 49.50.162.246:8080</code></pre>
+Host: 133.186.220.56</code></pre>
 </div>
 </div>
 </div>
@@ -2734,184 +1714,84 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 5836
+Content-Length: 2473
 
 [ {
-  "uid" : 50,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/46/50.jpeg",
-  "film" : {
-    "uid" : 46,
-    "name" : "dummyFilm1001_90s_tester",
-    "filmType" : {
-      "uid" : 1,
-      "code" : 1001,
-      "name" : "None",
-      "description" : "Ready",
-      "max" : 10,
-      "createdAt" : "2021-08-01T00:10:37",
-      "updatedAt" : "2021-08-01T00:10:37",
-      "releasedAt" : null
-    },
-    "user" : {
-      "uid" : 17,
-      "name" : "90s_tester",
-      "password" : null,
-      "emailKakao" : "tester@90s.com",
-      "emailApple" : "tester@90s.com",
-      "emailGoogle" : "tester@90s.com",
-      "phoneNum" : "010-1234-1234",
-      "created_at" : "2021-08-01T00:10:39",
-      "updated_at" : "2021-08-01T00:10:39",
-      "roles" : [ "ROLE_TESTER" ],
-      "enabled" : true,
-      "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTkwOSwiZXhwIjoyMjU4Njg1OTA5fQ.li85ghn3cNkv3V-S0kPcr0dRXs60J1NWhUb27anumNY",
-      "accountNonExpired" : true,
-      "accountNonLocked" : true,
-      "credentialsNonExpired" : true,
-      "authorities" : [ {
-        "authority" : "ROLE_TESTER"
-      } ],
-      "username" : "010-1234-1234"
-    },
-    "createdAt" : "2021-08-01T00:10:43",
-    "printStartAt" : "2021-08-03T13:33:11",
-    "printEndAt" : "2021-08-06T13:33:11",
-    "deleteAt" : "2021-08-03T13:33:39"
-  },
-  "createdAt" : "2021-08-01T00:10:43",
-  "updatedAt" : "2021-08-01T00:10:43"
+  "photoUid" : 26,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/26.jpeg",
+  "filmUid" : 22
 }, {
-  "uid" : 51,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/46/51.jpeg",
-  "film" : {
-    "uid" : 46,
-    "name" : "dummyFilm1001_90s_tester",
-    "filmType" : {
-      "uid" : 1,
-      "code" : 1001,
-      "name" : "None",
-      "description" : "Ready",
-      "max" : 10,
-      "createdAt" : "2021-08-01T00:10:37",
-      "updatedAt" : "2021-08-01T00:10:37",
-      "releasedAt" : null
-    },
-    "user" : {
-      "uid" : 17,
-      "name" : "90s_tester",
-      "password" : null,
-      "emailKakao" : "tester@90s.com",
-      "emailApple" : "tester@90s.com",
-      "emailGoogle" : "tester@90s.com",
-      "phoneNum" : "010-1234-1234",
-      "created_at" : "2021-08-01T00:10:39",
-      "updated_at" : "2021-08-01T00:10:39",
-      "roles" : [ "ROLE_TESTER" ],
-      "enabled" : true,
-      "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTkwOSwiZXhwIjoyMjU4Njg1OTA5fQ.li85ghn3cNkv3V-S0kPcr0dRXs60J1NWhUb27anumNY",
-      "accountNonExpired" : true,
-      "accountNonLocked" : true,
-      "credentialsNonExpired" : true,
-      "authorities" : [ {
-        "authority" : "ROLE_TESTER"
-      } ],
-      "username" : "010-1234-1234"
-    },
-    "createdAt" : "2021-08-01T00:10:43",
-    "printStartAt" : "2021-08-03T13:33:11",
-    "printEndAt" : "2021-08-06T13:33:11",
-    "deleteAt" : "2021-08-03T13:33:39"
-  },
-  "createdAt" : "2021-08-01T00:10:44",
-  "updatedAt" : "2021-08-01T00:10:44"
+  "photoUid" : 27,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/27.jpeg",
+  "filmUid" : 22
 }, {
-  "uid" : 52,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/46/52.jpeg",
-  "film" : {
-    "uid" : 46,
-    "name" : "dummyFilm1001_90s_tester",
-    "filmType" : {
-      "uid" : 1,
-      "code" : 1001,
-      "name" : "None",
-      "description" : "Ready",
-      "max" : 10,
-      "createdAt" : "2021-08-01T00:10:37",
-      "updatedAt" : "2021-08-01T00:10:37",
-      "releasedAt" : null
-    },
-    "user" : {
-      "uid" : 17,
-      "name" : "90s_tester",
-      "password" : null,
-      "emailKakao" : "tester@90s.com",
-      "emailApple" : "tester@90s.com",
-      "emailGoogle" : "tester@90s.com",
-      "phoneNum" : "010-1234-1234",
-      "created_at" : "2021-08-01T00:10:39",
-      "updated_at" : "2021-08-01T00:10:39",
-      "roles" : [ "ROLE_TESTER" ],
-      "enabled" : true,
-      "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTkwOSwiZXhwIjoyMjU4Njg1OTA5fQ.li85ghn3cNkv3V-S0kPcr0dRXs60J1NWhUb27anumNY",
-      "accountNonExpired" : true,
-      "accountNonLocked" : true,
-      "credentialsNonExpired" : true,
-      "authorities" : [ {
-        "authority" : "ROLE_TESTER"
-      } ],
-      "username" : "010-1234-1234"
-    },
-    "createdAt" : "2021-08-01T00:10:43",
-    "printStartAt" : "2021-08-03T13:33:11",
-    "printEndAt" : "2021-08-06T13:33:11",
-    "deleteAt" : "2021-08-03T13:33:39"
-  },
-  "createdAt" : "2021-08-01T00:10:44",
-  "updatedAt" : "2021-08-01T00:10:44"
+  "photoUid" : 28,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/28.jpeg",
+  "filmUid" : 22
 }, {
-  "uid" : 174,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/46/174.jpeg",
-  "film" : {
-    "uid" : 46,
-    "name" : "dummyFilm1001_90s_tester",
-    "filmType" : {
-      "uid" : 1,
-      "code" : 1001,
-      "name" : "None",
-      "description" : "Ready",
-      "max" : 10,
-      "createdAt" : "2021-08-01T00:10:37",
-      "updatedAt" : "2021-08-01T00:10:37",
-      "releasedAt" : null
-    },
-    "user" : {
-      "uid" : 17,
-      "name" : "90s_tester",
-      "password" : null,
-      "emailKakao" : "tester@90s.com",
-      "emailApple" : "tester@90s.com",
-      "emailGoogle" : "tester@90s.com",
-      "phoneNum" : "010-1234-1234",
-      "created_at" : "2021-08-01T00:10:39",
-      "updated_at" : "2021-08-01T00:10:39",
-      "roles" : [ "ROLE_TESTER" ],
-      "enabled" : true,
-      "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTkwOSwiZXhwIjoyMjU4Njg1OTA5fQ.li85ghn3cNkv3V-S0kPcr0dRXs60J1NWhUb27anumNY",
-      "accountNonExpired" : true,
-      "accountNonLocked" : true,
-      "credentialsNonExpired" : true,
-      "authorities" : [ {
-        "authority" : "ROLE_TESTER"
-      } ],
-      "username" : "010-1234-1234"
-    },
-    "createdAt" : "2021-08-01T00:10:43",
-    "printStartAt" : "2021-08-03T13:33:11",
-    "printEndAt" : "2021-08-06T13:33:11",
-    "deleteAt" : "2021-08-03T13:33:39"
-  },
-  "createdAt" : "2021-08-03T13:38:14",
-  "updatedAt" : "2021-08-03T13:38:15"
+  "photoUid" : 50,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/50.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 51,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/51.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 52,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/52.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 86,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/86.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 87,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/87.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 88,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/88.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 134,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/134.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 135,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/135.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 136,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/136.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 194,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/194.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 195,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/195.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 196,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/196.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 266,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/266.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 267,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/267.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 268,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/268.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 354,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/354.jpeg",
+  "filmUid" : 22
 } ]</code></pre>
 </div>
 </div>
@@ -3025,14 +1905,14 @@ true</code></pre>
 <h5 id="_curl_6"><a class="link" href="#_curl_6">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://49.50.162.246:8080/album/create' -i -X POST \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/create' -i -X POST \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NjEyNCwiZXhwIjoyMjU4Njg2MTI0fQ.or6NqB-e1T6rBUx_1dQyiMxrY7ygdYcbZOA2uDFNNNQ' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzNTAiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2Mzg4NzU5NjIsImV4cCI6MjI2OTU5NTk2Mn0.lIUwg5g5iLS0atf-sdxbhGWiVLhjchG8qSnf1LfPzbY' \
     -H 'Accept: application/json' \
     -d '{
   "name" : "테스트앨범",
-  "layoutCode" : 1002,
-  "coverCode" : 1001
+  "coverCode" : 1001,
+  "layoutCode" : 1002
 }'</code></pre>
 </div>
 </div>
@@ -3043,15 +1923,15 @@ true</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /album/create HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NjEyNCwiZXhwIjoyMjU4Njg2MTI0fQ.or6NqB-e1T6rBUx_1dQyiMxrY7ygdYcbZOA2uDFNNNQ
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzNTAiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2Mzg4NzU5NjIsImV4cCI6MjI2OTU5NTk2Mn0.lIUwg5g5iLS0atf-sdxbhGWiVLhjchG8qSnf1LfPzbY
 Accept: application/json
 Content-Length: 77
-Host: 49.50.162.246:8080
+Host: 133.186.220.56
 
 {
   "name" : "테스트앨범",
-  "layoutCode" : 1002,
-  "coverCode" : 1001
+  "coverCode" : 1001,
+  "layoutCode" : 1002
 }</code></pre>
 </div>
 </div>
@@ -3068,34 +1948,18 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 610
+Content-Length: 268
 
 {
-  "uid" : 175,
+  "albumUid" : 351,
   "name" : "테스트앨범",
-  "albumCover" : {
-    "uid" : 6,
-    "code" : 1002,
-    "name" : "You Make Me Cloudy",
-    "description" : null,
-    "createdAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null,
-    "path" : null
-  },
-  "albumLayout" : {
-    "uid" : 10,
-    "code" : 1001,
-    "name" : "Portra Black",
-    "description" : null,
-    "totPaper" : 8,
-    "photoPerPaper" : 3,
-    "createdAt" : "2021-08-01T00:10:38",
-    "releasedAt" : null,
-    "path" : null
-  },
-  "createdAt" : "2021-08-03T13:48:45.902238",
-  "updatedAt" : "2021-08-03T13:48:45.902307",
-  "completedAt" : null
+  "readCnt" : null,
+  "coverUid" : 6,
+  "layoutUid" : 10,
+  "endAt" : "2021-12-07T20:19:23.705517",
+  "createdAt" : "2021-12-07T20:19:23.705517",
+  "updatedAt" : "2021-12-07T20:19:23.705596",
+  "isComplete" : false
 }</code></pre>
 </div>
 </div>
@@ -3133,8 +1997,9 @@ Content-Length: 610
 <h5 id="_curl_7"><a class="link" href="#_curl_7">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'https://90s.com/album/getAlbums' -i -X GET \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MjAiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2MDExMDQ3NzgsImV4cCI6MjIzMTgyNDc3OH0.ONO4cx9OPjdqh3XLmCnbKKARk6s3rohxzlTmWJ7-lwE' \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/getAlbums' -i -X GET \
+    -H 'Content-Type: application/json' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODgyMDI1LCJleHAiOjIyNjk2MDIwMjV9.EmM5wQMBsgjMxk-3dukLooUbjSr_Kb3Sn4e8IuSnQBE' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -3144,9 +2009,10 @@ Content-Length: 610
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/getAlbums HTTP/1.1
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1MjAiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2MDExMDQ3NzgsImV4cCI6MjIzMTgyNDc3OH0.ONO4cx9OPjdqh3XLmCnbKKARk6s3rohxzlTmWJ7-lwE
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODgyMDI1LCJleHAiOjIyNjk2MDIwMjV9.EmM5wQMBsgjMxk-3dukLooUbjSr_Kb3Sn4e8IuSnQBE
 Accept: application/json
-Host: 90s.com</code></pre>
+Host: 133.186.220.56</code></pre>
 </div>
 </div>
 </div>
@@ -3161,70 +2027,49 @@ X-XSS-Protection: 1; mode=block
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
-Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 X-Frame-Options: DENY
-Content-Length: 1307
+Content-Length: 1104
 
 [ {
-  "uid" : 521,
-  "name" : "NameOfAlbum 3",
-  "password" : "3d9f9912-2f1b-4589-ac13-2fcc057261c9",
-  "photoLimit" : 4,
-  "count" : 0,
-  "orderStatus" : {
-    "uid" : 1,
-    "status" : "pending"
-  },
-  "cover" : {
-    "uid" : 1,
-    "name" : "1990",
-    "path" : "static/1990.jpeg"
-  },
-  "layout" : 1,
-  "endDate" : "2023-09-26",
-  "created_at" : "2020-09-26T16:19:39",
-  "updated_at" : "2020-09-26T16:19:39",
-  "complete" : false
+  "albumUid" : 38,
+  "name" : "dummyAlbum01_90s_TRYER",
+  "readCnt" : null,
+  "coverUid" : 5,
+  "layoutUid" : 10,
+  "endAt" : "2021-12-07T21:52:47.521011",
+  "createdAt" : "2021-12-07T21:52:47.521011",
+  "updatedAt" : "2021-12-07T21:52:47.521036",
+  "isComplete" : false
 }, {
-  "uid" : 523,
-  "name" : "NameOfAlbum 3",
-  "password" : "beed864a-28a5-4a22-8230-4432618ae301",
-  "photoLimit" : 4,
-  "count" : 0,
-  "orderStatus" : {
-    "uid" : 1,
-    "status" : "pending"
-  },
-  "cover" : {
-    "uid" : 1,
-    "name" : "1990",
-    "path" : "static/1990.jpeg"
-  },
-  "layout" : 1,
-  "endDate" : "2023-09-26",
-  "created_at" : "2020-09-26T16:19:39",
-  "updated_at" : "2020-09-26T16:19:39",
-  "complete" : false
+  "albumUid" : 40,
+  "name" : "dummyAlbum02_90s_TRYER",
+  "readCnt" : null,
+  "coverUid" : 6,
+  "layoutUid" : 11,
+  "endAt" : "2021-12-07T21:52:47.54851",
+  "createdAt" : "2021-12-07T21:52:47.54851",
+  "updatedAt" : "2021-12-07T21:52:47.548527",
+  "isComplete" : false
 }, {
-  "uid" : 525,
-  "name" : "NameOfAlbum 3",
-  "password" : "b59df5a7-e9a6-4f76-9f91-056b423c67ad",
-  "photoLimit" : 4,
-  "count" : 0,
-  "orderStatus" : {
-    "uid" : 1,
-    "status" : "pending"
-  },
-  "cover" : {
-    "uid" : 1,
-    "name" : "1990",
-    "path" : "static/1990.jpeg"
-  },
-  "layout" : 1,
-  "endDate" : "2023-09-26",
-  "created_at" : "2020-09-26T16:19:39",
-  "updated_at" : "2020-09-26T16:19:39",
-  "complete" : false
+  "albumUid" : 42,
+  "name" : "dummyAlbum03_90s_TRYER",
+  "readCnt" : null,
+  "coverUid" : 7,
+  "layoutUid" : 12,
+  "endAt" : "2021-12-07T21:52:47.574855",
+  "createdAt" : "2021-12-07T21:52:47.574855",
+  "updatedAt" : "2021-12-07T21:52:47.575577",
+  "isComplete" : false
+}, {
+  "albumUid" : 44,
+  "name" : "dummyAlbum04_90s_TRYER",
+  "readCnt" : null,
+  "coverUid" : 8,
+  "layoutUid" : 13,
+  "endAt" : "2021-12-07T21:52:47.592265",
+  "createdAt" : "2021-12-07T21:52:47.592265",
+  "updatedAt" : "2021-12-07T21:52:47.592281",
+  "isComplete" : false
 } ]</code></pre>
 </div>
 </div>
@@ -3265,13 +2110,13 @@ POST 방식이며 Json으로 데이터를 받으며, 받을 때는 '앨범ID', '
 <h5 id="_curl_8"><a class="link" href="#_curl_8">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://49.50.162.246:8080/album/addPhotoInAlbum' -i -X POST \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/addPhotoInAlbum' -i -X POST \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NjE4MSwiZXhwIjoyMjU4Njg2MTgxfQ.rBVFrkyR8Snie9EnYkH33m611NMgFawdR82g8V3Ilnk' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2MDA3LCJleHAiOjIyNjk1OTYwMDd9.Uehs-SiHPLt4Pi98x-QJg6ziauABS647Nk4JHGuMCQ4' \
     -H 'Accept: application/json' \
     -d '{
-  "photoUid" : 51,
-  "albumUid" : 66,
+  "albumUid" : 38,
+  "photoUid" : 26,
   "paperNum" : 1,
   "sequence" : 2
 }'</code></pre>
@@ -3284,14 +2129,14 @@ POST 방식이며 Json으로 데이터를 받으며, 받을 때는 '앨범ID', '
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /album/addPhotoInAlbum HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NjE4MSwiZXhwIjoyMjU4Njg2MTgxfQ.rBVFrkyR8Snie9EnYkH33m611NMgFawdR82g8V3Ilnk
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2MDA3LCJleHAiOjIyNjk1OTYwMDd9.Uehs-SiHPLt4Pi98x-QJg6ziauABS647Nk4JHGuMCQ4
 Accept: application/json
 Content-Length: 76
-Host: 49.50.162.246:8080
+Host: 133.186.220.56
 
 {
-  "photoUid" : 51,
-  "albumUid" : 66,
+  "albumUid" : 38,
+  "photoUid" : 26,
   "paperNum" : 1,
   "sequence" : 2
 }</code></pre>
@@ -3353,9 +2198,9 @@ Content-Length: 37
 <h5 id="_curl_9"><a class="link" href="#_curl_9">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://49.50.162.246:8080/album/complete/66' -i -X GET \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/complete/38' -i -X GET \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NjIwOCwiZXhwIjoyMjU4Njg2MjA4fQ.wOpa_Y7CrqseDmi4WqDuuVDMtIMneFpCZwWdFa-3nBE' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2MDEwLCJleHAiOjIyNjk1OTYwMTB9.PmcvcDXpbs7l8XBjJkKtETK8L039jpG7zlAp4R4MvUA' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -3364,11 +2209,11 @@ Content-Length: 37
 <h5 id="_request_9"><a class="link" href="#_request_9">Request</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/complete/66 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/complete/38 HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NjIwOCwiZXhwIjoyMjU4Njg2MjA4fQ.wOpa_Y7CrqseDmi4WqDuuVDMtIMneFpCZwWdFa-3nBE
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2MDEwLCJleHAiOjIyNjk1OTYwMTB9.PmcvcDXpbs7l8XBjJkKtETK8L039jpG7zlAp4R4MvUA
 Accept: application/json
-Host: 49.50.162.246:8080</code></pre>
+Host: 133.186.220.56</code></pre>
 </div>
 </div>
 </div>
@@ -3426,9 +2271,9 @@ Content-Length: 37
 <h5 id="_curl_10"><a class="link" href="#_curl_10">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://49.50.162.246:8080/album/delete/66' -i -X DELETE \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/delete/38' -i -X DELETE \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NjI0MSwiZXhwIjoyMjU4Njg2MjQxfQ.6YqTo4OYaqmOyJKpel0TgoOJ6odhPed3dJcKEBwgoj8' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2MzAyLCJleHAiOjIyNjk1OTYzMDJ9.9NigSPpN6NoVcuu3eQg2BLlXIw08EyzM8OUwG_SAaY0' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -3437,11 +2282,11 @@ Content-Length: 37
 <h5 id="_request_10"><a class="link" href="#_request_10">Request</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">DELETE /album/delete/66 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">DELETE /album/delete/38 HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NjI0MSwiZXhwIjoyMjU4Njg2MjQxfQ.6YqTo4OYaqmOyJKpel0TgoOJ6odhPed3dJcKEBwgoj8
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2MzAyLCJleHAiOjIyNjk1OTYzMDJ9.9NigSPpN6NoVcuu3eQg2BLlXIw08EyzM8OUwG_SAaY0
 Accept: application/json
-Host: 49.50.162.246:8080</code></pre>
+Host: 133.186.220.56</code></pre>
 </div>
 </div>
 </div>
@@ -3474,7 +2319,7 @@ Content-Length: 37
 <div id="footer">
 <div id="footer-text">
 Version 2.0.1-SNAPSHOT<br>
-Last updated 2021-11-20 15:39:42 +0900
+Last updated 2021-12-07 22:03:04 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">

@@ -401,13 +401,13 @@ include::{snippets}/album-controller-test/create_album/http-response.adoc[]
 ----
 
 ===== Curl
-include::{snippets}/album-controller-test/get-albums/curl-request.adoc[]
+include::{snippets}/album-controller-test/get_albums/curl-request.adoc[]
 
 ===== Request
-include::{snippets}/album-controller-test/get-albums/http-request.adoc[]
+include::{snippets}/album-controller-test/get_albums/http-request.adoc[]
 
 ===== Response
-include::{snippets}/album-controller-test/get-albums/http-response.adoc[]
+include::{snippets}/album-controller-test/get_albums/http-response.adoc[]
 
 ***
 
