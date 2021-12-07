@@ -1,6 +1,8 @@
 package com.yapp.ios2.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yapp.ios2.dto.AddPhotoInAlbumInDto;
+import com.yapp.ios2.dto.CreateAlbumInDto;
 import com.yapp.ios2.testConfig.TestConfig;
 import com.yapp.ios2.config.JwtProvider;
 import com.yapp.ios2.dto.AlbumDto;
@@ -46,7 +48,7 @@ public class AlbumControllerTest extends TestInit {
     @Test
     public void create_album() throws Exception {
 
-        AlbumDto.AlbumInfo albumInfo = AlbumDto.AlbumInfo.builder()
+        CreateAlbumInDto albumInfo = CreateAlbumInDto.builder()
                 .name("테스트앨범")
                 .coverCode(1001)
                 .layoutCode(1002)
@@ -86,12 +88,12 @@ public class AlbumControllerTest extends TestInit {
 
         jwt = user.getJWT();
 
-        Album album = albumService.getAlbumsByUser(user).get(0);
+        AlbumDto albumDto = albumService.getAlbumsByUser(user).get(0);
 
         Photo photo = photoRepository.findAllByUser(user).get(0);
 
-        AlbumDto.AddPhotoInAlbum addPhotoInAlbum = AlbumDto.AddPhotoInAlbum.builder()
-                .albumUid(album.getUid())
+        AddPhotoInAlbumInDto addPhotoInAlbum = AddPhotoInAlbumInDto.builder()
+                .albumUid(albumDto.getAlbumUid())
                 .photoUid(photo.getUid())
                 .paperNum(1)
                 .sequence(2)

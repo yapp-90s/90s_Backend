@@ -26,6 +26,10 @@ public class Album {
     @Column(length = 45, nullable = false)
     private String name;
 
+    @Column
+    private Integer readCnt;
+
+
     @ManyToOne
     @JoinColumn(name ="album_cover", referencedColumnName="uid")
     private AlbumCover albumCover;

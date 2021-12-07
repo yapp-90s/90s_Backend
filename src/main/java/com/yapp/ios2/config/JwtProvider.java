@@ -5,8 +5,10 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,35 +21,48 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
-@RequiredArgsConstructor
 @Component
 public class JwtProvider {
 
     @Value("${spring.secret-key}")
-    private static String secretKey;
+    public static String secretKey;
+
+
+    public JwtProvider(@Value("${spring.secret-key}") String secretKey){
+
+        this.secretKey = secretKey;
+
+    }
+
 
     // 토큰 유효시간 20년
     static private final long tokenValidTime = 20 * 365 * 24 * 60 * 60 * 1000L;
 
-    private final UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService;
 
     // 객체 초기화, secretKey를 Base64로 인코딩한다.
 //    @PostConstruct
 //    protected void init() {
 //        secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
 //    }
-    @Value("${spring.secret-key}")
-    public void setSecretKey(String secretKey){
-        this.secretKey = secretKey;
-    }
-
-    @Value("${spring.secret-key}")
-    public static String getSecretKey(){
-        return secretKey;
-    }
+//    @Value("${spring.secret-key}")
+//    public void setSecretKey(String secretKey){
+//        this.secretKey = secretKey;
+//    }
+//
+//    @Value("${spring.secret-key}")
+//    public static String getSecretKey(){
+//        return secretKey;
+//    }
 
     // JWT 토큰 생성
     public static String createToken(String userUid, List<String> roles) {
+
+        System.out.println(secretKey);
+        System.out.println(secretKey);
+        System.out.println(secretKey);
+        System.out.println(secretKey);
+
         Claims claims = Jwts.claims().setSubject(userUid); // JWT payload 에 저장되는 정보단위
         claims.put("roles", roles); // 정보는 key / value 쌍으로 저장된다.
         Date now = new Date();
@@ -55,7 +70,7 @@ public class JwtProvider {
                 .setClaims(claims) // 정보 저장
                 .setIssuedAt(now) // 토큰 발행 시간 정보
                 .setExpiration(new Date(now.getTime() + tokenValidTime)) // set Expire Time
-                .signWith(SignatureAlgorithm.HS256, getSecretKey())  // 사용할 암호화 알고리즘과
+                .signWith(SignatureAlgorithm.HS256, secretKey)  // 사용할 암호화 알고리즘과
                 // signature 에 들어갈 secret값 세팅
                 .compact();
     }
@@ -77,7 +92,7 @@ public class JwtProvider {
 
     // 토큰에서 회원 정보 추출
     public String getUserPk(String token) {
-        return Jwts.parser().setSigningKey(getSecretKey()).parseClaimsJws(token).getBody().getSubject();
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
 
     // Request의 Header에서 token 값을 가져옵니다. "X-AUTH-TOKEN" : "TOKEN값'
@@ -88,7 +103,7 @@ public class JwtProvider {
     // 토큰의 유효성 + 만료일자 확인
     public boolean validateToken(String jwtToken) {
         try {
-            Jws<Claims> claims = Jwts.parser().setSigningKey(getSecretKey()).parseClaimsJws(jwtToken);
+            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken);
             return !claims.getBody().getExpiration().before(new Date());
         } catch (Exception e) {
             return false;

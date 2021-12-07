@@ -2,6 +2,7 @@ package com.yapp.ios2.service;
 
 import com.yapp.ios2.config.exception.EntityNotFoundException;
 import com.yapp.ios2.config.exception.UserNotFoundException;
+import com.yapp.ios2.dto.AlbumDto;
 import com.yapp.ios2.dto.ResponseDto;
 import com.yapp.ios2.repository.*;
 import com.yapp.ios2.vo.*;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -38,7 +40,9 @@ public class AlbumService{
     @Autowired
     AlbumLayoutRepository albumLayoutRepository;
 
-    public Album create(User user, String name, Integer coverCode, Integer layoutCode) {
+    public AlbumDto create(User user, String name, Integer coverCode, Integer layoutCode) {
+
+        AlbumDto albumDto;
 
         Album newAlbum = Album.builder()
                 .name(name)
@@ -50,7 +54,9 @@ public class AlbumService{
 
         addOwner(newAlbum, user, "ROLE_CREATOR");
 
-        return newAlbum;
+        albumDto = new AlbumDto(newAlbum);
+
+        return albumDto;
     }
 
     public void addOwner(Album album, User user, String role){
@@ -122,9 +128,15 @@ public class AlbumService{
 //        return album;
 //    }
 //
-    public List<Album> getAlbumsByUser(User user) {
+    public List<AlbumDto> getAlbumsByUser(User user) {
 
-        List<Album> albums = albumRepository.findByUser(user);
+        List<AlbumDto> albums = new ArrayList<AlbumDto>();
+
+        albumRepository.findByUser(user).forEach(
+                album -> {
+                    albums.add(new AlbumDto(album));
+                }
+        );
 
         return albums;
     }

@@ -1,10 +1,7 @@
 package com.yapp.ios2.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.yapp.ios2.dto.FilmDto;
-import com.yapp.ios2.dto.LoginDto;
-import com.yapp.ios2.dto.PhotoDto;
-import com.yapp.ios2.dto.ResponseDto;
+import com.yapp.ios2.dto.*;
 import com.yapp.ios2.service.FilmService;
 import com.yapp.ios2.vo.Film;
 import com.yapp.ios2.vo.Photo;
@@ -28,18 +25,18 @@ public class FilmController {
 
     @PostMapping(value = "/create")
     @ResponseBody
-    public Film create(@AuthenticationPrincipal User user, @Valid @RequestBody FilmDto filmDto) {
+    public FilmDto create(@AuthenticationPrincipal User user, @Valid @RequestBody CreateFilmDto createFilmDto) {
 
-        Film film = filmService.createFilm(filmDto.getFilmCode(), filmDto.getName(), user);
+        FilmDto film = filmService.createFilm(createFilmDto.getFilmCode(), createFilmDto.getName(), user);
 
         return film;
     }
 
     @GetMapping(value = "/getFilms")
     @ResponseBody
-    public List<Film> getFilms(@AuthenticationPrincipal User user) {
+    public List<FilmDto> getFilms(@AuthenticationPrincipal User user) {
 
-        List<Film> films = filmService.getFilms(user);
+        List<FilmDto> films = filmService.getFilms(user);
 
         return films;
     }

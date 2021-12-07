@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yapp.ios2.config.exception.EntityNotFoundException;
 import com.yapp.ios2.config.exception.InvalidValueException;
+import com.yapp.ios2.dto.FilmDto;
 import com.yapp.ios2.dto.ResponseDto;
 import com.yapp.ios2.dto.StartPrintingDto;
 import com.yapp.ios2.repository.FilmRepository;
@@ -22,10 +23,7 @@ import springfox.documentation.spring.web.json.Json;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class FilmService {
@@ -46,7 +44,7 @@ public class FilmService {
     @Autowired
     S3Service s3Service;
 
-    public Film createFilm(Integer filmCode, String name, User user){
+    public FilmDto createFilm(Integer filmCode, String name, User user){
 
         Film film = Film.builder()
                 .name(name)
@@ -58,13 +56,24 @@ public class FilmService {
 
         filmRepository.save(film);
 
-        return film;
+        FilmDto filmDto = new FilmDto(film);
+
+        return filmDto;
     }
 
-    public List<Film> getFilms(User user){
+    public List<FilmDto> getFilms(User user){
         // 삭제 되지 않은 필름만 가져옴.
         // 삭제 되지 않은 필름은 deleteAt 이 Null.
-        return filmRepository.findAllByUserAndDeleteAt(user);
+
+        List<FilmDto> filmDtos = new ArrayList<>();
+
+        filmRepository.findAllByUserAndDeleteAt(user).forEach(
+            film -> {
+                filmDtos.add(new FilmDto(film));
+            }
+        );
+
+        return filmDtos;
     }
 
     public ResponseDto.BooleanDto startPrinting(Long filmUid) throws JsonProcessingException{

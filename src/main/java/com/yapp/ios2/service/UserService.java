@@ -1,14 +1,10 @@
 package com.yapp.ios2.service;
 
-import com.yapp.ios2.config.exception.BusinessException;
 import com.yapp.ios2.config.exception.InvalidValueException;
 import com.yapp.ios2.config.exception.UserNotFoundException;
-import com.yapp.ios2.dto.UserDto;
 //import com.yapp.ios2.repository.AlbumOwnerRepository;
 //import com.yapp.ios2.repository.AlbumRepository;
 import com.yapp.ios2.repository.UserRepository;
-import com.yapp.ios2.vo.Album;
-import com.yapp.ios2.vo.AlbumOwner;
 import com.yapp.ios2.vo.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -29,12 +23,6 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
-//    @Autowired
-//    AlbumRepository albumRepository;
-//    @Autowired
-//    AlbumOwnerRepository albumOwnerRepository;
-//    @Autowired
-//    AlbumService albumService;
 
     private final PasswordEncoder passwordEncoder;
 

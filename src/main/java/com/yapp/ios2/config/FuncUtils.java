@@ -1,6 +1,7 @@
 package com.yapp.ios2.config;
 
 import com.yapp.ios2.config.init.properties.FilmProps;
+import com.yapp.ios2.dto.FilmDto;
 import com.yapp.ios2.repository.AlbumRepository;
 import com.yapp.ios2.repository.FilmRepository;
 import com.yapp.ios2.repository.UserRepository;
@@ -68,10 +69,10 @@ public class FuncUtils {
     }
 
     public static void addPhotoInFilmByUser(PhotoService photoService, FilmService filmService, User user){
-        List<Film> films = filmService.getFilms(user);
+        List<FilmDto> films = filmService.getFilms(user);
 
 
-        for(Film film : films){
+        for(FilmDto film : films){
             for(int i = 1; i < 4; i++){
                 String fileName = String.format("%d.jpeg",i);
 
@@ -80,7 +81,7 @@ public class FuncUtils {
 
                 try{
                     MultipartFile multipartFile = new MockMultipartFile(fileName, new FileInputStream(resource.getFile()));
-                    photoService.upload(multipartFile, film.getUid());
+                    photoService.upload(multipartFile, film.getFilmUid());
                 }catch(Exception e){
                     System.out.println("addPhotoInFilmByUser");
                 }

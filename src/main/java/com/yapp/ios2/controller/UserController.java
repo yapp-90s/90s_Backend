@@ -20,12 +20,9 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
     @Autowired
     SnsService snsService;
-//    @Autowired
-//    AlbumService albumService;
-
-//    KakaoService kakaoService;
 
     @Autowired
     JwtProvider jwtProvider;
@@ -61,10 +58,10 @@ public class UserController {
 
     @PostMapping("/checkPhoneNum")
     @ResponseBody
-    public SmsDto.SmsResponseDto sendSms(@RequestBody SmsDto.SmsRequestDto smsRequestDto){
+    public SmsResponseDto sendSms(@RequestBody SmsRequestDto smsRequestDto){
 
         String num = snsService.send(smsRequestDto.getPhoneNumber());
-        SmsDto.SmsResponseDto smsResponseDto = new SmsDto.SmsResponseDto();
+        SmsResponseDto smsResponseDto = new SmsResponseDto();
         smsResponseDto.setNum(num);
 
         return smsResponseDto;

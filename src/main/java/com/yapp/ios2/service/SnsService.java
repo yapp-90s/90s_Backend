@@ -33,7 +33,7 @@ public class SnsService {
 
         String body = String.format("Back to 90s!\n[%s]",randomNum);
 
-        message = Message.creator(new PhoneNumber("+82" + phoneNumber), new PhoneNumber(fromPhoneNum), body).create();
+        message = Message.creator(new PhoneNumber("+82" + phoneNumber.replace("-","")), new PhoneNumber(fromPhoneNum), body).create();
 
         return randomNum;
 

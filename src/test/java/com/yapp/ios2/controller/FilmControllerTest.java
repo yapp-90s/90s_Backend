@@ -1,6 +1,7 @@
 package com.yapp.ios2.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yapp.ios2.dto.CreateFilmDto;
 import com.yapp.ios2.repository.FilmRepository;
 import com.yapp.ios2.testConfig.TestConfig;
 import com.yapp.ios2.config.JwtProvider;
@@ -16,6 +17,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -39,18 +42,23 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class FilmControllerTest extends TestInit {
 
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Test
     public void create_film() throws Exception {
 
 
 
-        FilmDto filmDto = FilmDto.builder()
+        CreateFilmDto createFilmDto = CreateFilmDto.builder()
                 .name("Test Film")
                 .filmCode(1001)
                 .build();
 
         ObjectMapper json = new ObjectMapper();
-        String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(filmDto);
+        String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(createFilmDto);
+
+        System.out.println(jsonString);
+
 
         mockMvc.perform(
                 post("/film/create")

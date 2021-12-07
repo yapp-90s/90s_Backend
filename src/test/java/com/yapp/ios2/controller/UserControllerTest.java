@@ -52,7 +52,7 @@ public class UserControllerTest extends TestInit {
 
     @Test
     public void login_ErrorCode_C001() throws Exception {
-
+    // 모든 필드를 다 안주고 일부 필드만해서 줬을 경우
         LoginDto loginDto = new LoginDto();
         loginDto.setEmailKakao("tester@90s.com");
 
@@ -238,8 +238,8 @@ public class UserControllerTest extends TestInit {
     @Test
     public void check_phoneNum() throws Exception {
 
-        SmsDto.SmsRequestDto smsRequestDto = new SmsDto.SmsRequestDto();
-        smsRequestDto.setPhoneNumber("01095233114");
+        SmsRequestDto smsRequestDto = new SmsRequestDto();
+        smsRequestDto.setPhoneNumber("010-9523-3114");
 
         ObjectMapper json = new ObjectMapper();
         String jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(smsRequestDto);

@@ -37,11 +37,11 @@ public class JwtFilter extends OncePerRequestFilter {
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
 
-        log.info(
-                jwtProvider.getUserName(token)
-                + " - "
-                + httpServletRequest.getRequestURI()
-        );
+//        log.info(
+//                jwtProvider.getUserName(token)
+//                + " - "
+//                + httpServletRequest.getRequestURI()
+//        );
 
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }

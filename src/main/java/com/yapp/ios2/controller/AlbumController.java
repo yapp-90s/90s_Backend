@@ -1,6 +1,8 @@
 package com.yapp.ios2.controller;
 
+import com.yapp.ios2.dto.AddPhotoInAlbumInDto;
 import com.yapp.ios2.dto.AlbumDto;
+import com.yapp.ios2.dto.CreateAlbumInDto;
 import com.yapp.ios2.dto.ResponseDto;
 import com.yapp.ios2.repository.AlbumRepository;
 import com.yapp.ios2.service.AlbumService;
@@ -32,16 +34,17 @@ public class AlbumController {
 
     @PostMapping("/create")
     @ResponseBody
-    public Album createAlbum(@AuthenticationPrincipal User user, @RequestBody AlbumDto.AlbumInfo albumInfo){
+    public AlbumDto createAlbum(@AuthenticationPrincipal User user, @RequestBody CreateAlbumInDto albumInfo){
 //        create(User user, String name, Integer totPaper, Long coverUid, Long layoutUid)
-        Album newAlbum = albumService.create(
+
+        AlbumDto albumDto = albumService.create(
                 user,
                 albumInfo.getName(),
                 albumInfo.getCoverCode(),
                 albumInfo.getLayoutCode()
         );
 
-        return newAlbum;
+        return albumDto;
     }
 
 
@@ -73,20 +76,15 @@ public class AlbumController {
 //
     @GetMapping("/getAlbums")
     @ResponseBody
-    public List<Album> getAlbums(@AuthenticationPrincipal User user){
-        List<Album> albums = albumService.getAlbumsByUser(user);
+    public List<AlbumDto> getAlbums(@AuthenticationPrincipal User user){
 
-//        albums.forEach(
-//                album -> {
-//                    albumService.completeChecker(album.getUid());
-//                }
-//        );
+        List<AlbumDto> albums = albumService.getAlbumsByUser(user);
 
         return albums;
     }
 
     @PostMapping("/addPhotoInAlbum")
-    public ResponseDto.BooleanDto addPhotoInAlbum(@RequestBody AlbumDto.AddPhotoInAlbum addPhotoInAlbum){
+    public ResponseDto.BooleanDto addPhotoInAlbum(@RequestBody AddPhotoInAlbumInDto addPhotoInAlbum){
         ResponseDto.BooleanDto result = albumService.addPhotoInAlbum(
                 addPhotoInAlbum.getAlbumUid(), //albumUid
                 addPhotoInAlbum.getPhotoUid(), //photoUid
