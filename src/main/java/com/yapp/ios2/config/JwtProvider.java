@@ -1,5 +1,6 @@
 package com.yapp.ios2.config;
 
+import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.vo.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -7,6 +8,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,44 +27,22 @@ import java.util.List;
 @Component
 public class JwtProvider {
 
+    @Qualifier("userService")
+    @Autowired
+    private UserDetailsService userDetailsService;
+
     @Value("${spring.secret-key}")
     public static String secretKey;
 
-
     public JwtProvider(@Value("${spring.secret-key}") String secretKey){
-
         this.secretKey = secretKey;
-
     }
-
 
     // 토큰 유효시간 20년
     static private final long tokenValidTime = 20 * 365 * 24 * 60 * 60 * 1000L;
 
-    private UserDetailsService userDetailsService;
-
-    // 객체 초기화, secretKey를 Base64로 인코딩한다.
-//    @PostConstruct
-//    protected void init() {
-//        secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
-//    }
-//    @Value("${spring.secret-key}")
-//    public void setSecretKey(String secretKey){
-//        this.secretKey = secretKey;
-//    }
-//
-//    @Value("${spring.secret-key}")
-//    public static String getSecretKey(){
-//        return secretKey;
-//    }
-
     // JWT 토큰 생성
     public static String createToken(String userUid, List<String> roles) {
-
-        System.out.println(secretKey);
-        System.out.println(secretKey);
-        System.out.println(secretKey);
-        System.out.println(secretKey);
 
         Claims claims = Jwts.claims().setSubject(userUid); // JWT payload 에 저장되는 정보단위
         claims.put("roles", roles); // 정보는 key / value 쌍으로 저장된다.

@@ -41,7 +41,7 @@ public class PhotoController {
 
     @GetMapping("/getPhotoInfosByFilm/{filmUid}")
     @ResponseBody
-    public List<Photo> getPhotoInfosByFilm(@PathVariable("filmUid") Long filmUid){
+    public List<PhotoDto> getPhotoInfosByFilm(@PathVariable("filmUid") Long filmUid){
 
         return photoService.getPhotosByFilm(filmUid);
 
@@ -50,9 +50,9 @@ public class PhotoController {
 
     @PostMapping(value = "/upload")
     @ResponseBody
-    public Photo upload(@RequestParam(value="image") MultipartFile images, @RequestParam("filmUid") Long filmUid, @AuthenticationPrincipal User user) throws IOException {
+    public PhotoDto upload(@RequestParam(value="image") MultipartFile images, @RequestParam("filmUid") Long filmUid, @AuthenticationPrincipal User user) throws IOException {
 
-        Photo photo = photoService.upload(images, filmUid);
+        PhotoDto photo = photoService.upload(images, filmUid);
 
         return photo;
     }

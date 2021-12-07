@@ -72,6 +72,7 @@ public class AlbumControllerTest extends TestInit {
     @Test
     public void get_albums() throws Exception {
 
+        user = userService.getUserByPhone("010-0000-0000");
         mockMvc.perform(
                 get("/album/getAlbums")
                         .header("X-AUTH-TOKEN", user.getJWT())
@@ -86,6 +87,7 @@ public class AlbumControllerTest extends TestInit {
     @Test
     public void add_photo_in_album() throws Exception {
 
+        user = userService.getUserByPhone("010-0000-0000");
         jwt = user.getJWT();
 
         AlbumDto albumDto = albumService.getAlbumsByUser(user).get(0);
@@ -117,7 +119,7 @@ public class AlbumControllerTest extends TestInit {
 
     @Test
     public void complete() throws Exception {
-
+        user = userService.getUserByPhone("010-0000-0000");
         String jwt = user.getJWT();
 
         Album album = albumRepository.findByUser(user).get(0);
@@ -135,7 +137,7 @@ public class AlbumControllerTest extends TestInit {
 
     @Test
     public void delete_album() throws Exception {
-
+        user = userService.getUserByPhone("010-0000-0000");
         String jwt = user.getJWT();
 
         Album album = albumRepository.findByUser(user).get(0);

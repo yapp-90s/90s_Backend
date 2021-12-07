@@ -49,6 +49,8 @@ public class PhotoControllerTest extends TestInit {
     @Test
     public void upload_photo() throws Exception {
 
+        user = userService.getUserByPhone("010-0000-0000");
+
         MockMultipartFile multipartFile = new MockMultipartFile("testPic.jpeg", new FileInputStream(new File("src/test/java/com/yapp/ios2/data/testPicture.jpeg")));
 
         mockMvc.perform(
@@ -67,7 +69,7 @@ public class PhotoControllerTest extends TestInit {
 
     @Test
     public void download_photo() throws Exception {
-
+        user = userService.getUserByPhone("010-0000-0000");
         List<Photo> photos = photoRepository.findAllByUser(user);
 
         mockMvc.perform(
@@ -81,7 +83,7 @@ public class PhotoControllerTest extends TestInit {
 
     @Test
     public void getPhotoInfosByFilm() throws Exception{
-
+        user = userService.getUserByPhone("010-0000-0000");
         Long filmUid = filmRepository.findAllByUser(user).get(0).getUid();
 
         mockMvc.perform(
@@ -94,11 +96,11 @@ public class PhotoControllerTest extends TestInit {
 
     @Test
     public void delete_photo() throws Exception{
-
+        user = userService.getUserByPhone("010-0000-0000");
         Long photoUid = photoRepository.findAllByFilm(filmRepository.findAllByUser(user).get(0)).get(0).getUid();
 
         mockMvc.perform(
-                delete("/photo/delete/" + photoUid)
+                get("/photo/delete/" + photoUid)
                         .header("X-AUTH-TOKEN", user.getJWT())
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

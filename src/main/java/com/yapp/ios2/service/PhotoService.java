@@ -2,6 +2,7 @@ package com.yapp.ios2.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yapp.ios2.config.exception.EntityNotFoundException;
+import com.yapp.ios2.dto.PhotoDto;
 import com.yapp.ios2.repository.FilmRepository;
 import com.yapp.ios2.repository.PhotoRepository;
 import com.yapp.ios2.vo.Film;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,18 +32,24 @@ public class PhotoService{
     S3Service s3Service;
 
 
-    public List<Photo> getPhotosByFilm(Long filmUid){
-        List<Photo> photos = photoRepository.findAllByFilm(
+    public List<PhotoDto> getPhotosByFilm(Long filmUid){
+        List<PhotoDto> photos = new ArrayList<>();
+                photoRepository.findAllByFilm(
                 filmRepository.findById(filmUid).orElseThrow(
                         () -> new EntityNotFoundException("Invalid FilmUid")
                 )
+        ).forEach(
+                photo -> {
+                    photos.add(new PhotoDto(photo));
+                }
         );
+
         return photos;
     }
 
 
 
-    public Photo upload(MultipartFile photo, Long filmUid) throws IOException {
+    public PhotoDto upload(MultipartFile photo, Long filmUid) throws IOException {
 
         Photo newPhoto = Photo.builder()
                 .film(filmRepository.findById(filmUid).orElseThrow(
@@ -59,7 +67,7 @@ public class PhotoService{
 
         photoRepository.save(newPhoto);
 
-        return newPhoto;
+        return new PhotoDto(newPhoto);
     }
 
     public byte[] download(Long photoUid) throws IOException {

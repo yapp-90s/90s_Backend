@@ -775,7 +775,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h5 id="_1curl"><a class="link" href="#_1curl">1Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://49.50.162.246:8080/user/login' -i -X POST \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/user/login' -i -X POST \
     -H 'Content-Type: application/json' \
     -H 'Accept: application/json' \
     -d '{
@@ -795,7 +795,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 Content-Type: application/json
 Accept: application/json
 Content-Length: 99
-Host: 49.50.162.246:8080
+Host: 133.186.220.56
 
 {
   "emailKakao" : "tester@90s.com",
@@ -821,7 +821,7 @@ X-Frame-Options: DENY
 Content-Length: 176
 
 {
-  "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjgiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2Mjc3MTcyNDksImV4cCI6MjI1ODQzNzI0OX0.2Xk4tuxq8lrhugfQJtkWM01B-Q2uJ3gkVXhIEU655JU"
+  "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzNDciLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2Mzg4NzU0NTksImV4cCI6MjI2OTU5NTQ1OX0.2aPSBwFInxh0LpW-31jfxPdyimoxXJ5_wnUHMpBLewg"
 }</code></pre>
 </div>
 </div>
@@ -984,7 +984,7 @@ Content-Length: 93
     -H 'Content-Type: application/json' \
     -H 'Accept: application/json' \
     -d '{
-  "phoneNumber" : "01095233114"
+  "phoneNumber" : "010-9523-3114"
 }'</code></pre>
 </div>
 </div>
@@ -996,11 +996,11 @@ Content-Length: 93
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /user/checkPhoneNum HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Content-Length: 35
+Content-Length: 37
 Host: 49.50.162.246:8080
 
 {
-  "phoneNumber" : "01095233114"
+  "phoneNumber" : "010-9523-3114"
 }</code></pre>
 </div>
 </div>
@@ -1020,7 +1020,7 @@ X-Frame-Options: DENY
 Content-Length: 22
 
 {
-  "num" : "819786"
+  "num" : "189811"
 }</code></pre>
 </div>
 </div>
@@ -1077,9 +1077,9 @@ Content-Length: 22
 <h5 id="_curl_2"><a class="link" href="#_curl_2">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://49.50.162.246:8080/film/create' -i -X POST \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/film/create' -i -X POST \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTExNSwiZXhwIjoyMjU4Njg1MTE1fQ.vaFSbKxQ-n8jXFhEjUwHQ1anoK71roj9J4aEJjDhn8g' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzNDciLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2Mzg4NzUzNTksImV4cCI6MjI2OTU5NTM1OX0.cSLC9OHbRwEL_I3hZUJ6HDm0SW6lEgj6GgIdO366R8U' \
     -H 'Accept: application/json' \
     -d '{
   "filmCode" : 1001,
@@ -1094,10 +1094,10 @@ Content-Length: 22
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /film/create HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTExNSwiZXhwIjoyMjU4Njg1MTE1fQ.vaFSbKxQ-n8jXFhEjUwHQ1anoK71roj9J4aEJjDhn8g
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzNDciLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2Mzg4NzUzNTksImV4cCI6MjI2OTU5NTM1OX0.cSLC9OHbRwEL_I3hZUJ6HDm0SW6lEgj6GgIdO366R8U
 Accept: application/json
 Content-Length: 47
-Host: 49.50.162.246:8080
+Host: 133.186.220.56
 
 {
   "filmCode" : 1001,
@@ -1118,43 +1118,13 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 1127
+Content-Length: 180
 
 {
-  "uid" : 173,
+  "filmUid" : 349,
   "name" : "Test Film",
-  "filmType" : {
-    "uid" : 1,
-    "code" : 1001,
-    "name" : "None",
-    "description" : "Ready",
-    "max" : 10,
-    "createdAt" : "2021-08-01T00:10:37",
-    "updatedAt" : "2021-08-01T00:10:37",
-    "releasedAt" : null
-  },
-  "user" : {
-    "uid" : 17,
-    "name" : "90s_tester",
-    "password" : null,
-    "emailKakao" : "tester@90s.com",
-    "emailApple" : "tester@90s.com",
-    "emailGoogle" : "tester@90s.com",
-    "phoneNum" : "010-1234-1234",
-    "created_at" : "2021-08-01T00:10:39",
-    "updated_at" : "2021-08-01T00:10:39",
-    "roles" : [ "ROLE_TESTER" ],
-    "enabled" : true,
-    "authorities" : [ {
-      "authority" : "ROLE_TESTER"
-    } ],
-    "username" : "010-1234-1234",
-    "accountNonExpired" : true,
-    "accountNonLocked" : true,
-    "credentialsNonExpired" : true,
-    "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYyNzk2NTExNywiZXhwIjoyMjU4Njg1MTE3fQ.Leidxfs1m9lYzvzM64pMaFAgR39sfhTXP4MPyerCd3I"
-  },
-  "createdAt" : "2021-08-03T13:31:57.193258",
+  "filmTypeUid" : 1,
+  "createAt" : "2021-12-07T20:09:19.886598",
   "printStartAt" : null,
   "printEndAt" : null,
   "deleteAt" : null
