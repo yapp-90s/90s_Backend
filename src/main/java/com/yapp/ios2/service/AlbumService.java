@@ -31,6 +31,9 @@ public class AlbumService{
     PhotoRepository photoRepository;
 
     @Autowired
+    PhotoService photoService;
+
+    @Autowired
     PhotoInAlbumRepository photoInAlbumRepository;
 
     @Autowired
@@ -57,7 +60,7 @@ public class AlbumService{
 
         addOwner(newAlbum, user, "ROLE_CREATOR");
 
-        albumDto = new AlbumDto(newAlbum);
+        albumDto = new AlbumDto(newAlbum, photoService);
 
         return albumDto;
     }
@@ -137,7 +140,7 @@ public class AlbumService{
 
         albumRepository.findByUser(user).forEach(
                 album -> {
-                    albums.add(new AlbumDto(album));
+                    albums.add(new AlbumDto(album, photoService));
                 }
         );
 

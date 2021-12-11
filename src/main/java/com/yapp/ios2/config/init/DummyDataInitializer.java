@@ -3,10 +3,7 @@ package com.yapp.ios2.config.init;
 import com.yapp.ios2.config.FuncUtils;
 import com.yapp.ios2.config.JwtProvider;
 import com.yapp.ios2.config.init.properties.FilmProps;
-import com.yapp.ios2.repository.AlbumRepository;
-import com.yapp.ios2.repository.FilmRepository;
-import com.yapp.ios2.repository.PhotoRepository;
-import com.yapp.ios2.repository.UserRepository;
+import com.yapp.ios2.repository.*;
 import com.yapp.ios2.service.AlbumService;
 import com.yapp.ios2.service.FilmService;
 import com.yapp.ios2.service.PhotoService;
@@ -33,6 +30,8 @@ public class DummyDataInitializer {
     FilmRepository filmRepository;
     @Autowired
     AlbumRepository albumRepository;
+    @Autowired
+    AlbumLayoutRepository albumLayoutRepository;
 
     @Autowired
     PhotoService photoService;
@@ -108,6 +107,9 @@ public class DummyDataInitializer {
                 FuncUtils.addPhotoInFilmByUser(photoService, filmService, user);
 
                 FuncUtils.createDummyAlbums(albumRepository, albumService, user);
+
+                FuncUtils.addPhotoInAlbumByUser(photoService, albumService, albumLayoutRepository, user);
+
             }
 
         } else {

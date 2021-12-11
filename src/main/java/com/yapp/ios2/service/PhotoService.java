@@ -3,8 +3,7 @@ package com.yapp.ios2.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yapp.ios2.config.exception.EntityNotFoundException;
 import com.yapp.ios2.dto.PhotoDto;
-import com.yapp.ios2.repository.FilmRepository;
-import com.yapp.ios2.repository.PhotoRepository;
+import com.yapp.ios2.repository.*;
 import com.yapp.ios2.vo.Film;
 import com.yapp.ios2.vo.Photo;
 import org.apache.http.client.HttpClient;
@@ -26,15 +25,25 @@ public class PhotoService{
 
     @Autowired
     FilmRepository filmRepository;
+
+    @Autowired
+    AlbumRepository albumRepository;
+
     @Autowired
     PhotoRepository photoRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    PhotoInAlbumRepository photoInAlbumRepository;
     @Autowired
     S3Service s3Service;
 
 
     public List<PhotoDto> getPhotosByFilm(Long filmUid){
         List<PhotoDto> photos = new ArrayList<>();
-                photoRepository.findAllByFilm(
+        photoRepository.findAllByFilm(
                 filmRepository.findById(filmUid).orElseThrow(
                         () -> new EntityNotFoundException("Invalid FilmUid")
                 )
@@ -47,7 +56,29 @@ public class PhotoService{
         return photos;
     }
 
+    public List<PhotoDto> getPhotosByAlbum(Long albumUid){
+        List<PhotoDto> photos = new ArrayList<>();
 
+        photoInAlbumRepository.findAllByAlbum(albumRepository.findById(albumUid).get()).forEach(
+                photoInAlbum -> {
+                    photos.add(new PhotoDto(photoInAlbum.getPhoto()));
+                }
+        );
+
+        return photos;
+    }
+
+    public List<PhotoDto> getPhotosByUser(Long userUid){
+        List<PhotoDto> photos = new ArrayList<>();
+
+        photoRepository.findAllByUser(userRepository.findById(userUid).get()).forEach(
+                photo -> {
+                    photos.add(new PhotoDto(photo));
+                }
+        );
+
+        return photos;
+    }
 
     public PhotoDto upload(MultipartFile photo, Long filmUid) throws IOException {
 

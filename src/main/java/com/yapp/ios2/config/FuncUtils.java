@@ -1,7 +1,10 @@
 package com.yapp.ios2.config;
 
 import com.yapp.ios2.config.init.properties.FilmProps;
+import com.yapp.ios2.dto.AlbumDto;
 import com.yapp.ios2.dto.FilmDto;
+import com.yapp.ios2.dto.PhotoDto;
+import com.yapp.ios2.repository.AlbumLayoutRepository;
 import com.yapp.ios2.repository.AlbumRepository;
 import com.yapp.ios2.repository.FilmRepository;
 import com.yapp.ios2.repository.UserRepository;
@@ -9,6 +12,7 @@ import com.yapp.ios2.service.AlbumService;
 import com.yapp.ios2.service.FilmService;
 import com.yapp.ios2.service.PhotoService;
 import com.yapp.ios2.service.UserService;
+import com.yapp.ios2.vo.AlbumLayout;
 import com.yapp.ios2.vo.Film;
 import com.yapp.ios2.vo.FilmType;
 import com.yapp.ios2.vo.User;
@@ -91,6 +95,33 @@ public class FuncUtils {
 
     }
 
+    public static void addPhotoInAlbumByUser(PhotoService photoService, AlbumService albumService, AlbumLayoutRepository albumLayoutRepository, User user){
+        List<AlbumDto> albums = albumService.getAlbumsByUser(user);
+
+        List<PhotoDto> photos = photoService.getPhotosByUser(user.getUid());
+        Integer photoIdx = 0;
+        Integer photoMax = photoService.getPhotosByUser(user.getUid()).size();
+
+
+        for(int i = 1; i < albums.size(); i = i + 2){
+
+            AlbumLayout albumLayout = albumLayoutRepository.findAlbumLayoutByCode(albums.get(i).getLayoutCode()).get();
+
+            for(int j = 1; j < albumLayout.getTotPaper(); j *= 3){
+
+                for( int k = 1; k < albumLayout.getPhotoPerPaper(); k++){
+
+                    albumService.addPhotoInAlbum(
+                            albums.get(i).getAlbumUid(),
+                            photos.get(photoIdx++).getPhotoUid(),
+                            j,  // paperNum
+                            k   // sequence
+                    );
+
+                }
+            }
+        }
+    }
 
     
 }

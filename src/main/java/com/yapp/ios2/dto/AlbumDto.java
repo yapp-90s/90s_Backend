@@ -1,13 +1,15 @@
 package com.yapp.ios2.dto;
 
+import com.yapp.ios2.service.PhotoService;
 import com.yapp.ios2.vo.Album;
 
 import lombok.*;
 import org.springframework.util.ObjectUtils;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -22,9 +24,11 @@ public class AlbumDto {
 	
 	private Integer readCnt;
 	
-	private Long coverUid;
+	private Integer coverCode;
 	
-	private Long layoutUid;
+	private Integer layoutCode;
+
+	private List<PhotoDto> photos;
 	
 	private LocalDateTime completedAt;
 	
@@ -34,16 +38,19 @@ public class AlbumDto {
 	
 	private Boolean isComplete;
 
-	public AlbumDto(Album album){
+	public AlbumDto(Album album, PhotoService photoService){
+
 		this.albumUid = album.getUid();
 		this.name = album.getName();
 		this.readCnt = album.getReadCnt();
-		this.coverUid = album.getAlbumCover().getUid();
-		this.layoutUid = album.getAlbumLayout().getUid();
+		this.coverCode = album.getAlbumCover().getCode();
+		this.layoutCode = album.getAlbumLayout().getCode();
 		this.completedAt = album.getCompletedAt();
 		this.createdAt = album.getCreatedAt();
 		this.updatedAt = album.getUpdatedAt();
 		this.isComplete = ObjectUtils.isEmpty(album.getCreatedAt());
+
+		this.photos = photoService.getPhotosByAlbum(album.getUid());
 	}
 
 }

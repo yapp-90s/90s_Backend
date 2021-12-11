@@ -16,7 +16,7 @@ public class FilmDto {
 
     private String name;
     
-    private Long filmTypeUid;
+    private Integer filmCode;
     
     private LocalDateTime createdAt;
     
@@ -31,7 +31,7 @@ public class FilmDto {
 
         this.name = film.getName();
 
-        this.filmTypeUid = film.getFilmType().getUid();
+        this.filmCode = film.getFilmType().getCode();
 
         this.createdAt = film.getCreatedAt();
 

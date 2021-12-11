@@ -1086,7 +1086,7 @@ Content-Length: 22
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/film/create' -i -X POST \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzNDciLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2Mzg4NzUzNTksImV4cCI6MjI2OTU5NTM1OX0.cSLC9OHbRwEL_I3hZUJ6HDm0SW6lEgj6GgIdO366R8U' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYzOTIwMzg5NCwiZXhwIjoyMjY5OTIzODk0fQ.aRnwm5jEFSwiV0sXfrW6yhEkXGXpGFZGnRunqHQxN5I' \
     -H 'Accept: application/json' \
     -d '{
   "filmCode" : 1001,
@@ -1101,7 +1101,7 @@ Content-Length: 22
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /film/create HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzNDciLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2Mzg4NzUzNTksImV4cCI6MjI2OTU5NTM1OX0.cSLC9OHbRwEL_I3hZUJ6HDm0SW6lEgj6GgIdO366R8U
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYzOTIwMzg5NCwiZXhwIjoyMjY5OTIzODk0fQ.aRnwm5jEFSwiV0sXfrW6yhEkXGXpGFZGnRunqHQxN5I
 Accept: application/json
 Content-Length: 47
 Host: 133.186.220.56
@@ -1125,16 +1125,16 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 180
+Content-Length: 186
 
 {
   "filmUid" : 349,
   "name" : "Test Film",
-  "filmTypeUid" : 1,
-  "createAt" : "2021-12-07T20:09:19.886598",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1001,
+  "createdAt" : "2021-12-11T15:24:55.271741",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }</code></pre>
 </div>
 </div>
@@ -1171,7 +1171,7 @@ Content-Length: 180
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/film/getFilms' -i -X GET \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc1NzM2LCJleHAiOjIyNjk1OTU3MzZ9.NsTK-OES78fsa_Gbr5upFHSesLk1v6REmVT-E3RY0IE' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjAzOTU1LCJleHAiOjIyNjk5MjM5NTV9.Iu0ZCqwmQdhGapweg8T-jcpunU5aVXzqhrLmeCOqve4' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -1181,7 +1181,7 @@ Content-Length: 180
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /film/getFilms HTTP/1.1
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc1NzM2LCJleHAiOjIyNjk1OTU3MzZ9.NsTK-OES78fsa_Gbr5upFHSesLk1v6REmVT-E3RY0IE
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjAzOTU1LCJleHAiOjIyNjk5MjM5NTV9.Iu0ZCqwmQdhGapweg8T-jcpunU5aVXzqhrLmeCOqve4
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
@@ -1199,168 +1199,208 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 3945
+Content-Length: 5046
 
 [ {
-  "filmUid" : 22,
-  "name" : "dummyFilm1001_90s_TRYER",
-  "filmTypeUid" : 1,
-  "createAt" : "2021-12-06T23:51:13.47248",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
-}, {
   "filmUid" : 23,
   "name" : "dummyFilm1002_90s_TRYER",
-  "filmTypeUid" : 2,
-  "createAt" : "2021-12-06T23:51:13.546913",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1002,
+  "createdAt" : "2021-12-07T21:52:45.847599",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 24,
   "name" : "dummyFilm1003_90s_TRYER",
-  "filmTypeUid" : 3,
-  "createAt" : "2021-12-06T23:51:13.619375",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1003,
+  "createdAt" : "2021-12-07T21:52:45.858394",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 25,
   "name" : "dummyFilm1004_90s_TRYER",
-  "filmTypeUid" : 4,
-  "createAt" : "2021-12-06T23:51:13.704432",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1004,
+  "createdAt" : "2021-12-07T21:52:45.869421",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
+}, {
+  "filmUid" : 46,
+  "name" : "dummyFilm1001_90s_tester",
+  "filmCode" : 1001,
+  "createdAt" : "2021-12-07T21:52:47.611354",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
+}, {
+  "filmUid" : 47,
+  "name" : "dummyFilm1002_90s_tester",
+  "filmCode" : 1002,
+  "createdAt" : "2021-12-07T21:52:47.629662",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
+}, {
+  "filmUid" : 48,
+  "name" : "dummyFilm1003_90s_tester",
+  "filmCode" : 1003,
+  "createdAt" : "2021-12-07T21:52:47.640656",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
+}, {
+  "filmUid" : 49,
+  "name" : "dummyFilm1004_90s_tester",
+  "filmCode" : 1004,
+  "createdAt" : "2021-12-07T21:52:47.648894",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 82,
   "name" : "dummyFilm1001_90s_tester1",
-  "filmTypeUid" : 1,
-  "createAt" : "2021-12-06T23:51:24.787645",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1001,
+  "createdAt" : "2021-12-07T21:52:49.634102",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 83,
   "name" : "dummyFilm1002_90s_tester1",
-  "filmTypeUid" : 2,
-  "createAt" : "2021-12-06T23:51:24.867633",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1002,
+  "createdAt" : "2021-12-07T21:52:49.644742",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 84,
   "name" : "dummyFilm1003_90s_tester1",
-  "filmTypeUid" : 3,
-  "createAt" : "2021-12-06T23:51:24.949471",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1003,
+  "createdAt" : "2021-12-07T21:52:49.653765",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 85,
   "name" : "dummyFilm1004_90s_tester1",
-  "filmTypeUid" : 4,
-  "createAt" : "2021-12-06T23:51:25.023558",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1004,
+  "createdAt" : "2021-12-07T21:52:49.663125",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 130,
   "name" : "dummyFilm1001_90s_tester2",
-  "filmTypeUid" : 1,
-  "createAt" : "2021-12-06T23:51:34.529502",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1001,
+  "createdAt" : "2021-12-07T21:52:52.36176",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 131,
   "name" : "dummyFilm1002_90s_tester2",
-  "filmTypeUid" : 2,
-  "createAt" : "2021-12-06T23:51:34.653077",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1002,
+  "createdAt" : "2021-12-07T21:52:52.372712",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 132,
   "name" : "dummyFilm1003_90s_tester2",
-  "filmTypeUid" : 3,
-  "createAt" : "2021-12-06T23:51:34.726994",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1003,
+  "createdAt" : "2021-12-07T21:52:52.392576",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 133,
   "name" : "dummyFilm1004_90s_tester2",
-  "filmTypeUid" : 4,
-  "createAt" : "2021-12-06T23:51:34.809099",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1004,
+  "createdAt" : "2021-12-07T21:52:52.404217",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 190,
   "name" : "dummyFilm1001_90s_tester3",
-  "filmTypeUid" : 1,
-  "createAt" : "2021-12-06T23:51:47.849638",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1001,
+  "createdAt" : "2021-12-07T21:52:55.860593",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 191,
   "name" : "dummyFilm1002_90s_tester3",
-  "filmTypeUid" : 2,
-  "createAt" : "2021-12-06T23:51:47.920379",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1002,
+  "createdAt" : "2021-12-07T21:52:55.868746",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 192,
   "name" : "dummyFilm1003_90s_tester3",
-  "filmTypeUid" : 3,
-  "createAt" : "2021-12-06T23:51:48.010548",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1003,
+  "createdAt" : "2021-12-07T21:52:55.876916",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 193,
   "name" : "dummyFilm1004_90s_tester3",
-  "filmTypeUid" : 4,
-  "createAt" : "2021-12-06T23:51:48.088579",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1004,
+  "createdAt" : "2021-12-07T21:52:55.884354",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 262,
   "name" : "dummyFilm1001_90s_tester4",
-  "filmTypeUid" : 1,
-  "createAt" : "2021-12-06T23:52:02.068954",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1001,
+  "createdAt" : "2021-12-07T21:53:00.045233",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 263,
   "name" : "dummyFilm1002_90s_tester4",
-  "filmTypeUid" : 2,
-  "createAt" : "2021-12-06T23:52:02.147815",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1002,
+  "createdAt" : "2021-12-07T21:53:00.057905",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 264,
   "name" : "dummyFilm1003_90s_tester4",
-  "filmTypeUid" : 3,
-  "createAt" : "2021-12-06T23:52:02.234672",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1003,
+  "createdAt" : "2021-12-07T21:53:00.065043",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 }, {
   "filmUid" : 265,
   "name" : "dummyFilm1004_90s_tester4",
-  "filmTypeUid" : 4,
-  "createAt" : "2021-12-06T23:52:02.316691",
-  "printStartAt" : null,
-  "printEndAt" : null,
-  "deleteAt" : null
+  "filmCode" : 1004,
+  "createdAt" : "2021-12-07T21:53:00.073318",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
+}, {
+  "filmUid" : 346,
+  "name" : "Test Film",
+  "filmCode" : 1001,
+  "createdAt" : "2021-12-11T14:28:47.7125",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
+}, {
+  "filmUid" : 349,
+  "name" : "Test Film",
+  "filmCode" : 1001,
+  "createdAt" : "2021-12-11T15:24:55.271741",
+  "printStartedAt" : null,
+  "printEndedAt" : null,
+  "deletedAt" : null
 } ]</code></pre>
 </div>
 </div>
@@ -1398,7 +1438,7 @@ Content-Length: 3945
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/film/startPrinting/22' -i -X GET \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc1NzgyLCJleHAiOjIyNjk1OTU3ODJ9.Stoj6oyL6irFMHgNAnxebiBhrG8df2-_0dUBn_m27vM' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjAzOTc5LCJleHAiOjIyNjk5MjM5Nzl9.uzUQohuUtiauVZaMDFHA0gglOpWrA1u9fTBK8D2EBmg' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -1408,7 +1448,7 @@ Content-Length: 3945
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /film/startPrinting/22 HTTP/1.1
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc1NzgyLCJleHAiOjIyNjk1OTU3ODJ9.Stoj6oyL6irFMHgNAnxebiBhrG8df2-_0dUBn_m27vM
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjAzOTc5LCJleHAiOjIyNjk5MjM5Nzl9.uzUQohuUtiauVZaMDFHA0gglOpWrA1u9fTBK8D2EBmg
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
@@ -1472,7 +1512,7 @@ Content-Length: 38
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/film/delete/22' -i -X DELETE \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc1Nzk2LCJleHAiOjIyNjk1OTU3OTZ9.c6RXuNEjFC57BRUrGbVG3FX3A_V4QmdS5GzJ86rnfsk' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA0MDg4LCJleHAiOjIyNjk5MjQwODh9.QMq6glJMAOlcxZ3dDMDqrjejOnZm0p-aFJjJgmwArx0' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -1483,7 +1523,7 @@ Content-Length: 38
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">DELETE /film/delete/22 HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc1Nzk2LCJleHAiOjIyNjk1OTU3OTZ9.c6RXuNEjFC57BRUrGbVG3FX3A_V4QmdS5GzJ86rnfsk
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA0MDg4LCJleHAiOjIyNjk5MjQwODh9.QMq6glJMAOlcxZ3dDMDqrjejOnZm0p-aFJjJgmwArx0
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
@@ -1501,11 +1541,11 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 37
+Content-Length: 42
 
 {
   "result" : true,
-  "msg" : null
+  "msg" : "Success"
 }</code></pre>
 </div>
 </div>
@@ -1914,7 +1954,7 @@ true</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/create' -i -X POST \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzNTAiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2Mzg4NzU5NjIsImV4cCI6MjI2OTU5NTk2Mn0.lIUwg5g5iLS0atf-sdxbhGWiVLhjchG8qSnf1LfPzbY' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYzOTIwNDE0MCwiZXhwIjoyMjY5OTI0MTQwfQ.fYu3dEOXtaUK8mPTWhwjDq3TLroWX3PivqDSS8tIImo' \
     -H 'Accept: application/json' \
     -d '{
   "name" : "테스트앨범",
@@ -1930,7 +1970,7 @@ true</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /album/create HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzNTAiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2Mzg4NzU5NjIsImV4cCI6MjI2OTU5NTk2Mn0.lIUwg5g5iLS0atf-sdxbhGWiVLhjchG8qSnf1LfPzbY
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYzOTIwNDE0MCwiZXhwIjoyMjY5OTI0MTQwfQ.fYu3dEOXtaUK8mPTWhwjDq3TLroWX3PivqDSS8tIImo
 Accept: application/json
 Content-Length: 77
 Host: 133.186.220.56
@@ -1955,17 +1995,18 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 268
+Content-Length: 272
 
 {
-  "albumUid" : 351,
+  "albumUid" : 350,
   "name" : "테스트앨범",
-  "readCnt" : null,
-  "coverUid" : 6,
-  "layoutUid" : 10,
-  "endAt" : "2021-12-07T20:19:23.705517",
-  "createdAt" : "2021-12-07T20:19:23.705517",
-  "updatedAt" : "2021-12-07T20:19:23.705596",
+  "readCnt" : 0,
+  "coverCode" : 1002,
+  "layoutCode" : 1001,
+  "photos" : [ ],
+  "completedAt" : null,
+  "createdAt" : "2021-12-11T15:29:01.246142",
+  "updatedAt" : "2021-12-11T15:29:01.246186",
   "isComplete" : false
 }</code></pre>
 </div>
@@ -2006,7 +2047,7 @@ Content-Length: 268
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/getAlbums' -i -X GET \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODgyMDI1LCJleHAiOjIyNjk2MDIwMjV9.EmM5wQMBsgjMxk-3dukLooUbjSr_Kb3Sn4e8IuSnQBE' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA0MTY2LCJleHAiOjIyNjk5MjQxNjZ9.0RD3PkFRiY7ddHGR6ynEx069A9OtitkAkJe1I7PefdE' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -2017,7 +2058,7 @@ Content-Length: 268
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/getAlbums HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODgyMDI1LCJleHAiOjIyNjk2MDIwMjV9.EmM5wQMBsgjMxk-3dukLooUbjSr_Kb3Sn4e8IuSnQBE
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA0MTY2LCJleHAiOjIyNjk5MjQxNjZ9.0RD3PkFRiY7ddHGR6ynEx069A9OtitkAkJe1I7PefdE
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
@@ -2035,45 +2076,38 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 1104
+Content-Length: 841
 
 [ {
-  "albumUid" : 38,
-  "name" : "dummyAlbum01_90s_TRYER",
-  "readCnt" : null,
-  "coverUid" : 5,
-  "layoutUid" : 10,
-  "endAt" : "2021-12-07T21:52:47.521011",
-  "createdAt" : "2021-12-07T21:52:47.521011",
-  "updatedAt" : "2021-12-07T21:52:47.521036",
-  "isComplete" : false
-}, {
   "albumUid" : 40,
   "name" : "dummyAlbum02_90s_TRYER",
-  "readCnt" : null,
-  "coverUid" : 6,
-  "layoutUid" : 11,
-  "endAt" : "2021-12-07T21:52:47.54851",
+  "readCnt" : 0,
+  "coverCode" : 1002,
+  "layoutCode" : 1002,
+  "photos" : [ ],
+  "completedAt" : null,
   "createdAt" : "2021-12-07T21:52:47.54851",
   "updatedAt" : "2021-12-07T21:52:47.548527",
   "isComplete" : false
 }, {
   "albumUid" : 42,
   "name" : "dummyAlbum03_90s_TRYER",
-  "readCnt" : null,
-  "coverUid" : 7,
-  "layoutUid" : 12,
-  "endAt" : "2021-12-07T21:52:47.574855",
+  "readCnt" : 0,
+  "coverCode" : 1003,
+  "layoutCode" : 1003,
+  "photos" : [ ],
+  "completedAt" : null,
   "createdAt" : "2021-12-07T21:52:47.574855",
   "updatedAt" : "2021-12-07T21:52:47.575577",
   "isComplete" : false
 }, {
   "albumUid" : 44,
   "name" : "dummyAlbum04_90s_TRYER",
-  "readCnt" : null,
-  "coverUid" : 8,
-  "layoutUid" : 13,
-  "endAt" : "2021-12-07T21:52:47.592265",
+  "readCnt" : 0,
+  "coverCode" : 1004,
+  "layoutCode" : 1004,
+  "photos" : [ ],
+  "completedAt" : null,
   "createdAt" : "2021-12-07T21:52:47.592265",
   "updatedAt" : "2021-12-07T21:52:47.592281",
   "isComplete" : false
@@ -2119,10 +2153,10 @@ POST 방식이며 Json으로 데이터를 받으며, 받을 때는 '앨범ID', '
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/addPhotoInAlbum' -i -X POST \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2MDA3LCJleHAiOjIyNjk1OTYwMDd9.Uehs-SiHPLt4Pi98x-QJg6ziauABS647Nk4JHGuMCQ4' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA0MTkxLCJleHAiOjIyNjk5MjQxOTF9.d01xLs4WGyBT6pZwDZ8qaw117nb694AA6_4XdQxom9k' \
     -H 'Accept: application/json' \
     -d '{
-  "albumUid" : 38,
+  "albumUid" : 40,
   "photoUid" : 26,
   "paperNum" : 1,
   "sequence" : 2
@@ -2136,13 +2170,13 @@ POST 방식이며 Json으로 데이터를 받으며, 받을 때는 '앨범ID', '
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /album/addPhotoInAlbum HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2MDA3LCJleHAiOjIyNjk1OTYwMDd9.Uehs-SiHPLt4Pi98x-QJg6ziauABS647Nk4JHGuMCQ4
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA0MTkxLCJleHAiOjIyNjk5MjQxOTF9.d01xLs4WGyBT6pZwDZ8qaw117nb694AA6_4XdQxom9k
 Accept: application/json
 Content-Length: 76
 Host: 133.186.220.56
 
 {
-  "albumUid" : 38,
+  "albumUid" : 40,
   "photoUid" : 26,
   "paperNum" : 1,
   "sequence" : 2
@@ -2205,9 +2239,9 @@ Content-Length: 37
 <h5 id="_curl_9"><a class="link" href="#_curl_9">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/complete/38' -i -X GET \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/complete/40' -i -X GET \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2MDEwLCJleHAiOjIyNjk1OTYwMTB9.PmcvcDXpbs7l8XBjJkKtETK8L039jpG7zlAp4R4MvUA' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA0MzQwLCJleHAiOjIyNjk5MjQzNDB9.Abwn14qZAvUb_5BCJQmc6SiUekZY55h1iBLIyxGYgm0' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -2216,9 +2250,9 @@ Content-Length: 37
 <h5 id="_request_9"><a class="link" href="#_request_9">Request</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/complete/38 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/complete/40 HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2MDEwLCJleHAiOjIyNjk1OTYwMTB9.PmcvcDXpbs7l8XBjJkKtETK8L039jpG7zlAp4R4MvUA
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA0MzQwLCJleHAiOjIyNjk5MjQzNDB9.Abwn14qZAvUb_5BCJQmc6SiUekZY55h1iBLIyxGYgm0
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
@@ -2280,9 +2314,9 @@ Content-Length: 37
 <h5 id="_curl_10"><a class="link" href="#_curl_10">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/plusReadCnt/38' -i -X GET \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/plusReadCnt/42' -i -X GET \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MTk4ODc1LCJleHAiOjIyNjk5MTg4NzV9.mB5iVdmtqUfefaU7YkWmQtluRqb-BV5eVk9z66xQk08' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA0MzgzLCJleHAiOjIyNjk5MjQzODN9.3u1tfmSP9nh3UqI6lF9mqVnI89KxHYs7QfaWhyrKMvo' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -2291,9 +2325,9 @@ Content-Length: 37
 <h5 id="_request_10"><a class="link" href="#_request_10">Request</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/plusReadCnt/38 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/plusReadCnt/42 HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MTk4ODc1LCJleHAiOjIyNjk5MTg4NzV9.mB5iVdmtqUfefaU7YkWmQtluRqb-BV5eVk9z66xQk08
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA0MzgzLCJleHAiOjIyNjk5MjQzODN9.3u1tfmSP9nh3UqI6lF9mqVnI89KxHYs7QfaWhyrKMvo
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
@@ -2353,9 +2387,9 @@ Content-Length: 42
 <h5 id="_curl_11"><a class="link" href="#_curl_11">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/delete/38' -i -X DELETE \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/delete/40' -i -X DELETE \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2MzAyLCJleHAiOjIyNjk1OTYzMDJ9.9NigSPpN6NoVcuu3eQg2BLlXIw08EyzM8OUwG_SAaY0' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA0MzYxLCJleHAiOjIyNjk5MjQzNjF9.p0VB3RHbP83TgpUXp3iI6RFCIpyP7k2ep4K8RzciCoQ' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -2364,9 +2398,9 @@ Content-Length: 42
 <h5 id="_request_11"><a class="link" href="#_request_11">Request</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">DELETE /album/delete/38 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">DELETE /album/delete/40 HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2MzAyLCJleHAiOjIyNjk1OTYzMDJ9.9NigSPpN6NoVcuu3eQg2BLlXIw08EyzM8OUwG_SAaY0
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA0MzYxLCJleHAiOjIyNjk5MjQzNjF9.p0VB3RHbP83TgpUXp3iI6RFCIpyP7k2ep4K8RzciCoQ
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
