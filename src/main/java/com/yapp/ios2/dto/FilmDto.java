@@ -2,8 +2,6 @@ package com.yapp.ios2.dto;
 
 import java.time.LocalDateTime;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
-
 import com.yapp.ios2.vo.Film;
 import lombok.*;
 
@@ -20,13 +18,13 @@ public class FilmDto {
     
     private Long filmTypeUid;
     
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
     
-    private LocalDateTime printStartAt;
+    private LocalDateTime printStartedAt;
     
-    private LocalDateTime printEndAt;
+    private LocalDateTime printEndedAt;
 
-    private LocalDateTime deleteAt;
+    private LocalDateTime deletedAt;
 
     public FilmDto(Film film){
         this.filmUid = film.getUid();
@@ -35,13 +33,13 @@ public class FilmDto {
 
         this.filmTypeUid = film.getFilmType().getUid();
 
-        this.createAt = film.getCreatedAt();
+        this.createdAt = film.getCreatedAt();
 
-        this.printStartAt = film.getPrintStartAt();
+        this.printStartedAt = film.getPrintStartAt();
 
-        this.printEndAt = film.getPrintEndAt();
+        this.printEndedAt = film.getPrintEndAt();
 
-        this.deleteAt = film.getDeleteAt();
+        this.deletedAt = film.getDeleteAt();
     }
 
 }
