@@ -17,15 +17,6 @@ public class ResponseDto {
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    @Builder
-    public static class BooleanDto{
-        private Boolean result;
-        private String msg;
-    }
-
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
     public static class UrlDto{
         private String url;
     }

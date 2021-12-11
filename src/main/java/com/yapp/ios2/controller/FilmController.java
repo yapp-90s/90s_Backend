@@ -43,17 +43,17 @@ public class FilmController {
 
     @GetMapping(value = "/startPrinting/{filmUid}")
     @ResponseBody
-    public ResponseDto.BooleanDto startPrinting(@AuthenticationPrincipal User user, @PathVariable("filmUid") Long filmUid) throws JsonProcessingException {
+    public BooleanDto startPrinting(@AuthenticationPrincipal User user, @PathVariable("filmUid") Long filmUid) throws JsonProcessingException {
 
-        ResponseDto.BooleanDto result = filmService.startPrinting(filmUid);
+        BooleanDto result = filmService.startPrinting(filmUid);
 
         return result;
     }
 
     @DeleteMapping("/delete/{filmUid}")
-    public ResponseDto.BooleanDto delete(@PathVariable("filmUid") Long filmUid) throws IOException{
+    public BooleanDto delete(@PathVariable("filmUid") Long filmUid) throws IOException{
 
-        ResponseDto.BooleanDto result = filmService.delete(filmUid);
+        BooleanDto result = filmService.delete(filmUid);
 
         return result;
     }

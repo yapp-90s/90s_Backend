@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yapp.ios2.config.exception.EntityNotFoundException;
 import com.yapp.ios2.config.exception.InvalidValueException;
+import com.yapp.ios2.dto.BooleanDto;
 import com.yapp.ios2.dto.FilmDto;
 import com.yapp.ios2.dto.ResponseDto;
 import com.yapp.ios2.dto.StartPrintingDto;
@@ -76,7 +77,7 @@ public class FilmService {
         return filmDtos;
     }
 
-    public ResponseDto.BooleanDto startPrinting(Long filmUid) throws JsonProcessingException{
+    public BooleanDto startPrinting(Long filmUid) throws JsonProcessingException{
 
         Film film = filmRepository.findById(filmUid).get();
 
@@ -98,7 +99,7 @@ public class FilmService {
             if(httpService.sendReq(aiHostName, jsonString)){
                 continue;
             }else{
-                return ResponseDto.BooleanDto.builder().result(false).build();
+                return BooleanDto.builder().result(false).build();
             }
         }
 
@@ -110,21 +111,26 @@ public class FilmService {
         film.setPrintEndAt(now.plusDays(3));
         filmRepository.save(film);
 
-        return ResponseDto.BooleanDto.builder().result(true).build();
+        return BooleanDto.builder().result(true).build();
 
     }
 
-    public ResponseDto.BooleanDto delete(Long filmUid) throws IOException{
+    public BooleanDto delete(Long filmUid) throws IOException {
 
-        Film film = filmRepository.findById(filmUid).orElseThrow(
-                () -> new EntityNotFoundException("No Film with " + filmUid.toString() + " Uid. Wrong FilmUid.")
-        );
+        try {
+            Film film = filmRepository.findById(filmUid).orElseThrow(
+                    () -> new EntityNotFoundException("No Film with " + filmUid.toString() + " Uid. Wrong FilmUid.")
+            );
 
-        film.setDeleteAt(LocalDateTime.now());
+            film.setDeleteAt(LocalDateTime.now());
 
-        filmRepository.save(film);
+            filmRepository.save(film);
 
-        return ResponseDto.BooleanDto.builder().result(true).build();
+            return BooleanDto.success();
+
+
+        } catch (Exception e) {
+            return BooleanDto.fail(e.getMessage());
+        }
     }
-
 }

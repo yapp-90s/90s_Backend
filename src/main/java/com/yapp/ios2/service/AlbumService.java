@@ -1,8 +1,10 @@
 package com.yapp.ios2.service;
 
+import com.yapp.ios2.config.exception.AlbumNotFoundException;
 import com.yapp.ios2.config.exception.EntityNotFoundException;
 import com.yapp.ios2.config.exception.UserNotFoundException;
 import com.yapp.ios2.dto.AlbumDto;
+import com.yapp.ios2.dto.BooleanDto;
 import com.yapp.ios2.dto.ResponseDto;
 import com.yapp.ios2.repository.*;
 import com.yapp.ios2.vo.*;
@@ -48,6 +50,7 @@ public class AlbumService{
                 .name(name)
                 .albumLayout(albumLayoutRepository.findAlbumLayoutByCode(coverCode).get())
                 .albumCover(albumCoverRepository.findAlbumCoverByCode(layoutCode).get())
+                .readCnt(0)
                 .build();
 
         albumRepository.save(newAlbum);
@@ -141,9 +144,9 @@ public class AlbumService{
         return albums;
     }
 
-    public ResponseDto.BooleanDto addPhotoInAlbum(Long albumUid, Long photoUid, Integer paperNum, Integer sequence) {
+    public BooleanDto addPhotoInAlbum(Long albumUid, Long photoUid, Integer paperNum, Integer sequence) {
 
-        ResponseDto.BooleanDto result = ResponseDto.BooleanDto.builder()
+        BooleanDto result = BooleanDto.builder()
                 .result(false)
                 .msg("")
                 .build();
@@ -160,7 +163,7 @@ public class AlbumService{
         if( !photoInAlbumRepository.findAllByPaperNumAndSequence(paperNum, sequence).isEmpty() ){
             // 저장하려는 사진 위치에 이미 사진이 있는지 여부.
 
-            ResponseDto.BooleanDto.builder()
+            BooleanDto.builder()
                 .msg("Photo is Changed.")
                 .build();
 
@@ -168,7 +171,7 @@ public class AlbumService{
         }else if ( album.getAlbumLayout().getTotPaper() < paperNum || album.getAlbumLayout().getPhotoPerPaper() < sequence ){
             // 저장하려는 위치가 정당한지 여부(전체 사진 페이지를 넘기지 않는지, 각 페이지별 들어가는 사진 순서에 해당하는 지)
 
-            return ResponseDto.BooleanDto.builder()
+            return BooleanDto.builder()
                     .result(false)
                     .msg("Invalid Value in PaperNum or Sequence.")
                     .build();
@@ -183,7 +186,7 @@ public class AlbumService{
 
         photoInAlbumRepository.save(photoInAlbum);
 
-        return ResponseDto.BooleanDto.builder().result(true).build();
+        return BooleanDto.builder().result(true).build();
     }
 
 //
@@ -201,15 +204,16 @@ public class AlbumService{
 //
 //
 //
-//    public void plusCount(Long albumUid){
-//        Album album = albumRepository.findById(albumUid).
-//                orElseThrow(() -> new AlbumNotFoundException());
-//
-//        Integer count = album.getCount();
-//        album.setCount(++count);
-//        albumRepository.save(album);
-//
-//    }
+    // 엘범 읽기 횟수 증가
+    public void plusReadCnt(Long albumUid){
+        Album album = albumRepository.findById(albumUid).
+                orElseThrow(() -> new AlbumNotFoundException());
+
+        Integer count = album.getReadCnt();
+        album.setReadCnt(++count);
+        albumRepository.save(album);
+
+    }
 //
 //
 //    public void completeChecker(Long albumUid){
@@ -226,7 +230,7 @@ public class AlbumService{
 //    }
 //
     // 엘범 완성
-    public ResponseDto.BooleanDto complete(Long albumUid){
+    public BooleanDto complete(Long albumUid){
 
         Album album = albumRepository.findById(albumUid).orElseThrow(
                 () -> new EntityNotFoundException("Album is not Existed.")
@@ -236,26 +240,35 @@ public class AlbumService{
 
         albumRepository.save(album);
 
-        return ResponseDto.BooleanDto.builder()
+        return BooleanDto.builder()
                 .result(true)
                 .build();
     }
 
-    public ResponseDto.BooleanDto delete(Long albumUid){
+    public BooleanDto delete(Long albumUid){
 
-        Album album = albumRepository.findById(albumUid).orElseThrow(
-                () -> new EntityNotFoundException("Album is not Existed.")
-        );
+        try{
+            Album album = albumRepository.findById(albumUid).orElseThrow(
+                    () -> new EntityNotFoundException("Album is not Existed.")
+            );
 
-        List<PhotoInAlbum> photoInAlbums = photoInAlbumRepository.findAllByAlbum(album);
+            List<PhotoInAlbum> photoInAlbums = photoInAlbumRepository.findAllByAlbum(album);
 
-        photoInAlbumRepository.deleteAll(photoInAlbums);
+            photoInAlbumRepository.deleteAll(photoInAlbums);
 
-        albumRepository.delete(album);
+            albumRepository.delete(album);
 
-        return ResponseDto.BooleanDto.builder()
-                .result(true)
-                .build();
+            return BooleanDto.builder()
+                    .result(true)
+                    .build();
+
+        }catch(Exception e){
+            e.printStackTrace();
+            return BooleanDto.builder()
+                    .result(false)
+                    .msg(e.getMessage())
+                    .build();
+        }
     }
 
 //

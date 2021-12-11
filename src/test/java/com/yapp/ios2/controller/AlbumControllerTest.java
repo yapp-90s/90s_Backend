@@ -151,4 +151,21 @@ public class AlbumControllerTest extends TestInit {
                 .andExpect(status().isOk()
                 );
     }
+
+    @Test
+    public void plus_ReadCnt() throws Exception {
+        user = userService.getUserByPhone("010-0000-0000");
+        String jwt = user.getJWT();
+
+        Album album = albumRepository.findByUser(user).get(0);
+
+        mockMvc.perform(
+                get("/album/plusReadCnt/" + album.getUid())
+                        .header("X-AUTH-TOKEN", jwt)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk()
+                );
+    }
 }

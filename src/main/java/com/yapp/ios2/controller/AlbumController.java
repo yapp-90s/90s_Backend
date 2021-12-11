@@ -1,16 +1,10 @@
 package com.yapp.ios2.controller;
 
-import com.yapp.ios2.dto.AddPhotoInAlbumInDto;
-import com.yapp.ios2.dto.AlbumDto;
-import com.yapp.ios2.dto.CreateAlbumInDto;
-import com.yapp.ios2.dto.ResponseDto;
-import com.yapp.ios2.repository.AlbumRepository;
+import com.yapp.ios2.dto.*;
 import com.yapp.ios2.service.AlbumService;
 import com.yapp.ios2.service.UserService;
-import com.yapp.ios2.vo.Album;
 import com.yapp.ios2.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -84,8 +78,8 @@ public class AlbumController {
     }
 
     @PostMapping("/addPhotoInAlbum")
-    public ResponseDto.BooleanDto addPhotoInAlbum(@RequestBody AddPhotoInAlbumInDto addPhotoInAlbum){
-        ResponseDto.BooleanDto result = albumService.addPhotoInAlbum(
+    public BooleanDto addPhotoInAlbum(@RequestBody AddPhotoInAlbumInDto addPhotoInAlbum){
+        BooleanDto result = albumService.addPhotoInAlbum(
                 addPhotoInAlbum.getAlbumUid(), //albumUid
                 addPhotoInAlbum.getPhotoUid(), //photoUid
                 addPhotoInAlbum.getPaperNum(), //paperNum
@@ -98,9 +92,9 @@ public class AlbumController {
     // 앨범 완성 상태 바꾸기
     @GetMapping("/complete/{albumUid}")
     @ResponseBody
-    public ResponseDto.BooleanDto complete(@PathVariable("albumUid")Long albumUid){
+    public BooleanDto complete(@PathVariable("albumUid")Long albumUid){
 
-         ResponseDto.BooleanDto result = albumService.complete(albumUid);
+         BooleanDto result = albumService.complete(albumUid);
 //        albums.forEach(
 //                album -> {
 //                    albumService.completeChecker(album.getUid());
@@ -111,11 +105,31 @@ public class AlbumController {
     }
 
     @DeleteMapping("/delete/{albumUid}")
-    public ResponseDto.BooleanDto delete(@PathVariable("albumUid") Long albumUid){
+    public BooleanDto delete(@PathVariable("albumUid") Long albumUid){
 
-        ResponseDto.BooleanDto result = albumService.delete(albumUid);
+        BooleanDto result = albumService.delete(albumUid);
 
         return result;
+    }
+
+    @GetMapping("/plusReadCnt/{albumUid}")
+    public BooleanDto plusReadCnt(@PathVariable("albumUid") Long albumUid){
+
+        try{
+            albumService.plusReadCnt(albumUid);
+
+            return BooleanDto.builder()
+                    .result(true)
+                    .msg("Success")
+                    .build();
+        }catch(Exception e){
+            e.printStackTrace();
+
+            return BooleanDto.builder()
+                    .result(false)
+                    .msg(e.getMessage())
+                    .build();
+        }
     }
 
     //
@@ -178,12 +192,5 @@ public class AlbumController {
 //        return albumOwners;
 //    }
 //
-//    @GetMapping("/plusCount/{albumUid}")
-//    @Secured({"TESTER", "USER"})
-//    public void plusCount(@PathVariable("albumUid") Long albumUid){
-//
-//        albumService.plusCount(albumUid);
-//
-//    }
 //
 }

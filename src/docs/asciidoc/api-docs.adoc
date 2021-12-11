@@ -462,6 +462,33 @@ include::{snippets}/album-controller-test/complete/http-response.adoc[]
 
 ***
 
+==== album/plusReadCnt/{albumUid}
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 엘범 읽은 횟수 증가 | get | album/plusReadCnt/{albumUid}
+|===
+
+----
+엘범의 읽은 횟수를 증가 시킵니다.
+완성된 엘범만 읽은 횟수가 증가할 수 있도록 해주셔야 합니다.
+해당 API 호출 시 DB 상의 엘범 테이블의 readCnt의 값이 +1 처리 됩니다.
+----
+
+===== Curl
+include::{snippets}/album-controller-test/plus_-read-cnt/curl-request.adoc[]
+
+===== Request
+include::{snippets}/album-controller-test/plus_-read-cnt/http-request.adoc[]
+
+===== Response
+
+include::{snippets}/album-controller-test/plus_-read-cnt/http-response.adoc[]
+
+
+***
+
 ==== album/delete/{albumUid}
 
 .Desc
