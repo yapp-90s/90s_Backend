@@ -573,11 +573,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_response_12">Response</a></li>
 </ul>
 </li>
-<li><a href="#_albumdeletealbumuid">album/delete/{albumUid}</a>
+<li><a href="#_albumplusreadcntalbumuid">album/plusReadCnt/{albumUid}</a>
 <ul class="sectlevel4">
 <li><a href="#_curl_10">Curl</a></li>
 <li><a href="#_request_10">Request</a></li>
 <li><a href="#_response_13">Response</a></li>
+</ul>
+</li>
+<li><a href="#_albumdeletealbumuid">album/delete/{albumUid}</a>
+<ul class="sectlevel4">
+<li><a href="#_curl_11">Curl</a></li>
+<li><a href="#_request_11">Request</a></li>
+<li><a href="#_response_14">Response</a></li>
 </ul>
 </li>
 </ul>
@@ -2241,6 +2248,81 @@ Content-Length: 37
 </div>
 </div>
 <div class="sect3">
+<h4 id="_albumplusreadcntalbumuid"><a class="link" href="#_albumplusreadcntalbumuid">album/plusReadCnt/{albumUid}</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Desc</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">엘범 읽은 횟수 증가</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">album/plusReadCnt/{albumUid}</p></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="content">
+<pre>엘범의 읽은 횟수를 증가 시킵니다.
+완성된 엘범만 읽은 횟수가 증가할 수 있도록 해주셔야 합니다.
+해당 API 호출 시 DB 상의 엘범 테이블의 readCnt의 값이 +1 처리 됩니다.</pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_curl_10"><a class="link" href="#_curl_10">Curl</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/plusReadCnt/38' -i -X GET \
+    -H 'Content-Type: application/json' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MTk4ODc1LCJleHAiOjIyNjk5MTg4NzV9.mB5iVdmtqUfefaU7YkWmQtluRqb-BV5eVk9z66xQk08' \
+    -H 'Accept: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_request_10"><a class="link" href="#_request_10">Request</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/plusReadCnt/38 HTTP/1.1
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MTk4ODc1LCJleHAiOjIyNjk5MTg4NzV9.mB5iVdmtqUfefaU7YkWmQtluRqb-BV5eVk9z66xQk08
+Accept: application/json
+Host: 133.186.220.56</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_response_13"><a class="link" href="#_response_13">Response</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 42
+
+{
+  "result" : true,
+  "msg" : "Success"
+}</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect3">
 <h4 id="_albumdeletealbumuid"><a class="link" href="#_albumdeletealbumuid">album/delete/{albumUid}</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Desc</caption>
@@ -2268,7 +2350,7 @@ Content-Length: 37
 </div>
 </div>
 <div class="sect4">
-<h5 id="_curl_10"><a class="link" href="#_curl_10">Curl</a></h5>
+<h5 id="_curl_11"><a class="link" href="#_curl_11">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/delete/38' -i -X DELETE \
@@ -2279,7 +2361,7 @@ Content-Length: 37
 </div>
 </div>
 <div class="sect4">
-<h5 id="_request_10"><a class="link" href="#_request_10">Request</a></h5>
+<h5 id="_request_11"><a class="link" href="#_request_11">Request</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">DELETE /album/delete/38 HTTP/1.1
@@ -2291,7 +2373,7 @@ Host: 133.186.220.56</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_response_13"><a class="link" href="#_response_13">Response</a></h5>
+<h5 id="_response_14"><a class="link" href="#_response_14">Response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -2319,7 +2401,7 @@ Content-Length: 37
 <div id="footer">
 <div id="footer-text">
 Version 2.0.1-SNAPSHOT<br>
-Last updated 2021-12-07 22:03:04 +0900
+Last updated 2021-12-11 13:54:58 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">

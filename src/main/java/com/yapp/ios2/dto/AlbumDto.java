@@ -26,7 +26,7 @@ public class AlbumDto {
 	
 	private Long layoutUid;
 	
-	private LocalDateTime endAt;
+	private LocalDateTime completedAt;
 	
 	private LocalDateTime createdAt;
 	
@@ -40,7 +40,7 @@ public class AlbumDto {
 		this.readCnt = album.getReadCnt();
 		this.coverUid = album.getAlbumCover().getUid();
 		this.layoutUid = album.getAlbumLayout().getUid();
-		this.endAt = album.getCreatedAt();
+		this.completedAt = album.getCompletedAt();
 		this.createdAt = album.getCreatedAt();
 		this.updatedAt = album.getUpdatedAt();
 		this.isComplete = ObjectUtils.isEmpty(album.getCreatedAt());
