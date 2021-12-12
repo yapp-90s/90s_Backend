@@ -46,7 +46,13 @@ public class PhotoController {
         return photoService.getPhotosByFilm(filmUid);
 
     }
+    @GetMapping("/getPrintedPhotoInfos")
+    @ResponseBody
+    public List<PhotoDto> getPrintedPhotoInfosByFilm(@AuthenticationPrincipal User user){
 
+        return photoService.getPrintedPhotos(user);
+
+    }
 
     @PostMapping(value = "/upload")
     @ResponseBody

@@ -15,4 +15,7 @@ public interface FilmRepository extends JpaRepository<Film, Long> {
     List<Film> findAllByUserAndDeleteAt(User user);
 
     List<Film> findAllByName(String name);
+
+    @Query("select f from Film f where f.printEndAt < CURRENT_TIMESTAMP")
+    List<Film> findAllPrintedFilms();
 }

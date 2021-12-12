@@ -6,6 +6,7 @@ import com.yapp.ios2.dto.PhotoDto;
 import com.yapp.ios2.repository.*;
 import com.yapp.ios2.vo.Film;
 import com.yapp.ios2.vo.Photo;
+import com.yapp.ios2.vo.User;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -78,6 +79,19 @@ public class PhotoService{
         );
 
         return photos;
+    }
+
+    public List<PhotoDto> getPrintedPhotos(User user){
+        List<PhotoDto> photos = new ArrayList<>();
+
+        filmRepository.findAllPrintedFilms().forEach(
+                film -> {
+                    photos.addAll(getPhotosByFilm(film.getUid()));
+                }
+        );
+
+        return photos;
+
     }
 
     public PhotoDto upload(MultipartFile photo, Long filmUid) throws IOException {
