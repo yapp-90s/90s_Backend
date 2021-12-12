@@ -315,8 +315,6 @@ include::{snippets}/photo-controller-test/download_photo/http-request.adoc[]
 
 ***
 
-***
-
 ==== photo/getPhotoInfosByFilm/{filmUid}
 
 필름 안의 사진 정보를 가져옵니다.
@@ -354,6 +352,27 @@ include::{snippets}/photo-controller-test/delete/curl-request.adoc[]
 include::{snippets}/photo-controller-test/delete/http-request.adoc[]
 ===== Response
 include::{snippets}/photo-controller-test/delete/http-response.adoc[]
+
+***
+
+==== photo/getPrintedPhotoInfos/
+
+인화된 사진들을 가져옵니다.
+
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 인화가 끝난 사진들 가져오기 | GET | photo/getPrintedPhotoInfos/
+|===
+
+===== CurlRequest
+include::{snippets}/photo-controller-test/get-printed-photo-infos/curl-request.adoc[]
+===== httpRequest
+include::{snippets}/photo-controller-test/get-printed-photo-infos/http-request.adoc[]
+===== Response
+include::{snippets}/photo-controller-test/get-printed-photo-infos/http-response.adoc[]
+
 
 ***
 

@@ -108,7 +108,7 @@ public class PhotoControllerTest extends TestInit {
     }
 
     @Test
-    public void get_PrintedPhotoInfos() throws Exception{
+    public void getPrintedPhotoInfos() throws Exception{
         user = userService.getUserByPhone("010-0000-0000");
 
         mockMvc.perform(

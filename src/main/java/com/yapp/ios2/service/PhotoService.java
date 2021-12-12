@@ -3,6 +3,7 @@ package com.yapp.ios2.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yapp.ios2.config.exception.EntityNotFoundException;
 import com.yapp.ios2.dto.PhotoDto;
+import com.yapp.ios2.dto.PhotoInAlbumDto;
 import com.yapp.ios2.repository.*;
 import com.yapp.ios2.vo.Film;
 import com.yapp.ios2.vo.Photo;
@@ -68,6 +69,18 @@ public class PhotoService{
         );
 
         return photos;
+    }
+
+    public List<PhotoInAlbumDto> getPhotoInfosByAlbum(Long albumUid){
+        List<PhotoInAlbumDto> photoInfos = new ArrayList<>();
+
+        photoInAlbumRepository.findAllByAlbum(albumRepository.findById(albumUid).get()).forEach(
+                photoInAlbum -> {
+                    photoInfos.add(new PhotoInAlbumDto(photoInAlbum));
+                }
+        );
+
+        return photoInfos;
     }
 
     public List<PhotoDto> getPhotosByUser(Long userUid){
@@ -150,7 +163,6 @@ public class PhotoService{
         photoRepository.deleteAll(photos);
 
     }
-
 
 ////    정민이 API 호출
 //    public void sendOtherApi(Object sendObj) {

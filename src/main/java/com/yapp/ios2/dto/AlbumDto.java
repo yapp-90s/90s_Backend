@@ -28,7 +28,7 @@ public class AlbumDto {
 	
 	private Integer layoutCode;
 
-	private List<PhotoDto> photos;
+	private List<PhotoInAlbumDto> photos;
 	
 	private LocalDateTime completedAt;
 	
@@ -48,9 +48,9 @@ public class AlbumDto {
 		this.completedAt = album.getCompletedAt();
 		this.createdAt = album.getCreatedAt();
 		this.updatedAt = album.getUpdatedAt();
-		this.isComplete = ObjectUtils.isEmpty(album.getCompletedAt());
+		this.isComplete = !ObjectUtils.isEmpty(album.getCompletedAt());
 
-		this.photos = photoService.getPhotosByAlbum(album.getUid());
+		this.photos = photoService.getPhotoInfosByAlbum(album.getUid());
 	}
 
 }
