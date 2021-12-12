@@ -48,7 +48,7 @@ public class AlbumDto {
 		this.completedAt = album.getCompletedAt();
 		this.createdAt = album.getCreatedAt();
 		this.updatedAt = album.getUpdatedAt();
-		this.isComplete = ObjectUtils.isEmpty(album.getCreatedAt());
+		this.isComplete = ObjectUtils.isEmpty(album.getCompletedAt());
 
 		this.photos = photoService.getPhotosByAlbum(album.getUid());
 	}
