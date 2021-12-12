@@ -133,4 +133,25 @@ public class FilmService {
             return BooleanDto.fail(e.getMessage());
         }
     }
+
+    public void changePrintStartAt(Long filmUid, LocalDateTime dateTime){
+
+        Film film = filmRepository.findById(filmUid).get();
+        film.setPrintStartAt(dateTime);
+        filmRepository.save(film);
+
+    }
+    public void changePrintEndAt(Long filmUid, LocalDateTime dateTime){
+
+        Film film = filmRepository.findById(filmUid).get();
+        film.setPrintEndAt(dateTime);
+        filmRepository.save(film);
+
+    }
+
+    public Film getFilmByPhoto(Long photoUid){
+
+        return photoRepository.findById(photoUid).get().getFilm();
+
+    }
 }

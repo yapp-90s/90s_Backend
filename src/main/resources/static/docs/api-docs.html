@@ -828,7 +828,7 @@ X-Frame-Options: DENY
 Content-Length: 176
 
 {
-  "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzNDciLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2Mzg4NzU0NTksImV4cCI6MjI2OTU5NTQ1OX0.2aPSBwFInxh0LpW-31jfxPdyimoxXJ5_wnUHMpBLewg"
+  "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0NjUiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2MzkyMDk1NDcsImV4cCI6MjI2OTkyOTU0N30.73WTP2EI-gCXwwiFz5M32P3pW1-MVHi1qsvxpElhSL4"
 }</code></pre>
 </div>
 </div>
@@ -887,7 +887,7 @@ X-Frame-Options: DENY
 Content-Length: 173
 
 {
-  "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc1NTc0LCJleHAiOjIyNjk1OTU1NzR9.kEUcvIc5_PbkCLcms2GZbErG8F3E2KkPpHoepR1u9ps"
+  "jwt" : "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NTQ0LCJleHAiOjIyNjk5Mjk1NDR9.gACW6-O-7ovqin5rHa153q83tNEgc636v9fsObSMXj0"
 }</code></pre>
 </div>
 </div>
@@ -1027,7 +1027,7 @@ X-Frame-Options: DENY
 Content-Length: 22
 
 {
-  "num" : "554752"
+  "num" : "951254"
 }</code></pre>
 </div>
 </div>
@@ -1086,7 +1086,7 @@ Content-Length: 22
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/film/create' -i -X POST \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYzOTIwNjQ3MiwiZXhwIjoyMjY5OTI2NDcyfQ.eg_EOEt3MrAfJodTWuDJpHvdM39hwvdY7oYl_YfazE8' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0NjYiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2MzkyMDk1NDksImV4cCI6MjI2OTkyOTU0OX0.wFjEgpbEKDYzFb3b5HkH27cDf6n7AJZxjUjRigD_218' \
     -H 'Accept: application/json' \
     -d '{
   "filmCode" : 1001,
@@ -1101,7 +1101,7 @@ Content-Length: 22
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /film/create HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYzOTIwNjQ3MiwiZXhwIjoyMjY5OTI2NDcyfQ.eg_EOEt3MrAfJodTWuDJpHvdM39hwvdY7oYl_YfazE8
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0NjYiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2MzkyMDk1NDksImV4cCI6MjI2OTkyOTU0OX0.wFjEgpbEKDYzFb3b5HkH27cDf6n7AJZxjUjRigD_218
 Accept: application/json
 Content-Length: 47
 Host: 133.186.220.56
@@ -1128,10 +1128,10 @@ X-Frame-Options: DENY
 Content-Length: 186
 
 {
-  "filmUid" : 391,
+  "filmUid" : 468,
   "name" : "Test Film",
   "filmCode" : 1001,
-  "createdAt" : "2021-12-11T16:07:52.595801",
+  "createdAt" : "2021-12-11T16:59:09.436527",
   "printStartedAt" : null,
   "printEndedAt" : null,
   "deletedAt" : null
@@ -1171,7 +1171,7 @@ Content-Length: 186
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/film/getFilms' -i -X GET \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2NDk1LCJleHAiOjIyNjk5MjY0OTV9.J7PWx2Q10Zz1DcvXAGemulj9HwEwmbWVE8dULpbWr_g' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NjI1LCJleHAiOjIyNjk5Mjk2MjV9.X9tjfuceYekwncnMrfFp3qvVjvyqtuY4k4tV_jeXH_U' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -1181,7 +1181,7 @@ Content-Length: 186
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /film/getFilms HTTP/1.1
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2NDk1LCJleHAiOjIyNjk5MjY0OTV9.J7PWx2Q10Zz1DcvXAGemulj9HwEwmbWVE8dULpbWr_g
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NjI1LCJleHAiOjIyNjk5Mjk2MjV9.X9tjfuceYekwncnMrfFp3qvVjvyqtuY4k4tV_jeXH_U
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
@@ -1199,17 +1199,9 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 5060
+Content-Length: 4051
 
 [ {
-  "filmUid" : 22,
-  "name" : "dummyFilm1001_90s_TRYER",
-  "filmCode" : 1001,
-  "createdAt" : "2021-12-11T16:03:06.153282",
-  "printStartedAt" : null,
-  "printEndedAt" : null,
-  "deletedAt" : null
-}, {
   "filmUid" : 23,
   "name" : "dummyFilm1002_90s_TRYER",
   "filmCode" : 1002,
@@ -1230,38 +1222,6 @@ Content-Length: 5060
   "name" : "dummyFilm1004_90s_TRYER",
   "filmCode" : 1004,
   "createdAt" : "2021-12-11T16:03:06.188223",
-  "printStartedAt" : null,
-  "printEndedAt" : null,
-  "deletedAt" : null
-}, {
-  "filmUid" : 53,
-  "name" : "dummyFilm1001_90s_tester",
-  "filmCode" : 1001,
-  "createdAt" : "2021-12-11T16:03:08.171664",
-  "printStartedAt" : null,
-  "printEndedAt" : null,
-  "deletedAt" : null
-}, {
-  "filmUid" : 54,
-  "name" : "dummyFilm1002_90s_tester",
-  "filmCode" : 1002,
-  "createdAt" : "2021-12-11T16:03:08.183554",
-  "printStartedAt" : null,
-  "printEndedAt" : null,
-  "deletedAt" : null
-}, {
-  "filmUid" : 55,
-  "name" : "dummyFilm1003_90s_tester",
-  "filmCode" : 1003,
-  "createdAt" : "2021-12-11T16:03:08.194519",
-  "printStartedAt" : null,
-  "printEndedAt" : null,
-  "deletedAt" : null
-}, {
-  "filmUid" : 56,
-  "name" : "dummyFilm1004_90s_tester",
-  "filmCode" : 1004,
-  "createdAt" : "2021-12-11T16:03:08.204185",
   "printStartedAt" : null,
   "printEndedAt" : null,
   "deletedAt" : null
@@ -1394,10 +1354,10 @@ Content-Length: 5060
   "printEndedAt" : null,
   "deletedAt" : null
 }, {
-  "filmUid" : 391,
+  "filmUid" : 468,
   "name" : "Test Film",
   "filmCode" : 1001,
-  "createdAt" : "2021-12-11T16:07:52.595801",
+  "createdAt" : "2021-12-11T16:59:09.436527",
   "printStartedAt" : null,
   "printEndedAt" : null,
   "deletedAt" : null
@@ -1438,7 +1398,7 @@ Content-Length: 5060
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/film/startPrinting/22' -i -X GET \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2NTE5LCJleHAiOjIyNjk5MjY1MTl9.IR59xQUvofDwYlD1m9Ij9HxW1T28YJunHS5GkfKOzmA' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NTQ5LCJleHAiOjIyNjk5Mjk1NDl9.0og4uPl1vAID9UX3ASqVGGPrYgrIBoOxpDDAKuHCiKE' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -1448,7 +1408,7 @@ Content-Length: 5060
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /film/startPrinting/22 HTTP/1.1
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2NTE5LCJleHAiOjIyNjk5MjY1MTl9.IR59xQUvofDwYlD1m9Ij9HxW1T28YJunHS5GkfKOzmA
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NTQ5LCJleHAiOjIyNjk5Mjk1NDl9.0og4uPl1vAID9UX3ASqVGGPrYgrIBoOxpDDAKuHCiKE
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
@@ -1512,7 +1472,7 @@ Content-Length: 38
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/film/delete/22' -i -X DELETE \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2ODI0LCJleHAiOjIyNjk5MjY4MjR9.Wm4ForRhMyWM_lR1CVyjWgJflHN9NZ2q6YvtRtSSldI' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NTQ5LCJleHAiOjIyNjk5Mjk1NDl9.0og4uPl1vAID9UX3ASqVGGPrYgrIBoOxpDDAKuHCiKE' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -1523,7 +1483,7 @@ Content-Length: 38
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">DELETE /film/delete/22 HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2ODI0LCJleHAiOjIyNjk5MjY4MjR9.Wm4ForRhMyWM_lR1CVyjWgJflHN9NZ2q6YvtRtSSldI
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NTQ5LCJleHAiOjIyNjk5Mjk1NDl9.0og4uPl1vAID9UX3ASqVGGPrYgrIBoOxpDDAKuHCiKE
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
@@ -1643,8 +1603,8 @@ X-Frame-Options: DENY
 Content-Length: 129
 
 {
-  "photoUid" : 354,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/354.jpeg",
+  "photoUid" : 467,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/467.jpeg",
   "filmUid" : 22
 }</code></pre>
 </div>
@@ -1681,9 +1641,9 @@ Content-Length: 129
 <h5 id="_curlrequest"><a class="link" href="#_curlrequest">CurlRequest</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/photo/download/26' -i -X GET \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/photo/download/27' -i -X GET \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2NzMwLCJleHAiOjIyNjk1OTY3MzB9.CIVBXX24i5YcQhR5QSn5JmqyiXEVHosJuDZKNFe88Ik' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NTQ4LCJleHAiOjIyNjk5Mjk1NDh9.enzg4QOvk3Qe1tayXlfd9soFKKgPxiKSm30OZpkIdvs' \
     -H 'Accept: application/octet-stream'</code></pre>
 </div>
 </div>
@@ -1692,9 +1652,9 @@ Content-Length: 129
 <h5 id="_httprequest"><a class="link" href="#_httprequest">httpRequest</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /photo/download/26 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /photo/download/27 HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2NzMwLCJleHAiOjIyNjk1OTY3MzB9.CIVBXX24i5YcQhR5QSn5JmqyiXEVHosJuDZKNFe88Ik
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NTQ4LCJleHAiOjIyNjk5Mjk1NDh9.enzg4QOvk3Qe1tayXlfd9soFKKgPxiKSm30OZpkIdvs
 Accept: application/octet-stream
 Host: 133.186.220.56</code></pre>
 </div>
@@ -1733,7 +1693,7 @@ Host: 133.186.220.56</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/photo/getPhotoInfosByFilm/22' -i -X GET \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2ODEwLCJleHAiOjIyNjk1OTY4MTB9.9NBGVlcz61uCn3FbXSEkvUkxrRmOk1shHjIfh2hwZXc' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NTQ4LCJleHAiOjIyNjk5Mjk1NDh9.enzg4QOvk3Qe1tayXlfd9soFKKgPxiKSm30OZpkIdvs' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -1743,7 +1703,7 @@ Host: 133.186.220.56</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /photo/getPhotoInfosByFilm/22 HTTP/1.1
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM4ODc2ODEwLCJleHAiOjIyNjk1OTY4MTB9.9NBGVlcz61uCn3FbXSEkvUkxrRmOk1shHjIfh2hwZXc
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NTQ4LCJleHAiOjIyNjk5Mjk1NDh9.enzg4QOvk3Qe1tayXlfd9soFKKgPxiKSm30OZpkIdvs
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
@@ -1761,13 +1721,9 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 2473
+Content-Length: 2350
 
 [ {
-  "photoUid" : 26,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/26.jpeg",
-  "filmUid" : 22
-}, {
   "photoUid" : 27,
   "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/27.jpeg",
   "filmUid" : 22
@@ -1776,68 +1732,68 @@ Content-Length: 2473
   "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/28.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 50,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/50.jpeg",
+  "photoUid" : 57,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/57.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 51,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/51.jpeg",
+  "photoUid" : 58,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/58.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 52,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/52.jpeg",
+  "photoUid" : 59,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/59.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 86,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/86.jpeg",
+  "photoUid" : 100,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/100.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 87,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/87.jpeg",
+  "photoUid" : 101,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/101.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 88,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/88.jpeg",
+  "photoUid" : 102,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/102.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 134,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/134.jpeg",
+  "photoUid" : 155,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/155.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 135,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/135.jpeg",
+  "photoUid" : 156,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/156.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 136,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/136.jpeg",
+  "photoUid" : 157,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/157.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 194,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/194.jpeg",
+  "photoUid" : 222,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/222.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 195,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/195.jpeg",
+  "photoUid" : 223,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/223.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 196,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/196.jpeg",
+  "photoUid" : 224,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/224.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 266,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/266.jpeg",
+  "photoUid" : 301,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/301.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 267,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/267.jpeg",
+  "photoUid" : 302,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/302.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 268,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/268.jpeg",
+  "photoUid" : 303,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/303.jpeg",
   "filmUid" : 22
 }, {
-  "photoUid" : 354,
-  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/354.jpeg",
+  "photoUid" : 467,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/467.jpeg",
   "filmUid" : 22
 } ]</code></pre>
 </div>
@@ -1954,7 +1910,7 @@ true</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/create' -i -X POST \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYzOTIwNjMyNywiZXhwIjoyMjY5OTI2MzI3fQ.cDmBFDGwR9_W7gmAvSLB7LRVRehYxMEjJ0zhhs0DdjI' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0NjYiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2MzkyMDk2MjcsImV4cCI6MjI2OTkyOTYyN30.SR6QgbBKzJp66_Cc3p8-iEY581WaKMQ7i517KBkeko8' \
     -H 'Accept: application/json' \
     -d '{
   "name" : "테스트앨범",
@@ -1970,7 +1926,7 @@ true</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /album/create HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYzOTIwNjMyNywiZXhwIjoyMjY5OTI2MzI3fQ.cDmBFDGwR9_W7gmAvSLB7LRVRehYxMEjJ0zhhs0DdjI
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0NjYiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2MzkyMDk2MjcsImV4cCI6MjI2OTkyOTYyN30.SR6QgbBKzJp66_Cc3p8-iEY581WaKMQ7i517KBkeko8
 Accept: application/json
 Content-Length: 77
 Host: 133.186.220.56
@@ -1998,15 +1954,15 @@ X-Frame-Options: DENY
 Content-Length: 272
 
 {
-  "albumUid" : 388,
+  "albumUid" : 470,
   "name" : "테스트앨범",
   "readCnt" : 0,
   "coverCode" : 1002,
   "layoutCode" : 1001,
   "photos" : [ ],
   "completedAt" : null,
-  "createdAt" : "2021-12-11T16:05:27.277718",
-  "updatedAt" : "2021-12-11T16:05:27.277792",
+  "createdAt" : "2021-12-11T17:00:28.081206",
+  "updatedAt" : "2021-12-11T17:00:28.081223",
   "isComplete" : false
 }</code></pre>
 </div>
@@ -2047,7 +2003,7 @@ Content-Length: 272
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/getAlbums' -i -X GET \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2MzUwLCJleHAiOjIyNjk5MjYzNTB9.E5DnqzyWYgf-4hD3AmbZbnMEd7kU7nkSWydynDv1qlQ' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MzAxMDI2LCJleHAiOjIyNzAwMjEwMjZ9.TLQ8dctv12f-cZewZZZPUJBXEq40ipvr5RBc4vtSBws' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -2058,7 +2014,7 @@ Content-Length: 272
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/getAlbums HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2MzUwLCJleHAiOjIyNjk5MjYzNTB9.E5DnqzyWYgf-4hD3AmbZbnMEd7kU7nkSWydynDv1qlQ
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MzAxMDI2LCJleHAiOjIyNzAwMjEwMjZ9.TLQ8dctv12f-cZewZZZPUJBXEq40ipvr5RBc4vtSBws
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
@@ -2076,56 +2032,22 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 2079
+Content-Length: 1131
 
 [ {
-  "albumUid" : 38,
-  "name" : "dummyAlbum01_90s_TRYER",
-  "readCnt" : 0,
-  "coverCode" : 1001,
-  "layoutCode" : 1001,
-  "photos" : [ ],
-  "completedAt" : null,
-  "createdAt" : "2021-12-11T16:03:07.785098",
-  "updatedAt" : "2021-12-11T16:03:07.785114",
-  "isComplete" : false
-}, {
-  "albumUid" : 40,
-  "name" : "dummyAlbum02_90s_TRYER",
-  "readCnt" : 0,
-  "coverCode" : 1002,
-  "layoutCode" : 1002,
-  "photos" : [ {
-    "photoUid" : 26,
-    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/26.jpeg",
-    "filmUid" : 22
-  }, {
-    "photoUid" : 27,
-    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/27.jpeg",
-    "filmUid" : 22
-  }, {
-    "photoUid" : 28,
-    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/28.jpeg",
-    "filmUid" : 22
-  }, {
-    "photoUid" : 29,
-    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/29.jpeg",
-    "filmUid" : 23
-  } ],
-  "completedAt" : null,
-  "createdAt" : "2021-12-11T16:03:07.814103",
-  "updatedAt" : "2021-12-11T16:03:07.814121",
-  "isComplete" : false
-}, {
   "albumUid" : 42,
   "name" : "dummyAlbum03_90s_TRYER",
   "readCnt" : 0,
   "coverCode" : 1003,
   "layoutCode" : 1003,
-  "photos" : [ ],
-  "completedAt" : null,
+  "photos" : [ {
+    "photoUid" : 27,
+    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/27.jpeg",
+    "filmUid" : 22
+  } ],
+  "completedAt" : "2021-12-11T17:29:29.907322",
   "createdAt" : "2021-12-11T16:03:07.837122",
-  "updatedAt" : "2021-12-11T16:03:07.837331",
+  "updatedAt" : "2021-12-11T17:29:29.940028",
   "isComplete" : false
 }, {
   "albumUid" : 44,
@@ -2149,7 +2071,7 @@ Content-Length: 2079
   "completedAt" : null,
   "createdAt" : "2021-12-11T16:03:07.865965",
   "updatedAt" : "2021-12-11T16:03:07.865981",
-  "isComplete" : false
+  "isComplete" : true
 } ]</code></pre>
 </div>
 </div>
@@ -2192,11 +2114,11 @@ POST 방식이며 Json으로 데이터를 받으며, 받을 때는 '앨범ID', '
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/addPhotoInAlbum' -i -X POST \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2Mzc0LCJleHAiOjIyNjk5MjYzNzR9.EXUgO7J6k-8QjnCL61zDUDR9Kj_zBoY2VqaZ4stPuuA' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NjI2LCJleHAiOjIyNjk5Mjk2MjZ9.-Rkr51D0MFgMkZORMymQKPHI0XEn-rI2oLUCb38OoIQ' \
     -H 'Accept: application/json' \
     -d '{
-  "albumUid" : 38,
-  "photoUid" : 26,
+  "albumUid" : 42,
+  "photoUid" : 27,
   "paperNum" : 1,
   "sequence" : 2
 }'</code></pre>
@@ -2209,14 +2131,14 @@ POST 방식이며 Json으로 데이터를 받으며, 받을 때는 '앨범ID', '
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /album/addPhotoInAlbum HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2Mzc0LCJleHAiOjIyNjk5MjYzNzR9.EXUgO7J6k-8QjnCL61zDUDR9Kj_zBoY2VqaZ4stPuuA
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NjI2LCJleHAiOjIyNjk5Mjk2MjZ9.-Rkr51D0MFgMkZORMymQKPHI0XEn-rI2oLUCb38OoIQ
 Accept: application/json
 Content-Length: 76
 Host: 133.186.220.56
 
 {
-  "albumUid" : 38,
-  "photoUid" : 26,
+  "albumUid" : 42,
+  "photoUid" : 27,
   "paperNum" : 1,
   "sequence" : 2
 }</code></pre>
@@ -2278,9 +2200,9 @@ Content-Length: 37
 <h5 id="_curl_9"><a class="link" href="#_curl_9">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/complete/38' -i -X GET \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/complete/40' -i -X GET \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2Mzk2LCJleHAiOjIyNjk5MjYzOTZ9.DBQwvWmYI_DTQL19WC68NOBtbHRbtc2F6lYXdEz0A0Y' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NjI2LCJleHAiOjIyNjk5Mjk2MjZ9.-Rkr51D0MFgMkZORMymQKPHI0XEn-rI2oLUCb38OoIQ' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -2289,9 +2211,9 @@ Content-Length: 37
 <h5 id="_request_9"><a class="link" href="#_request_9">Request</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/complete/38 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/complete/40 HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2Mzk2LCJleHAiOjIyNjk5MjYzOTZ9.DBQwvWmYI_DTQL19WC68NOBtbHRbtc2F6lYXdEz0A0Y
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NjI2LCJleHAiOjIyNjk5Mjk2MjZ9.-Rkr51D0MFgMkZORMymQKPHI0XEn-rI2oLUCb38OoIQ
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
@@ -2355,7 +2277,7 @@ Content-Length: 37
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/plusReadCnt/40' -i -X GET \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2NDQ1LCJleHAiOjIyNjk5MjY0NDV9.Upy8kUWBtK3Bx_KEsgPWYtjqstMV9spUW9DAJuWkasU' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NjI1LCJleHAiOjIyNjk5Mjk2MjV9.X9tjfuceYekwncnMrfFp3qvVjvyqtuY4k4tV_jeXH_U' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -2366,7 +2288,7 @@ Content-Length: 37
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/plusReadCnt/40 HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2NDQ1LCJleHAiOjIyNjk5MjY0NDV9.Upy8kUWBtK3Bx_KEsgPWYtjqstMV9spUW9DAJuWkasU
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NjI1LCJleHAiOjIyNjk5Mjk2MjV9.X9tjfuceYekwncnMrfFp3qvVjvyqtuY4k4tV_jeXH_U
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
@@ -2426,9 +2348,9 @@ Content-Length: 42
 <h5 id="_curl_11"><a class="link" href="#_curl_11">Curl</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/delete/38' -i -X DELETE \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/delete/40' -i -X DELETE \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2NDIwLCJleHAiOjIyNjk5MjY0MjB9.pFq8Hbfi1neQDbanImjwVne3X1uRInz_YQfnCj-S8SI' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NjI2LCJleHAiOjIyNjk5Mjk2MjZ9.-Rkr51D0MFgMkZORMymQKPHI0XEn-rI2oLUCb38OoIQ' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -2437,9 +2359,9 @@ Content-Length: 42
 <h5 id="_request_11"><a class="link" href="#_request_11">Request</a></h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">DELETE /album/delete/38 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">DELETE /album/delete/40 HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA2NDIwLCJleHAiOjIyNjk5MjY0MjB9.pFq8Hbfi1neQDbanImjwVne3X1uRInz_YQfnCj-S8SI
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MjA5NjI2LCJleHAiOjIyNjk5Mjk2MjZ9.-Rkr51D0MFgMkZORMymQKPHI0XEn-rI2oLUCb38OoIQ
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
@@ -2474,7 +2396,7 @@ Content-Length: 37
 <div id="footer">
 <div id="footer-text">
 Version 2.0.1-SNAPSHOT<br>
-Last updated 2021-12-11 16:41:12 +0900
+Last updated 2021-12-12 18:12:16 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">

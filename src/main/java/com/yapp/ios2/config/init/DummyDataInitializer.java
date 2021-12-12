@@ -108,7 +108,7 @@ public class DummyDataInitializer {
 
                 FuncUtils.createDummyAlbums(albumRepository, albumService, user);
 
-                FuncUtils.addPhotoInAlbumByUser(photoService, albumService, albumLayoutRepository, user);
+                FuncUtils.addPhotoInAlbumByUser(photoService, filmService, albumService, albumLayoutRepository, user);
 
             }
 

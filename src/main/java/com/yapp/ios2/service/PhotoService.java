@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -142,7 +143,7 @@ public class PhotoService{
 
         List<Photo> photos = photoRepository.findAllByFilm(film);
 
-        for(Photo photo : photos){
+        for (Photo photo : photos) {
             s3Service.delete(film.getUid(), photo.getUid());
         }
 

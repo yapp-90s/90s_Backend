@@ -20,11 +20,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -62,12 +64,17 @@ public class FuncUtils {
         for(int i = 1; i <= 4; i++){
             String name = String.format("dummyAlbum%02d_",i)+tester.getName();
             if(albumRepository.findAllByName(name).isEmpty()){
-                albumService.create(
+                AlbumDto album = albumService.create(
                         tester,
                         name,
                         1000 + i,
                         1000 + i
                         );
+
+                if( i%2 == 0){
+                    albumService.complete(album.getAlbumUid());
+                }
+
              }
         }
     }
@@ -95,7 +102,7 @@ public class FuncUtils {
 
     }
 
-    public static void addPhotoInAlbumByUser(PhotoService photoService, AlbumService albumService, AlbumLayoutRepository albumLayoutRepository, User user){
+    public static void addPhotoInAlbumByUser(PhotoService photoService, FilmService filmService, AlbumService albumService, AlbumLayoutRepository albumLayoutRepository, User user){
         List<AlbumDto> albums = albumService.getAlbumsByUser(user);
 
         List<PhotoDto> photos = photoService.getPhotosByUser(user.getUid());
@@ -111,12 +118,35 @@ public class FuncUtils {
 
                 for( int k = 1; k < albumLayout.getPhotoPerPaper(); k++){
 
-                    albumService.addPhotoInAlbum(
-                            albums.get(i).getAlbumUid(),
-                            photos.get(photoIdx++).getPhotoUid(),
-                            j,  // paperNum
-                            k   // sequence
-                    );
+                    // film PrintEnd 설정
+                    try{
+
+                        Film film = filmService.getFilmByPhoto(photos.get(photoIdx++).getPhotoUid());
+
+                        if (ObjectUtils.isEmpty(film.getPrintEndAt())){
+
+                            filmService.changePrintStartAt(
+                                    film.getUid(),
+                                    LocalDateTime.now()
+                            );
+
+                            filmService.changePrintEndAt(
+                                    film.getUid(),
+                                    LocalDateTime.now()
+                            );
+
+                        }
+
+                        albumService.addPhotoInAlbum(
+                                albums.get(i).getAlbumUid(),
+                                photos.get(photoIdx++).getPhotoUid(),
+                                j,  // paperNum
+                                k   // sequence
+                        );
+
+                    } catch (Exception e){
+                        continue;
+                    }
 
                 }
             }
