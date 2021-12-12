@@ -541,6 +541,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_response_8">Response</a></li>
 </ul>
 </li>
+<li><a href="#_photogetprintedphotoinfos">photo/getPrintedPhotoInfos/</a>
+<ul class="sectlevel4">
+<li><a href="#_curlrequest_4">CurlRequest</a></li>
+<li><a href="#_httprequest_4">httpRequest</a></li>
+<li><a href="#_response_9">Response</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_album">Album</a>
@@ -549,42 +556,42 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel4">
 <li><a href="#_curl_6">Curl</a></li>
 <li><a href="#_request_6">Request</a></li>
-<li><a href="#_response_9">Response</a></li>
+<li><a href="#_response_10">Response</a></li>
 </ul>
 </li>
 <li><a href="#_albumgetalbums">album/getAlbums</a>
 <ul class="sectlevel4">
 <li><a href="#_curl_7">Curl</a></li>
 <li><a href="#_request_7">Request</a></li>
-<li><a href="#_response_10">Response</a></li>
+<li><a href="#_response_11">Response</a></li>
 </ul>
 </li>
 <li><a href="#_albumaddphotoinalbum">album/addPhotoInAlbum</a>
 <ul class="sectlevel4">
 <li><a href="#_curl_8">Curl</a></li>
 <li><a href="#_request_8">Request</a></li>
-<li><a href="#_response_11">Response</a></li>
+<li><a href="#_response_12">Response</a></li>
 </ul>
 </li>
 <li><a href="#_albumcompletealbumuid">album/complete/{albumUid}</a>
 <ul class="sectlevel4">
 <li><a href="#_curl_9">Curl</a></li>
 <li><a href="#_request_9">Request</a></li>
-<li><a href="#_response_12">Response</a></li>
+<li><a href="#_response_13">Response</a></li>
 </ul>
 </li>
 <li><a href="#_albumplusreadcntalbumuid">album/plusReadCnt/{albumUid}</a>
 <ul class="sectlevel4">
 <li><a href="#_curl_10">Curl</a></li>
 <li><a href="#_request_10">Request</a></li>
-<li><a href="#_response_13">Response</a></li>
+<li><a href="#_response_14">Response</a></li>
 </ul>
 </li>
 <li><a href="#_albumdeletealbumuid">album/delete/{albumUid}</a>
 <ul class="sectlevel4">
 <li><a href="#_curl_11">Curl</a></li>
 <li><a href="#_request_11">Request</a></li>
-<li><a href="#_response_14">Response</a></li>
+<li><a href="#_response_15">Response</a></li>
 </ul>
 </li>
 </ul>
@@ -1660,7 +1667,6 @@ Host: 133.186.220.56</code></pre>
 </div>
 </div>
 <hr>
-<hr>
 </div>
 </div>
 <div class="sect3">
@@ -1868,6 +1874,1080 @@ true</code></pre>
 <hr>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_photogetprintedphotoinfos"><a class="link" href="#_photogetprintedphotoinfos">photo/getPrintedPhotoInfos/</a></h4>
+<div class="paragraph">
+<p>인화된 사진들을 가져옵니다.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Desc</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">기능</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">방식</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">인화가 끝난 사진들 가져오기</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">photo/getPrintedPhotoInfos/</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="_curlrequest_4"><a class="link" href="#_curlrequest_4">CurlRequest</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/photo/getPrintedPhotoInfos/' -i -X GET \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MzA0NjYwLCJleHAiOjIyNzAwMjQ2NjB9.i6xUs-DEJplctMHzoNZnvCe8T5Mq3OrV2voBKHj7PE8' \
+    -H 'Accept: application/json'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_httprequest_4"><a class="link" href="#_httprequest_4">httpRequest</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /photo/getPrintedPhotoInfos/ HTTP/1.1
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MzA0NjYwLCJleHAiOjIyNzAwMjQ2NjB9.i6xUs-DEJplctMHzoNZnvCe8T5Mq3OrV2voBKHj7PE8
+Accept: application/json
+Host: 133.186.220.56</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_response_9"><a class="link" href="#_response_9">Response</a></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Type: application/json
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Length: 33082
+
+[ {
+  "photoUid" : 26,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/26.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 27,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/27.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 28,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/28.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 56,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/56.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 57,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/57.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 58,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/58.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 98,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/98.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 99,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/99.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 100,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/100.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 152,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/152.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 153,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/153.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 154,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/154.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 218,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/218.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 219,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/219.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 220,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/220.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 296,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/296.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 297,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/297.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 298,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/298.jpeg",
+  "filmUid" : 22
+}, {
+  "photoUid" : 29,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/29.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 30,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/30.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 31,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/31.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 59,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/59.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 60,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/60.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 61,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/61.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 101,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/101.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 102,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/102.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 103,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/103.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 155,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/155.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 156,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/156.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 157,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/157.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 221,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/221.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 222,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/222.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 223,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/223.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 299,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/299.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 300,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/300.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 301,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/301.jpeg",
+  "filmUid" : 23
+}, {
+  "photoUid" : 32,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/32.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 33,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/33.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 34,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/34.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 62,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/62.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 63,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/63.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 64,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/64.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 104,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/104.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 105,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/105.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 106,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/106.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 158,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/158.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 159,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/159.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 160,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/160.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 224,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/224.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 225,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/225.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 226,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/226.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 302,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/302.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 303,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/303.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 304,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/304.jpeg",
+  "filmUid" : 24
+}, {
+  "photoUid" : 35,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/35.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 36,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/36.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 37,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/37.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 65,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/65.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 66,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/66.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 67,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/67.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 107,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/107.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 108,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/108.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 109,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/109.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 161,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/161.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 162,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/162.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 163,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/163.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 227,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/227.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 228,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/228.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 229,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/229.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 305,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/305.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 306,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/306.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 307,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/307.jpeg",
+  "filmUid" : 25
+}, {
+  "photoUid" : 68,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/68.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 69,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/69.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 70,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/70.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 110,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/110.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 111,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/111.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 112,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/112.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 164,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/164.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 165,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/165.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 166,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/166.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 230,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/230.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 231,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/231.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 232,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/232.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 308,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/308.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 309,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/309.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 310,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/52/310.jpeg",
+  "filmUid" : 52
+}, {
+  "photoUid" : 71,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/71.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 72,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/72.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 73,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/73.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 113,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/113.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 114,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/114.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 115,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/115.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 167,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/167.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 168,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/168.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 169,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/169.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 233,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/233.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 234,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/234.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 235,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/235.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 311,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/311.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 312,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/312.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 313,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/53/313.jpeg",
+  "filmUid" : 53
+}, {
+  "photoUid" : 74,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/74.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 75,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/75.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 76,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/76.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 116,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/116.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 117,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/117.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 118,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/118.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 170,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/170.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 171,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/171.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 172,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/172.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 236,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/236.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 237,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/237.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 238,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/238.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 314,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/314.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 315,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/315.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 316,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/54/316.jpeg",
+  "filmUid" : 54
+}, {
+  "photoUid" : 77,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/77.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 78,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/78.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 79,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/79.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 119,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/119.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 120,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/120.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 121,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/121.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 173,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/173.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 174,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/174.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 175,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/175.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 239,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/239.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 240,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/240.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 241,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/241.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 317,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/317.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 318,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/318.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 319,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/55/319.jpeg",
+  "filmUid" : 55
+}, {
+  "photoUid" : 122,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/94/122.jpeg",
+  "filmUid" : 94
+}, {
+  "photoUid" : 123,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/94/123.jpeg",
+  "filmUid" : 94
+}, {
+  "photoUid" : 124,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/94/124.jpeg",
+  "filmUid" : 94
+}, {
+  "photoUid" : 176,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/94/176.jpeg",
+  "filmUid" : 94
+}, {
+  "photoUid" : 177,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/94/177.jpeg",
+  "filmUid" : 94
+}, {
+  "photoUid" : 178,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/94/178.jpeg",
+  "filmUid" : 94
+}, {
+  "photoUid" : 242,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/94/242.jpeg",
+  "filmUid" : 94
+}, {
+  "photoUid" : 243,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/94/243.jpeg",
+  "filmUid" : 94
+}, {
+  "photoUid" : 244,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/94/244.jpeg",
+  "filmUid" : 94
+}, {
+  "photoUid" : 320,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/94/320.jpeg",
+  "filmUid" : 94
+}, {
+  "photoUid" : 321,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/94/321.jpeg",
+  "filmUid" : 94
+}, {
+  "photoUid" : 322,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/94/322.jpeg",
+  "filmUid" : 94
+}, {
+  "photoUid" : 125,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/95/125.jpeg",
+  "filmUid" : 95
+}, {
+  "photoUid" : 126,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/95/126.jpeg",
+  "filmUid" : 95
+}, {
+  "photoUid" : 127,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/95/127.jpeg",
+  "filmUid" : 95
+}, {
+  "photoUid" : 179,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/95/179.jpeg",
+  "filmUid" : 95
+}, {
+  "photoUid" : 180,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/95/180.jpeg",
+  "filmUid" : 95
+}, {
+  "photoUid" : 181,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/95/181.jpeg",
+  "filmUid" : 95
+}, {
+  "photoUid" : 245,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/95/245.jpeg",
+  "filmUid" : 95
+}, {
+  "photoUid" : 246,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/95/246.jpeg",
+  "filmUid" : 95
+}, {
+  "photoUid" : 247,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/95/247.jpeg",
+  "filmUid" : 95
+}, {
+  "photoUid" : 323,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/95/323.jpeg",
+  "filmUid" : 95
+}, {
+  "photoUid" : 324,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/95/324.jpeg",
+  "filmUid" : 95
+}, {
+  "photoUid" : 325,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/95/325.jpeg",
+  "filmUid" : 95
+}, {
+  "photoUid" : 128,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/96/128.jpeg",
+  "filmUid" : 96
+}, {
+  "photoUid" : 129,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/96/129.jpeg",
+  "filmUid" : 96
+}, {
+  "photoUid" : 130,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/96/130.jpeg",
+  "filmUid" : 96
+}, {
+  "photoUid" : 182,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/96/182.jpeg",
+  "filmUid" : 96
+}, {
+  "photoUid" : 183,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/96/183.jpeg",
+  "filmUid" : 96
+}, {
+  "photoUid" : 184,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/96/184.jpeg",
+  "filmUid" : 96
+}, {
+  "photoUid" : 248,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/96/248.jpeg",
+  "filmUid" : 96
+}, {
+  "photoUid" : 249,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/96/249.jpeg",
+  "filmUid" : 96
+}, {
+  "photoUid" : 250,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/96/250.jpeg",
+  "filmUid" : 96
+}, {
+  "photoUid" : 326,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/96/326.jpeg",
+  "filmUid" : 96
+}, {
+  "photoUid" : 327,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/96/327.jpeg",
+  "filmUid" : 96
+}, {
+  "photoUid" : 328,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/96/328.jpeg",
+  "filmUid" : 96
+}, {
+  "photoUid" : 131,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/97/131.jpeg",
+  "filmUid" : 97
+}, {
+  "photoUid" : 132,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/97/132.jpeg",
+  "filmUid" : 97
+}, {
+  "photoUid" : 133,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/97/133.jpeg",
+  "filmUid" : 97
+}, {
+  "photoUid" : 185,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/97/185.jpeg",
+  "filmUid" : 97
+}, {
+  "photoUid" : 186,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/97/186.jpeg",
+  "filmUid" : 97
+}, {
+  "photoUid" : 187,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/97/187.jpeg",
+  "filmUid" : 97
+}, {
+  "photoUid" : 251,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/97/251.jpeg",
+  "filmUid" : 97
+}, {
+  "photoUid" : 252,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/97/252.jpeg",
+  "filmUid" : 97
+}, {
+  "photoUid" : 253,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/97/253.jpeg",
+  "filmUid" : 97
+}, {
+  "photoUid" : 329,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/97/329.jpeg",
+  "filmUid" : 97
+}, {
+  "photoUid" : 330,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/97/330.jpeg",
+  "filmUid" : 97
+}, {
+  "photoUid" : 331,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/97/331.jpeg",
+  "filmUid" : 97
+}, {
+  "photoUid" : 188,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/148/188.jpeg",
+  "filmUid" : 148
+}, {
+  "photoUid" : 189,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/148/189.jpeg",
+  "filmUid" : 148
+}, {
+  "photoUid" : 190,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/148/190.jpeg",
+  "filmUid" : 148
+}, {
+  "photoUid" : 254,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/148/254.jpeg",
+  "filmUid" : 148
+}, {
+  "photoUid" : 255,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/148/255.jpeg",
+  "filmUid" : 148
+}, {
+  "photoUid" : 256,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/148/256.jpeg",
+  "filmUid" : 148
+}, {
+  "photoUid" : 332,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/148/332.jpeg",
+  "filmUid" : 148
+}, {
+  "photoUid" : 333,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/148/333.jpeg",
+  "filmUid" : 148
+}, {
+  "photoUid" : 334,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/148/334.jpeg",
+  "filmUid" : 148
+}, {
+  "photoUid" : 191,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/149/191.jpeg",
+  "filmUid" : 149
+}, {
+  "photoUid" : 192,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/149/192.jpeg",
+  "filmUid" : 149
+}, {
+  "photoUid" : 193,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/149/193.jpeg",
+  "filmUid" : 149
+}, {
+  "photoUid" : 257,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/149/257.jpeg",
+  "filmUid" : 149
+}, {
+  "photoUid" : 258,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/149/258.jpeg",
+  "filmUid" : 149
+}, {
+  "photoUid" : 259,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/149/259.jpeg",
+  "filmUid" : 149
+}, {
+  "photoUid" : 335,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/149/335.jpeg",
+  "filmUid" : 149
+}, {
+  "photoUid" : 336,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/149/336.jpeg",
+  "filmUid" : 149
+}, {
+  "photoUid" : 337,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/149/337.jpeg",
+  "filmUid" : 149
+}, {
+  "photoUid" : 194,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/150/194.jpeg",
+  "filmUid" : 150
+}, {
+  "photoUid" : 195,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/150/195.jpeg",
+  "filmUid" : 150
+}, {
+  "photoUid" : 196,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/150/196.jpeg",
+  "filmUid" : 150
+}, {
+  "photoUid" : 260,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/150/260.jpeg",
+  "filmUid" : 150
+}, {
+  "photoUid" : 261,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/150/261.jpeg",
+  "filmUid" : 150
+}, {
+  "photoUid" : 262,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/150/262.jpeg",
+  "filmUid" : 150
+}, {
+  "photoUid" : 338,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/150/338.jpeg",
+  "filmUid" : 150
+}, {
+  "photoUid" : 339,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/150/339.jpeg",
+  "filmUid" : 150
+}, {
+  "photoUid" : 340,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/150/340.jpeg",
+  "filmUid" : 150
+}, {
+  "photoUid" : 197,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/151/197.jpeg",
+  "filmUid" : 151
+}, {
+  "photoUid" : 198,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/151/198.jpeg",
+  "filmUid" : 151
+}, {
+  "photoUid" : 199,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/151/199.jpeg",
+  "filmUid" : 151
+}, {
+  "photoUid" : 263,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/151/263.jpeg",
+  "filmUid" : 151
+}, {
+  "photoUid" : 264,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/151/264.jpeg",
+  "filmUid" : 151
+}, {
+  "photoUid" : 265,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/151/265.jpeg",
+  "filmUid" : 151
+}, {
+  "photoUid" : 341,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/151/341.jpeg",
+  "filmUid" : 151
+}, {
+  "photoUid" : 342,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/151/342.jpeg",
+  "filmUid" : 151
+}, {
+  "photoUid" : 343,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/151/343.jpeg",
+  "filmUid" : 151
+}, {
+  "photoUid" : 266,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/214/266.jpeg",
+  "filmUid" : 214
+}, {
+  "photoUid" : 267,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/214/267.jpeg",
+  "filmUid" : 214
+}, {
+  "photoUid" : 268,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/214/268.jpeg",
+  "filmUid" : 214
+}, {
+  "photoUid" : 344,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/214/344.jpeg",
+  "filmUid" : 214
+}, {
+  "photoUid" : 345,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/214/345.jpeg",
+  "filmUid" : 214
+}, {
+  "photoUid" : 346,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/214/346.jpeg",
+  "filmUid" : 214
+}, {
+  "photoUid" : 269,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/215/269.jpeg",
+  "filmUid" : 215
+}, {
+  "photoUid" : 270,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/215/270.jpeg",
+  "filmUid" : 215
+}, {
+  "photoUid" : 271,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/215/271.jpeg",
+  "filmUid" : 215
+}, {
+  "photoUid" : 347,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/215/347.jpeg",
+  "filmUid" : 215
+}, {
+  "photoUid" : 348,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/215/348.jpeg",
+  "filmUid" : 215
+}, {
+  "photoUid" : 349,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/215/349.jpeg",
+  "filmUid" : 215
+}, {
+  "photoUid" : 272,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/216/272.jpeg",
+  "filmUid" : 216
+}, {
+  "photoUid" : 273,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/216/273.jpeg",
+  "filmUid" : 216
+}, {
+  "photoUid" : 274,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/216/274.jpeg",
+  "filmUid" : 216
+}, {
+  "photoUid" : 350,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/216/350.jpeg",
+  "filmUid" : 216
+}, {
+  "photoUid" : 351,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/216/351.jpeg",
+  "filmUid" : 216
+}, {
+  "photoUid" : 352,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/216/352.jpeg",
+  "filmUid" : 216
+}, {
+  "photoUid" : 275,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/217/275.jpeg",
+  "filmUid" : 217
+}, {
+  "photoUid" : 276,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/217/276.jpeg",
+  "filmUid" : 217
+}, {
+  "photoUid" : 277,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/217/277.jpeg",
+  "filmUid" : 217
+}, {
+  "photoUid" : 353,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/217/353.jpeg",
+  "filmUid" : 217
+}, {
+  "photoUid" : 354,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/217/354.jpeg",
+  "filmUid" : 217
+}, {
+  "photoUid" : 355,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/217/355.jpeg",
+  "filmUid" : 217
+}, {
+  "photoUid" : 356,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/292/356.jpeg",
+  "filmUid" : 292
+}, {
+  "photoUid" : 357,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/292/357.jpeg",
+  "filmUid" : 292
+}, {
+  "photoUid" : 358,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/292/358.jpeg",
+  "filmUid" : 292
+}, {
+  "photoUid" : 359,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/293/359.jpeg",
+  "filmUid" : 293
+}, {
+  "photoUid" : 360,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/293/360.jpeg",
+  "filmUid" : 293
+}, {
+  "photoUid" : 361,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/293/361.jpeg",
+  "filmUid" : 293
+}, {
+  "photoUid" : 362,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/294/362.jpeg",
+  "filmUid" : 294
+}, {
+  "photoUid" : 363,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/294/363.jpeg",
+  "filmUid" : 294
+}, {
+  "photoUid" : 364,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/294/364.jpeg",
+  "filmUid" : 294
+}, {
+  "photoUid" : 365,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/295/365.jpeg",
+  "filmUid" : 295
+}, {
+  "photoUid" : 366,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/295/366.jpeg",
+  "filmUid" : 295
+}, {
+  "photoUid" : 367,
+  "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/295/367.jpeg",
+  "filmUid" : 295
+} ]</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_album"><a class="link" href="#_album">Album</a></h3>
@@ -1910,7 +2990,7 @@ true</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/create' -i -X POST \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0NjYiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2MzkyMDk2MjcsImV4cCI6MjI2OTkyOTYyN30.SR6QgbBKzJp66_Cc3p8-iEY581WaKMQ7i517KBkeko8' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYzOTMwNTQ3NywiZXhwIjoyMjcwMDI1NDc3fQ.4xumOX1XweEli6iuHzGyZCdCaUHIXx2NdnaObZjBRkk' \
     -H 'Accept: application/json' \
     -d '{
   "name" : "테스트앨범",
@@ -1926,7 +3006,7 @@ true</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /album/create HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0NjYiLCJyb2xlcyI6WyJST0xFX1RFU1RFUiJdLCJpYXQiOjE2MzkyMDk2MjcsImV4cCI6MjI2OTkyOTYyN30.SR6QgbBKzJp66_Cc3p8-iEY581WaKMQ7i517KBkeko8
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNyIsInJvbGVzIjpbIlJPTEVfVEVTVEVSIl0sImlhdCI6MTYzOTMwNTQ3NywiZXhwIjoyMjcwMDI1NDc3fQ.4xumOX1XweEli6iuHzGyZCdCaUHIXx2NdnaObZjBRkk
 Accept: application/json
 Content-Length: 77
 Host: 133.186.220.56
@@ -1940,7 +3020,7 @@ Host: 133.186.220.56
 </div>
 </div>
 <div class="sect4">
-<h5 id="_response_9"><a class="link" href="#_response_9">Response</a></h5>
+<h5 id="_response_10"><a class="link" href="#_response_10">Response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -1951,18 +3031,18 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 272
+Content-Length: 270
 
 {
-  "albumUid" : 470,
+  "albumUid" : 384,
   "name" : "테스트앨범",
   "readCnt" : 0,
   "coverCode" : 1002,
   "layoutCode" : 1001,
   "photos" : [ ],
   "completedAt" : null,
-  "createdAt" : "2021-12-11T17:00:28.081206",
-  "updatedAt" : "2021-12-11T17:00:28.081223",
+  "createdAt" : "2021-12-12T19:37:58.943715",
+  "updatedAt" : "2021-12-12T19:37:58.9438",
   "isComplete" : false
 }</code></pre>
 </div>
@@ -2003,7 +3083,7 @@ Content-Length: 272
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl 'http://133.186.220.56/album/getAlbums' -i -X GET \
     -H 'Content-Type: application/json' \
-    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MzAxMDI2LCJleHAiOjIyNzAwMjEwMjZ9.TLQ8dctv12f-cZewZZZPUJBXEq40ipvr5RBc4vtSBws' \
+    -H 'X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MzA1NjA1LCJleHAiOjIyNzAwMjU2MDV9.ap7LAz-f9Cw8fkF1fZvoBtElwysix8EFlXpEw7Pnl7w' \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -2014,14 +3094,14 @@ Content-Length: 272
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /album/getAlbums HTTP/1.1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MzAxMDI2LCJleHAiOjIyNzAwMjEwMjZ9.TLQ8dctv12f-cZewZZZPUJBXEq40ipvr5RBc4vtSBws
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNiIsInJvbGVzIjpbIlJPTEVfVFJZRVIiXSwiaWF0IjoxNjM5MzA1NjA1LCJleHAiOjIyNzAwMjU2MDV9.ap7LAz-f9Cw8fkF1fZvoBtElwysix8EFlXpEw7Pnl7w
 Accept: application/json
 Host: 133.186.220.56</code></pre>
 </div>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_response_10"><a class="link" href="#_response_10">Response</a></h5>
+<h5 id="_response_11"><a class="link" href="#_response_11">Response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -2032,22 +3112,60 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 1131
+Content-Length: 2108
 
 [ {
+  "albumUid" : 38,
+  "name" : "dummyAlbum01_90s_TRYER",
+  "readCnt" : 0,
+  "coverCode" : 1001,
+  "layoutCode" : 1001,
+  "photos" : [ ],
+  "completedAt" : null,
+  "createdAt" : "2021-12-12T19:07:19.515144",
+  "updatedAt" : "2021-12-12T19:07:19.515165",
+  "isComplete" : false
+}, {
+  "albumUid" : 40,
+  "name" : "dummyAlbum02_90s_TRYER",
+  "readCnt" : 0,
+  "coverCode" : 1002,
+  "layoutCode" : 1002,
+  "photos" : [ {
+    "photoUid" : 27,
+    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/27.jpeg",
+    "paperNum" : 1,
+    "sequence" : 1
+  }, {
+    "photoUid" : 29,
+    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/29.jpeg",
+    "paperNum" : 1,
+    "sequence" : 2
+  }, {
+    "photoUid" : 31,
+    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/31.jpeg",
+    "paperNum" : 3,
+    "sequence" : 1
+  }, {
+    "photoUid" : 33,
+    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/33.jpeg",
+    "paperNum" : 3,
+    "sequence" : 2
+  } ],
+  "completedAt" : "2021-12-12T19:07:20.207362",
+  "createdAt" : "2021-12-12T19:07:19.878391",
+  "updatedAt" : "2021-12-12T19:07:20.265932",
+  "isComplete" : true
+}, {
   "albumUid" : 42,
   "name" : "dummyAlbum03_90s_TRYER",
   "readCnt" : 0,
   "coverCode" : 1003,
   "layoutCode" : 1003,
-  "photos" : [ {
-    "photoUid" : 27,
-    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/22/27.jpeg",
-    "filmUid" : 22
-  } ],
-  "completedAt" : "2021-12-11T17:29:29.907322",
-  "createdAt" : "2021-12-11T16:03:07.837122",
-  "updatedAt" : "2021-12-11T17:29:29.940028",
+  "photos" : [ ],
+  "completedAt" : null,
+  "createdAt" : "2021-12-12T19:07:20.425148",
+  "updatedAt" : "2021-12-12T19:07:20.425169",
   "isComplete" : false
 }, {
   "albumUid" : 44,
@@ -2056,21 +3174,19 @@ Content-Length: 1131
   "coverCode" : 1004,
   "layoutCode" : 1004,
   "photos" : [ {
-    "photoUid" : 30,
-    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/30.jpeg",
-    "filmUid" : 23
+    "photoUid" : 35,
+    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/35.jpeg",
+    "paperNum" : 1,
+    "sequence" : 1
   }, {
-    "photoUid" : 31,
-    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/23/31.jpeg",
-    "filmUid" : 23
-  }, {
-    "photoUid" : 32,
-    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/24/32.jpeg",
-    "filmUid" : 24
+    "photoUid" : 37,
+    "url" : "https://90s-inhwa-brothers-test.s3.ap-northeast-2.amazonaws.com/25/37.jpeg",
+    "paperNum" : 3,
+    "sequence" : 1
   } ],
-  "completedAt" : null,
-  "createdAt" : "2021-12-11T16:03:07.865965",
-  "updatedAt" : "2021-12-11T16:03:07.865981",
+  "completedAt" : "2021-12-12T19:07:21.161576",
+  "createdAt" : "2021-12-12T19:07:20.811317",
+  "updatedAt" : "2021-12-12T19:07:21.243262",
   "isComplete" : true
 } ]</code></pre>
 </div>
@@ -2146,7 +3262,7 @@ Host: 133.186.220.56
 </div>
 </div>
 <div class="sect4">
-<h5 id="_response_11"><a class="link" href="#_response_11">Response</a></h5>
+<h5 id="_response_12"><a class="link" href="#_response_12">Response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -2220,7 +3336,7 @@ Host: 133.186.220.56</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_response_12"><a class="link" href="#_response_12">Response</a></h5>
+<h5 id="_response_13"><a class="link" href="#_response_13">Response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -2295,7 +3411,7 @@ Host: 133.186.220.56</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_response_13"><a class="link" href="#_response_13">Response</a></h5>
+<h5 id="_response_14"><a class="link" href="#_response_14">Response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -2368,7 +3484,7 @@ Host: 133.186.220.56</code></pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_response_14"><a class="link" href="#_response_14">Response</a></h5>
+<h5 id="_response_15"><a class="link" href="#_response_15">Response</a></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
@@ -2396,7 +3512,7 @@ Content-Length: 37
 <div id="footer">
 <div id="footer-text">
 Version 2.0.1-SNAPSHOT<br>
-Last updated 2021-12-12 18:12:16 +0900
+Last updated 2021-12-12 19:42:27 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">
