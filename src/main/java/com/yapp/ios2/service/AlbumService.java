@@ -149,47 +149,46 @@ public class AlbumService{
 
     public BooleanDto addPhotoInAlbum(Long albumUid, Long photoUid, Integer paperNum, Integer sequence) {
 
-        BooleanDto result = BooleanDto.builder()
-                .result(false)
-                .msg("")
-                .build();
+        String msg = "";
 
-        Photo photo = photoRepository.findById(photoUid).orElseThrow(
-                () -> new EntityNotFoundException(String.format("Photo UID (%d) is not Exist.", photoUid.intValue()))
-        );
-        Album album = albumRepository.findById(albumUid).orElseThrow(
-                () -> new EntityNotFoundException(String.format("Album UID (%d) is not Exist.", albumUid.intValue()))
-        );
+        try{
+            Photo photo = photoRepository.findById(photoUid).orElseThrow(
+                    () -> new EntityNotFoundException(String.format("Photo UID (%d) is not Exist.", photoUid.intValue()))
+            );
+            Album album = albumRepository.findById(albumUid).orElseThrow(
+                    () -> new EntityNotFoundException(String.format("Album UID (%d) is not Exist.", albumUid.intValue()))
+            );
 
-        // 유호성 검사
+            // 유호성 검사
+            if( !photoInAlbumRepository.findAllByPaperNumAndSequence(paperNum, sequence).isEmpty() ){
+                // 저장하려는 사진 위치에 이미 사진이 있는지 여부.
+                msg = "Photo is Changed.";
 
-        if( !photoInAlbumRepository.findAllByPaperNumAndSequence(paperNum, sequence).isEmpty() ){
-            // 저장하려는 사진 위치에 이미 사진이 있는지 여부.
+            }else if ( album.getAlbumLayout().getTotPaper() < paperNum || album.getAlbumLayout().getPhotoPerPaper() < sequence ){
+                // 저장하려는 위치가 정당한지 여부(전체 사진 페이지를 넘기지 않는지, 각 페이지별 들어가는 사진 순서에 해당하는 지)
+                return BooleanDto.fail("Invalid Value in PaperNum or Sequence.");
 
-            BooleanDto.builder()
-                .msg("Photo is Changed.")
-                .build();
+            }
 
-
-        }else if ( album.getAlbumLayout().getTotPaper() < paperNum || album.getAlbumLayout().getPhotoPerPaper() < sequence ){
-            // 저장하려는 위치가 정당한지 여부(전체 사진 페이지를 넘기지 않는지, 각 페이지별 들어가는 사진 순서에 해당하는 지)
-
-            return BooleanDto.builder()
-                    .result(false)
-                    .msg("Invalid Value in PaperNum or Sequence.")
+            PhotoInAlbum photoInAlbum = PhotoInAlbum.builder()
+                    .photo(photo)
+                    .album(album)
+                    .paperNum(paperNum)
+                    .sequence(sequence)
                     .build();
+
+            photoInAlbumRepository.save(photoInAlbum);
+
+            if(msg.isBlank()) msg = "New Photo is added.";
+
+            return BooleanDto.success(msg);
+
+        }catch (Exception e){
+
+            return BooleanDto.fail(e.getMessage());
+
         }
 
-        PhotoInAlbum photoInAlbum = PhotoInAlbum.builder()
-                .photo(photo)
-                .album(album)
-                .paperNum(paperNum)
-                .sequence(sequence)
-                .build();
-
-        photoInAlbumRepository.save(photoInAlbum);
-
-        return BooleanDto.builder().result(true).build();
     }
 
 //
