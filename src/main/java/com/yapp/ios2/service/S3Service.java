@@ -21,6 +21,7 @@ import java.io.IOException;
 public class S3Service{
 
     private AmazonS3 s3Client;
+
     @Value("${cloud.aws.credentials.accessKey}")
     private String accessKey;
 

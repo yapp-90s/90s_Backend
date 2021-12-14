@@ -16,6 +16,7 @@ import com.yapp.ios2.repository.PhotoRepository;
 import com.yapp.ios2.vo.Film;
 import com.yapp.ios2.vo.Photo;
 import com.yapp.ios2.vo.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -27,23 +28,21 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
+@RequiredArgsConstructor
 public class FilmService {
 
     @Value("${ai.hostname}")
     String aiHostName;
 
-    @Autowired
-    FilmRepository filmRepository;
-    @Autowired
-    FilmTypeRepository filmTypeRepository;
-    @Autowired
-    PhotoRepository photoRepository;
-    @Autowired
-    PhotoService photoService;
-    @Autowired
-    HttpService httpService;
-    @Autowired
-    S3Service s3Service;
+    private final FilmRepository filmRepository;
+
+    private final FilmTypeRepository filmTypeRepository;
+
+    private final PhotoRepository photoRepository;
+
+    private final PhotoService photoService;
+
+    private final S3Service s3Service;
 
     public FilmDto createFilm(Integer filmCode, String name, User user){
 
@@ -96,7 +95,7 @@ public class FilmService {
 
             jsonString = json.writeValueAsString(data);
 
-            if(httpService.sendReq(aiHostName, jsonString)){
+            if(HttpService.sendReq(aiHostName, jsonString)){
                 continue;
             }else{
                 return BooleanDto.builder().result(false).build();

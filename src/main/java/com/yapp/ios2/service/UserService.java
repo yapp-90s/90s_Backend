@@ -20,12 +20,9 @@ import java.util.Collections;
 @Service
 public class UserService implements UserDetailsService {
 
-
-    @Autowired
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
     private final PasswordEncoder passwordEncoder;
-
 
     public User join(String emailKakao, String emailApple, String emailGoogle, String name, String phone){
 
@@ -87,27 +84,4 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(Long.parseLong(uid))
                 .orElseThrow(() -> new UsernameNotFoundException("사용자를 찾을 수 없습니다."));
     }
-//
-//
-//    public User findByPhone(String phoneNumber){
-//        User user = userRepository.findUserByPhone(phoneNumber).orElseThrow(
-//                () -> new UserNotFoundException()
-//        );
-//
-//        return user;
-//
-//    }
-//
-//    public User updatePhoneNumber(User user, String phoneNumber){
-//        user.setPhoneNum(phoneNumber);
-//        userRepository.save(user);
-//        return user;
-//    }
-//
-//    public User updatePassword(User user, String password){
-//        user.setPassword(passwordEncoder.encode(password));
-//        userRepository.save(user);
-//        return user;
-//    }
-
 }

@@ -8,6 +8,7 @@ import com.yapp.ios2.service.SnsService;
 import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.vo.User;
 import io.swagger.annotations.Api;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,17 +16,15 @@ import javax.validation.Valid;
 
 @Api(tags = {"1. User"})
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/user/*")
 public class UserController {
 
-    @Autowired
-    UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    SnsService snsService;
+    private final SnsService snsService;
 
-    @Autowired
-    JwtProvider jwtProvider;
+    private final JwtProvider jwtProvider;
 
     @GetMapping(value = "/")
     @ResponseBody

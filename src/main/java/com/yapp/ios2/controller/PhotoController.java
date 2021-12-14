@@ -7,6 +7,7 @@ import com.yapp.ios2.service.PhotoService;
 import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.vo.Photo;
 import com.yapp.ios2.vo.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,18 +19,14 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/photo/*")
 public class PhotoController {
-//
-    @Autowired
-    private PhotoService photoService;
-    @Autowired
-    private PhotoRepository photoRepository;
-//
-//
-    @Autowired
-    private UserService userService;
-//
+
+    private final PhotoService photoService;
+    private final PhotoRepository photoRepository;
+    private final UserService userService;
+
     @GetMapping("/")
     @ResponseBody
     public String home(@AuthenticationPrincipal UserDetails user){

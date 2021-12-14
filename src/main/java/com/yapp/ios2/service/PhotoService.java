@@ -8,6 +8,7 @@ import com.yapp.ios2.repository.*;
 import com.yapp.ios2.vo.Film;
 import com.yapp.ios2.vo.Photo;
 import com.yapp.ios2.vo.User;
+import lombok.RequiredArgsConstructor;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -24,24 +25,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class PhotoService{
 
-    @Autowired
-    FilmRepository filmRepository;
 
-    @Autowired
-    AlbumRepository albumRepository;
+    private final FilmRepository filmRepository;
 
-    @Autowired
-    PhotoRepository photoRepository;
+    private final AlbumRepository albumRepository;
 
-    @Autowired
-    UserRepository userRepository;
+    private final PhotoRepository photoRepository;
 
-    @Autowired
-    PhotoInAlbumRepository photoInAlbumRepository;
-    @Autowired
-    S3Service s3Service;
+    private final UserRepository userRepository;
+
+    private final PhotoInAlbumRepository photoInAlbumRepository;
+
+    private final S3Service s3Service;
 
 
     public List<PhotoDto> getPhotosByFilm(Long filmUid){

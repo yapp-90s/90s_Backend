@@ -2,6 +2,7 @@ package com.yapp.ios2.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class HttpService {
 
 
-    public boolean sendReq( String url, String json ){
+    public static boolean sendReq( String url, String json ){
 
         HttpClient client = HttpClientBuilder.create().build(); // HttpClient 생성
         HttpPost httpPost = new HttpPost(url);

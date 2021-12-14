@@ -8,6 +8,7 @@ import com.yapp.ios2.dto.BooleanDto;
 import com.yapp.ios2.dto.ResponseDto;
 import com.yapp.ios2.repository.*;
 import com.yapp.ios2.vo.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,34 +17,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class AlbumService{
 
-    @Autowired
-    AlbumRepository albumRepository;
 
-    @Autowired
-    UserRepository userRepository;
+    private final AlbumRepository albumRepository;
 
-    @Autowired
-    AlbumOwnerRepository albumOwnerRepository;
+    private final AlbumOwnerRepository albumOwnerRepository;
 
-    @Autowired
-    PhotoRepository photoRepository;
+    private final PhotoRepository photoRepository;
 
-    @Autowired
-    PhotoService photoService;
+    private final PhotoService photoService;
 
-    @Autowired
-    PhotoInAlbumRepository photoInAlbumRepository;
+    private final PhotoInAlbumRepository photoInAlbumRepository;
 
-    @Autowired
-    S3Service s3Service;
+    private final AlbumCoverRepository albumCoverRepository;
 
-    @Autowired
-    AlbumCoverRepository albumCoverRepository;
-
-    @Autowired
-    AlbumLayoutRepository albumLayoutRepository;
+    private final AlbumLayoutRepository albumLayoutRepository;
 
     public AlbumDto create(User user, String name, Integer coverCode, Integer layoutCode) {
 
@@ -163,11 +153,9 @@ public class AlbumService{
             if( !photoInAlbumRepository.findAllByPaperNumAndSequence(paperNum, sequence).isEmpty() ){
                 // 저장하려는 사진 위치에 이미 사진이 있는지 여부.
                 msg = "Photo is Changed.";
-
             }else if ( album.getAlbumLayout().getTotPaper() < paperNum || album.getAlbumLayout().getPhotoPerPaper() < sequence ){
                 // 저장하려는 위치가 정당한지 여부(전체 사진 페이지를 넘기지 않는지, 각 페이지별 들어가는 사진 순서에 해당하는 지)
-                return BooleanDto.fail("Invalid Value in PaperNum or Sequence.");
-
+                return BooleanDto.fail("Invalid PaperNum & Sequence.");
             }
 
             PhotoInAlbum photoInAlbum = PhotoInAlbum.builder()
@@ -242,9 +230,7 @@ public class AlbumService{
 
         albumRepository.save(album);
 
-        return BooleanDto.builder()
-                .result(true)
-                .build();
+        return BooleanDto.success();
     }
 
     public BooleanDto delete(Long albumUid){

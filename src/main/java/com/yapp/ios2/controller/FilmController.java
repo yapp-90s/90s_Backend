@@ -6,6 +6,7 @@ import com.yapp.ios2.service.FilmService;
 import com.yapp.ios2.vo.Film;
 import com.yapp.ios2.vo.Photo;
 import com.yapp.ios2.vo.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -17,11 +18,11 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/film/*")
 public class FilmController {
 
-    @Autowired
-    FilmService filmService;
+    private final FilmService filmService;
 
     @PostMapping(value = "/create")
     @ResponseBody
