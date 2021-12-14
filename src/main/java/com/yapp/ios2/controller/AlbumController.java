@@ -15,10 +15,14 @@ import java.util.List;
 public class AlbumController {
 
     @Autowired
-    private AlbumService albumService;
+    public AlbumController(AlbumService albumService, UserService userService){
+        this.albumService = albumService;
+        this.userService = userService;
+    }
 
-    @Autowired
-    private UserService userService;
+    private final AlbumService albumService;
+
+    private final UserService userService;
 
     @GetMapping("/")
     public String home(){
