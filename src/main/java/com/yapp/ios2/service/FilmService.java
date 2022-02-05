@@ -106,8 +106,8 @@ public class FilmService {
 
 //      일단 인화 기간은 3일로 합니다.
         LocalDateTime now = LocalDateTime.now();
-        film.setPrintStartAt(now);
-        film.setPrintEndAt(now.plusDays(3));
+        film.setDevelopedStartAt(now);
+        film.setDevelopedEndAt(now.plusDays(3));
         filmRepository.save(film);
 
         return BooleanDto.builder().result(true).build();
@@ -121,7 +121,7 @@ public class FilmService {
                     () -> new EntityNotFoundException("No Film with " + filmUid.toString() + " Uid. Wrong FilmUid.")
             );
 
-            film.setDeleteAt(LocalDateTime.now());
+            film.setDeletedAt(LocalDateTime.now());
 
             filmRepository.save(film);
 
@@ -136,14 +136,14 @@ public class FilmService {
     public void changePrintStartAt(Long filmUid, LocalDateTime dateTime){
 
         Film film = filmRepository.findById(filmUid).get();
-        film.setPrintStartAt(dateTime);
+        film.setDevelopedStartAt(dateTime);
         filmRepository.save(film);
 
     }
     public void changePrintEndAt(Long filmUid, LocalDateTime dateTime){
 
         Film film = filmRepository.findById(filmUid).get();
-        film.setPrintEndAt(dateTime);
+        film.setDevelopedEndAt(dateTime);
         filmRepository.save(film);
 
     }

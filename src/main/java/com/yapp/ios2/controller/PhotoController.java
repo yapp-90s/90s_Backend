@@ -43,11 +43,11 @@ public class PhotoController {
         return photoService.getPhotosByFilm(filmUid);
 
     }
-    @GetMapping("/getPrintedPhotoInfos")
+    @GetMapping("/getDevelopedPhotoInfos")
     @ResponseBody
-    public List<PhotoDto> getPrintedPhotoInfosByFilm(@AuthenticationPrincipal User user){
+    public List<PhotoDto> getDevelopedPhotoInfosByFilm(@AuthenticationPrincipal User user){
 
-        return photoService.getPrintedPhotos(user);
+        return photoService.getDevelopedPhotos(user);
 
     }
 
@@ -58,6 +58,51 @@ public class PhotoController {
         PhotoDto photo = photoService.upload(images, filmUid);
 
         return photo;
+    }
+
+    @PostMapping(value = "/upload/org/")
+    @ResponseBody
+    public PhotoDto putOrgFile(@RequestParam(value="image") MultipartFile images, @RequestParam("filmUid") Long filmUid, @AuthenticationPrincipal User user) throws IOException {
+
+        PhotoDto photo = photoService.upload(images, filmUid);
+
+        return photo;
+    }
+
+    @PostMapping(value = "/upload/decorated/")
+    @ResponseBody
+    public PhotoDto putDecoratedFile(@RequestParam(value="image") MultipartFile images, @RequestParam("filmUid") Long filmUid, @AuthenticationPrincipal User user) throws IOException {
+
+        PhotoDto photo = photoService.upload(images, filmUid);
+
+        return photo;
+    }
+
+    @GetMapping(value = "/download/org/{photoUid}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @ResponseBody()
+    public byte[] getOrgFile(@PathVariable(value="photoUid") Long photoUid) throws IOException {
+
+        byte[] photoBinary = photoService.download(photoUid);
+
+        return photoBinary;
+    }
+
+    @GetMapping(value = "/download/developed/{photoUid}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @ResponseBody()
+    public byte[] getDevelopedFile(@PathVariable(value="photoUid") Long photoUid) throws IOException {
+
+        byte[] photoBinary = photoService.download(photoUid);
+
+        return photoBinary;
+    }
+
+    @GetMapping(value = "/download/decorated/{photoUid}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @ResponseBody()
+    public byte[] getDecoratedFile(@PathVariable(value="photoUid") Long photoUid) throws IOException {
+
+        byte[] photoBinary = photoService.download(photoUid);
+
+        return photoBinary;
     }
 
     @GetMapping(value = "/download/{photoUid}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)

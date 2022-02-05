@@ -16,6 +16,6 @@ public interface FilmRepository extends JpaRepository<Film, Long> {
 
     List<Film> findAllByName(String name);
 
-    @Query("select f from Film f where f.printEndAt < CURRENT_TIMESTAMP")
-    List<Film> findAllPrintedFilms();
+    @Query("select f from Film f where f.developedEndAt < CURRENT_TIMESTAMP")
+    List<Film> findAllDevelopedFilms();
 }

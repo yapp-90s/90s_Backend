@@ -38,11 +38,11 @@ public class Film {
     private LocalDateTime createdAt;
 
     @Column
-    private LocalDateTime printStartAt;
+    private LocalDateTime developedStartAt;
 
     @Column
-    private LocalDateTime printEndAt;
+    private LocalDateTime developedEndAt;
 
     @Column
-    private LocalDateTime deleteAt;
+    private LocalDateTime deletedAt;
 }

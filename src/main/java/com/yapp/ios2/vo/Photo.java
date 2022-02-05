@@ -9,6 +9,12 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+enum PhotoType{
+    ORIGINAL,
+    DEVELOPED,
+    DECORATED
+}
+
 @Builder
 @Entity
 @Table(name = "photo")

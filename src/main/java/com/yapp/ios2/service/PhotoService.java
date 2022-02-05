@@ -28,7 +28,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PhotoService{
 
-
     private final FilmRepository filmRepository;
 
     private final AlbumRepository albumRepository;
@@ -93,10 +92,10 @@ public class PhotoService{
         return photos;
     }
 
-    public List<PhotoDto> getPrintedPhotos(User user){
+    public List<PhotoDto> getDevelopedPhotos(User user){
         List<PhotoDto> photos = new ArrayList<>();
 
-        filmRepository.findAllPrintedFilms().forEach(
+        filmRepository.findAllDevelopedFilms().forEach(
                 film -> {
                     photos.addAll(getPhotosByFilm(film.getUid()));
                 }
@@ -116,7 +115,7 @@ public class PhotoService{
 
         photoRepository.save(newPhoto);
 
-        String fileName = filmUid.toString() + "/" + newPhoto.getUid() + ".jpeg";
+        String fileName = filmUid.toString() + "/" + newPhoto.getUid() + ".png";
 
         String url = s3Service.upload(photo, fileName);
 
