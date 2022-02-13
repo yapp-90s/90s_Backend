@@ -14,14 +14,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class PhotoService{
+public class PhotoService extends PhotoBizService{
 
     private final FilmRepository filmRepository;
 
@@ -129,7 +128,7 @@ public class PhotoService{
 
         photoRepository.save(photo);
 
-        String filePath = this.getFilePath(type, photo.getUid());
+        String filePath = super.getS3FilePath(type, photo.getUid());
 
         try{
             s3Service.upload(file, filePath);
@@ -148,22 +147,11 @@ public class PhotoService{
                         () -> new EntityNotFoundException("Invalid Uid")
                 );
 
-        byte[] photoBinary = s3Service.download(photoUid.toString(), this.getFileName(photoType, photoUid));
+        byte[] photoBinary = s3Service.download(photoUid.toString(), getFileName(photoType, photoUid));
 
         return photoBinary;
     }
 
-
-    // photoName : photoType(ORG, DEOCERATED, DEVELOPED )_photoUid.png
-    private String getFileName(PHOTO_TYPE photoType, Long photoUid){
-        return photoType + "_" + photoUid + ".png";
-    }
-
-
-    // photoPath : /photoUid/photoName.png
-    private String getFilePath(PHOTO_TYPE photoType, Long photoUid){
-        return photoUid + File.separator + getFileName(photoType, photoUid);
-    }
 
     public void delete(Long photoUid) throws IOException {
 

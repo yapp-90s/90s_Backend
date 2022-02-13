@@ -3,15 +3,10 @@ package com.yapp.ios2.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.yapp.ios2.dto.*;
 import com.yapp.ios2.service.FilmService;
-import com.yapp.ios2.vo.Film;
-import com.yapp.ios2.vo.Photo;
 import com.yapp.ios2.vo.User;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -42,11 +37,11 @@ public class FilmController {
         return films;
     }
 
-    @GetMapping(value = "/startPrinting/{filmUid}")
+    @GetMapping(value = "/startDeveloping/{filmUid}")
     @ResponseBody
-    public BooleanDto startPrinting(@AuthenticationPrincipal User user, @PathVariable("filmUid") Long filmUid) throws JsonProcessingException {
+    public BooleanDto startDeveloping(@AuthenticationPrincipal User user, @PathVariable("filmUid") Long filmUid) throws JsonProcessingException {
 
-        BooleanDto result = filmService.startPrinting(filmUid);
+        BooleanDto result = filmService.startDeveloping(filmUid);
 
         return result;
     }

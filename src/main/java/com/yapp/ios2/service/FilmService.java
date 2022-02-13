@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yapp.ios2.config.exception.EntityNotFoundException;
 import com.yapp.ios2.config.exception.InvalidValueException;
+import com.yapp.ios2.config.info.PHOTO_TYPE;
 import com.yapp.ios2.dto.BooleanDto;
 import com.yapp.ios2.dto.FilmDto;
 import com.yapp.ios2.dto.ResponseDto;
@@ -29,7 +30,7 @@ import java.util.*;
 
 @Service
 @RequiredArgsConstructor
-public class FilmService {
+public class FilmService{
 
     @Value("${ai.hostname}")
     String aiHostName;
@@ -41,6 +42,8 @@ public class FilmService {
     private final PhotoRepository photoRepository;
 
     private final S3Service s3Service;
+
+    private final PhotoBizService photoBizService;
 
     public FilmDto createFilm(Integer filmCode, String name, User user){
 
@@ -74,7 +77,7 @@ public class FilmService {
         return filmDtos;
     }
 
-    public BooleanDto startPrinting(Long filmUid) throws JsonProcessingException{
+    public BooleanDto startDeveloping(Long filmUid) throws JsonProcessingException{
 
         Film film = filmRepository.findById(filmUid).get();
 
@@ -84,12 +87,20 @@ public class FilmService {
 
         StartPrintingDto data = StartPrintingDto.builder()
                 .film_code(film.getFilmType().getCode())
-                .film_uid(film.getUid().intValue())
+                .before_file_name("")
+                .after_file_name("")
+                .s3_file_path("")
                 .build();
 
 
         for(Photo photo : photoRepository.findAllByFilm(film)){
-            data.setPhoto_uid(photo.getUid().intValue());
+
+
+            data.setBefore_file_name(photoBizService.getFileName(PHOTO_TYPE.ORG, photo.getUid()));
+            data.setAfter_file_name(photoBizService.getFileName(PHOTO_TYPE.DEVELOPED, photo.getUid()));
+
+            data.setS3_file_path(photoBizService.getS3Path(photo.getUid()));
+
 
             jsonString = json.writeValueAsString(data);
 
@@ -99,8 +110,6 @@ public class FilmService {
                 return BooleanDto.builder().result(false).build();
             }
         }
-
-
 
 //      일단 인화 기간은 3일로 합니다.
         LocalDateTime now = LocalDateTime.now();
