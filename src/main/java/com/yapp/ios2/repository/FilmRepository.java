@@ -11,7 +11,7 @@ public interface FilmRepository extends JpaRepository<Film, Long> {
 
     List<Film> findAllByUser(User user);
 
-    @Query("select f from Film f, User u where f.user = u and f.deleteAt is null")
+    @Query("select f from Film f, User u where f.user = u and f.deletedAt is null")
     List<Film> findAllByUserAndDeleteAt(User user);
 
     List<Film> findAllByName(String name);

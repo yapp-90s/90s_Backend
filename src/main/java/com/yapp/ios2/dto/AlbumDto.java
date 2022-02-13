@@ -38,7 +38,7 @@ public class AlbumDto {
 	
 	private Boolean isComplete;
 
-	public AlbumDto(Album album, PhotoService photoService){
+	public AlbumDto(Album album, List<PhotoInAlbumDto> photos){
 
 		this.albumUid = album.getUid();
 		this.name = album.getName();
@@ -50,7 +50,7 @@ public class AlbumDto {
 		this.updatedAt = album.getUpdatedAt();
 		this.isComplete = !ObjectUtils.isEmpty(album.getCompletedAt());
 
-		this.photos = photoService.getPhotoInfosByAlbum(album.getUid());
+		this.photos = photos;
 	}
 
 }

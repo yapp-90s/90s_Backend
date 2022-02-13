@@ -10,18 +10,18 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-public class PhotoDto {
+public class PhotoDto implements IDto{
 
 	private Long photoUid;
 	
-	private String url;
-	
 	private Long filmUid;
+
+	private Long albumUid;
 
 	public PhotoDto(Photo photo){
 		this.photoUid = photo.getUid();
-		this.url = photo.getUrl();
 		this.filmUid = photo.getFilm().getUid();
+		this.albumUid = photo.getAlbum().getUid();
 	}
 
 }

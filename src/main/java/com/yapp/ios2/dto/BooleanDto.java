@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BooleanDto{
+public class BooleanDto implements IDto{
     private Boolean result;
     private String msg;
 

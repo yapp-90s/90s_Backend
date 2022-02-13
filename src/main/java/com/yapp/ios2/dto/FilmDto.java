@@ -35,11 +35,11 @@ public class FilmDto {
 
         this.createdAt = film.getCreatedAt();
 
-        this.printStartedAt = film.getPrintStartAt();
+        this.printStartedAt = film.getDevelopedStartAt();
 
-        this.printEndedAt = film.getPrintEndAt();
+        this.printEndedAt = film.getDevelopedEndAt();
 
-        this.deletedAt = film.getDeleteAt();
+        this.deletedAt = film.getDeletedAt();
     }
 
 }

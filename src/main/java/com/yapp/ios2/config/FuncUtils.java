@@ -92,7 +92,7 @@ public class FuncUtils {
 
                 try{
                     MultipartFile multipartFile = new MockMultipartFile(fileName, new FileInputStream(resource.getFile()));
-                    photoService.upload(multipartFile, film.getFilmUid());
+                    photoService.uploadOrgPhoto(multipartFile, film.getFilmUid());
                 }catch(Exception e){
                     System.out.println("addPhotoInFilmByUser");
                 }
@@ -123,7 +123,7 @@ public class FuncUtils {
 
                         Film film = filmService.getFilmByPhoto(photos.get(photoIdx++).getPhotoUid());
 
-                        if (ObjectUtils.isEmpty(film.getPrintEndAt())){
+                        if (ObjectUtils.isEmpty(film.getDevelopedEndAt())){
 
                             filmService.changePrintStartAt(
                                     film.getUid(),

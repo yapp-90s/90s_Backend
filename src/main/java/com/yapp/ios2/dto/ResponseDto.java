@@ -24,7 +24,7 @@ public class ResponseDto {
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class DataDto{
+    public static class DataDto implements IDto{
         private String data;
     }
 

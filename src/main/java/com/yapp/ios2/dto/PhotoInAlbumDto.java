@@ -19,7 +19,6 @@ public class PhotoInAlbumDto {
 
     public PhotoInAlbumDto(PhotoInAlbum photoInAlbum){
         this.photoUid = photoInAlbum.getPhoto().getUid();
-        this.url = photoInAlbum.getPhoto().getUrl();
         this.paperNum = photoInAlbum.getPaperNum();
         this.sequence = photoInAlbum.getSequence();
     }

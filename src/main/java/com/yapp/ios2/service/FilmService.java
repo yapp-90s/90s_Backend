@@ -40,8 +40,6 @@ public class FilmService {
 
     private final PhotoRepository photoRepository;
 
-    private final PhotoService photoService;
-
     private final S3Service s3Service;
 
     public FilmDto createFilm(Integer filmCode, String name, User user){
@@ -151,6 +149,14 @@ public class FilmService {
     public Film getFilmByPhoto(Long photoUid){
 
         return photoRepository.findById(photoUid).get().getFilm();
+
+    }
+
+    public Film getFilm(Long filmUid){
+
+        return filmRepository.findById(filmUid).orElseThrow(
+                () -> new EntityNotFoundException("Invalid filmUid")
+        );
 
     }
 }

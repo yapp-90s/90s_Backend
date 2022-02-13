@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
+import java.io.Serializable;
 
 @Service
 @NoArgsConstructor
@@ -47,16 +48,30 @@ public class S3Service{
                 .build();
     }
 
-    public String upload(MultipartFile file, String fileName) throws IOException {
+    public boolean upload(MultipartFile file, String filePath) throws IOException {
+        try {
+            s3Client.putObject(new PutObjectRequest(bucket, filePath, file.getInputStream(), null)
+                    .withCannedAcl(CannedAccessControlList.PublicRead));
+            return true;
+        } catch (Exception e){
 
-        s3Client.putObject(new PutObjectRequest(bucket, fileName, file.getInputStream(), null)
-                .withCannedAcl(CannedAccessControlList.PublicRead));
-        return s3Client.getUrl(bucket, fileName).toString();
+            return false;
+        }
     }
 
     public byte[] download(Long filmUid, String fileName) throws IOException {
         S3Object file = s3Client.getObject(new GetObjectRequest(bucket +
         "/" + filmUid.toString(), fileName + ".jpeg"));
+
+        S3ObjectInputStream s3OIS = file.getObjectContent();
+        byte[] bytes = IOUtils.toByteArray(s3OIS);
+
+        return bytes;
+    }
+
+    public byte[] download(String filePath, String fileName) throws IOException {
+        S3Object file = s3Client.getObject(new GetObjectRequest(bucket +
+                "/" + filePath, fileName));
 
         S3ObjectInputStream s3OIS = file.getObjectContent();
         byte[] bytes = IOUtils.toByteArray(s3OIS);

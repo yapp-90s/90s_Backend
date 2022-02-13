@@ -1,7 +1,8 @@
 package com.yapp.ios2.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yapp.ios2.config.exception.EntityNotFoundException;
+import com.yapp.ios2.config.info.PHOTO_TYPE;
+import com.yapp.ios2.dto.IDto;
 import com.yapp.ios2.dto.PhotoDto;
 import com.yapp.ios2.dto.PhotoInAlbumDto;
 import com.yapp.ios2.repository.*;
@@ -9,18 +10,12 @@ import com.yapp.ios2.vo.Film;
 import com.yapp.ios2.vo.Photo;
 import com.yapp.ios2.vo.User;
 import lombok.RequiredArgsConstructor;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.tomcat.util.ExceptionUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,22 +25,22 @@ public class PhotoService{
 
     private final FilmRepository filmRepository;
 
-    private final AlbumRepository albumRepository;
-
     private final PhotoRepository photoRepository;
 
     private final UserRepository userRepository;
+
+    private final AlbumRepository albumRepository;
 
     private final PhotoInAlbumRepository photoInAlbumRepository;
 
     private final S3Service s3Service;
 
-
     public List<PhotoDto> getPhotosByFilm(Long filmUid){
         List<PhotoDto> photos = new ArrayList<>();
+
         photoRepository.findAllByFilm(
                 filmRepository.findById(filmUid).orElseThrow(
-                        () -> new EntityNotFoundException("Invalid FilmUid")
+                        () -> new EntityNotFoundException("NOT FOUND FILM_UID")
                 )
         ).forEach(
                 photo -> {
@@ -105,28 +100,47 @@ public class PhotoService{
 
     }
 
-    public PhotoDto upload(MultipartFile photo, Long filmUid) throws IOException {
-
-        Photo newPhoto = Photo.builder()
-                .film(filmRepository.findById(filmUid).orElseThrow(
-                        () -> new EntityNotFoundException("Invalid FilmUid")
-                ))
-                .build();
-
-        photoRepository.save(newPhoto);
-
-        String fileName = filmUid.toString() + "/" + newPhoto.getUid() + ".png";
-
-        String url = s3Service.upload(photo, fileName);
-
-        newPhoto.setUrl(url);
-
-        photoRepository.save(newPhoto);
-
-        return new PhotoDto(newPhoto);
+    public IDto uploadOrgPhoto(MultipartFile photo, Long filmUid) throws IOException {
+        return this.upload(photo, null, filmUid, null,PHOTO_TYPE.ORG);
     }
 
-    public byte[] download(Long photoUid) throws IOException {
+    public IDto uploadDecoratedPhoto(MultipartFile photo, Long photoUid, Long albumUid) throws IOException{
+        return this.upload(photo, photoUid, null, albumUid, PHOTO_TYPE.ORG);
+    }
+
+    public IDto upload(MultipartFile file,
+                       Long photoUid ,Long filmUid, Long albumUid ,
+                       PHOTO_TYPE type) throws IOException {
+        Photo photo = new Photo();
+
+        if(ObjectUtils.isEmpty(photoUid)){
+            // CASE 1 : ADD NEW PHOTO
+            photo  = Photo.builder()
+                    .film(filmRepository.findById(filmUid).get())
+                    .build();
+
+
+        }else if (!ObjectUtils.isEmpty(photoUid) && !ObjectUtils.isEmpty(albumUid)){
+            // CASE 2 : ADD DECORATED PHOTO ( PHOTO_UID AND ALBUM_UID IS NEEDED)
+            photo = photoRepository.findById(photoUid).get();
+            photo.setAlbum(albumRepository.findById(albumUid).get());
+
+        }
+
+        photoRepository.save(photo);
+
+        String filePath = this.getFilePath(type, photo.getUid());
+
+        try{
+            s3Service.upload(file, filePath);
+        }catch (Exception e){
+
+        }
+
+        return new PhotoDto(photo);
+    }
+
+    public byte[] download(Long photoUid, PHOTO_TYPE photoType) throws IOException {
 
 
         Photo photo = photoRepository.findById(photoUid)
@@ -134,9 +148,21 @@ public class PhotoService{
                         () -> new EntityNotFoundException("Invalid Uid")
                 );
 
-        byte[] photoBinary = s3Service.download(photo.getFilm().getUid(), photo.getUid().toString());
+        byte[] photoBinary = s3Service.download(photoUid.toString(), this.getFileName(photoType, photoUid));
 
         return photoBinary;
+    }
+
+
+    // photoName : photoType(ORG, DEOCERATED, DEVELOPED )_photoUid.png
+    private String getFileName(PHOTO_TYPE photoType, Long photoUid){
+        return photoType + "_" + photoUid + ".png";
+    }
+
+
+    // photoPath : /photoUid/photoName.png
+    private String getFilePath(PHOTO_TYPE photoType, Long photoUid){
+        return photoUid + File.separator + getFileName(photoType, photoUid);
     }
 
     public void delete(Long photoUid) throws IOException {

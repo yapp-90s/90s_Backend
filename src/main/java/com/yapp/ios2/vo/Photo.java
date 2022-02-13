@@ -29,13 +29,15 @@ public class Photo {
     @GeneratedValue
     private Long uid;
 
-    @Column(length = 100)
-    private String url;
-
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name ="film_uid")
     private Film film;
+
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name ="album_uid")
+    private Album album;
 
     @CreationTimestamp
     private LocalDateTime createdAt;

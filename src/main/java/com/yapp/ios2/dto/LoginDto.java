@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginDto {
+public class LoginDto implements IDto{
 
     @Email
     @NotNull

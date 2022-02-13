@@ -28,9 +28,9 @@ public class UserController {
 
     @GetMapping(value = "/")
     @ResponseBody
-    public ResponseDto.DataDto home(){
-        ResponseDto.DataDto dataDto = new ResponseDto.DataDto();
-        dataDto.setData("Hello This url is about HOME");
+    public IDto home(){
+        IDto dataDto = new ResponseDto.DataDto("Hello This url is about HOME");
+
         return dataDto;
     }
 

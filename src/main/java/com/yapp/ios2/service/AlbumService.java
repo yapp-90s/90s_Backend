@@ -5,6 +5,7 @@ import com.yapp.ios2.config.exception.EntityNotFoundException;
 import com.yapp.ios2.config.exception.UserNotFoundException;
 import com.yapp.ios2.dto.AlbumDto;
 import com.yapp.ios2.dto.BooleanDto;
+import com.yapp.ios2.dto.PhotoInAlbumDto;
 import com.yapp.ios2.dto.ResponseDto;
 import com.yapp.ios2.repository.*;
 import com.yapp.ios2.vo.*;
@@ -27,8 +28,6 @@ public class AlbumService{
 
     private final PhotoRepository photoRepository;
 
-    private final PhotoService photoService;
-
     private final PhotoInAlbumRepository photoInAlbumRepository;
 
     private final AlbumCoverRepository albumCoverRepository;
@@ -50,7 +49,15 @@ public class AlbumService{
 
         addOwner(newAlbum, user, "ROLE_CREATOR");
 
-        albumDto = new AlbumDto(newAlbum, photoService);
+        List<PhotoInAlbumDto> photoInfos = new ArrayList<>();
+
+        photoInAlbumRepository.findAllByAlbum(newAlbum).forEach(
+                photoInAlbum -> {
+                    photoInfos.add(new PhotoInAlbumDto(photoInAlbum));
+                }
+        );
+
+        albumDto = new AlbumDto(newAlbum, photoInfos);
 
         return albumDto;
     }
@@ -65,6 +72,13 @@ public class AlbumService{
 
         albumOwnerRepository.save(albumOwner);
 
+    }
+
+    public Album getAlbum(Long albumUid){
+        Album album = albumRepository.findById(albumUid).orElseThrow(
+                () -> new EntityNotFoundException("Invalid AlbumUid")
+        );
+        return album;
     }
 
 //    public void removeOwner(Long albumUid, Long user){
@@ -130,7 +144,16 @@ public class AlbumService{
 
         albumRepository.findByUser(user).forEach(
                 album -> {
-                    albums.add(new AlbumDto(album, photoService));
+
+                    List<PhotoInAlbumDto> photoInfos = new ArrayList<>();
+
+                    photoInAlbumRepository.findAllByAlbum(album).forEach(
+                            photoInAlbum -> {
+                                photoInfos.add(new PhotoInAlbumDto(photoInAlbum));
+                            }
+                    );
+
+                    albums.add(new AlbumDto(album, photoInfos));
                 }
         );
 
