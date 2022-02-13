@@ -51,6 +51,13 @@ public class UserControllerTest extends TestInit {
     }
 
     @Test
+    private void createDummyUser() throws Exception{
+
+
+
+    }
+
+    @Test
     public void login_ErrorCode_C001() throws Exception {
     // 모든 필드를 다 안주고 일부 필드만해서 줬을 경우
         LoginDto loginDto = new LoginDto();
