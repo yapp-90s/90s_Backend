@@ -78,6 +78,11 @@ public class FilmService{
     }
 
     public BooleanDto startDeveloping(Long filmUid) throws JsonProcessingException{
+        // default 3 day
+        return startDeveloping(filmUid, 3);
+    }
+
+    public BooleanDto startDeveloping(Long filmUid, Integer day) throws JsonProcessingException{
 
         Film film = filmRepository.findById(filmUid).get();
 
@@ -95,7 +100,6 @@ public class FilmService{
 
         for(Photo photo : photoRepository.findAllByFilm(film)){
 
-
             data.setBefore_file_name(photoBizService.getFileName(PHOTO_TYPE.ORG, photo.getUid()));
             data.setAfter_file_name(photoBizService.getFileName(PHOTO_TYPE.DEVELOPED, photo.getUid()));
 
@@ -111,10 +115,9 @@ public class FilmService{
             }
         }
 
-//      일단 인화 기간은 3일로 합니다.
         LocalDateTime now = LocalDateTime.now();
         film.setDevelopedStartAt(now);
-        film.setDevelopedEndAt(now.plusDays(3));
+        film.setDevelopedEndAt(now.plusDays(day));
         filmRepository.save(film);
 
         return BooleanDto.builder().result(true).build();

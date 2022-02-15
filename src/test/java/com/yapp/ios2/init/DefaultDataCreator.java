@@ -17,26 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class DefaultDataCreator extends TestInit {
 
-    @Autowired
-    FilmTypeRepository filmTypeRepository;
-    @Autowired
-    AlbumLayoutRepository albumLayoutRepository;
-    @Autowired
-    AlbumCoverRepository albumCoverRepository;
-
-
-    @Autowired
-    FilmProps filmProps;
-
-    @Autowired
-    CoverProps coverProps;
-
-    @Autowired
-    LayoutProps layoutProps;
-
-
-    Logger logger = LoggerFactory.getLogger(this.getClass());
-
     @Test
     public void createFilmType() throws Exception{
 
