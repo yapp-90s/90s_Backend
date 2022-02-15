@@ -15,6 +15,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Service
@@ -77,6 +80,26 @@ public class UserService implements UserDetailsService {
         User user = userRepository.findUserByPhone(phoneNum).orElse(new User());
         user.setPhoneNum(phoneNum);
         return user;
+    }
+
+    public List<User> getAllTester(){
+        List<User> users = userRepository.findUsersByNameContaining("tester");
+        return users;
+    }
+
+    public Map<String, String> getTestersJWT(){
+        StringBuilder stringBuilder = new StringBuilder();
+
+        Map<String, String> data = new HashMap();
+
+        getAllTester().forEach(
+                tester -> {
+
+                    data.put(tester.getName(), tester.getJWT());
+
+                }
+        );
+        return data;
     }
 
     @Override

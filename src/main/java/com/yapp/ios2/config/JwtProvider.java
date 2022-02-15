@@ -41,7 +41,14 @@ public class JwtProvider {
     // 토큰 유효시간 20년
     static private final long tokenValidTime = 20 * 365 * 24 * 60 * 60 * 1000L;
 
+
+
+
     // JWT 토큰 생성
+    public static String createToke(User user){
+        return createToken(user.getUid().toString(), user.getRoles());
+    }
+
     public static String createToken(String userUid, List<String> roles) {
 
         Claims claims = Jwts.claims().setSubject(userUid); // JWT payload 에 저장되는 정보단위

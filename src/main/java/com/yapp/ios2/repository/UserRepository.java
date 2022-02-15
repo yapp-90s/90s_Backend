@@ -20,6 +20,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("select u from User u, AlbumOwner ao where ao.album = :album and ao.user = u")
     List<User> findUsersByAlbum(@Param("album") Album album);
 
+    List<User> findUsersByNameContaining(@Param("name") String name);
+
     @Query("select u from User u where u.phoneNum = :phone")
     Optional<User> findUserByPhone(@Param("phone")String phone);
 

@@ -1,5 +1,6 @@
 package com.yapp.ios2.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yapp.ios2.dto.*;
 //import com.yapp.ios2.service.AlbumService;
 //import com.yapp.ios2.service.SnsService;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 @Api(tags = {"1. User"})
 @RestController
@@ -34,6 +36,20 @@ public class UserController {
         return dataDto;
     }
 
+    @GetMapping("/getTester")
+    @ResponseBody
+    public String getTester(){
+
+        ObjectMapper json = new ObjectMapper();
+        String jsonString = new String();
+        try{
+            jsonString = json.writerWithDefaultPrettyPrinter().writeValueAsString(userService.getTestersJWT());
+        } catch (Exception e){
+
+        }
+        return jsonString;
+    }
+
 
     @PostMapping(value = "/login")
     @ResponseBody
@@ -47,7 +63,7 @@ public class UserController {
                 loginDto.getPhoneNum()
         );
 
-        String jwt = jwtProvider.createToken(user.getUid().toString(), user.getRoles());
+        String jwt = jwtProvider.createToke(user);
 
         ResponseDto.JwtDto jwtDto = new ResponseDto.JwtDto();
         jwtDto.setJwt(jwt);
