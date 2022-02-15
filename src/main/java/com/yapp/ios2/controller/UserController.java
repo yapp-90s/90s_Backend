@@ -36,7 +36,7 @@ public class UserController {
         return dataDto;
     }
 
-    @GetMapping("/getTester")
+    @GetMapping("/getTesterJwt")
     @ResponseBody
     public String getTester(){
 
