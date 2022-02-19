@@ -24,9 +24,15 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 group = 'com.yapp.ios2'
-version = '2.0.1-SNAPSHOT'
+version = '0.0.' + getDate()
 description = '90s'
 sourceCompatibility = 15
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyMMddHHmm')
+    return formattedDate
+}
 
 ext {
     snippetsDir = file('build/generated-snippets')
