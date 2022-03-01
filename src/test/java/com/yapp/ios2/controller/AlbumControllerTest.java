@@ -120,7 +120,7 @@ public class AlbumControllerTest extends TestInit {
 
     @Test
     public void complete() throws Exception {
-        user = userService.getUserByPhone("010-0000-0000");
+        user = getTester();
         String jwt = user.getJWT();
 
         Album album = albumRepository.findByUser(user).get(0);
@@ -155,7 +155,7 @@ public class AlbumControllerTest extends TestInit {
 
     @Test
     public void plus_ReadCnt() throws Exception {
-        user = userService.getUserByPhone("010-0000-0000");
+        user = getTester();
         String jwt = user.getJWT();
 
         Album album = albumRepository.findByUser(user).get(0);

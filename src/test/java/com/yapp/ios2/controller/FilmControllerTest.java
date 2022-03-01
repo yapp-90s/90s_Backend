@@ -86,7 +86,7 @@ public class FilmControllerTest extends TestInit {
     @Test
     public void start_developing() throws Exception {
         user = getTester();
-        Long filmUid = 67L;
+        Long filmUid = 65L;
 
         mockMvc.perform(
                 get("/film/startDeveloping/" + filmUid.toString())

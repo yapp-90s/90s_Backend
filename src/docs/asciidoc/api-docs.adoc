@@ -12,6 +12,8 @@ FC JANYANG CAPTAIN;
 :imagesdir: ../../main/resources/static/docs
 == Overview
 
+WARNING: API 변경사항이 있습니다. 사진의 다운로드 부분과 업로드 부분이 변경되었습니다. 또한 **addPhotoInAlbum** API 가 삭제 되었으며, **photo/upload/decorated** 로 대체 되었습니다. print 단어가 명확하지 않아 develop 으로 변경되었습니다.
+
 === HOST & PORT
 == Main Host ( API Doc & API )
 http://133.186.220.56/
@@ -23,12 +25,10 @@ http://133.186.220.56:81/
 
 |===
 |1| email_apple     | email_google    | email_kakao     | name        | phone_num
-|2| tryer@90s.com   | tryer@90s.com   | tryer@90s.com   | 90s_TRYER   | 010-0000-0000
-|3| tester@90s.com  | tester@90s.com  | tester@90s.com  | 90s_tester  | 010-1234-1234
-|4| tester1@90s.com | tester1@90s.com | tester1@90s.com | 90s_tester1 | 010-0000-0001
-|5| tester2@90s.com | tester2@90s.com | tester2@90s.com | 90s_tester2 | 010-0000-0002
-|6| tester3@90s.com | tester3@90s.com | tester3@90s.com | 90s_tester3 | 010-0000-0003
-|7| tester4@90s.com | tester4@90s.com | tester4@90s.com | 90s_tester4 | 010-0000-0004
+|3| tester1@90s.com | tester1@90s.com | tester1@90s.com | 90s_tester1 | 010-0000-0001
+|4| tester2@90s.com | tester2@90s.com | tester2@90s.com | 90s_tester2 | 010-0000-0002
+|5| tester3@90s.com | tester3@90s.com | tester3@90s.com | 90s_tester3 | 010-0000-0003
+|6| tester4@90s.com | tester4@90s.com | tester4@90s.com | 90s_tester4 | 010-0000-0004
 |===
 
 === HTTP verbs
@@ -209,7 +209,7 @@ include::{snippets}/film-controller-test/get_-films/http-request.adoc[]
 include::{snippets}/film-controller-test/get_-films/http-response.adoc[]
 
 ***
-==== film/startPrinting
+==== /film/startDeveloping/
 
 .Desc
 필름을 인화 합니다. GET으로 요청하면 필름의 상태가 인화 시작으로 변경됩니다. 해당 요청으로 인해 필름이 시작되는 날짜와 종료되는 날짜가 설정되며, 필름 종료 이후 시간에는 필름 인화가 끝난 것으로 봅니다.
@@ -217,17 +217,17 @@ include::{snippets}/film-controller-test/get_-films/http-response.adoc[]
 
 |===
 | 기능 | 방식 | URI
-| 필름 인화 | get | film/startPrinting/{film-uid}
+| 필름 인화 | get | film/startDeveloping/{film-uid}
 |===
 
 ===== Curl
-include::{snippets}/film-controller-test/start_printing/curl-request.adoc[]
+include::{snippets}/film-controller-test/start_developing/curl-request.adoc[]
 
 ===== Request
-include::{snippets}/film-controller-test/start_printing/http-request.adoc[]
+include::{snippets}/film-controller-test/start_developing/http-request.adoc[]
 
 ===== Response
-include::{snippets}/film-controller-test/start_printing/http-response.adoc[]
+include::{snippets}/film-controller-test/start_developing/http-response.adoc[]
 
 ***
 ==== film/delete/{filmUid}
@@ -262,56 +262,136 @@ include::{snippets}/film-controller-test/delete_film/http-response.adoc[]
 사진 관련한 API 입니다. 사진 업로드, 다운로드 등이 있습니다. 모든 요청은 JWT를 Header에 포함해서 보내주세요.
 ----
 
+==== UPLOAD
+----
+사진 업로드 CASE는 2개 입니다.
+
+CASE 1 : 필름에 사진 추가
+최초 원본사진을 업로드합니다.
+
+CASE 2 : 엘범에 사진 추가
+인화된 사진에 스티커를 붙인 사진을 업로드 합니다.
+----
+
 ***
 
-==== photo/upload
+==== photo/upload/org/
 
-필름의 사진을 업로드합니다. multipart/form-data 형태로 요청을 보내주세요. 필요한 param은 2개 입니다. 폼으로 싸서 하나는 파일로 하나는 Int 형태로 보내주세요.
+원본 사진을 업로드합니다. 필름에 사진을 추가할 때 사용 됩니다. multipart/form-data 형태로 요청을 보내주세요. 폼으로 싸서 하나는 파일로 하나는 Int 형태로 보내주세요.
 
 
 .Desc
 |===
 | 기능 | 방식 | URI
-| 사진 업로드 | Post | photo/upload
+| 사진 업로드 | Post | photo/upload/org/
 |===
 
-//===== CurlRequest
-//include::{snippets}/film-controller-test/upload_photo/curl-request.adoc[]
-//===== httpRequest
-//include::{snippets}/film-controller-test/upload_photo/http-request.adoc[]
-
 ===== RequestPart
-include::{snippets}/photo-controller-test/upload_photo/request-parts.adoc[]
+include::{snippets}/photo-controller-test/upload_org_photo/request-parts.adoc[]
 
 ===== RequestParameter
-include::{snippets}/photo-controller-test/upload_photo/request-parameters.adoc[]
+include::{snippets}/photo-controller-test/upload_org_photo/request-parameters.adoc[]
 
 
 
 ===== Response
-include::{snippets}/photo-controller-test/upload_photo/http-response.adoc[]
+include::{snippets}/photo-controller-test/upload_org_photo/http-response.adoc[]
 
 ***
+***
 
-==== photo/download/{photoUid}
+==== photo/upload/decorated/
 
-필름의 사진을 다운로드합니다. Response로 사진 파일을 보냅니다.
+스티커를 붙인 사진을 업로드합니다. 엘범에 사진을 추가할 때 사용 됩니다.
+
+CAUTION: **사진에 스티커를 붙이지 않았더라도 엘범에 사진을 추가할 때 해당 API를 사용합니다.**
 
 
 .Desc
 |===
 | 기능 | 방식 | URI
-| 사진 다운로드 | get | photo/download/{photoUid}
+| 사진 업로드 | Post | photo/upload/decorated/
+|===
+
+===== RequestPart
+include::{snippets}/photo-controller-test/upload_decorated_photo/request-parts.adoc[]
+
+===== RequestParameter
+include::{snippets}/photo-controller-test/upload_decorated_photo/request-parameters.adoc[]
+
+
+
+===== Response
+include::{snippets}/photo-controller-test/upload_decorated_photo/http-response.adoc[]
+
+***
+
+==== DOWNLOAD
+----
+사진 다운로드 CASE는 3개 입니다.
+
+CASE 1 : 원본 사진 ( 최초 사진 )
+최초 원본사진을 다운로드합니다.
+
+CASE 2 : 인화된 사진 ( 필름에 추가된 사진 )
+필름에 추가 된 뒤 인화된 사진을 다운로드합니다.
+
+CASE 3 : 꾸며진 사진 ( 엘범에 추가된 사진 )
+스티커가 부쳐지고 엘범에 된 사진을 다운로드합니다.
+----
+
+==== photo/download/org/{photoUid}
+
+원본 사진을 다운로드합니다. Response로 사진 파일을 보냅니다.
+
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 사진 다운로드 | get | photo/download/org/{photoUid}
 |===
 
 ===== CurlRequest
-include::{snippets}/photo-controller-test/download_photo/curl-request.adoc[]
+include::{snippets}/photo-controller-test/download_org_photo/curl-request.adoc[]
 ===== httpRequest
-include::{snippets}/photo-controller-test/download_photo/http-request.adoc[]
+include::{snippets}/photo-controller-test/download_org_photo/http-request.adoc[]
 
 
-//===== Response
-//include::{snippets}/photo-controller-test/download_photo/http-response.adoc[]
+***
+
+==== photo/download/developed/{photoUid}
+
+필름에 추가되어 인화된 사진을 다운로드합니다. Response로 사진 파일을 보냅니다.
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 사진 다운로드 | get | photo/download/developed/{photoUid}
+|===
+
+===== CurlRequest
+include::{snippets}/photo-controller-test/download_developed_photo/curl-request.adoc[]
+===== httpRequest
+include::{snippets}/photo-controller-test/download_developed_photo/http-request.adoc[]
+
+
+***
+==== photo/download/decorated/{photoUid}
+
+엘범에 추가되어 스티커가 붙여진 사진을 다운로드합니다. Response로 사진 파일을 보냅니다.
+
+
+.Desc
+|===
+| 기능 | 방식 | URI
+| 사진 다운로드 | get | photo/download/decorated/{photoUid}
+|===
+
+===== CurlRequest
+include::{snippets}/photo-controller-test/download_decorated_photo/curl-request.adoc[]
+===== httpRequest
+include::{snippets}/photo-controller-test/download_decorated_photo/http-request.adoc[]
+
 
 ***
 
@@ -355,7 +435,7 @@ include::{snippets}/photo-controller-test/delete/http-response.adoc[]
 
 ***
 
-==== photo/getPrintedPhotoInfos/
+==== photo/getDevelopedPhotoInfos/
 
 인화된 사진들을 가져옵니다.
 
@@ -363,15 +443,15 @@ include::{snippets}/photo-controller-test/delete/http-response.adoc[]
 .Desc
 |===
 | 기능 | 방식 | URI
-| 인화가 끝난 사진들 가져오기 | GET | photo/getPrintedPhotoInfos/
+| 인화가 끝난 사진들 가져오기 | GET | photo/getDevelopedPhotoInfos/
 |===
 
 ===== CurlRequest
-include::{snippets}/photo-controller-test/get-printed-photo-infos/curl-request.adoc[]
+include::{snippets}/photo-controller-test/get-developed-photo-infos/curl-request.adoc[]
 ===== httpRequest
-include::{snippets}/photo-controller-test/get-printed-photo-infos/http-request.adoc[]
+include::{snippets}/photo-controller-test/get-developed-photo-infos/http-request.adoc[]
 ===== Response
-include::{snippets}/photo-controller-test/get-printed-photo-infos/http-response.adoc[]
+include::{snippets}/photo-controller-test/get-developed-photo-infos/http-response.adoc[]
 
 
 ***
@@ -427,32 +507,6 @@ include::{snippets}/album-controller-test/get_albums/http-request.adoc[]
 
 ===== Response
 include::{snippets}/album-controller-test/get_albums/http-response.adoc[]
-
-***
-
-==== album/addPhotoInAlbum
-
-.Desc
-|===
-| 기능 | 방식 | URI
-| 엘범에 사진 추가 하기 | post | album/addPhotoInAlbum
-|===
-
-----
-엘범에 사진을 추가합니다.
-POST 방식이며 Json으로 데이터를 받으며, 받을 때는 '앨범ID', '사진ID', '사진이 들어갈 장수(Paper)', 사진의 위치(해당 페이지에서의 순서)를 받습니다.
-기존에 해당 위치에 사진이 있다면 해당 사진을 대체(Replace)하며, msg로 사진이 변경되었다고 받습니다.
-유효하지 않은 장수나 위치 값이면 false와 함께 msg를 응답합니다.
-----
-
-===== Curl
-include::{snippets}/album-controller-test/add_photo_in_album/curl-request.adoc[]
-
-===== Request
-include::{snippets}/album-controller-test/add_photo_in_album/http-request.adoc[]
-
-===== Response
-include::{snippets}/album-controller-test/add_photo_in_album/http-response.adoc[]
 
 ***
 

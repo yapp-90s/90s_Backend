@@ -91,7 +91,8 @@ public class PhotoControllerTest extends TestInit {
 
         Album album = albumRepository.findByUser(user).get(0);
         mockMvc.perform(
-                fileUpload("/photo/upload/decorated/")
+                fileUpload("/" +
+                        "")
                         .file("image", multipartFile.getBytes())
                         .header("X-AUTH-TOKEN", user.getJWT())
                         .param("photoUid", photo.getUid().toString())
@@ -111,7 +112,6 @@ public class PhotoControllerTest extends TestInit {
                 );
     }
 
-
     @Test
     public void download_org_photo() throws Exception {
         user = getTester();
@@ -119,6 +119,35 @@ public class PhotoControllerTest extends TestInit {
 
         mockMvc.perform(
                 get("/photo/download/org/" + photos.get(0).getUid())
+                        .header("X-AUTH-TOKEN", user.getJWT())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_OCTET_STREAM_VALUE))
+                .andExpect(status().isOk()
+                );
+    }
+
+    @Test
+    public void download_developed_photo() throws Exception {
+
+        user = getTester();
+        List<Photo> photos = photoRepository.findAllByUser(user);
+
+        mockMvc.perform(
+                get("/photo/download/developed/" + photos.get(0).getUid())
+                        .header("X-AUTH-TOKEN", user.getJWT())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_OCTET_STREAM_VALUE))
+                .andExpect(status().isOk()
+                );
+    }
+
+    @Test
+    public void download_decorated_photo() throws Exception {
+        user = getTester();
+        List<Photo> photos = photoRepository.findAllByUser(user);
+
+        mockMvc.perform(
+                get("/photo/download/decorated/" + photos.get(0).getUid())
                         .header("X-AUTH-TOKEN", user.getJWT())
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_OCTET_STREAM_VALUE))
@@ -153,11 +182,11 @@ public class PhotoControllerTest extends TestInit {
     }
 
     @Test
-    public void getPrintedPhotoInfos() throws Exception{
-        user = userService.getUserByPhone("010-0000-0000");
+    public void getDevelopedPhotoInfos() throws Exception{
+        user = getTester();
 
         mockMvc.perform(
-                get("/photo/getPrintedPhotoInfos/")
+                get("/photo/getDevelopedPhotoInfos/")
                         .header("X-AUTH-TOKEN", user.getJWT())
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
