@@ -7,7 +7,7 @@ import java.io.File;
 
 @Service
 public class PhotoBizService {
-    // photoName : photoType(ORG, DEOCERATED, DEVELOPED )_photoUid.png
+    // photoName : photoType(ORG, DECORATED, DEVELOPED )_photoUid.png
     String getFileName(PHOTO_TYPE photoType, Long photoUid){
         return photoType + "_" + photoUid + ".png";
     }
@@ -17,7 +17,7 @@ public class PhotoBizService {
     String getS3FilePath(PHOTO_TYPE photoType, Long photoUid){
         return photoUid + File.separator + getFileName(photoType, photoUid);
     }
-    // photoPath : /photoUid/photoName.png
+    // photoPath : photoUid/
     String getS3Path(Long photoUid){
         return photoUid + File.separator;
     }

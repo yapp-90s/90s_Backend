@@ -48,6 +48,13 @@ public class DummyDataCreator extends TestInit {
                     createDummyFilms(user);
                 }
         );
+    }
+
+    @Test
+    public void addOrgPhotosInFilms(){
+        List<User> users = userRepository.findAll();
+
+
 
     }
 

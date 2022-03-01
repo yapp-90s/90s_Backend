@@ -234,4 +234,8 @@ public class TestInit {
         }
     }
 
+    protected User getTester(){
+        return this.user;
+    }
+
 }

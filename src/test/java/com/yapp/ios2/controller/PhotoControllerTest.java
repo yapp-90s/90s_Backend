@@ -9,6 +9,7 @@ import com.yapp.ios2.repository.PhotoRepository;
 import com.yapp.ios2.repository.UserRepository;
 import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.testConfig.TestInit;
+import com.yapp.ios2.vo.Film;
 import com.yapp.ios2.vo.Photo;
 import com.yapp.ios2.vo.User;
 import org.junit.Before;
@@ -30,6 +31,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -47,33 +49,43 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class PhotoControllerTest extends TestInit {
 
     @Test
-    public void upload_photo() throws Exception {
+    public void upload_org_photo() throws Exception {
 
-        user = userService.getUserByPhone("010-0000-0000");
+        user = getTester();
 
-        MockMultipartFile multipartFile = new MockMultipartFile("testPic.jpeg", new FileInputStream(new File("src/test/java/com/yapp/ios2/data/testPicture.jpeg")));
+        MockMultipartFile multipartFile = new MockMultipartFile("testPic.png", new FileInputStream(new File("src/test/java/com/yapp/ios2/data/testPic.png")));
+
+
+        List<Film> films = filmRepository.findByDevelopedEndAtIsNull();
+        Long filmUid = 0l;
+
+        if(films.isEmpty()){
+            filmUid = filmService.createFilm(1001, LocalDateTime.now().toString(), user).getFilmUid();
+        }else{
+            filmUid = films.get(0).getUid();
+        }
 
         mockMvc.perform(
-                fileUpload("/photo/upload")
+                fileUpload("/photo/upload/org/")
                         .file("image", multipartFile.getBytes())
                         .header("X-AUTH-TOKEN", user.getJWT())
-                        .param("filmUid", filmRepository.findAllByUser(user).get(0).getUid().toString())
+                        .param("filmUid", filmUid.toString())
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(document.document(
-                        requestParts(partWithName("image").description("업로드할 이미지 파일. jpeg 형식.")),
+                        requestParts(partWithName("image").description("업로드할 이미지 파일. png 형식.")),
                         requestParameters(parameterWithName("filmUid").description("사진이 소속된 필름의 아이디값."))
                         )
                 );
     }
 
     @Test
-    public void download_photo() throws Exception {
-        user = userService.getUserByPhone("010-0000-0000");
+    public void download_org_photo() throws Exception {
+        user = getTester();
         List<Photo> photos = photoRepository.findAllByUser(user);
 
         mockMvc.perform(
-                get("/photo/download/" + photos.get(0).getUid())
+                get("/photo/download/org/" + photos.get(0).getUid())
                         .header("X-AUTH-TOKEN", user.getJWT())
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_OCTET_STREAM_VALUE))

@@ -2,6 +2,7 @@ package com.yapp.ios2.dto;
 
 import com.yapp.ios2.vo.Photo;
 import lombok.*;
+import org.springframework.util.ObjectUtils;
 
 
 @Data
@@ -21,7 +22,7 @@ public class PhotoDto implements IDto{
 	public PhotoDto(Photo photo){
 		this.photoUid = photo.getUid();
 		this.filmUid = photo.getFilm().getUid();
-		this.albumUid = photo.getAlbum().getUid();
+		this.albumUid = ObjectUtils.isEmpty(photo.getAlbum()) ? null : photo.getAlbum().getUid();
 	}
 
 }

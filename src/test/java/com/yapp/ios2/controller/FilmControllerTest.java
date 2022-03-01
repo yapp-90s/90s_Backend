@@ -47,8 +47,6 @@ public class FilmControllerTest extends TestInit {
     @Test
     public void create_film() throws Exception {
 
-
-
         CreateFilmDto createFilmDto = CreateFilmDto.builder()
                 .name("Test Film")
                 .filmCode(1001)
@@ -86,12 +84,12 @@ public class FilmControllerTest extends TestInit {
     }
 
     @Test
-    public void start_printing() throws Exception {
-        user = userService.getUserByPhone("010-0000-0000");
-        Long filmUid = filmRepository.findAllByUser(user).get(0).getUid();
+    public void start_developing() throws Exception {
+        user = getTester();
+        Long filmUid = 67L;
 
         mockMvc.perform(
-                get("/film/startPrinting/" + filmUid.toString())
+                get("/film/startDeveloping/" + filmUid.toString())
                         .header("X-AUTH-TOKEN", user.getJWT())
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())

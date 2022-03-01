@@ -18,4 +18,7 @@ public interface FilmRepository extends JpaRepository<Film, Long> {
 
     @Query("select f from Film f where f.developedEndAt < CURRENT_TIMESTAMP")
     List<Film> findAllDevelopedFilms();
+
+    List<Film> findByDevelopedEndAtIsNotNull();
+    List<Film> findByDevelopedEndAtIsNull();
 }
