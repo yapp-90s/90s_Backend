@@ -17,4 +17,5 @@ public interface AlbumRepository extends JpaRepository<Album, Long>{
     @Query("select a from Album a, AlbumOwner ao where ao.user = :user and a = ao.album")
     List<Album> findByUser(@Param("user")User user);
 
+
 }

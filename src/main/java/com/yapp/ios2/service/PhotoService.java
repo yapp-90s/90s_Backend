@@ -100,30 +100,31 @@ public class PhotoService extends PhotoBizService{
     }
 
     public IDto uploadOrgPhoto(MultipartFile photo, Long filmUid) throws IOException {
-        return this.upload(photo, null, filmUid, null,PHOTO_TYPE.ORG);
+        return this.upload(photo, null, filmUid,PHOTO_TYPE.ORG);
     }
 
-    public IDto uploadDecoratedPhoto(MultipartFile photo, Long photoUid, Long albumUid) throws IOException{
-        return this.upload(photo, photoUid, null, albumUid, PHOTO_TYPE.ORG);
+    public IDto uploadDecoratedPhoto(MultipartFile photo, Long photoUid) throws IOException{
+        return this.upload(photo, photoUid, null, PHOTO_TYPE.DECORATED);
     }
 
     public IDto upload(MultipartFile file,
-                       Long photoUid ,Long filmUid, Long albumUid ,
+                       Long photoUid ,Long filmUid,
                        PHOTO_TYPE type) throws IOException {
         Photo photo = new Photo();
 
-        if(ObjectUtils.isEmpty(photoUid)){
-            // CASE 1 : ADD NEW PHOTO
-            photo  = Photo.builder()
-                    .film(filmRepository.findById(filmUid).get())
-                    .build();
-
-
-        }else if (!ObjectUtils.isEmpty(photoUid) && !ObjectUtils.isEmpty(albumUid)){
-            // CASE 2 : ADD DECORATED PHOTO ( PHOTO_UID AND ALBUM_UID IS NEEDED)
-            photo = photoRepository.findById(photoUid).get();
-            photo.setAlbum(albumRepository.findById(albumUid).get());
-
+        switch (type){
+            case ORG -> {
+                // CASE 1 : Create ORG PHOTO
+                photo  = Photo.builder()
+                        .film(filmRepository.findById(filmUid).get())
+                        .build();
+                break;
+            }
+            case DECORATED -> {
+                // CASE 2 : ADD DECORATED PHOTO ( PHOTO_UID IS NEEDED)
+                photo = photoRepository.findById(photoUid).get();
+                break;
+            }
         }
 
         photoRepository.save(photo);

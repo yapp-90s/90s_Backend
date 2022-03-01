@@ -3,15 +3,17 @@ package com.yapp.ios2.dto;
 import com.yapp.ios2.vo.Photo;
 import com.yapp.ios2.vo.PhotoInAlbum;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 
+@NoArgsConstructor
 @Data
-public class PhotoInAlbumDto {
+public class PhotoInAlbumDto implements IDto {
 
     private Long photoUid;
 
-    private String url;
+    private Long albumUid;
 
     private Integer paperNum;
 
@@ -19,6 +21,7 @@ public class PhotoInAlbumDto {
 
     public PhotoInAlbumDto(PhotoInAlbum photoInAlbum){
         this.photoUid = photoInAlbum.getPhoto().getUid();
+        this.albumUid = photoInAlbum.getAlbum().getUid();
         this.paperNum = photoInAlbum.getPaperNum();
         this.sequence = photoInAlbum.getSequence();
     }

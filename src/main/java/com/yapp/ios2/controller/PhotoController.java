@@ -2,8 +2,12 @@ package com.yapp.ios2.controller;
 
 
 import com.yapp.ios2.config.info.PHOTO_TYPE;
+import com.yapp.ios2.dto.BooleanDto;
+import com.yapp.ios2.dto.IDto;
 import com.yapp.ios2.dto.PhotoDto;
+import com.yapp.ios2.dto.PhotoInAlbumDto;
 import com.yapp.ios2.repository.PhotoRepository;
+import com.yapp.ios2.service.AlbumService;
 import com.yapp.ios2.service.PhotoService;
 import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.vo.User;
@@ -25,6 +29,7 @@ public class PhotoController {
     private final PhotoService photoService;
     private final PhotoRepository photoRepository;
     private final UserService userService;
+    private final AlbumService albumService;
 
     @GetMapping("/")
     @ResponseBody
@@ -61,14 +66,28 @@ public class PhotoController {
 
     @PostMapping(value = "/upload/decorated/")
     @ResponseBody
-    public PhotoDto uploadDecoratedPhoto(@RequestParam(value="image") MultipartFile images,
+    public IDto uploadDecoratedPhoto(@RequestParam(value="image") MultipartFile images,
                                      @RequestParam("photoUid") Long photoUid,
                                      @RequestParam("albumUid") Long albumUid,
+                                     @RequestParam("paperNum") Integer paperNum,
+                                     @RequestParam("sequence") Integer sequence,
                                      @AuthenticationPrincipal User user) throws IOException {
 
-        PhotoDto photo = (PhotoDto)photoService.uploadDecoratedPhoto(images, photoUid, albumUid);
+        PhotoInAlbumDto photoInAlbumDto = new PhotoInAlbumDto();
 
-        return photo;
+        PhotoDto photo = (PhotoDto)photoService.uploadDecoratedPhoto(images, photoUid);
+
+        BooleanDto booleanDto = albumService.addPhotoInAlbum(albumUid, photoUid, paperNum, sequence);
+
+        if(booleanDto.getResult()){
+            // Success
+            photoInAlbumDto.setPhotoUid(photo.getPhotoUid());
+            photoInAlbumDto.setAlbumUid((photo.getAlbumUid()));
+            photoInAlbumDto.setPaperNum(paperNum);
+            photoInAlbumDto.setSequence(sequence);
+        }
+
+        return photoInAlbumDto;
     }
 
     @GetMapping(value = "/download/org/{photoUid}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)

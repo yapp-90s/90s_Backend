@@ -190,6 +190,9 @@ public class AlbumService{
 
             photoInAlbumRepository.save(photoInAlbum);
 
+            photo.setAlbum(album);
+            photoRepository.save(photo);
+
             if(msg.isBlank()) msg = "New Photo is added.";
 
             return BooleanDto.success(msg);

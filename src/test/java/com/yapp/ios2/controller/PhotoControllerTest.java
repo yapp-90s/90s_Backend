@@ -9,6 +9,7 @@ import com.yapp.ios2.repository.PhotoRepository;
 import com.yapp.ios2.repository.UserRepository;
 import com.yapp.ios2.service.UserService;
 import com.yapp.ios2.testConfig.TestInit;
+import com.yapp.ios2.vo.Album;
 import com.yapp.ios2.vo.Film;
 import com.yapp.ios2.vo.Photo;
 import com.yapp.ios2.vo.User;
@@ -78,6 +79,38 @@ public class PhotoControllerTest extends TestInit {
                         )
                 );
     }
+
+    @Test
+    public void upload_decorated_photo() throws Exception {
+
+        user = getTester();
+
+        MockMultipartFile multipartFile = new MockMultipartFile("testPic.png", new FileInputStream(new File("src/test/java/com/yapp/ios2/data/testPic.png")));
+
+        Photo photo = photoRepository.findAllByUser(user).get(0);
+
+        Album album = albumRepository.findByUser(user).get(0);
+        mockMvc.perform(
+                fileUpload("/photo/upload/decorated/")
+                        .file("image", multipartFile.getBytes())
+                        .header("X-AUTH-TOKEN", user.getJWT())
+                        .param("photoUid", photo.getUid().toString())
+                        .param("albumUid", album.getUid().toString())
+                        .param("paperNum", String.valueOf(1))
+                        .param("sequence", String.valueOf(1))
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(document.document(
+                        requestParts(partWithName("image").description("업로드할 이미지 파일. png 형식.")),
+                        requestParameters(
+                                parameterWithName("photoUid").description("사진의 UID"),
+                                parameterWithName("albumUid").description("앨범의 UID"),
+                                parameterWithName("paperNum").description("앨범 내 사진 위치(페이지)"),
+                                parameterWithName("sequence").description("앨범 내 사진 위치(순서)"))
+                        )
+                );
+    }
+
 
     @Test
     public void download_org_photo() throws Exception {

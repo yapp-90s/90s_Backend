@@ -47,6 +47,7 @@ public class AlbumControllerTest extends TestInit {
 
     @Test
     public void create_album() throws Exception {
+        user = getTester();
 
         CreateAlbumInDto albumInfo = CreateAlbumInDto.builder()
                 .name("테스트앨범")
